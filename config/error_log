@@ -1,0 +1,4 @@
+[18-Apr-2026 02:17:23 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/hgbwk9a94wuf/public_html/jinil.in/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/hgbwk9a94wuf/public_html/jinil.in/config/database.php on line 18
