@@ -297,6 +297,17 @@ margin-top: 40px;
 ===========================                  ===========================*/
 
 @media (max-width: 1441px) {
+
+    .app_item {
+        gap: 26px;
+        padding: 26px 9px 9px 18px;
+    }
+
+    .app_number
+    {
+        font-size: 28px;
+    }
+
     .mb_40 {
         margin-bottom: 20px;
     }

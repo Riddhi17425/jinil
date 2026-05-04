@@ -57,6 +57,9 @@ use Illuminate\Support\Facades\DB;
     
     Route::get('/privacy-policy',[dashboardController::class,'privacypolicy'])->name('privacypolicy');
     Route::get('/terms-engineer',[dashboardController::class,'termsengineer'])->name('termsengineer');
+
+     Route::get('/productdetials', [dashboardController::class, 'productdetials'])->name('productdetials');
+
     Route::get('/get-cities/{id}', function ($id) {
 
         $cities = DB::table('cities')

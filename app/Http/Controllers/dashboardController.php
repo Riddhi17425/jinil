@@ -90,6 +90,15 @@ class dashboardController extends Controller
        
         return view('front.terms-engineer',compact('metatitle','metadescription'));
     }
+
+     public function productdetials()
+    {
+        $metatitle = "";
+        $metadescription = "";
+       
+        return view('front.productdetials',compact('metatitle','metadescription'));
+    }
+
     public function download()
     {
         $metatitle = "";
