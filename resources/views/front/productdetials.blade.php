@@ -265,32 +265,41 @@
             <div class="col-lg-12">
                 <div class="spec-table-wrapper">
                     <table class="spec-table">
-                        <thead>
-                            <tr>
-                                <th>Parameter</th>
-                                <th>Specification</th>
-                            </tr>
-                        </thead>
                         <tbody>
                             <tr>
+                                 <th>Parameter</th>
                                 <td data-label="Parameter">Type of Machine</td>
                                 <td data-label="Specification">Venturi Sand Blasting Cabinet</td>
+                                <td data-label="Specification">Venturi Sand Blasting Cabinet</td>
+
                             </tr>
                             <tr>
+                                 <th>Parameter</th>
                                 <td data-label="Parameter">Cabinet Construction</td>
                                 <td data-label="Specification">MS fabricated with rubber lining</td>
+                                <td data-label="Specification">Venturi Sand Blasting Cabinet</td>
+
                             </tr>
                             <tr>
+                                 <th>Parameter</th>
                                 <td data-label="Parameter">Working Pressure</td>
                                 <td data-label="Specification">5 - 7 bar</td>
+                                <td data-label="Specification">Venturi Sand Blasting Cabinet</td>
+
                             </tr>
                             <tr>
+                                 <th>Parameter</th>
                                 <td data-label="Parameter">Air Consumption</td>
                                 <td data-label="Specification">6 - 12 CFM (according to nozzle size)</td>
+                                <td data-label="Specification">Venturi Sand Blasting Cabinet</td>
+
                             </tr>
                             <tr>
+                                 <th>Parameter</th>
                                 <td data-label="Parameter">Nozzle Size</td>
                                 <td data-label="Specification">4 - 8 mm</td>
+                                <td data-label="Specification">Venturi Sand Blasting Cabinet</td>
+
                             </tr>
                         </tbody>
                     </table>
