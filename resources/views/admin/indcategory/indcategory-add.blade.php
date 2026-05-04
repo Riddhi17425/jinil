@@ -36,10 +36,17 @@
                                     <input type="text" id="url" name="url" class="form-control"
                                         placeholder="indcategory URL">
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <label class="form-label">indcategory Description</label>
                                     <textarea id="cat_description" name="cat_description" class="form-control"
                                             placeholder="indcategory Description"></textarea>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Icon Image</label>
+                                    <input type="file" id="icon_image" name="icon_image" class="form-control" accept=".jpg,.jpeg,.png,.webp,.svg">
+                                    @if ($errors->has('icon_image'))
+                                        <span class="text-danger">{{ $errors->first('icon_image') }}</span>
+                                    @endif
                                 </div>
                             </div>
                         </div>

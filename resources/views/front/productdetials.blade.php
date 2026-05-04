@@ -6,12 +6,11 @@
         <div class="navi_page_child">
             <div>
                 <p class="title_24"><a href="{{ url('/') }}" class="text-585">Home</a> / <a href="#"
-                        class="text-585">Air-Operated Machines</a>
-                    / Suction Type Shot Machine
+                        class="text-585">{{ $category->category }}</a>
+                    / {{ $product->name }}
                 </p>
-                <h2 class="title_60">Lorem ipsum dolor sit amet consectetur. </h2>
-                <p class="mb-0">Lorem ipsum dolor sit amet consectetur. Maecenas in nec gravida pellentesque viverra
-                    turpis vivamus nibh. Amet rhoncus eget eu non sit.</p>
+                <h2 class="title_60">{{ $product->title ?? '' }}</h2>
+                <p class="mb-0">{{ $product->title_brief ?? '' }}</p>
             </div>
 
             <a href="{{ route('contact') }}" class="contact_circle">
@@ -46,21 +45,7 @@
             <div>
                 <h2 class="title_60 mb-3">Air-Operated Shot Blasting Cabinet – Suction Type
                 </h2>
-                <p class="mb-0">The Air-Operated Shot Blasting Cabinet – Suction Type is a compact and economical
-                    cabinet-type sandblasting machine designed for cleaning, surface preparation, deburring, and
-                    finishing of small to medium-sized components. It operates on the Venturi suction principle, where
-                    compressed air creates a vacuum that draws abrasive media from the hopper and propels it through the
-                    blasting nozzle onto the workpiece.</p>
-                <p>This suction-type shot blasting machine is widely used in the automobile, aerospace, foundry,
-                    fabrication, and engineering industries for efficient surface treatment processes. Its enclosed
-                    cabinet design supports dust-controlled operation, improved abrasive recycling, and better operator
-                    safety, making it an ideal solution for workshops and production environments seeking reliable
-                    blasting performance.</p>
-                <p>This suction-type shot blasting machine is widely used in the automobile, aerospace, foundry,
-                    fabrication, and engineering industries for efficient surface treatment processes. Its enclosed
-                    cabinet design supports dust-controlled operation, improved abrasive recycling, and better operator
-                    safety, making it an ideal solution for workshops and production environments seeking reliable
-                    blasting performance.</p>
+                {!! $product->short_description ?? '' !!}
                 <button class="com_btn">
                     Enquire Now
                 </button>
@@ -337,7 +322,7 @@
                     <h2 class="title_60 text-white">Related Industries You May Like </h2>
                     <p class="mb-0 text-white">Explore a wide range of industries where shot blasting plays a critical
                         role in improving surface quality, durability, and production efficiency. From automotive and
-                        foundry to fabrication and heavy engineering, Jinil’s solutions are designed to meet diverse
+                        foundry to fabrication and heavy engineering, Jinil's solutions are designed to meet diverse
                         application needs, ensuring reliable surface preparation, consistent finishing, and optimized
                         performance across demanding industrial environments.</p>
                 </div>
@@ -367,7 +352,7 @@
 
                 <div class="industry_item_wrapper mx-3">
                     <a href="https://intelliworkz.co/Jinil/industries/forging">
-                        <div class="industry_item" style="background-image: url('public/front/images/industries1.png')">
+                        <div class="industry_item" style="background-image: url('../public/front/images/industries1.png')">
                         </div>
                         <h3 class="title_24">Forging</h3>
                     </a>
@@ -472,7 +457,7 @@
             <div class="col-lg-5 pe-lg-5">
                 <p class="mb-0">Complete Support Portfolio</p>
                 <h2 class="title_60 mb_29">Applications</h2>
-                <p class="title_24">The Air-Operated Shot Blasting Cabinet – Suction Type is suitable for multiple
+                <p class="title_24">The Air-Operated Shot Blasting Cabinet - Suction Type is suitable for multiple
                     blasting and finishing applications where precision surface treatment is required.</p>
             </div>
 

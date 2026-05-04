@@ -37,11 +37,24 @@
                                 <input type="text" id="url" name="url" class="form-control"
                                     value="{{ $indcategory->url }}" placeholder="indcategory URL">
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <label class="form-label">indcategory Description</label>
                                 <textarea id="cat_description" name="cat_description" class="form-control"
                                     placeholder="indcategory Description">{{ $indcategory->cat_description }}</textarea>
                             </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Icon Image</label>
+                                <input type="file" id="icon_image" name="icon_image" class="form-control" accept=".jpg,.jpeg,.png,.webp,.svg">
+                                @if ($errors->has('icon_image'))
+                                    <span class="text-danger">{{ $errors->first('icon_image') }}</span>
+                                @endif
+                            </div>
+                            @if(!empty($indcategory->icon_image))
+                            <div class="col-md-6">
+                                <label class="form-label d-block">Current Icon</label>
+                                <img src="{{ asset('public/indcategory/icon_image/' . $indcategory->icon_image) }}" alt="Icon Image" style="width:80px;height:80px;object-fit:contain;border:1px solid #ddd;padding:4px;">
+                            </div>
+                            @endif
                             </div>
                         </div>
                     </div>

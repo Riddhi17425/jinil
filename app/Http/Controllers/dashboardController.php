@@ -91,12 +91,13 @@ class dashboardController extends Controller
         return view('front.terms-engineer',compact('metatitle','metadescription'));
     }
 
-     public function productdetials()
+     public function productdetials($url = null)
     {
         $metatitle = "";
         $metadescription = "";
-       
-        return view('front.productdetials',compact('metatitle','metadescription'));
+        $product = Product::whereNull('deleted_at')->where('url', $url)->first();
+        $category = Category::whereNull('deleted_at')->where('id', $product->category_id)->first();
+        return view('front.productdetials',compact('metatitle','metadescription','product', 'category'));
     }
 
     public function download()

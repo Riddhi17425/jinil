@@ -16,5 +16,6 @@ class IndCategory extends Model
         'indcategory',
         'cat_description',
         'url',
+        'icon_image',
     ];
 }
