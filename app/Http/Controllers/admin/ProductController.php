@@ -47,7 +47,7 @@ class ProductController extends Controller
         $post->title_brief = $request->get('title_brief');
         $post->name = $request->get('name');
         $post->service_note = $request->get('service_note');
-        $post->working_principal_desc = $request->get('working_principal_desc');
+        $post->working_principle_desc = $request->get('working_principle_desc');
         $post->configuration_title = $request->get('configuration_title');
         $post->configuration_description = $request->get('configuration_description');
         $post->industries = $this->mapIntegerList($request->input('industries', []));
@@ -116,7 +116,7 @@ class ProductController extends Controller
         $post->title_brief = $request->get('title_brief');
         $post->name = $request->get('name');
         $post->service_note = $request->get('service_note');
-        $post->working_principal_desc = $request->get('working_principal_desc');
+        $post->working_principle_desc = $request->get('working_principle_desc');
         $post->configuration_title = $request->get('configuration_title');
         $post->configuration_description = $request->get('configuration_description');
         $post->industries = $this->mapIntegerList($request->input('industries', []));

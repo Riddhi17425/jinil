@@ -70,8 +70,8 @@
                         </div>
 
                         <div class="col-md-12">
-                            <label class="form-label">Working Principal Description</label>
-                            <textarea id="working_principal_desc" name="working_principal_desc" class="form-control"></textarea>
+                            <label class="form-label">Working Principle Description</label>
+                            <textarea id="working_principle_desc" name="working_principle_desc" class="form-control"></textarea>
                         </div>
 
                         <div class="col-md-12">
@@ -294,7 +294,7 @@
 
 <script>
 $(document).ready(function() {
-    $('#meta_description,#short_description,#working_principal_desc,#configuration_description').summernote({
+    $('#meta_description,#short_description,#working_principle_desc,#configuration_description').summernote({
         placeholder: 'Enter here...',
         height: 300,
         toolbar: [

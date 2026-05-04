@@ -39,14 +39,25 @@
         <div class="industries_details">
             <div class="mb-3 mb-lg-0">
                 <img class="w-100"
-                    src="http://localhost/jinil/public/industryImage/Airless Shotblasting Machine-Tumble Type.webp"
-                    alt="images">
+                    src="{{ asset('public/Product/front_image/' . $product->front_image) }}"
+                    alt="{{$product->name ?? 'Product Image'}}">
             </div>
             <div>
-                <h2 class="title_60 mb-3">Air-Operated Shot Blasting Cabinet – Suction Type
+                <h2 class="title_60 mb-3">{{ $product->name ?? '' }}
                 </h2>
                 {!! $product->short_description ?? '' !!}
-                <button class="com_btn">
+
+                <!-- <button 
+                    class="com_btn mt-2 product-enquire-btn" 
+                    data-product="{{ $product->name }}"
+                    data-bs-toggle="modal" 
+                    data-bs-target="#productEnquiryModal">
+                    Enquire Now
+                </button> -->
+
+                <button class="com_btn product-enquire-btn" data-product="{{ $product->name }}"
+                    data-bs-toggle="modal" 
+                    data-bs-target="#productEnquiryModal">
                     Enquire Now
                 </button>
             </div>
@@ -55,6 +66,7 @@
     </div>
 </section>
 
+@if(isset($product->service_note) && $product->service_note != '' )
 <section class="mt_100">
     <div class="container">
         <p class="title_34 text-105 d-flex justify-content-center text-center lh-sm mb-0">
@@ -65,8 +77,7 @@
                         fill="#A2B9CF" />
                 </svg></span>
 
-            <span>We design and supply optimized blast wheel systems with precise positioning and
-                abrasive selection to achieve maximum productivity and uniform surface finish.</span>
+            <span>{{ $product->service_note }}</span>
             <span class="d-none d-lg-inline">
                 <svg width="40" height="23" viewBox="0 0 57 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -76,9 +87,9 @@
         </p>
     </div>
 </section>
+@endif
 
-
-
+@if(isset($product->working_principle_desc) && $product->working_principle_desc != '')
 <section class="mt_100">
     <div class="container">
         <div class="sec_hed_top mb_40">
@@ -87,18 +98,13 @@
         </div>
 
         <div class="text-center">
-            <p>The machine works on the Venturi suction mechanism. Compressed air passes through the blasting gun nozzle
-                at high speed, creating a vacuum that pulls abrasive media from the hopper into the airstream. This
-                mixture of air and abrasive is then directed onto the job surface for cleaning, finishing, or coating
-                preparation . After blasting, reusable abrasive falls back into the hopper for reuse, while dust and
-                fine particles are extracted through the integrated dust collector system. This continuous process
-                ensures consistent blasting quality, efficient abrasive recovery, and minimal media loss, making it a
-                practical industrial sand blasting machine for daily operations.
-            </p>
+            {!! $product->working_principle_desc ?? '' !!}
         </div>
     </div>
 </section>
+@endif
 
+@if(isset($product->blast_wheels) && is_countable($product->blast_wheels) && count($product->blast_wheels) > 0 && isset($product->blast_wheels_image) && $product->blast_wheels_image != '')
 <section class="mt_80">
     <div class="container-fluid">
         <div class="industries_details">
@@ -110,19 +116,17 @@
                 </div>
 
                 <ul>
+                    @foreach($product->blast_wheels as $key => $val)
                     <li>
-                        <h4 class="title_24">Direct Drive Blast Wheel</h4>
-                        <p>The motor is directly coupled with the rotor, resulting in higher efficiency with no
-                            transmission loss. This design offers compact construction and lower maintenance
-                            requirements.</p>
+                        <h4 class="title_24">{{$val['title']}}</h4>
+                        <p>{!! $val['desc'] !!}</p>
                     </li>
-
-                    <li>
+                    @endforeach
+                    <!-- <li>
                         <h4 class="title_24">Belt Drive Blast Wheell</h4>
                         <p>Uses a pulley and V-belt arrangement between the motor and rotor. It provides flexible
                             mounting options and easier servicing.</p>
                     </li>
-
                     <li>
                         <h4 class="title_24">High-Efficiency Curved Blade Wheel
                         </h4>
@@ -130,28 +134,26 @@
                             abrasive consumption.
                         </p>
                     </li>
-
                     <li>
                         <h4 class="title_24">Double-Sided / Reversible Blade Wheel</h4>
                         <p>Blade design allows both sides to be used, extending blade life and reducing downtime for
                             replacement.
                         </p>
-                    </li>
+                    </li> -->
                 </ul>
-
             </div>
 
             <div class="mb-3 mb-lg-0">
                 <img class="w-100"
-                    src="http://localhost/jinil/public/industryImage/Airless Shotblasting Machine-Tumble Type.webp"
-                    alt="images">
+                    src="{{ asset('public/Product/front_image/' . $product->front_image) }}"
+                    alt="{{$product->name ?? 'Product Image'}}">
             </div>
         </div>
     </div>
 </section>
+@endif
 
-
-
+@if(isset($product->main_components) && is_countable($product->main_components) && count($product->main_components) > 0)
 <section class="mt_100">
     <div class="container">
         <div class="sec_hed_top mb_40">
@@ -161,16 +163,17 @@
 
         <div class="service_Scope_card">
             <div class="row justify-content-center">
+                @foreach($product->main_components as $key => $val)
                 <div class="col-lg-3">
                     <div class="service_Scope">
-                        <h3 class="title_42 mb-3">01</h3>
-                        <p class="title_24 mb-2">Blasting Cabinet</p>
-                        <p>Heavy-duty fabricated steel cabinet with wear-resistant rubber lining for long service life
-                            in demanding industrial use.</p>
+                        <h3 class="title_42 mb-3">{{ $key + 1}}</h3>
+                        <p class="title_24 mb-2">{{$val['title'] ?? ''}}</p>
+                        <p>{{$val['desc'] ?? ''}}</p>
                     </div>
                 </div>
+                @endforeach
 
-                <div class="col-lg-3">
+                <!-- <div class="col-lg-3">
                     <div class="service_Scope">
                         <h3 class="title_42 mb-3">02</h3>
                         <p class="title_24 mb-2">Blasting Gun Assembly
@@ -180,7 +183,6 @@
                         </p>
                     </div>
                 </div>
-
                 <div class="col-lg-3">
                     <div class="service_Scope">
                         <h3 class="title_42 mb-3">03</h3>
@@ -188,7 +190,6 @@
                         <p>Bottom hopper designed for abrasive continuous abrasive collection, recovery, and reuse. </p>
                     </div>
                 </div>
-
                 <div class="col-lg-3">
                     <div class="service_Scope">
                         <h3 class="title_42 mb-3">04</h3>
@@ -197,7 +198,6 @@
                             components. </p>
                     </div>
                 </div>
-
                 <div class="col-lg-3">
                     <div class="service_Scope">
                         <h3 class="title_42 mb-3">05</h3>
@@ -214,7 +214,6 @@
                             protective film.</p>
                     </div>
                 </div>
-
                 <div class="col-lg-3">
                     <div class="service_Scope">
                         <h3 class="title_42 mb-3">06</h3>
@@ -223,7 +222,6 @@
                         </p>
                     </div>
                 </div>
-
                 <div class="col-lg-3">
                     <div class="service_Scope">
                         <h3 class="title_42 mb-3">06</h3>
@@ -233,12 +231,14 @@
                             control.
                         </p>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
 </section>
+@endif
 
+@if(isset($product->tech_specifications) && is_countable($product->tech_specifications) && count($product->tech_specifications) > 0)
 <section class="mt_100">
     <div class="container">
         <div class="sec_hed_top mb_40">
@@ -251,14 +251,17 @@
                 <div class="spec-table-wrapper">
                     <table class="spec-table">
                         <tbody>
+                        @foreach($product->tech_specifications as $key => $val)
                             <tr>
-                                 <th>Parameter</th>
-                                <td data-label="Parameter">Type of Machine</td>
-                                <td data-label="Specification">Venturi Sand Blasting Cabinet</td>
-                                <td data-label="Specification">Venturi Sand Blasting Cabinet</td>
-
+                                <th>{{$val['parameter'] ?? ''}}</th>
+                                @if(isset($val['specifications']) && is_countable($val['specifications']) && count($val['specifications']) > 0)
+                                    @foreach($val['specifications'] as $k => $v)
+                                    <td data-label="Specification">{{$v}}</td>
+                                    @endforeach
+                                @endif
                             </tr>
-                            <tr>
+                        @endforeach
+                            <!-- <tr>
                                  <th>Parameter</th>
                                 <td data-label="Parameter">Cabinet Construction</td>
                                 <td data-label="Specification">MS fabricated with rubber lining</td>
@@ -285,7 +288,8 @@
                                 <td data-label="Specification">4 - 8 mm</td>
                                 <td data-label="Specification">Venturi Sand Blasting Cabinet</td>
 
-                            </tr>
+                            </tr> -->
+
                         </tbody>
                     </table>
                 </div>
@@ -294,26 +298,24 @@
 
     </div>
 </section>
+@endif
 
+@if(isset($product->configuration_title) && $product->configuration_title != '' && isset($product->configuration_description) && $product->configuration_description != '')
 <section class="mt_100">
     <div class="container">
         <div class="sec_hed_top mb_40">
             <p>Custom Engineered Mechanism</p>
-            <h2 class="title_60">Abrasive Compatibility</h2>
+            <h2 class="title_60">{{ $product->configuration_title }}</h2>
         </div>
 
         <div class="text-center">
-            <p> The blast wheel is compatible with a wide range of metallic and non-metallic blasting media, depending
-                on the required finish and application. Commonly used abrasives include steel shot ranging from S110 to
-                S780 for cleaning and peening, steel grit from G25 to G80 for aggressive surface roughening, garnet in
-                fine to coarse grades for controlled blasting, and cut wire shots for precision finishing applications.
-                This flexibility makes the shot blasting turbine suitable for varied industrial processes requiring
-                different blasting intensities and surface profiles.
-            </p>
+            <p> {{ $product->configuration_description }}</p>
         </div>
     </div>
 </section>
+@endif
 
+@if(isset($productIndustries) && is_countable($productIndustries) && count($productIndustries) > 0)
 <section class="mt_100">
     <div class="container-fluid">
         <div class="industry_section">
@@ -349,16 +351,16 @@
 
 
             <div class="industry_detals_grid">
-
+                @foreach($productIndustries as $k => $v)
                 <div class="industry_item_wrapper mx-3">
-                    <a href="https://intelliworkz.co/Jinil/industries/forging">
-                        <div class="industry_item" style="background-image: url('../public/front/images/industries1.png')">
+                    <a href="{{route('industry', $v->url)}}">
+                        <div class="industry_item" style="background-image: url({{ asset('public/indcategory/icon_image/' . $v->icon_image) }})">
                         </div>
-                        <h3 class="title_24">Forging</h3>
+                        <h3 class="title_24">{{$v->indcategory ?? ''}}</h3>
                     </a>
                 </div>
-
-                <div class="industry_item_wrapper mx-3">
+                @endforeach
+                <!-- <div class="industry_item_wrapper mx-3">
                     <a href="https://intelliworkz.co/Jinil/industries/foundry">
                         <div class="industry_item" style="background-image: url('public/front/images/industries2.png')">
                         </div>
@@ -444,32 +446,33 @@
                             style="background-image: url('public/front/images/industries12.png')"> </div>
                         <h3 class="title_24">Heavy machinery </h3>
                     </a>
-                </div>
+                </div> -->
 
             </div>
         </div>
     </div>
 </section>
+@endif
 
+@if(isset($product->applications) && is_countable($product->applications) && count($product->applications) > 0)
 <section class="mt_100">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-5 pe-lg-5">
                 <p class="mb-0">Complete Support Portfolio</p>
                 <h2 class="title_60 mb_29">Applications</h2>
-                <p class="title_24">The Air-Operated Shot Blasting Cabinet - Suction Type is suitable for multiple
-                    blasting and finishing applications where precision surface treatment is required.</p>
+                <p class="title_24">{{ $product->application_desc ?? '' }}</p>
             </div>
 
             <div class="col-lg-7">
                 <div class="application_list">
-
+                    @foreach($product->applications as $k => $v)
                     <div class="app_item">
-                        <span class="app_number">01</span>
-                        <p class="title_24">Rust Removal Machine For Metal Parts</p>
+                        <span class="app_number">{{$k+1}}</span>
+                        <p class="title_24">{{$v}}</p>
                     </div>
-
-                    <div class="app_item">
+                    @endforeach
+                    <!-- <div class="app_item">
                         <span class="app_number">02</span>
                         <p class="title_24">Surface Cleaning Before Painting Or Powder Coating</p>
                     </div>
@@ -502,15 +505,14 @@
                     <div class="app_item">
                         <span class="app_number">08</span>
                         <p class="title_24">Cleaning Precision Engineering Components</p>
-                    </div>
+                    </div> -->
 
                 </div>
             </div>
         </div>
     </div>
-
 </section>
-
+@endif
 
 
 <section class="mt_100">
@@ -621,27 +623,28 @@
     </div>
 </section>
 
+@if(isset($product->operational_accessories) && is_countable($product->operational_accessories) && count($product->operational_accessories) > 0)
 <section class="mt_100">
     <div class="container">
         <div class="sec_hed_top mb_40">
             <h2 class="title_60">Optional Accessories</h2>
-            <span class="text-585 d-block">The machine can be upgraded with accessories based on production needs and
-                application requirements.</span>
+            <span class="text-585 d-block">The machine can be upgraded with accessories based on production needs and application requirements.</span>
 
         </div>
 
         <div class="inve_Pro mt_80">
             <div class="row">
+                @foreach($product->operational_accessories as $k => $v)
                 <div class="col-lg-6">
                     <div class="inve_Pro_card">
-                        <h4 class="title_24">Turntable with Rotation Drive</h4>
-                        <p>Rotates components during blasting to ensure uniform abrasive coverage, improved cleaning
-                            consistency, and easier handling of parts.</p>
+                        <h4 class="title_24">{{$v['title'] ?? ''}}</h4>
+                        <p>{{$v['desc'] ?? ''}}</p>
                         <hr>
                     </div>
                 </div>
+                @endforeach
 
-                <div class="col-lg-6">
+                <!-- <div class="col-lg-6">
                     <div class="inve_Pro_card">
                         <h4 class="title_24">Pressure Blasting Upgrade System
                         </h4>
@@ -708,36 +711,35 @@
                         </p>
                         <hr>
                     </div>
-                </div>
+                </div> -->
 
             </div>
         </div>
     </div>
 </section>
+@endif
 
+@if(isset($product->faqs) && is_countable($product->faqs) && count($product->faqs) > 0)
 <section class="mb_100 mt_100">
     <div class="container">
         <div class="sec_hed_top mb_40">
             <h2 class="title_60">Frequently Asked Questions</h2>
-            <span class="text-585 d-block">Clear answers to common questions about Jinil's shot blasting machines,
-                surface preparation solutions, and engineering support—helping you make informed decisions with
-                confidence.</span>
+            <span class="text-585 d-block">Clear answers to common questions about Jinil's shot blasting machines, surface preparation solutions, and engineering support—helping you make informed decisions with confidence.</span>
 
         </div>
         <div class="faq_group active">
-
+            @foreach($product->faqs as $k => $v)
             <div class="faq_item">
                 <div class="faq_question">
-                    <span>What types of shot blasting machines does Jinil manufacture?</span>
+                    <span>{{$v['question'] ?? ''}}</span>
                     <span class="faq_icon">+</span>
                 </div>
                 <div class="faq_answer">
-                    <p>A shot blasting machine is used for cleaning, strengthening, or polishing metal surfaces using
-                        abrasive materials.</p>
+                <p>{{$v['answer'] ?? ''}}</p>
                 </div>
             </div>
-
-            <div class="faq_item">
+            @endforeach
+            <!-- <div class="faq_item">
                 <div class="faq_question">
                     <span>What is the use of a suction-type shot blasting machine?</span>
                     <span class="faq_icon">+</span>
@@ -802,12 +804,13 @@
                     <p>Industries like automotive, construction, aerospace, and manufacturing widely use these machines.
                     </p>
                 </div>
-            </div>
+            </div> -->
 
         </div>
 
     </div>
 </section>
+@endif
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {

@@ -97,7 +97,8 @@ class dashboardController extends Controller
         $metadescription = "";
         $product = Product::whereNull('deleted_at')->where('url', $url)->first();
         $category = Category::whereNull('deleted_at')->where('id', $product->category_id)->first();
-        return view('front.productdetials',compact('metatitle','metadescription','product', 'category'));
+        $productIndustries = IndCategory::select('id', 'indcategory', 'icon_image', 'url')->whereIn('id', $product->industries)->get();
+        return view('front.productdetials',compact('metatitle','metadescription','product', 'category','productIndustries'));
     }
 
     public function download()

@@ -79,8 +79,8 @@
                                     </select>
                                 </div>
                                 <div class="col-md-12">
-                                    <label class="form-label">Working Principal Description</label>
-                                    <textarea id="working_principal_desc" name="working_principal_desc" class="form-control">{!! $product->working_principal_desc !!}</textarea>
+                                    <label class="form-label">Working Principle Description</label>
+                                    <textarea id="working_principle_desc" name="working_principle_desc" class="form-control">{!! $product->working_principle_desc !!}</textarea>
                                 </div>
                                 <div class="col-md-12">
                                     <label class="form-label">Configuration Title</label>
@@ -286,7 +286,7 @@
 
 <script>
 $(document).ready(function() {
-    $('#meta_description,#short_description,#working_principal_desc,#configuration_description').summernote({
+    $('#meta_description,#short_description,#working_principle_desc,#configuration_description').summernote({
         placeholder: 'Enter here...',
         height: 300,
         toolbar: [
