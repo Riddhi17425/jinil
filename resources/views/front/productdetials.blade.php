@@ -97,7 +97,7 @@
 <section class="mt_100">
     <div class="container">
         <div class="sec_hed_top mb_40">
-            <p>Complete Support Portfolio</p>
+            <p>Smart Process Overview</p>
             <h2 class="title_60">Working Principle</h2>
         </div>
 
@@ -120,7 +120,7 @@
 
             <div>
                 <div class="sec_hed_top mb_40 text-start">
-                    <p>Lorem ipsum donec consequat</p>
+                    <p>Optimized Wheel Variants</p>
                     <h2 class="title_60">Types of Blast Wheels</h2>
                 </div>
 
@@ -170,8 +170,8 @@
 <section class="mt_100">
     <div class="container">
         <div class="sec_hed_top mb_40">
-            <p>Lorem ipsum dolor sit amet consectetur. Ac dolor fringilla id id arcu et.</p>
-            <h2 class="title_60">Main Elements</h2>
+            <p>Built With Precision Components</p>
+            <h2 class="title_60">Main Components</h2>
         </div>
 
         <div class="service_Scope_card">
@@ -257,12 +257,12 @@
 <section class="mt_100">
     <div class="container">
         <div class="sec_hed_top mb_40">
-            <p>Financial & Operational Value</p>
+            <p>Engineered Output Parameters</p>
             <h2 class="title_60">Standard Technical Specifications</h2>
         </div>
 
         <div class="row gy-4 gy-lg-0 justify-content-center">
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="spec-table-wrapper">
                     <table class="spec-table">
                         <thead>
@@ -296,38 +296,6 @@
                     </table>
                 </div>
             </div>
-
-            <div class="col-lg-6">
-                <div class="spec-table-wrapper">
-                    <table class="spec-table">
-                        <thead>
-                            <tr>
-                                <th>Parameter</th>
-                                <th>Specification</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td data-label="Parameter">Abrasive Type</td>
-                                <td data-label="Specification">Garnet / Steel grit / Glass Beads / Aluminium Oxide
-                                </td>
-                            </tr>
-                            <tr>
-                                <td data-label="Parameter">Dust Collector</td>
-                                <td data-label="Specification">Cartridge / Bag Filter Type</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Parameter">Electrical Supply</td>
-                                <td data-label="Specification">415V, 3 Phase, 50Hz</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Parameter">Cabinet Lighting </td>
-                                <td data-label="Specification">LED / Fluorescent Dust-proof </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
         </div>
 
     </div>
@@ -336,7 +304,7 @@
 <section class="mt_100">
     <div class="container">
         <div class="sec_hed_top mb_40">
-            <p>Complete Support Portfolio</p>
+            <p>Custom Engineered Mechanism</p>
             <h2 class="title_60">Abrasive Compatibility</h2>
         </div>
 
@@ -558,7 +526,7 @@
                 <div class="col-lg-6">
                     <div class="service_Scope py-4">
                         <div class="sec_hed_top mb-3 text-start">
-                            <p>Complete Support Portfolio</p>
+                            <p>Operational Performance Benefits</p>
                             <h2 class="title_60">Advantages</h2>
                         </div>
                         <div>
@@ -582,7 +550,7 @@
                 <div class="col-lg-6">
                     <div class="service_Scope py-4">
                         <div class="sec_hed_top mb-3 text-start">
-                            <p>Complete Support Portfolio</p>
+                            <p>Advanced Engineering Highlights</p>
                             <h2 class="title_60">Design Features </h2>
                         </div>
                         <div>
@@ -607,8 +575,8 @@
                      <div class="col-lg-6">
                     <div class="service_Scope py-4">
                         <div class="sec_hed_top mb-3 text-start">
-                            <p>Complete Support Portfolio</p>
-                            <h2 class="title_60">Design Features </h2>
+                            <p>Decision Making Factors</p>
+                            <h2 class="title_60">Selection Guidelines </h2>
                         </div>
                         <div>
                             <p>Lorem ipsum dolor sit amet consectetur. Ullamcorper id egestas enim aliquam ullamcorper
@@ -632,8 +600,8 @@
                      <div class="col-lg-6">
                     <div class="service_Scope py-4">
                         <div class="sec_hed_top mb-3 text-start">
-                            <p>Complete Support Portfolio</p>
-                            <h2 class="title_60">Design Features </h2>
+                            <p>Additional System Enhancements</p>
+                            <h2 class="title_60">Optional Features </h2>
                         </div>
                         <div>
                             <p>Lorem ipsum dolor sit amet consectetur. Ullamcorper id egestas enim aliquam ullamcorper
@@ -757,7 +725,7 @@
     <div class="container">
         <div class="sec_hed_top mb_40">
             <h2 class="title_60">Frequently Asked Questions</h2>
-            <span class="text-585 d-block">Clear answers to common questions about Jinil’s shot blasting machines,
+            <span class="text-585 d-block">Clear answers to common questions about Jinil's shot blasting machines,
                 surface preparation solutions, and engineering support—helping you make informed decisions with
                 confidence.</span>
 
@@ -811,7 +779,7 @@
 
             <div class="faq_item">
                 <div class="faq_question">
-                    <span>Does Jinil provide installation and commissioning support? </span>
+                    <span>Does Jinil provide installation and commissioning support?</span>
                     <span class="faq_icon">+</span>
                 </div>
                 <div class="faq_answer">
