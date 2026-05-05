@@ -2863,15 +2863,15 @@
                  <!--   <h3 class="title_24">Heavy machinery </h3>-->
                  <!--</a>-->
 
-               <div class="industry_item_wrapper">
-                    <div>
-                        <svg width="88" height="88" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1 86.5024L86.5024 1M86.5024 1H29.5008M86.5024 1V58.0016" stroke="white"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                        <h3 class="title_24">View all</h3>
-                    </div>
-                </div>
+               <!--<div class="industry_item_wrapper">-->
+               <!--     <div>-->
+               <!--         <svg width="88" height="88" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+               <!--             <path d="M1 86.5024L86.5024 1M86.5024 1H29.5008M86.5024 1V58.0016" stroke="white"-->
+               <!--                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />-->
+               <!--         </svg>-->
+               <!--         <h3 class="title_24">View all</h3>-->
+               <!--     </div>-->
+               <!-- </div>-->
             </div>
         </div>
     </div>

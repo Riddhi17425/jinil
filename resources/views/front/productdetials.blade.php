@@ -300,6 +300,42 @@
 </section>
 @endif
 
+@if($product->url == 'blast-wheel-shot-blasting-turbine')
+<section class="mt_100">
+    <div class="container">
+        <div class="sec_hed_top mb_40">
+            <h2 class="title_60">Capacity Chart (HP vs Shot Flow)</h2>
+        </div>
+        <div class="row gy-4 gy-lg-0 justify-content-center">
+            <div class="col-lg-12">
+                <div class="spec-table-wrapper">
+                    <table class="spec-table">
+  <thead>
+    <tr>
+      <th>Motor HP</th>
+      <th>Shot Flow (kg/min)</th>
+      <th>Typical Application</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>3 HP</td><td>30–60</td><td>Small cabinet</td></tr>
+    <tr><td>5 HP</td><td>60–100</td><td>Light duty</td></tr>
+    <tr><td>7.5 HP</td><td>80–120</td><td>Tumblast</td></tr>
+    <tr><td>10 HP</td><td>120–180</td><td>General use</td></tr>
+    <tr><td>15 HP</td><td>150–220</td><td>Hanger / Table</td></tr>
+    <tr><td>20 HP</td><td>200–300</td><td>Tunnel</td></tr>
+    <tr><td>30 HP</td><td>300–450</td><td>Heavy duty</td></tr>
+    <tr><td>40 HP</td><td>450–700</td><td>Plate blasting</td></tr>
+    <tr><td>50 HP</td><td>700–1000+</td><td>High production</td></tr>
+  </tbody>
+</table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@endif 
+
 @if(isset($product->configuration_title) && $product->configuration_title != '' && isset($product->configuration_description) && $product->configuration_description != '')
 <section class="mt_100">
     <div class="container">
@@ -319,7 +355,6 @@
 <section class="mt_100">
     <div class="container">
         <div class="sec_hed_top mb_40">
-            <p>Custom Engineered Mechanism</p>
             <h2 class="title_60">{{ $product->why_choose_title }}</h2>
         </div>
 
