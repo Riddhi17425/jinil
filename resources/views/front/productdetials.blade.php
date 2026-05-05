@@ -525,7 +525,7 @@
     if (isset($product->selection_guidelines) && is_countable($product->selection_guidelines) && count($product->selection_guidelines) > 0) {
         $sections[] = "selection";
     }
-    if (isset($product->operational_features) && is_countable($product->operational_features) && count($product->operational_features) > 0) {
+    if (isset($product->optional_features) && is_countable($product->optional_features) && count($product->optional_features) > 0) {
         $sections[] = "optional";
     }
     $count = count($sections);
@@ -595,7 +595,7 @@
                     </div>
                 </div>
             @endif
-            @if (isset($product->operational_features) && is_countable($product->operational_features) && count($product->operational_features) > 0)
+            @if (isset($product->optional_features) && is_countable($product->optional_features) && count($product->optional_features) > 0)
                 <div class="<?= $colClass ?>">
                     <div class="service_Scope py-4">
                         <div class="sec_hed_top mb-3 text-start">
@@ -603,10 +603,10 @@
                             <h2 class="title_60">Optional Features </h2>
                         </div>
                         <div>
-                            <p>{{ $product->operational_features_desc ?? '' }} </p>
+                            <p>{{ $product->optional_features_desc ?? '' }} </p>
                             </p>
                             <ul class="custom-list">
-                                @foreach($product->operational_features as $k => $v)
+                                @foreach($product->optional_features as $k => $v)
                                 <li>{{$v}}</li>
                                 @endforeach
                             </ul>

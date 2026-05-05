@@ -50,17 +50,17 @@
                         <div class="fea_mac_content">
                             <div class="fea_mac_content_inner">
                                 <h3 class="title_24">{{ $product->name }}</h3>
-                                <!-- <button 
+                                <button 
                                     class="com_btn mt-2 product-enquire-btn" 
                                     data-product="{{ $product->name }}"
                                     data-bs-toggle="modal" 
                                     data-bs-target="#productEnquiryModal">
                                     Enquire Now
-                                </button> -->
-                                <a href="{{ route('productdetials', $product->url) }}"
+                                </button>
+                                <!-- <a href="{{ route('productdetials', $product->url) }}"
                                     class="com_btn mt-2">
                                     Explore More
-                                </a>
+                                </a> -->
                             </div>
                         </div>
                     </div>

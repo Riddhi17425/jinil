@@ -29,8 +29,8 @@ return new class extends Migration {
             'design_features' => 'json',
             'selection_guidelines_desc' => 'text',
             'selection_guidelines' => 'json',
-            'operational_features_desc' => 'text',
-            'operational_features' => 'json',
+            'optional_features_desc' => 'text',
+            'optional_features' => 'json',
             'operational_accessories' => 'json',
             'faqs' => 'json',
         ];
@@ -74,8 +74,8 @@ return new class extends Migration {
             'design_features',
             'selection_guidelines_desc',
             'selection_guidelines',
-            'operational_features_desc',
-            'operational_features',
+            'optional_features_desc',
+            'optional_features',
             'operational_accessories',
             'faqs',
         ];

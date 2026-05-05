@@ -219,17 +219,17 @@
 
             <div class="card mb-4">
                 <div class="card-header py-3 bg-transparent">
-                    <h6 class="mb-0 fw-bold">Operational Features</h6>
+                    <h6 class="mb-0 fw-bold">Optional Features</h6>
                 </div>
                 <div class="card-body">
                     <div class="row g-3">
                         <div class="col-md-12">
-                            <label class="form-label">Operational Features Description</label>
-                            <textarea name="operational_features_desc" class="form-control" rows="3"></textarea>
+                            <label class="form-label">Optional Features Description</label>
+                            <textarea name="optional_features_desc" class="form-control" rows="3"></textarea>
                         </div>
                         <div class="col-md-12">
-                            <div id="operational-features-wrapper"></div>
-                            <button type="button" class="btn btn-sm btn-outline-primary mt-2" onclick="addSimpleRow('operational-features-wrapper', 'operational_features', 'Operational Feature')">Add Operational Feature</button>
+                            <div id="optional-features-wrapper"></div>
+                            <button type="button" class="btn btn-sm btn-outline-primary mt-2" onclick="addSimpleRow('optional-features-wrapper', 'optional_features', 'Optional Feature')">Add Optional Feature</button>
                         </div>
                     </div>
                 </div>
@@ -317,7 +317,7 @@ $(document).ready(function() {
     addSimpleRow('advantages-wrapper', 'advantages', 'Advantage');
     addSimpleRow('design-features-wrapper', 'design_features', 'Design Feature');
     addSimpleRow('selection-guidelines-wrapper', 'selection_guidelines', 'Guideline');
-    addSimpleRow('operational-features-wrapper', 'operational_features', 'Operational Feature');
+    addSimpleRow('optional-features-wrapper', 'optional_features', 'Optional Feature');
     addTitleDescRow('operational-accessories-wrapper', 'operational_accessories');
     addFaqRow();
 });

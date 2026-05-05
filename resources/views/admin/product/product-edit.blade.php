@@ -197,14 +197,14 @@
                                 </div>
 
                                 <hr class="mt-4">
-                                <h5 class="mt-3 fw-bold">Operational Features</h5>
+                                <h5 class="mt-3 fw-bold">Optional Features</h5>
                                 <div class="col-md-12">
-                                    <label class="form-label">Operational Features Description</label>
-                                    <textarea name="operational_features_desc" class="form-control" rows="3">{{ $product->operational_features_desc }}</textarea>
+                                    <label class="form-label">Optional Features Description</label>
+                                    <textarea name="optional_features_desc" class="form-control" rows="3">{{ $product->optional_features_desc }}</textarea>
                                 </div>
                                 <div class="col-md-12">
-                                    <div id="operational-features-wrapper"></div>
-                                    <button type="button" class="btn btn-sm btn-outline-primary mt-2" onclick="addSimpleRow('operational-features-wrapper', 'operational_features', 'Operational Feature')">Add Operational Feature</button>
+                                    <div id="optional-features-wrapper"></div>
+                                    <button type="button" class="btn btn-sm btn-outline-primary mt-2" onclick="addSimpleRow('optional-features-wrapper', 'optional_features', 'Optional Feature')">Add Optional Feature</button>
                                 </div>
 
                                 <hr class="mt-4">
@@ -309,7 +309,7 @@ $(document).ready(function() {
     const advantages = @json($product->advantages ?? []);
     const designFeatures = @json($product->design_features ?? []);
     const selectionGuidelines = @json($product->selection_guidelines ?? []);
-    const operationalFeatures = @json($product->operational_features ?? []);
+    const optionalFeatures = @json($product->optional_features ?? []);
     const operationalAccessories = @json($product->operational_accessories ?? []);
     const faqs = @json($product->faqs ?? []);
 
@@ -320,7 +320,7 @@ $(document).ready(function() {
     hydrateSimpleList('advantages-wrapper', 'advantages', 'Advantage', advantages);
     hydrateSimpleList('design-features-wrapper', 'design_features', 'Design Feature', designFeatures);
     hydrateSimpleList('selection-guidelines-wrapper', 'selection_guidelines', 'Guideline', selectionGuidelines);
-    hydrateSimpleList('operational-features-wrapper', 'operational_features', 'Operational Feature', operationalFeatures);
+    hydrateSimpleList('optional-features-wrapper', 'optional_features', 'Optional Feature', optionalFeatures);
     hydrateTitleDesc('operational-accessories-wrapper', 'operational_accessories', operationalAccessories);
     hydrateFaqs(faqs);
 });

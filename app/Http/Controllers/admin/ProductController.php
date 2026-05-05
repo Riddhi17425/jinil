@@ -61,7 +61,7 @@ class ProductController extends Controller
         $post->advantages_desc = $request->input('advantages_desc');
         $post->design_features_desc = $request->input('design_features_desc');
         $post->selection_guidelines_desc = $request->input('selection_guidelines_desc');
-        $post->operational_features_desc = $request->input('operational_features_desc');
+        $post->optional_features_desc = $request->input('optional_features_desc');
 
         $post->blast_wheels = $this->mapTitleDescItems($request->input('blast_wheels', []));
         $post->main_components = $this->mapTitleDescItems($request->input('main_components', []));
@@ -70,7 +70,7 @@ class ProductController extends Controller
         $post->advantages = $this->mapSimpleList($request->input('advantages', []));
         $post->design_features = $this->mapSimpleList($request->input('design_features', []));
         $post->selection_guidelines = $this->mapSimpleList($request->input('selection_guidelines', []));
-        $post->operational_features = $this->mapSimpleList($request->input('operational_features', []));
+        $post->optional_features = $this->mapSimpleList($request->input('optional_features', []));
         $post->operational_accessories = $this->mapTitleDescItems($request->input('operational_accessories', []));
         $post->faqs = $this->mapFaqs($request->input('faqs', []));
  
@@ -130,7 +130,7 @@ class ProductController extends Controller
         $post->advantages_desc = $request->input('advantages_desc');
         $post->design_features_desc = $request->input('design_features_desc');
         $post->selection_guidelines_desc = $request->input('selection_guidelines_desc');
-        $post->operational_features_desc = $request->input('operational_features_desc');
+        $post->optional_features_desc = $request->input('optional_features_desc');
 
         $post->blast_wheels = $this->mapTitleDescItems($request->input('blast_wheels', []));
         $post->main_components = $this->mapTitleDescItems($request->input('main_components', []));
@@ -139,7 +139,7 @@ class ProductController extends Controller
         $post->advantages = $this->mapSimpleList($request->input('advantages', []));
         $post->design_features = $this->mapSimpleList($request->input('design_features', []));
         $post->selection_guidelines = $this->mapSimpleList($request->input('selection_guidelines', []));
-        $post->operational_features = $this->mapSimpleList($request->input('operational_features', []));
+        $post->optional_features = $this->mapSimpleList($request->input('optional_features', []));
         $post->operational_accessories = $this->mapTitleDescItems($request->input('operational_accessories', []));
         $post->faqs = $this->mapFaqs($request->input('faqs', []));
 

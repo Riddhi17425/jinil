@@ -47,9 +47,9 @@ class Product extends Model
         // Selection Guidelines
         'selection_guidelines_desc',
         'selection_guidelines',   // JSON: [string]
-        // Operational Features
-        'operational_features_desc',
-        'operational_features',   // JSON: [string]
+        // Optional Features
+        'optional_features_desc',
+        'optional_features',   // JSON: [string]
         // Operational Accessories
         'operational_accessories',// JSON: [{title, desc}]
         // FAQs
@@ -64,7 +64,7 @@ class Product extends Model
         'advantages'             => 'array',
         'design_features'        => 'array',
         'selection_guidelines'   => 'array',
-        'operational_features'   => 'array',
+        'optional_features'   => 'array',
         'operational_accessories'=> 'array',
         'faqs'                   => 'array',
         'industries'             => 'array',
