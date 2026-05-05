@@ -19,7 +19,7 @@ class ProductController extends Controller
 
         $product = Product::whereNull('deleted_at')
             ->when($search, function ($query) use ($search) {
-                $query->where('title', 'LIKE', "%$search%");
+                $query->where('name', 'LIKE', "%$search%");
             })
             ->orderBy('id','DESC')
             ->paginate(10);
@@ -50,6 +50,8 @@ class ProductController extends Controller
         $post->working_principle_desc = $request->get('working_principle_desc');
         $post->configuration_title = $request->get('configuration_title');
         $post->configuration_description = $request->get('configuration_description');
+        $post->why_choose_title = $request->get('why_choose_title');
+        $post->why_choose_description = $request->get('why_choose_description');
         $post->industries = $this->mapIntegerList($request->input('industries', []));
         $post->short_description = $request->get('short_description');
         $post->url = $request->get('url');
@@ -80,6 +82,13 @@ class ProductController extends Controller
             $path = public_path('Product/front_image');
             $file->move($path, $filename);
             $post->front_image = $filename;
+        }  
+        if($request->hasFile('detail_image')) {
+            $file = $request->file('detail_image');
+            $filename = $file->getClientOriginalName();
+            $path = public_path('Product/detail_image');
+            $file->move($path, $filename);
+            $post->detail_image = $filename;
         }  
 
         if($request->hasFile('blast_wheels_image')) {
@@ -119,6 +128,8 @@ class ProductController extends Controller
         $post->working_principle_desc = $request->get('working_principle_desc');
         $post->configuration_title = $request->get('configuration_title');
         $post->configuration_description = $request->get('configuration_description');
+        $post->why_choose_title = $request->get('why_choose_title');
+        $post->why_choose_description = $request->get('why_choose_description');
         $post->industries = $this->mapIntegerList($request->input('industries', []));
         $post->short_description = $request->get('short_description');
         $post->url = $request->get('url');
@@ -149,6 +160,13 @@ class ProductController extends Controller
             $path = public_path('Product/front_image');
             $file->move($path, $filename);
             $post->front_image = $filename;
+        }  
+        if($request->hasFile('detail_image')) {
+            $file = $request->file('detail_image');
+            $filename = $file->getClientOriginalName();
+            $path = public_path('Product/detail_image');
+            $file->move($path, $filename);
+            $post->detail_image = $filename;
         }  
 
         if($request->hasFile('blast_wheels_image')) {

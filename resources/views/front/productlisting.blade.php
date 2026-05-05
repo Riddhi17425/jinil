@@ -40,6 +40,7 @@
         <div class="row gy-5">
       
             @foreach($productlist->whereNotNull('front_image') as $product)
+            @if($product->url != 'blast-wheel-shot-blasting-turbine')
                 <div class="col-md-4" id="product-{{ $product->id }}">   {{-- ADD THIS ID --}}
                     <div class="fea_mac">
                         <div class="fea_mac_img">
@@ -50,22 +51,23 @@
                         <div class="fea_mac_content">
                             <div class="fea_mac_content_inner">
                                 <h3 class="title_24">{{ $product->name }}</h3>
-                                <button 
-                                    class="com_btn mt-2 product-enquire-btn" 
-                                    data-product="{{ $product->name }}"
-                                    data-bs-toggle="modal" 
-                                    data-bs-target="#productEnquiryModal">
-                                    Enquire Now
-                                </button>
-                                <!-- <a href="{{ route('productdetials', $product->url) }}"
+                                <!--<button -->
+                                <!--    class="com_btn mt-2 product-enquire-btn" -->
+                                <!--    data-product="{{ $product->name }}"-->
+                                <!--    data-bs-toggle="modal" -->
+                                <!--    data-bs-target="#productEnquiryModal">-->
+                                <!--    Enquire Now-->
+                                <!--</button>-->
+                                 <a href="{{ route('productdetials', $product->url) }}"
                                     class="com_btn mt-2">
                                     Explore More
-                                </a> -->
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                @endforeach
+            @endif
+            @endforeach
         </div>
         
     </div>

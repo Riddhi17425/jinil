@@ -85,8 +85,23 @@
                         </div>
 
                         <div class="col-md-12">
+                            <label class="form-label">Why Choose Title</label>
+                            <input type="text" name="why_choose_title" class="form-control" placeholder="Why Choose Title">
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="form-label">Why Choose Description</label>
+                            <textarea id="why_choose_description" name="why_choose_description" class="form-control"></textarea>
+                        </div>
+
+                        <div class="col-md-12">
                             <label class="form-label">Product Image</label>
                             <input type="file" class="form-control" name="front_image" id="front_image">
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="form-label">Product Detail Image</label>
+                            <input type="file" class="form-control" name="detail_image" id="detail_image">
                         </div>
 
                         <div class="col-md-12">
@@ -294,7 +309,7 @@
 
 <script>
 $(document).ready(function() {
-    $('#meta_description,#short_description,#working_principle_desc,#configuration_description').summernote({
+    $('#meta_description,#short_description,#working_principle_desc,#configuration_description,#why_choose_description').summernote({
         placeholder: 'Enter here...',
         height: 300,
         toolbar: [

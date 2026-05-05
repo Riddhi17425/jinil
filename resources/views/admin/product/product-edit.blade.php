@@ -91,8 +91,17 @@
                                     <textarea id="configuration_description" name="configuration_description" class="form-control">{!! $product->configuration_description !!}</textarea>
                                 </div>
 
+                                <div class="col-md-12">
+                                    <label class="form-label">Why Choose Title</label>
+                                    <input type="text" name="why_choose_title" class="form-control" value="{{ $product->why_choose_title }}" placeholder="Why Choose Title">
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label">Why Choose Description</label>
+                                    <textarea id="why_choose_description" name="why_choose_description" class="form-control">{!! $product->why_choose_description !!}</textarea>
+                                </div>
+
                                 <div class="col-md-6">
-                                    <label for="file" class="form-label">Images</label>
+                                    <label for="file" class="form-label">Product Image</label>
                                     <input type="file" class="form-control" name="front_image" id="front_image">
                                     @if ($errors->has('front_image'))
                                     <span class="text-danger">{{ $errors->first('front_image') }}</span>
@@ -105,7 +114,18 @@
                                             alt="Product Image"
                                             style="width:120px; height:auto; border:1px solid #ddd; padding:5px;">
                                     @endif
-
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="file" class="form-label">Product Detail Image</label>
+                                    <input type="file" class="form-control" name="detail_image" id="detail_image">
+                                    @if ($errors->has('detail_image'))
+                                    <span class="text-danger">{{ $errors->first('detail_image') }}</span>
+                                    @endif
+                                </div>
+                                <div class="col-md-6">
+                                    @if($product->detail_image)
+                                        <img src="{{ asset('public/Product/detail_image/' . $product->detail_image) }}" alt="Product Detail Image" style="width:120px; height:auto; border:1px solid #ddd; padding:5px;">
+                                    @endif
                                 </div>
                                 <div class="col-md-12">
                                     <label for="short_description" class="form-label">Short Description</label>
@@ -286,7 +306,7 @@
 
 <script>
 $(document).ready(function() {
-    $('#meta_description,#short_description,#working_principle_desc,#configuration_description').summernote({
+    $('#meta_description,#short_description,#working_principle_desc,#configuration_description,#why_choose_description').summernote({
         placeholder: 'Enter here...',
         height: 300,
         toolbar: [

@@ -77,7 +77,10 @@ $indusries = DB::table('indcategory')
                             <!--@endforeach-->
                             @foreach($products[$cat->id] as $product)
                             <li>
-                                <a href="{{ url('products/'.$cat->url.'#product-'.$product->id) }}">
+                                <!--<a href="{{ url('products/'.$cat->url.'#product-'.$product->id) }}">-->
+                                <!--    {{ $product->name }}-->
+                                <!--</a>-->
+                                <a href="{{ url('product-details/'.$product->url) }}">
                                     {{ $product->name }}
                                 </a>
                             </li>

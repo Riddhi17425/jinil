@@ -71,7 +71,7 @@
 
                             <!-- Title -->
                             <td>
-                                <strong>{{ $item->title }}</strong>
+                                <strong>{{ $item->name }}</strong>
                             </td>
 
                             <!-- Action -->

@@ -39,7 +39,7 @@
         <div class="industries_details">
             <div class="mb-3 mb-lg-0">
                 <img class="w-100"
-                    src="{{ asset('public/Product/front_image/' . $product->front_image) }}"
+                    src="{{ asset('public/Product/detail_image/' . $product->detail_image) }}"
                     alt="{{$product->name ?? 'Product Image'}}">
             </div>
             <div>
@@ -145,7 +145,7 @@
 
             <div class="mb-3 mb-lg-0">
                 <img class="w-100"
-                    src="{{ asset('public/Product/front_image/' . $product->front_image) }}"
+                    src="{{ asset('public/Product/blast_wheels_image/' . $product->blast_wheels_image) }}"
                     alt="{{$product->name ?? 'Product Image'}}">
             </div>
         </div>
@@ -309,7 +309,22 @@
         </div>
 
         <div class="text-center">
-            <p> {{ $product->configuration_description }}</p>
+            <p> {!! $product->configuration_description !!}</p>
+        </div>
+    </div>
+</section>
+@endif
+
+@if(isset($product->why_choose_title) && $product->why_choose_title != '' && isset($product->why_choose_description) && $product->why_choose_description != '')
+<section class="mt_100">
+    <div class="container">
+        <div class="sec_hed_top mb_40">
+            <p>Custom Engineered Mechanism</p>
+            <h2 class="title_60">{{ $product->why_choose_title }}</h2>
+        </div>
+
+        <div class="text-center">
+            <p> {!! $product->why_choose_description !!}</p>
         </div>
     </div>
 </section>
