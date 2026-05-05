@@ -514,111 +514,106 @@
 </section>
 @endif
 
+@php
+    $sections = [];
+    if (isset($product->advantages) && is_countable($product->advantages) && count($product->advantages) > 0) {
+        $sections[] = "advantages";
+    }
+    if (isset($product->design_features) && is_countable($product->design_features) && count($product->design_features) > 0) {
+        $sections[] = "design";
+    }
+    if (isset($product->selection_guidelines) && is_countable($product->selection_guidelines) && count($product->selection_guidelines) > 0) {
+        $sections[] = "selection";
+    }
+    if (isset($product->operational_features) && is_countable($product->operational_features) && count($product->operational_features) > 0) {
+        $sections[] = "optional";
+    }
+    $count = count($sections);
+    // Decide column class
+    $colClass = ($count == 1) ? "col-lg-12" : "col-lg-6";
+@endphp
 
 <section class="mt_100">
     <div class="container">
         <div class="service_Scope_card">
             <div class="row">
-                <div class="col-lg-6">
+            @if (isset($product->advantages) && is_countable($product->advantages) && count($product->advantages) > 0)
+                <div class="<?= $colClass ?>">
                     <div class="service_Scope py-4">
                         <div class="sec_hed_top mb-3 text-start">
                             <p>Operational Performance Benefits</p>
                             <h2 class="title_60">Advantages</h2>
                         </div>
                         <div>
-                            <p>The Air-Operated Shot Blasting Cabinet – Suction Type is suitable for multiple blasting
-                                and finishing applications where precision surface treatment is required.
+                            <p>{{ $product->advantages_desc ?? '' }}
                             </p>
-
                             <ul class="custom-list">
-                                <li>Economical blasting solution with low running cost</li>
-                                <li>Low abrasive consumption</li>
-                                <li>Compact space-saving design</li>
-                                <li>Easy maintenance and simple operation</li>
-                                <li>Continuous abrasive recycling system</li>
-                                <li>Dust-controlled enclosed cabinet operation</li>
-                                <li>Suitable for multiple blasting media</li>
+                                @foreach($product->advantages as $k => $v)
+                                <li>{{$v}}</li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-6">
+            @endif
+            @if (isset($product->design_features) && is_countable($product->design_features) && count($product->design_features) > 0)
+                <div class="<?= $colClass ?>">
                     <div class="service_Scope py-4">
                         <div class="sec_hed_top mb-3 text-start">
                             <p>Advanced Engineering Highlights</p>
                             <h2 class="title_60">Design Features </h2>
                         </div>
                         <div>
-                            <p>Lorem ipsum dolor sit amet consectetur. Ullamcorper id egestas enim aliquam ullamcorper
-                                feugiat. Elit ipsum eleifend sed et nunc risus. Condimentum donec sed nibh aliquam
-                                rutrum a nulla.
-                            </p>
+                            <p>{{ $product->design_features_desc ?? '' }} </p>
 
                             <ul class="custom-list">
-                                <li>Lorem ipsum dolor sit amet consectetur.</li>
-                                <li>Lorem ipsum dolor sit amet consectetur.</li>
-                                <li>Lorem ipsum dolor sit amet consectetur.</li>
-                                <li>Lorem ipsum dolor sit amet consectetur.</li>
-                                <li>Lorem ipsum dolor sit amet consectetur.</li>
-                                <li>Lorem ipsum dolor sit amet consectetur.</li>
-                                <li>Lorem ipsum dolor sit amet consectetur.</li>
+                                @foreach($product->design_features as $k => $v)
+                                <li>{{$v}}</li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
                 </div>
-
-                     <div class="col-lg-6">
+            @endif
+            @if (isset($product->selection_guidelines) && is_countable($product->selection_guidelines) && count($product->selection_guidelines) > 0)
+                <div class="<?= $colClass ?>">
                     <div class="service_Scope py-4">
                         <div class="sec_hed_top mb-3 text-start">
                             <p>Decision Making Factors</p>
                             <h2 class="title_60">Selection Guidelines </h2>
                         </div>
                         <div>
-                            <p>Lorem ipsum dolor sit amet consectetur. Ullamcorper id egestas enim aliquam ullamcorper
-                                feugiat. Elit ipsum eleifend sed et nunc risus. Condimentum donec sed nibh aliquam
-                                rutrum a nulla.
+                            <p>{{ $product->selection_guidelines_desc ?? '' }} </p>
                             </p>
 
                             <ul class="custom-list">
-                                <li>Lorem ipsum dolor sit amet consectetur.</li>
-                                <li>Lorem ipsum dolor sit amet consectetur.</li>
-                                <li>Lorem ipsum dolor sit amet consectetur.</li>
-                                <li>Lorem ipsum dolor sit amet consectetur.</li>
-                                <li>Lorem ipsum dolor sit amet consectetur.</li>
-                                <li>Lorem ipsum dolor sit amet consectetur.</li>
-                                <li>Lorem ipsum dolor sit amet consectetur.</li>
+                                @foreach($product->selection_guidelines as $k => $v)
+                                <li>{{$v}}</li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
                 </div>
-
-                     <div class="col-lg-6">
+            @endif
+            @if (isset($product->operational_features) && is_countable($product->operational_features) && count($product->operational_features) > 0)
+                <div class="<?= $colClass ?>">
                     <div class="service_Scope py-4">
                         <div class="sec_hed_top mb-3 text-start">
                             <p>Additional System Enhancements</p>
                             <h2 class="title_60">Optional Features </h2>
                         </div>
                         <div>
-                            <p>Lorem ipsum dolor sit amet consectetur. Ullamcorper id egestas enim aliquam ullamcorper
-                                feugiat. Elit ipsum eleifend sed et nunc risus. Condimentum donec sed nibh aliquam
-                                rutrum a nulla.
+                            <p>{{ $product->operational_features_desc ?? '' }} </p>
                             </p>
-
                             <ul class="custom-list">
-                                <li>Lorem ipsum dolor sit amet consectetur.</li>
-                                <li>Lorem ipsum dolor sit amet consectetur.</li>
-                                <li>Lorem ipsum dolor sit amet consectetur.</li>
-                                <li>Lorem ipsum dolor sit amet consectetur.</li>
-                                <li>Lorem ipsum dolor sit amet consectetur.</li>
-                                <li>Lorem ipsum dolor sit amet consectetur.</li>
-                                <li>Lorem ipsum dolor sit amet consectetur.</li>
+                                @foreach($product->operational_features as $k => $v)
+                                <li>{{$v}}</li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
                 </div>
-
-            </div>
+            @endif
         </div>
     </div>
 </section>
