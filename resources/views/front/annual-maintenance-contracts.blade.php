@@ -39,10 +39,10 @@
     <div class="container-fluid">
 
         <div class="row">
-             <div class="col-md-5 pe-lg-5 mb-4 mb-lg-0">
+             <div class="col-lg-5 pe-lg-5 mb-4 mb-lg-0">
                 <img class=" img-fluid" src="{{ asset('public/front/images/AMC/AMC-Services.png') }}" alt="images" style="mix-blend-mode: multiply;">
             </div>
-            <div class="col-md-7">
+            <div class="col-lg-7">
                 <div>
                     <h4 class="mb-4 title_24">Structured Maintenance Support for Continuous Operation   </h4>
                     <p></p>
@@ -180,7 +180,7 @@
 
             <div class="col-lg-8 service_Scope_card">
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-md-6 col-lg-4">
                         <div class="service_Scope">
                             <h3 class="title_42 mb-3">01</h3>
                             <p class="title_24 mb-2">Technical Support (On-Site / Remote)</p>
@@ -188,7 +188,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4">
+                    <div class="col-md-6 col-lg-4">
                         <div class="service_Scope">
                             <h3 class="title_42 mb-3">02</h3>
                             <p class="title_24 mb-2">Spare Parts Supply & Replacement</p>
@@ -196,7 +196,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4">
+                    <div class="col-md-6 col-lg-4">
                         <div class="service_Scope">
                             <h3 class="title_42 mb-3">03</h3>
                             <p class="title_24 mb-2">Scheduled Preventive Maintenance</p>
@@ -205,7 +205,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4">
+                    <div class="col-md-6 col-lg-4">
                         <div class="service_Scope">
                             <h3 class="title_42 mb-3">04</h3>
 
@@ -214,14 +214,14 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4">
+                    <div class="col-md-6 col-lg-4">
                         <div class="service_Scope">
                             <h3 class="title_42 mb-3">05</h3>
                             <p class="title_24 mb-2">Emergency Support Services</p>
                             <p class="mb-0">Priority response support for urgent production situations with rapid diagnostics and technical intervention to restore operational continuity.</p>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-md-6 col-lg-4">
                         <div class="service_Scope">
                             <h3 class="title_42 mb-3">06</h3>
 

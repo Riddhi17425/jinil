@@ -248,19 +248,19 @@
     line-height: 28px;
 }
 
-.industry_item_wrapper:last-child {
+/* .industry_item_wrapper:last-child {
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     display:none;
-}
+} */
 
-.industry_item_wrapper:last-child .title_24 {
+/* .industry_item_wrapper:last-child .title_24 {
     position: static;
     transform: translate(0);
     margin-top: 34px;
-}
+} */
 
 /* Process Steps Section Styles */
 

@@ -29,17 +29,17 @@ $b = rand(1,9);
                 <form class="contact_form" id="service_form">
                     @csrf
                     <div class="row">
-                        <div class="col-lg-6 form-group">
+                        <div class="col-md-6 form-group">
                             <input type="text" name="name" placeholder="Full Name*: ">
                             <div id="name-error" class="text-danger"></div>
                         </div>
 
-                        <div class="col-lg-6 form-group">
+                        <div class="col-md-6 form-group">
                             <input type="text" name="company_name" placeholder="Company Name*: ">
                             <div id="company_name-error" class="text-danger"></div>
                         </div>
 
-                        <div class="col-lg-6 form-group">
+                        <div class="col-md-6 form-group">
                             <input type="tel" name="phone" id="service_phone" placeholder="Phone Number*: ">
                             <input type="hidden" name="country" id="service_country">
                             <input type="hidden" name="phonecode" id="service_phonecode">
@@ -47,12 +47,12 @@ $b = rand(1,9);
                             <div id="full_phone-error" class="text-danger"></div>
                         </div>
 
-                        <div class="col-lg-6 form-group">
+                        <div class="col-md-6 form-group">
                             <input type="email" name="email" placeholder="Email Address*: ">
                             <div id="email-error" class="text-danger"></div>
                         </div>
 
-                        <div class="col-lg-6 form-group">
+                        <div class="col-md-6 form-group">
                             <select name="state" id="service_state">
                                 <option value="">Select State*</option>
                                 @foreach($states as $state)
@@ -62,7 +62,7 @@ $b = rand(1,9);
                             <div id="state-error" class="text-danger"></div>
                         </div>
 
-                        <div class="col-lg-6 form-group">
+                        <div class="col-md-6 form-group">
                             <select name="city" id="service_city">
                                 <option value="">Select City*</option>
                             </select>
@@ -74,7 +74,7 @@ $b = rand(1,9);
                             <div id="message-error" class="text-danger"></div>
                         </div>
 
-                        <div class="col-8 col-lg-4 mt-2">
+                        <div class="col-8 col-md-4 mt-2">
                              <label class="text-white">
                                 What is <span id="service_capA">{{ $a }}</span> + <span id="service_capB">{{ $b }}</span> ?
                             </label>

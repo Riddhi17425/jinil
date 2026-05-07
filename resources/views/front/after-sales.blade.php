@@ -39,10 +39,10 @@
 
         <div class="row">
             
-              <div class="col-md-5 pe-lg-5 mb-4 mb-lg-0">
+              <div class="col-lg-5 pe-lg-5 mb-4 mb-lg-0">
                 <img class=" img-fluid" src="{{ asset('public/front/images/After-Sales-Support.png') }}" alt="images" style="mix-blend-mode: multiply;">
             </div>
-            <div class="col-md-7">
+            <div class="col-lg-7">
                 <div>
                     <h4 class="mb-4 title_24">Engineered for Continuous Operation & Maximum Uptime</h4>
                     <p>Industrial shot blasting machines operate in high-demand environments where unplanned downtime directly impacts productivity and operating costs. Jinil’s after-sales support is structured to minimize equipment downtime and sustain consistent surface preparation performance.</p>
@@ -170,7 +170,7 @@
 
             <div class="col-lg-8 service_Scope_card">
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-md-6 col-lg-4">
                         <div class="service_Scope">
                             <h3 class="title_42 mb-3">01</h3>
                             <p class="title_24 mb-2">Technical Support (On-Site & Remote Diagnostics)</p>
@@ -178,7 +178,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4">
+                    <div class="col-md-6 col-lg-4">
                         <div class="service_Scope">
                             <h3 class="title_42 mb-3">02</h3>
                             <p class="title_24 mb-2">OEM Spare Parts Supply & Replacement</p>
@@ -186,7 +186,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4">
+                    <div class="col-md-6 col-lg-4">
                         <div class="service_Scope">
                             <h3 class="title_42 mb-3">03</h3>
                             <p class="title_24 mb-2">Annual Maintenance Contracts (AMC)</p>
@@ -194,7 +194,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4">
+                    <div class="col-md-6 col-lg-4">
                         <div class="service_Scope">
                             <h3 class="title_42 mb-3">04</h3>
                             <p class="title_24 mb-2">Operational Performance Troubleshooting</p>
@@ -202,14 +202,14 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4">
+                    <div class="col-md-6 col-lg-4">
                         <div class="service_Scope">
                             <h3 class="title_42 mb-3">05</h3>
                             <p class="title_24 mb-2">Emergency Support Services (24/7 Response)</p>
                             <p> Emergency spare parts dispatch and priority engineering support minimize downtime during urgent production situations.</p>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-md-6 col-lg-4">
                         <div class="service_Scope">
                             <h3 class="title_42 mb-3">06</h3>
                             <p class="title_24 mb-2">Breakdown Assistance & Recovery</p>

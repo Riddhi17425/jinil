@@ -164,7 +164,7 @@
         <div class="service_Scope_card">
             <div class="row justify-content-center">
                 @foreach($product->main_components as $key => $val)
-                <div class="col-lg-3">
+                <div class="col-md-6 col-lg-3">
                     <div class="service_Scope">
                         <h3 class="title_42 mb-3">{{ $key + 1}}</h3>
                         <p class="title_24 mb-2">{{$val['title'] ?? ''}}</p>
@@ -302,37 +302,61 @@
 
 @if($product->url == 'blast-wheel-shot-blasting-turbine')
 <section class="mt_100">
-    <div class="container">
-        <div class="sec_hed_top mb_40">
-            <h2 class="title_60">Capacity Chart (HP vs Shot Flow)</h2>
-        </div>
-        <div class="row gy-4 gy-lg-0 justify-content-center">
-            <div class="col-lg-12">
-                <div class="spec-table-wrapper">
-                    <table class="spec-table">
-  <thead>
-    <tr>
-      <th>Motor HP</th>
-      <th>Shot Flow (kg/min)</th>
-      <th>Typical Application</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td>3 HP</td><td>30–60</td><td>Small cabinet</td></tr>
-    <tr><td>5 HP</td><td>60–100</td><td>Light duty</td></tr>
-    <tr><td>7.5 HP</td><td>80–120</td><td>Tumblast</td></tr>
-    <tr><td>10 HP</td><td>120–180</td><td>General use</td></tr>
-    <tr><td>15 HP</td><td>150–220</td><td>Hanger / Table</td></tr>
-    <tr><td>20 HP</td><td>200–300</td><td>Tunnel</td></tr>
-    <tr><td>30 HP</td><td>300–450</td><td>Heavy duty</td></tr>
-    <tr><td>40 HP</td><td>450–700</td><td>Plate blasting</td></tr>
-    <tr><td>50 HP</td><td>700–1000+</td><td>High production</td></tr>
-  </tbody>
-</table>
-                </div>
+   <div class="container">
+      <div class="sec_hed_top mb_40">
+         <h2 class="title_60">Capacity Chart (HP vs Shot Flow)</h2>
+      </div>
+      <div class="row gy-4 gy-lg-0 justify-content-center">
+         <div class="col-lg-12">
+            <div class="spec-table-wrapper">
+               <table class="spec-table">
+                 
+                  <tbody>
+                    <tr>
+                            <th>Motor HP</th>
+                            <td data-label="Motor HP">3 HP</td>
+                            <td data-label="Motor HP">5 HP</td>
+                            <td data-label="Motor HP">7.5 HP</td>
+                            <td data-label="Motor HP">10 HP</td>
+                            <td data-label="Motor HP">15 HP</td>
+                            <td data-label="Motor HP">20 HP</td>
+                            <td data-label="Motor HP">30 HP</td>
+                            <td data-label="Motor HP">40 HP</td>
+                            <td data-label="Motor HP">50 HP</td>
+                        </tr>
+                        
+                        <tr>
+                            <th>Shot Flow (kg/min)</th>
+                            <td data-label="Shot Flow">30–60</td>
+                            <td data-label="Shot Flow">60–100</td>
+                            <td data-label="Shot Flow">80–120</td>
+                            <td data-label="Shot Flow">120–180</td>
+                            <td data-label="Shot Flow">150–220</td>
+                            <td data-label="Shot Flow">200–300</td>
+                            <td data-label="Shot Flow">300–450</td>
+                            <td data-label="Shot Flow">450–700</td>
+                            <td data-label="Shot Flow">700–1000+</td>
+                        </tr>
+                        
+                        <tr>
+                            <th>Typical Application</th>
+                            <td data-label="Application">Small cabinet</td>
+                            <td data-label="Application">Light duty</td>
+                            <td data-label="Application">Tumblast</td>
+                            <td data-label="Application">General use</td>
+                            <td data-label="Application">Hanger / Table</td>
+                            <td data-label="Application">Tunnel</td>
+                            <td data-label="Application">Heavy duty</td>
+                            <td data-label="Application">Plate blasting</td>
+                            <td data-label="Application">High production</td>
+                        </tr>
+                    
+                  </tbody>
+               </table>
             </div>
-        </div>
-    </div>
+         </div>
+      </div>
+   </div>
 </section>
 @endif 
 

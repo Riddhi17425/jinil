@@ -40,12 +40,12 @@
 
         <div class="row">
 
-            <div class="col-md-5 mb-4 mb-lg-0">
+            <div class="col-lg-5 mb-4 mb-lg-0">
                 <img style=" mix-blend-mode: multiply;" class=" img-fluid" src="{{ asset('public/front/images/about-engineered.png') }}"
                     alt="images">
             </div>
 
-            <div class="col-md-7 ps-lg-5">
+            <div class="col-lg-7 ps-lg-5">
                 <div>
                     <h4 class="mb-3 title_42 text-111">Engineering Surface Integrity for Demanding Industries
 

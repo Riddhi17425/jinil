@@ -1,16 +1,16 @@
 @include('layouts.frontheader')
 
- <section class="d-none d-lg-block">
+<section class="d-none d-lg-block">
     <img class=" img-fluid" src="{{ asset('public/front/images/Jinil-Banner.webp')}}">
- </section>
+</section>
 
- <section class="d-lg-none hero_phon">
+<section class="d-lg-none hero_phon">
     <div class="hero_slider">
         <img class="img-fluid" src="{{ asset('public/front/images/hero_phone_1.webp')}}">
         <img class="img-fluid" src="{{ asset('public/front/images/hero_phone_2.webp')}}">
         <img class="img-fluid" src="{{ asset('public/front/images/hero_phone_3.webp')}}">
     </div>
- </section>
+</section>
 
 <section class="after_sequence d-none">
     <!-- <img class="hero_3d_image img-fluid" src="{{ asset('public/front/images/hero-3d.png')}}" alt="images"> -->
@@ -2528,14 +2528,15 @@
     <div class="container">
         <div class="sec_hed_top mb_40">
             <p>Engineering Precision. Delivering Industrial Reliability.
-</p>
+            </p>
             <h2 class="title_60">Why Jinil Blast Shot?</h2>
         </div>
 
         <div class="row justify-content-between">
             <div class="col-lg-3">
-                <p class="title_24">Jinil Blast Shot partners with manufacturers to deliver reliable surface preparation systems built for demanding production environments.
-</p>
+                <p class="title_24">Jinil Blast Shot partners with manufacturers to deliver reliable surface preparation
+                    systems built for demanding production environments.
+                </p>
             </div>
 
             <div class="col-lg-8">
@@ -2571,9 +2572,10 @@
                             </svg>
 
                             <h4 class="title_24">Industrial-Grade Machine Design
-</h4>
-                            <p class="mb-0">Every Jinil machine is built with reinforced structures, wear-resistant liners, and high-efficiency blast wheels.
-</p>
+                            </h4>
+                            <p class="mb-0">Every Jinil machine is built with reinforced structures, wear-resistant
+                                liners, and high-efficiency blast wheels.
+                            </p>
 
                         </div>
                     </div>
@@ -2629,9 +2631,10 @@
                             </svg>
 
                             <h4 class="title_24">Production-Focused Engineering
-</h4>
-                            <p class="mb-0">Our machines are developed according to component geometry, batch weight, throughput requirements, and abrasive flow dynamics.
-</p>
+                            </h4>
+                            <p class="mb-0">Our machines are developed according to component geometry, batch weight,
+                                throughput requirements, and abrasive flow dynamics.
+                            </p>
 
                         </div>
                     </div>
@@ -2664,9 +2667,11 @@
 
 
                             <h4 class="title_24">Lifecycle Service Support
-</h4>
-                            <p class="mb-0">From installation and commissioning to maintenance programs, spare parts supply, and system upgrades, Jinil provides comprehensive support to maintain peak equipment performance.
-</p>
+                            </h4>
+                            <p class="mb-0">From installation and commissioning to maintenance programs, spare parts
+                                supply, and system upgrades, Jinil provides comprehensive support to maintain peak
+                                equipment performance.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -2683,14 +2688,15 @@
         </div>
         <div class="sec_hed_top mb_40">
             <p>Reliable surface preparation solutions for demanding industrial environments
-</p>
+            </p>
             <h2 class="title_60">Trusted by India’s Leading Manufacturers</h2>
         </div>
 
         <div class="row justify-content-between">
             <div class="col-lg-3">
-                <p class="title_24 mb-0">We support manufacturers across automotive, foundry, fabrication, forging, and heavy engineering sectors with high-performance shot blasting systems.
-</p>
+                <p class="title_24 mb-0">We support manufacturers across automotive, foundry, fabrication, forging, and
+                    heavy engineering sectors with high-performance shot blasting systems.
+                </p>
             </div>
 
             <div class="col-lg-8">
@@ -2698,24 +2704,28 @@
                     <div class="col-lg-4  mb-4 mb-lg-0">
                         <div class="blast">
                             <h4 class="title_24">Certified Manufacturing Standards
-</h4>
-                            <p class="mb-0">Every machine is manufactured using strict quality control and industrial-grade parts for consistent performance, operational safety, and long service life.
-</p>
+                            </h4>
+                            <p class="mb-0">Every machine is manufactured using strict quality control and
+                                industrial-grade parts for consistent performance, operational safety, and long service
+                                life.
+                            </p>
                         </div>
                     </div>
                     <div class="col-lg-4  mb-4 mb-lg-0">
                         <div class="blast">
                             <h4 class="title_24">Nationwide Technical Support
-</h4>
-                            <p class="mb-0">Our service network supports customers across major industrial regions, delivering rapid response, spare parts availability, and technical assistance.
-</p>
+                            </h4>
+                            <p class="mb-0">Our service network supports customers across major industrial regions,
+                                delivering rapid response, spare parts availability, and technical assistance.
+                            </p>
                         </div>
                     </div>
                     <div class="col-lg-4  mb-4 mb-lg-0">
                         <div class="blast">
                             <h4 class="title_24">Tailor-made Engineering Solutions</h4>
-                            <p class="mb-0">We follow parameters including component size, batch weight, throughput requirements, and automation integration for optimized blasting performance.
-</p>
+                            <p class="mb-0">We follow parameters including component size, batch weight, throughput
+                                requirements, and automation integration for optimized blasting performance.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -2732,19 +2742,17 @@
         </div>
         <div class="row gy-5">
             @foreach($productlist->whereNotNull('front_image') as $product)
-            <div class="col-md-4">
+            <div class="col-md-6 col-md-4">
                 <div class="fea_mac">
                     <div class="fea_mac_img">
-                        <img class="img-fluid" src="{{ asset('public/Product/front_image/'.$product->front_image) }}" alt="{{ $product->name }}">
+                        <img class="img-fluid" src="{{ asset('public/Product/front_image/'.$product->front_image) }}"
+                            alt="{{ $product->name }}">
                     </div>
                     <div class="fea_mac_content">
                         <div class="fea_mac_content_inner">
                             <h3 class="title_24">{{ $product->name }}</h3>
-                            <button 
-                                class="com_btn mt-2 product-enquire-btn" 
-                                data-product="{{ $product->name }}"
-                                data-bs-toggle="modal" 
-                                data-bs-target="#productEnquiryModal">
+                            <button class="com_btn mt-2 product-enquire-btn" data-product="{{ $product->name }}"
+                                data-bs-toggle="modal" data-bs-target="#productEnquiryModal">
                                 Enquire Now
                             </button>
                         </div>
@@ -2794,84 +2802,94 @@
             <div class="industry_grid">
 
                 <a href="{{ url('industries/forging') }}" class="industry_item_wrapper">
-                    <div class="industry_item" style="background-image: url('./public/front/images/industries1.png')"> </div>
+                    <div class="industry_item" style="background-image: url('./public/front/images/industries1.png')">
+                    </div>
 
                     <h3 class="title_24">Forging</h3>
                 </a>
 
                 <a href="{{ url('industries/foundry') }}" class="industry_item_wrapper">
-                    <div class="industry_item" style="background-image: url('./public/front/images/industries2.png')"> </div>
+                    <div class="industry_item" style="background-image: url('./public/front/images/industries2.png')">
+                    </div>
 
                     <h3 class="title_24">Foundry</h3>
-                 </a>
+                </a>
 
                 <a href="{{ url('industries/defense') }}" class="industry_item_wrapper">
-                    <div class="industry_item" style="background-image: url('./public/front/images/industries3.png')"> </div>
+                    <div class="industry_item" style="background-image: url('./public/front/images/industries3.png')">
+                    </div>
 
                     <h3 class="title_24">Defense</h3>
                 </a>
 
                 <a href="{{ url('industries/aerospace') }}" class="industry_item_wrapper">
-                    <div class="industry_item" style="background-image: url('./public/front/images/industries4.png')"> </div>
+                    <div class="industry_item" style="background-image: url('./public/front/images/industries4.png')">
+                    </div>
                     <h3 class="title_24">Aerospace</h3>
                 </a>
 
-               <!--<a href="{{ url('industries/railways') }}" class="industry_item_wrapper">-->
-               <!--     <div class="industry_item" style="background-image: url('./public/front/images/industries5.png')"> </div>-->
-                 
+                <!--<a href="{{ url('industries/railways') }}" class="industry_item_wrapper">-->
+                <!--     <div class="industry_item" style="background-image: url('./public/front/images/industries5.png')"> </div>-->
 
-               <!--     <h3 class="title_24">Railways</h3>-->
-               <!--  </a>-->
+
+                <!--     <h3 class="title_24">Railways</h3>-->
+                <!--  </a>-->
 
                 <a href="{{ url('industries/fabrication') }}" class="industry_item_wrapper">
-                    <div class="industry_item" style="background-image: url('./public/front/images/industries6.png')"> </div>
-                  
+                    <div class="industry_item" style="background-image: url('./public/front/images/industries6.png')">
+                    </div>
+
 
                     <h3 class="title_24">Fabrication</h3>
-                 </a>
+                </a>
 
                 <a href="" class="industry_item_wrapper">
-                    <div class="industry_item" style="background-image: url('./public/front/images/industries7.png')"> </div>
-                   
+                    <div class="industry_item" style="background-image: url('./public/front/images/industries7.png')">
+                    </div>
+
 
 
                     <h3 class="title_24">Wire coil</h3>
-                 </a>
+                </a>
 
                 <a href="{{ url('industries/automotive') }}" class="industry_item_wrapper">
-                    <div class="industry_item" style="background-image: url('./public/front/images/industries8.png')"> </div>
+                    <div class="industry_item" style="background-image: url('./public/front/images/industries8.png')">
+                    </div>
                     <h3 class="title_24">Automotive</h3>
-                 </a>
-                
-                 <a href="{{ url('industries/oil-and-gas') }}" class="industry_item_wrapper">
-                    <div class="industry_item" style="background-image: url('./public/front/images/industries9.png')"> </div>
-                    <h3 class="title_24">Oil & gas</h3>
-                 </a>
-                
-                 <a href="{{ url('industries/steel-plant') }}" class="industry_item_wrapper">
-                    <div class="industry_item" style="background-image: url('./public/front/images/industries10.png')"> </div>
-                    <h3 class="title_24">Steel plant</h3>
-                 </a>
-                
-                 <a href="{{ url('industries/peb') }}" class="industry_item_wrapper">
-                    <div class="industry_item" style="background-image: url('./public/front/images/industries11.png')"> </div>
-                    <h3 class="title_24">PEB </h3>
-                 </a>
-                
-                 <!--<a href="" class="industry_item_wrapper">-->
-                 <!--   <div class="industry_item" style="background-image: url('./public/front/images/industries12.png')"> </div>-->
-                 <!--   <h3 class="title_24">Heavy machinery </h3>-->
-                 <!--</a>-->
+                </a>
 
-               <!--<div class="industry_item_wrapper">-->
-               <!--     <div>-->
-               <!--         <svg width="88" height="88" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">-->
-               <!--             <path d="M1 86.5024L86.5024 1M86.5024 1H29.5008M86.5024 1V58.0016" stroke="white"-->
-               <!--                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />-->
-               <!--         </svg>-->
-               <!--         <h3 class="title_24">View all</h3>-->
-               <!--     </div>-->
-               <!-- </div>-->
+                <a href="{{ url('industries/oil-and-gas') }}" class="industry_item_wrapper">
+                    <div class="industry_item" style="background-image: url('./public/front/images/industries9.png')">
+                    </div>
+                    <h3 class="title_24">Oil & gas</h3>
+                </a>
+
+                <a href="{{ url('industries/steel-plant') }}" class="industry_item_wrapper">
+                    <div class="industry_item" style="background-image: url('./public/front/images/industries10.png')">
+                    </div>
+                    <h3 class="title_24">Steel plant</h3>
+                </a>
+
+                <a href="{{ url('industries/peb') }}" class="industry_item_wrapper">
+                    <div class="industry_item" style="background-image: url('./public/front/images/industries11.png')">
+                    </div>
+                    <h3 class="title_24">PEB </h3>
+                </a>
+
+                <!--<a href="" class="industry_item_wrapper">-->
+                <!--   <div class="industry_item" style="background-image: url('./public/front/images/industries12.png')"> </div>-->
+                <!--   <h3 class="title_24">Heavy machinery </h3>-->
+                <!--</a>-->
+
+                <!--<div class="industry_item_wrapper">-->
+                <!--     <div>-->
+                <!--         <svg width="88" height="88" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+                <!--             <path d="M1 86.5024L86.5024 1M86.5024 1H29.5008M86.5024 1V58.0016" stroke="white"-->
+                <!--                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />-->
+                <!--         </svg>-->
+                <!--         <h3 class="title_24">View all</h3>-->
+                <!--     </div>-->
+                <!-- </div>-->
             </div>
         </div>
     </div>
@@ -2881,13 +2899,13 @@
 <section class="mt_100 mb_100">
     <div class="container">
         <div class="sec_hed_top mb_80">
-            <p class="mb-0">From consultation to long-term support-a streamlined journey for reliable shot blasting 
-</p>
+            <p class="mb-0">From consultation to long-term support-a streamlined journey for reliable shot blasting
+            </p>
             <h2 class="title_60">Our Process in 4 Steps</h2>
         </div>
 
-        <div class="row gy-5 gy-md-0">
-            <div class="col-md-3">
+        <div class="row gy-5 gy-lg-0">
+            <div class="col-md-6 col-lg-3">
                 <div class="process_item">
 
                     <span class="process_item_step">Step 01</span>
@@ -2936,13 +2954,14 @@
                     </svg>
 
                     <h3 class="title_24">Requirement Analysis
-</h3>
-                    <p class="mb-0">Discuss your component specifications, production goals, and surface preparation requirements .
-</p>
+                    </h3>
+                    <p class="mb-0">Discuss your component specifications, production goals, and surface preparation
+                        requirements .
+                    </p>
                 </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-6 col-lg-3">
                 <div class="process_item">
 
                     <span class="process_item_step">Step 02</span>
@@ -2964,12 +2983,13 @@
                     </svg>
 
                     <h3 class="title_24">System Configuration</h3>
-                    <p class="mb-0">Looking into production workflow, component geometry, throughput targets, and automation needs .
-</p>
+                    <p class="mb-0">Looking into production workflow, component geometry, throughput targets, and
+                        automation needs .
+                    </p>
                 </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-6 col-lg-3">
                 <div class="process_item">
 
                     <span class="process_item_step">Step 03</span>
@@ -3032,13 +3052,14 @@
 
 
                     <h3 class="title_24">Installation & Commissioning
-</h3>
-                    <p class="mb-0">Our technical specialists handle machine installation, system calibration, and commissioning.
-</p>
+                    </h3>
+                    <p class="mb-0">Our technical specialists handle machine installation, system calibration, and
+                        commissioning.
+                    </p>
                 </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-6 col-lg-3">
                 <div class="process_item">
 
                     <span class="process_item_step">Step 04</span>
@@ -3082,8 +3103,9 @@
 
 
                     <h3 class="title_24">Lifecycle Support
-</h3>
-                    <p class="mb-0">We offer service support, maintenance programs, part supply, system upgrade, and tech assistance.</p>
+                    </h3>
+                    <p class="mb-0">We offer service support, maintenance programs, part supply, system upgrade, and
+                        tech assistance.</p>
                 </div>
             </div>
         </div>

@@ -41,7 +41,7 @@
       
             @foreach($productlist->whereNotNull('front_image') as $product)
             @if($product->url != 'blast-wheel-shot-blasting-turbine')
-                <div class="col-md-4" id="product-{{ $product->id }}">   {{-- ADD THIS ID --}}
+                <div class="col-md-6 col-lg-4" id="product-{{ $product->id }}">   {{-- ADD THIS ID --}}
                     <div class="fea_mac">
                         <div class="fea_mac_img">
                             <img class="img-fluid" 

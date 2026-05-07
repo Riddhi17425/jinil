@@ -137,6 +137,16 @@ header .navbar {
     transform: translateY(0);
 }
 
+.has-dropdown.open .dropdown-menu {
+    display: block !important;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.has-dropdown.open > a span:last-child svg {
+    transform: rotate(180deg);
+}
+
 /* ---------------- bars ------------------ */
 
 

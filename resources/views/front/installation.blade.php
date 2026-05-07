@@ -40,11 +40,11 @@
 
         <div class="row">
             
-             <div class="col-md-5 pe-lg-5 mb-4 mb-lg-0">
+             <div class="col-lg-5 pe-lg-5 mb-4 mb-lg-0">
                 <img class=" img-fluid" src="{{ asset('public/front/images/installation.png') }}" alt="images">
             </div>
             
-            <div class="col-md-7">
+            <div class="col-lg-7">
                 <div>
                     <h4 class="mb-4 title_24">Professional Shot Blasting Machine Installation & Commissioning</h4>
                     <p>Jinil delivers expert installation and commissioning services for shot blasting machines and industrial surface preparation systems, ensuring every system is deployed with precision, safety compliance, and production-ready stability.</p>
@@ -186,7 +186,7 @@
 
             <div class="col-lg-8 service_Scope_card">
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-md-6 col-lg-4">
                         <div class="service_Scope">
                             <h3 class="title_42 mb-3">01</h3>
                             <p class="title_24 mb-2">Site Evaluation & Layout Optimization</p>
@@ -194,7 +194,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4">
+                    <div class="col-md-6 col-lg-4">
                         <div class="service_Scope">
                             <h3 class="title_42 mb-3">02</h3>
                             <p class="title_24 mb-2">Precision Machine Installation & Alignment</p>
@@ -202,7 +202,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4">
+                    <div class="col-md-6 col-lg-4">
                         <div class="service_Scope">
                             <h3 class="title_42 mb-3">03</h3>
                             <p class="title_24 mb-2">Electrical & PLC Control Integration</p>
@@ -211,7 +211,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4">
+                    <div class="col-md-6 col-lg-4">
                         <div class="service_Scope">
                             <h3 class="title_42 mb-3">04</h3>
 
@@ -220,14 +220,14 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4">
+                    <div class="col-md-6 col-lg-4">
                         <div class="service_Scope">
                             <h3 class="title_42 mb-3">05</h3>
                             <p class="title_24 mb-2">Operator Training & Technical Handover</p>
                             <p class="mb-0"> We provide detailed documentation, safety protocols, and operational guidelines to ensure confident and efficient system handling.</p>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-md-6 col-lg-4">
                         <div class="service_Scope">
                             <h3 class="title_42 mb-3">06</h3>
 
@@ -290,8 +290,8 @@
             <span class="d-block">Our installation and commissioning methodology ensures every shot blasting machine and industrial surface preparation system is deployed with precision, efficiency, and performance validation.</span>
         </div>
 
-        <div class="row gy-5 gy-md-0">
-            <div class="col-md-3">
+        <div class="row gy-5 gy-lg-0">
+            <div class="col-md-6 col-lg-3">
                 <div class="process_item">
 
                     <span class="process_item_step">Step 01</span>
@@ -326,7 +326,7 @@
                 </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-6 col-lg-3">
                 <div class="process_item">
 
                     <span class="process_item_step">Step 02</span>
@@ -348,7 +348,7 @@
                 </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-6 col-lg-3">
                 <div class="process_item">
 
                     <span class="process_item_step">Step 03</span>
@@ -379,7 +379,7 @@
                 </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-6 col-lg-3">
                 <div class="process_item">
 
                     <span class="process_item_step">Step 04</span>

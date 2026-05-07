@@ -14,6 +14,46 @@ window.addEventListener("scroll", function () {
 document.querySelector(".menu-toggle").addEventListener("click", function () {
     this.classList.toggle("active");
 });
+
+// ================= MOBILE DROPDOWN MENU =================
+document.addEventListener("DOMContentLoaded", function() {
+    // Function to close all dropdowns except the specified one
+    function closeAllDropdowns(except = null) {
+        document.querySelectorAll(".has-dropdown.open").forEach((openDropdown) => {
+            if (openDropdown !== except) {
+                openDropdown.classList.remove("open");
+            }
+        });
+    }
+
+    // Handle dropdown clicks
+    document.querySelectorAll(".has-dropdown > a").forEach((toggleLink) => {
+        toggleLink.addEventListener("click", function (event) {
+            // Only handle on mobile screens
+            if (window.innerWidth > 835) return;
+            
+            event.preventDefault();
+            event.stopPropagation();
+
+            const parent = this.closest(".has-dropdown");
+            if (!parent) return;
+
+            const isOpen = parent.classList.contains("open");
+            
+            if (!isOpen) {
+                closeAllDropdowns(parent);
+            }
+            parent.classList.toggle("open");
+        });
+    });
+
+    // Close dropdowns when clicking outside
+    document.addEventListener("click", function (event) {
+        if (!event.target.closest(".has-dropdown")) {
+            closeAllDropdowns();
+        }
+    });
+});
 // ================= SLICK SLIDERS =================
 $(document).ready(function () {
     if ($(".desire_slider").length) {
