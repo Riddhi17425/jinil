@@ -164,7 +164,7 @@
         <div class="service_Scope_card">
             <div class="row justify-content-center">
                 @foreach($product->main_components as $key => $val)
-                <div class="col-md-6 col-lg-3">
+                <div class="col-lg-3">
                     <div class="service_Scope">
                         <h3 class="title_42 mb-3">{{ $key + 1}}</h3>
                         <p class="title_24 mb-2">{{$val['title'] ?? ''}}</p>
@@ -309,137 +309,50 @@
       <div class="row gy-4 gy-lg-0 justify-content-center">
          <div class="col-lg-12">
             <div class="spec-table-wrapper">
-               <!--<table class="spec-table">-->
-                 
-               <!--   <tbody>-->
-               <!--     <tr>-->
-               <!--             <th>Motor HP</th>-->
-               <!--             <td data-label="Motor HP">3 HP</td>-->
-               <!--             <td data-label="Motor HP">5 HP</td>-->
-               <!--             <td data-label="Motor HP">7.5 HP</td>-->
-               <!--             <td data-label="Motor HP">10 HP</td>-->
-               <!--             <td data-label="Motor HP">15 HP</td>-->
-               <!--             <td data-label="Motor HP">20 HP</td>-->
-               <!--             <td data-label="Motor HP">30 HP</td>-->
-               <!--             <td data-label="Motor HP">40 HP</td>-->
-               <!--             <td data-label="Motor HP">50 HP</td>-->
-               <!--         </tr>-->
-                        
-               <!--         <tr>-->
-               <!--             <th>Shot Flow (kg/min)</th>-->
-               <!--             <td data-label="Shot Flow">30–60</td>-->
-               <!--             <td data-label="Shot Flow">60–100</td>-->
-               <!--             <td data-label="Shot Flow">80–120</td>-->
-               <!--             <td data-label="Shot Flow">120–180</td>-->
-               <!--             <td data-label="Shot Flow">150–220</td>-->
-               <!--             <td data-label="Shot Flow">200–300</td>-->
-               <!--             <td data-label="Shot Flow">300–450</td>-->
-               <!--             <td data-label="Shot Flow">450–700</td>-->
-               <!--             <td data-label="Shot Flow">700–1000+</td>-->
-               <!--         </tr>-->
-                        
-               <!--         <tr>-->
-               <!--             <th>Typical Application</th>-->
-               <!--             <td data-label="Application">Small cabinet</td>-->
-               <!--             <td data-label="Application">Light duty</td>-->
-               <!--             <td data-label="Application">Tumblast</td>-->
-               <!--             <td data-label="Application">General use</td>-->
-               <!--             <td data-label="Application">Hanger / Table</td>-->
-               <!--             <td data-label="Application">Tunnel</td>-->
-               <!--             <td data-label="Application">Heavy duty</td>-->
-               <!--             <td data-label="Application">Plate blasting</td>-->
-               <!--             <td data-label="Application">High production</td>-->
-               <!--         </tr>-->
-                    
-               <!--   </tbody>-->
-               <!--</table>-->
                <table class="spec-table">
-    <tbody>
-        <tr>
-            <th>Motor HP</th>
-            <td data-label="Motor HP">3 HP</td>
-            <td data-label="Motor HP">5 HP</td>
-            <td data-label="Motor HP">7.5 HP</td>
-            <td data-label="Motor HP">10 HP</td>
-            <td data-label="Motor HP">15 HP</td>
-            <td data-label="Motor HP">20 HP</td>
-            <td data-label="Motor HP">25 HP</td>
-            <td data-label="Motor HP">30 HP</td>
-            <td data-label="Motor HP">40 HP</td>
-            <td data-label="Motor HP">50 HP</td>
-        </tr>
-
-        <tr>
-            <th>Wheel Dia.</th>
-            <td data-label="Wheel Dia.">250–300 mm</td>
-            <td data-label="Wheel Dia.">300 mm</td>
-            <td data-label="Wheel Dia.">300–350 mm</td>
-            <td data-label="Wheel Dia.">350 mm</td>
-            <td data-label="Wheel Dia.">380–400 mm</td>
-            <td data-label="Wheel Dia.">400–450 mm</td>
-            <td data-label="Wheel Dia.">450 mm</td>
-            <td data-label="Wheel Dia.">450–500 mm</td>
-            <td data-label="Wheel Dia.">500–550 mm</td>
-            <td data-label="Wheel Dia.">550–600 mm</td>
-        </tr>
-
-        <tr>
-            <th>Typical RPM</th>
-            <td data-label="Typical RPM">2800–3000</td>
-            <td data-label="Typical RPM">2800–3000</td>
-            <td data-label="Typical RPM">2800–3000</td>
-            <td data-label="Typical RPM">2800–3000</td>
-            <td data-label="Typical RPM">2800–3000</td>
-            <td data-label="Typical RPM">2800–3000</td>
-            <td data-label="Typical RPM">2800–3000</td>
-            <td data-label="Typical RPM">2800–3000</td>
-            <td data-label="Typical RPM">2200–2800</td>
-            <td data-label="Typical RPM">2200–2500</td>
-        </tr>
-
-        <tr>
-            <th>Shot Flow</th>
-            <td data-label="Shot Flow">40–70 kg/min</td>
-            <td data-label="Shot Flow">70–100 kg/min</td>
-            <td data-label="Shot Flow">100–150 kg/min</td>
-            <td data-label="Shot Flow">140–180 kg/min</td>
-            <td data-label="Shot Flow">180–250 kg/min</td>
-            <td data-label="Shot Flow">250–320 kg/min</td>
-            <td data-label="Shot Flow">320–400 kg/min</td>
-            <td data-label="Shot Flow">400–500 kg/min</td>
-            <td data-label="Shot Flow">500–650 kg/min</td>
-            <td data-label="Shot Flow">650–850 kg/min</td>
-        </tr>
-
-        <tr>
-            <th>Abrasive Velocity</th>
-            <td data-label="Abrasive Velocity">55–65 m/s</td>
-            <td data-label="Abrasive Velocity">60–70 m/s</td>
-            <td data-label="Abrasive Velocity">65–75 m/s</td>
-            <td data-label="Abrasive Velocity">70–75 m/s</td>
-            <td data-label="Abrasive Velocity">70–80 m/s</td>
-            <td data-label="Abrasive Velocity">75–85 m/s</td>
-            <td data-label="Abrasive Velocity">75–90 m/s</td>
-            <td data-label="Abrasive Velocity">80–95 m/s</td>
-            <td data-label="Abrasive Velocity">85–100 m/s</td>
-            <td data-label="Abrasive Velocity">90–110 m/s</td>
-        </tr>
-
-        <tr>
-            <th>Cleaning Capacity Approx</th>
-            <td data-label="Cleaning Capacity">8–15 sqm/hr</td>
-            <td data-label="Cleaning Capacity">15–25 sqm/hr</td>
-            <td data-label="Cleaning Capacity">25–40 sqm/hr</td>
-            <td data-label="Cleaning Capacity">35–55 sqm/hr</td>
-            <td data-label="Cleaning Capacity">50–80 sqm/hr</td>
-            <td data-label="Cleaning Capacity">70–110 sqm/hr</td>
-            <td data-label="Cleaning Capacity">90–140 sqm/hr</td>
-            <td data-label="Cleaning Capacity">120–180 sqm/hr</td>
-            <td data-label="Cleaning Capacity">160–250 sqm/hr</td>
-            <td data-label="Cleaning Capacity">220–350 sqm/hr</td>
-        </tr>
-    </tbody>
-</table>
+                 
+                  <tbody>
+                    <tr>
+                            <th>Motor HP</th>
+                            <td data-label="Motor HP">3 HP</td>
+                            <td data-label="Motor HP">5 HP</td>
+                            <td data-label="Motor HP">7.5 HP</td>
+                            <td data-label="Motor HP">10 HP</td>
+                            <td data-label="Motor HP">15 HP</td>
+                            <td data-label="Motor HP">20 HP</td>
+                            <td data-label="Motor HP">30 HP</td>
+                            <td data-label="Motor HP">40 HP</td>
+                            <td data-label="Motor HP">50 HP</td>
+                        </tr>
+                        
+                        <tr>
+                            <th>Shot Flow (kg/min)</th>
+                            <td data-label="Shot Flow">30–60</td>
+                            <td data-label="Shot Flow">60–100</td>
+                            <td data-label="Shot Flow">80–120</td>
+                            <td data-label="Shot Flow">120–180</td>
+                            <td data-label="Shot Flow">150–220</td>
+                            <td data-label="Shot Flow">200–300</td>
+                            <td data-label="Shot Flow">300–450</td>
+                            <td data-label="Shot Flow">450–700</td>
+                            <td data-label="Shot Flow">700–1000+</td>
+                        </tr>
+                        
+                        <tr>
+                            <th>Typical Application</th>
+                            <td data-label="Application">Small cabinet</td>
+                            <td data-label="Application">Light duty</td>
+                            <td data-label="Application">Tumblast</td>
+                            <td data-label="Application">General use</td>
+                            <td data-label="Application">Hanger / Table</td>
+                            <td data-label="Application">Tunnel</td>
+                            <td data-label="Application">Heavy duty</td>
+                            <td data-label="Application">Plate blasting</td>
+                            <td data-label="Application">High production</td>
+                        </tr>
+                    
+                  </tbody>
+               </table>
             </div>
          </div>
       </div>
