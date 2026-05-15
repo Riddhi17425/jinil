@@ -43,6 +43,7 @@ $indusries = DB::table('indcategory')
                         <li><a href="{{ route('downloads') }}">Downloads</a></li>
                         <li><a href="{{ route('faqs') }}">FAQs</a></li>
                         <li><a href="{{ route('contact') }}">Contact Us</a></li>
+                        <li><a href="{{ route('spareparts') }}">Spare Parts</a></li>
                     </ul>
 
                 </div>
