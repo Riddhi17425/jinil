@@ -91,6 +91,16 @@
                     <span>Certificate</span>
                 </a>
             </li>
+
+            <!-- Spare Parts -->
+            <li>
+                <a class="m-link {{ Request::routeIs('sparepart.*') ? 'active' : '' }}"
+                   href="{{ route('sparepart.index') }}">
+                    <i class="icofont-certificate fs-5"></i>
+                    <span>Spare Parts</span>
+                </a>
+            </li>
+
             <li>
                 <a class="m-link {{ Request::routeIs('servicecategory.*') ? 'active' : '' }}"
                    href="{{ route('servicecategory.index') }}">
