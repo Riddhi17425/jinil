@@ -29,6 +29,21 @@
                             <div class="row g-3 align-items-center">
                                 
                                 <div class="col-md-6">
+                                    <label for="category_url" class="form-label">Category URL</label>
+                                    <select class="form-control" id="category_url" name="category_url">
+                                        <option value="">Select Category</option>
+                                        @foreach($categories as $category)
+                                            <option value="{{ $category->url }}" {{ $sparepart->category_url === $category->url ? 'selected' : '' }}>
+                                                {{ $category->category }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @if ($errors->has('category_url'))
+                                    <span class="text-danger">{{ $errors->first('category_url') }}</span>
+                                    @endif
+                                </div>
+
+                                <div class="col-md-6">
                                     <label class="form-label">Title</label>
                                     <input type="text" id="title" name="title" class="form-control"
                                         value="{{ $sparepart->title }}" placeholder="Sparepart Title">
@@ -55,7 +70,7 @@
                                     @endif
                                 </div>
                                 
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <label class="form-label">Status</label>
                                     <select class="form-control" name="status" id="status">
                                         <option value="Active" {{ $sparepart->status === 'Active' ? 'selected' : '' }}>Active</option>

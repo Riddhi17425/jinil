@@ -19,8 +19,8 @@ use App\Http\Controllers\admin\CaseStudyController;
 use App\Http\Controllers\admin\CertificateController;
 use App\Http\Controllers\admin\FaqController;
 use App\Http\Controllers\admin\ServiceCategoryController;
-use App\Http\Controllers\admin\SparePartController;
 use App\Http\Controllers\CaptchaController;
+use App\Http\Controllers\admin\SparePartController;
 use Illuminate\Support\Facades\DB;
 
 /*
@@ -47,7 +47,6 @@ use Illuminate\Support\Facades\DB;
     Route::get('blogs', [dashboardController::class,'blogs'])->name('blogs');
     Route::get('blogs/{url}', [dashboardController::class, 'blogsdetail'])->name('blogdetail');
     Route::get('products/{url}', [dashboardController::class, 'product'])->name('productlist');
-    Route::get('spare-parts', [dashboardController::class, 'spareparts'])->name('spareparts');
     Route::get('downloads', [dashboardController::class,'download'])->name('downloads');
     Route::get('/faqs', [dashboardController::class, 'faq'])->name('faqs');
     Route::get('/installation-and-commissioning', [dashboardController::class, 'installation'])->name('installation');
@@ -56,6 +55,7 @@ use Illuminate\Support\Facades\DB;
     Route::get('/downloads', [dashboardController::class, 'download'])->name('downloads');
     Route::get('/machine-upgrades', [dashboardController::class, 'machineupgrades'])->name('machineupgrades');
     Route::get('/industries/{url}', [dashboardController::class, 'industry'])->name('industry');
+    Route::get('spare-parts', [dashboardController::class, 'spareparts'])->name('spareparts');
     
     Route::get('/privacy-policy',[dashboardController::class,'privacypolicy'])->name('privacypolicy');
     Route::get('/terms-engineer',[dashboardController::class,'termsengineer'])->name('termsengineer');
@@ -95,10 +95,10 @@ Route::resource('blog', BlogController::class);
 Route::resource('clientel', ClientelController::class);
 Route::resource('casestudy', CaseStudyController::class); 
 Route::resource('certificate', CertificateController::class); 
-Route::resource('sparepart', SparePartController::class);
 Route::resource('faq', FaqController::class); 
 Route::resource('service', ServiceController::class);
 Route::resource('servicecategory', ServiceCategoryController::class);
+Route::resource('sparepart', SparePartController::class);
 
 Route::prefix('backend')->group(function () {
 	// Route::get('home', [adminController::class, 'index'])->name('home');
