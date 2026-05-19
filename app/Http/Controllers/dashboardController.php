@@ -55,9 +55,13 @@ class dashboardController extends Controller
     {
         $metatitle = "";
         $metadescription = "";
-        $spareparts = SpareParts::where('status', 'Active')->orderBy('id', 'desc')->get();
-        // return $spareparts;
-        return view('front.spareparts',compact('metatitle','metadescription','spareparts'));
+        $categories = Category::whereNull('deleted_at')->select('id', 'category', 'url')->get();
+        $spareparts = SpareParts::with('category')
+            ->where('status', 'Active')
+            ->orderBy('id', 'desc')
+            ->get();
+        
+        return view('front.spareparts',compact('metatitle','metadescription','spareparts','categories'));
     }
     
     public function contact()

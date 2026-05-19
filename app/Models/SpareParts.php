@@ -18,4 +18,9 @@ class SpareParts extends Model
         'image',
         'status',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_url', 'url');
+    }
 }
