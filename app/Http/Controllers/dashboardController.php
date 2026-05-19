@@ -21,7 +21,7 @@ use App\Models\IndustryEnquiry;
 use App\Models\Certificate;
 use App\Models\ServiceRequest;
 use App\Mail\SendContactMailToUser;
-use App\Mail\SendContactMailToAdmin;
+use App\Mail\SendContactMailToAdmin; 
 use App\Models\SpareParts;
 
 class dashboardController extends Controller
@@ -50,7 +50,16 @@ class dashboardController extends Controller
         $metadescription = "";
         return view('front.about', compact('metatitle', 'metadescription'));
     }
-
+        
+    public function spareparts()
+    {
+        $metatitle = "";
+        $metadescription = "";
+        $spareparts = SpareParts::where('status', 'Active')->orderBy('id', 'desc')->get();
+        // return $spareparts;
+        return view('front.spareparts',compact('metatitle','metadescription','spareparts'));
+    }
+    
     public function contact()
     {   
         $metatitle = "";
@@ -76,17 +85,6 @@ class dashboardController extends Controller
         $metadescription = $blogsdetail->meta_description;
         return view('front.blogdetail',compact('metatitle', 'metadescription','blogs','blogsdetail'));
     }
-
-    public function spareparts()
-    {
-        $metatitle = "";
-        $metadescription = "";
-        $spareparts = SpareParts::where('status', 'Active')->orderBy('id', 'desc')->get();
-        // return $spareparts;
-        return view('front.spareparts',compact('metatitle','metadescription','spareparts'));
-    }
-
-
     public function privacypolicy()
     {
         $metatitle = "";
