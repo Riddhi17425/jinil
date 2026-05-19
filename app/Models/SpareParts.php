@@ -14,6 +14,7 @@ class SpareParts extends Model
 
     protected $fillable = [
         'title',
+        'category_url',
         'image',
         'status',
     ];

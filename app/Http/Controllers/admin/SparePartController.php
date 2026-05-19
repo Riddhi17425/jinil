@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use DB;
 use Illuminate\Support\Facades\Mail;
 use App\Models\SpareParts;
+use App\Models\Category;
 
 class SparePartController extends Controller
 {
@@ -37,7 +38,8 @@ class SparePartController extends Controller
      */
     public function create()
     {
-        return view('admin.spareparts.add');
+        $categories = Category::all();
+        return view('admin.spareparts.add', compact('categories'));
     }
 
     /**
@@ -51,25 +53,31 @@ class SparePartController extends Controller
         $validatedData = $request->validate(
             [
                 'title' => 'required',
+                'category_url' => 'required|exists:category,url',
             ],
             [
                 'title.required' => 'Please enter a Title.',
-             ]
+                'category_url.required' => 'Please select a Category.',
+                'category_url.exists' => 'The selected Category is invalid.',
+            ]
         );
-
+        
+        $fileName = '';
         if(isset($request->image) && !empty($request->image)){
             if ($request->hasFile('image')) {
                 $file = $request->file('image'); 
                 $fileName = $file->getClientOriginalName();
                 $file->move(public_path('spareparts'), $fileName);
-                $spareparts = [
+                
+            }
+        }
+        $spareparts = [
                     'title' => $request->title, 
                     'image'=>$fileName,
                     'status' => $request->status,
+                    'category_url' => $request->category_url,
                 ];
-                SpareParts::create($spareparts);
-            }
-        }
+        SpareParts::create($spareparts);
         
         return redirect()->route('sparepart.index')
                         ->with('success','Spare Part created successfully');
@@ -79,7 +87,8 @@ class SparePartController extends Controller
     public function edit($id)
     {
         $sparepart = SpareParts::find($id);
-        return view('admin.spareparts.edit',compact('sparepart'));
+        $categories = Category::all();
+        return view('admin.spareparts.edit',compact('sparepart' ,'categories'));
     }
 
     /**
@@ -91,32 +100,37 @@ class SparePartController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $validatedData = $request->validate(
+        $validatedData = $request->validate(
             [
-                'title' => 'required',              
+                'title' => 'required',
+                'category_url' => 'required|exists:category,url',
             ],
             [
-                'title.required' => 'Please enter a Title.',               
+                'title.required' => 'Please enter a Title.',
+                'category_url.required' => 'Please select a Category.',
+                'category_url.exists' => 'The selected Category is invalid.',
             ]
         );
+
+        $sparepart = SpareParts::findOrFail($id);
+
+        $sparepart->title = $request->title;
+        $sparepart->status = $request->status;
+        $sparepart->category_url = $request->category_url;
+
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $fileName = $file->getClientOriginalName();
             $file->move(public_path('spareparts'), $fileName);
-            $sparepart = SpareParts::find($id);
-            $sparepart->title = $request->title;
+
             $sparepart->image = $fileName;
-            $sparepart->status = $request->status;
-            $sparepart->save();
-        }else{
-            $sparepart = SpareParts::find($id);
-            $sparepart->title = $request->title;
-            $sparepart->status = $request->status;
-            $sparepart->save();
         }
 
+        $sparepart->save();
 
-        return redirect()->route('sparepart.index')->with('success','Spare Part updated successfully');
+        return redirect()
+            ->route('sparepart.index')
+            ->with('success', 'Spare Part updated successfully');
     }
 
     /**
