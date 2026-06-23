@@ -38,7 +38,7 @@
     <div class="container-fluid">
 
         <!-- Tabs -->
-        <div class="faq_tabs mb_60 justify-content-center">
+        <div class="faq_tabs mb_60">
 
             <button class="com_btn active" data-tab="all">
                 All

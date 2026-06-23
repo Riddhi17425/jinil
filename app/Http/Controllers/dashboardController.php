@@ -38,7 +38,7 @@ class dashboardController extends Controller
         return view('admin.admin');
     }
     public function index()
-    {   
+    {  
         $productlist = Product::whereNull('deleted_at')
             ->where('feature_product', 'Yes')
             ->get();

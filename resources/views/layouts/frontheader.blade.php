@@ -2,6 +2,79 @@
 <html lang="en">
 
 <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TJFBFXW6');</script>
+    <!-- End Google Tag Manager -->
+    
+    <!--SCHEMAS-->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Jinil Pvt Ltd",
+      "image": "https://jinilshotblast.com/public/front/images/logo.svg",
+      "@id": "",
+      "url": "https://jinilshotblast.com/",
+      "telephone": "+91 9830030030",
+      "priceRange": "-",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "C3-602, Anushruti Tower, Near Jain Derasar, S.G. Road, Thaltej",
+        "addressLocality": "Ahmedabad",
+        "postalCode": "380059",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 23.05315793167826,
+        "longitude": 72.5170743349308
+      },
+      "openingHoursSpecification": [{
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "10:00",
+        "closes": "18:00"
+      },{
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "10:00",
+        "closes": "16:00"
+      }] 
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "Jinil Pvt Ltd",
+      "image": "https://jinilshotblast.com/public/front/images/Jinil-Banner.webp",
+      "description": "Industrial shot blasting machine manufacturer providing surface preparation and blasting solutions across India.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Jinil Pvt Ltd"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "bestRating": "5",
+        "worstRating": "1",
+        "ratingCount": "1"
+      }
+    }
+    </script>
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="{{ asset('public/front/images/favicon.png') }}">
@@ -53,6 +126,11 @@
 </head>
 
 <body class="{{ request()->is('/') ? 'home_body' : 'inner_body' }}">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TJFBFXW6"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
 @php
 use Illuminate\Support\Facades\DB;
 
