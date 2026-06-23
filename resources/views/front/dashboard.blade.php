@@ -1,18 +1,18 @@
 @include('layouts.frontheader')
 
-<section class="d-none d-lg-block">
-    <img class=" img-fluid" src="{{ asset('public/front/images/Jinil-Banner.webp')}}">
-</section>
+<div class="d-none d-lg-block">
+    <img class=" img-fluid" src="{{ asset('public/front/images/Jinil-Banner.webp')}}" alt="Jinil Banner">
+</div>
 
-<section class="d-lg-none hero_phon">
+<div class="d-lg-none hero_phon">
     <div class="hero_slider">
-        <img class="img-fluid" src="{{ asset('public/front/images/hero_phone_1.webp')}}">
-        <img class="img-fluid" src="{{ asset('public/front/images/hero_phone_2.webp')}}">
-        <img class="img-fluid" src="{{ asset('public/front/images/hero_phone_3.webp')}}">
+        <img class="img-fluid" src="{{ asset('public/front/images/hero_phone_1.webp')}}" alt="Hero Image 1">
+        <img class="img-fluid" src="{{ asset('public/front/images/hero_phone_2.webp')}}" alt="Hero Image 2">
+        <img class="img-fluid" src="{{ asset('public/front/images/hero_phone_3.webp')}}" alt="Hero Image 3">
     </div>
-</section>
+</div>
 
-<section class="after_sequence d-none">
+<div class="after_sequence d-none">
     <!-- <img class="hero_3d_image img-fluid" src="{{ asset('public/front/images/hero-3d.png')}}" alt="images"> -->
     <svg width="95%" height="464" viewBox="0 0 1825 464" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clip-path="url(#clip0_778_5)">
@@ -2522,7 +2522,7 @@
             </clipPath>
         </defs>
     </svg>
-</section>
+</div>
 
 <section class="mt_100">
     <div class="container">
