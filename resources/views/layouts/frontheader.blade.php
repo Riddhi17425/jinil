@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{{ asset('public/front/images/favicon.png') }}">
+    <title>JINIL</title>
 <head>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -75,10 +78,7 @@
     </script>
 
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="{{ asset('public/front/images/favicon.png') }}">
-    <title>JINIL</title>
+    
     <!-- google fonts 1 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
