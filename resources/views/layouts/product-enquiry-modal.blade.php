@@ -5,37 +5,12 @@ $ma = rand(1,9);
 $mb = rand(1,9);
 @endphp
 
-<style>
-  .modal {
-    background-color: #f5f8fb61;
-    z-index: 9999;
-    backdrop-filter: blur(2px);
-  }
-  .modal-content {
-    background-color: #f5f8fb;
-  }
-  
-  .iti__selected-dial-code
-  {
-    color:var(--black-111);    
-  }
-  
-  .iti__arrow
-  {
-         border-top: 4px solid var(--black-111) !important; 
-  }
-  
-  .iti__arrow--up
-  {
-      border-bottom:none;
-  }
-  /*.modal .form-group{margin-bottom:30px;}*/
-</style>
+<section class="product-enquiry-modal">
 <div class="modal fade" id="productEnquiryModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title title_24">Enquire Now</h1>
+                <h4 class="modal-title title_24">Enquire Now</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
@@ -125,7 +100,7 @@ $mb = rand(1,9);
                         </div>
 
                         {{-- Submit --}}
-                        <div class="col-lg-6 form-group" style="align-self:anchor-center;">
+                        <div class="col-lg-6 form-group" style="align-self: center;">
                             <button type="submit" class="com_btn pe_submit_btn">Request a Quote</button>
                         </div>
 
@@ -135,7 +110,7 @@ $mb = rand(1,9);
         </div>
     </div>
 </div>
-
+</section>
 <script>
 jQuery(document).ready(function ($) {
 

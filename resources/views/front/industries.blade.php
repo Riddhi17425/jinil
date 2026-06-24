@@ -27,14 +27,14 @@
             <div>
                 <p class="title_24"><a href="{{ url('/') }}" class="text-585">Home</a> / <a href="#">Industries</a>
                     {{ $category->indcategory }}</p>
-                <h2 class="title_60">{{ $category->indcategory }}</h2>
+                <h1 class="title_60">{{ $category->indcategory }}</h1>
                 <p class="mb-0">{!! $category->cat_description !!}</p>
             </div>
 
             <a href="{{ route('contact') }}" class="contact_circle">
 
                 <!-- circular text image -->
-                <img src="{{ asset('public/front/images/innder-header-jump.svg') }}" class="circle_text_img">
+                <img src="{{ asset('public/front/images/innder-header-jump.svg') }}" class="circle_text_img" alt="innder header jump">
 
                 <svg class="arrow_img" width="18" height="23" viewBox="0 0 18 23" fill="none"
                     xmlns="http://www.w3.org/2000/svg">

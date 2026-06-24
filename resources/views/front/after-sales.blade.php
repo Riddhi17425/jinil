@@ -7,7 +7,7 @@
             <div>
                 <p class="title_24"><a href="{{ url('/') }}" class="text-585">Home</a> / <a href="javascript::void(0)"
                         class="text-585">Services</a> / After-Sales Support</p>
-                <h2 class="title_60">After-Sales Support for Shot Blasting Systems</h2>
+                <h1 class="title_60">After-Sales Support for Shot Blasting Systems</h1>
                 <p class="mb-0">Jinil provides comprehensive after-sales support for shot blasting machines and industrial surface preparation systems, ensuring consistent performance, reduced downtime, and long-term operational reliability.</p>
                 <p class="mb-0">From preventive maintenance and spare parts supply to troubleshooting and technical upgrades, our engineering team supports your equipment throughout its operational lifecycle.
                     </p>
@@ -16,7 +16,7 @@
             <a href="{{ route('contact') }}" class="contact_circle">
 
                 <!-- circular text image -->
-                <img src="{{ asset('public/front/images/innder-header-jump.svg') }}" class="circle_text_img">
+                <img src="{{ asset('public/front/images/innder-header-jump.svg') }}" class="circle_text_img" alt="innder header jump">
 
                 <svg class="arrow_img" width="18" height="23" viewBox="0 0 18 23" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
@@ -38,9 +38,8 @@
     <div class="container-fluid">
 
         <div class="row">
-            
               <div class="col-lg-5 pe-lg-5 mb-4 mb-lg-0">
-                <img class=" img-fluid" src="{{ asset('public/front/images/After-Sales-Support.png') }}" alt="images" style="mix-blend-mode: multiply;">
+                <img class=" img-fluid" src="{{ asset('public/front/images/After-Sales-Support.png') }}" alt="After Sales Support" style="mix-blend-mode: multiply;">
             </div>
             <div class="col-lg-7">
                 <div>
@@ -153,7 +152,7 @@
 <section class="mt_100 mb_100">
     <div class="container">
         <div class="d-flex justify-content-center">
-            <img class="img-fluid gif_video" src="{{ asset('public/front/images/India-leading.gif') }}" alt="gif">
+            <img class="img-fluid gif_video" src="{{ asset('public/front/images/India-leading.gif') }}" alt="India leading">
         </div>
     </div>
 </section>

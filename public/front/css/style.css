@@ -238,3 +238,28 @@ a {
 .text-105 {
   color: var(--blue);
 }
+
+/* Modal css start*/
+ .industry-enquiry-modal .modal, .inquiry-modal .modal, .product-enquiry-modal .modal {
+    background-color: #f5f8fb61;
+    z-index: 9999;
+    backdrop-filter: blur(2px);
+  }
+  .industry-enquiry-modal .modal-content, .inquiry-modal .modal-content, .product-enquiry-modal .modal-content {
+    background-color: #f5f8fb;
+  }
+    .iti__selected-dial-code
+  {
+    color:var(--black-111);    
+  }
+  
+  .iti__arrow
+  {
+         border-top: 4px solid var(--black-111) !important; 
+  }
+  
+  .iti__arrow--up
+  {
+      border-bottom:none;
+  }
+/* Modal css ends*/

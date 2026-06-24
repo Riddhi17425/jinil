@@ -26,7 +26,7 @@ $indusries = DB::table('indcategory')
 
                 <div class="footer_logo_area">
 
-                    <img src="{{ asset('public/front/images/logo.svg') }}" class="footer_logo">
+                    <img src="{{ asset('public/front/images/logo.svg') }}" class="footer_logo" alt="footer logo">
 
                     <p class="mb-0">Precision Surface<br>Preparation Technology.</p>
 
@@ -213,10 +213,7 @@ $indusries = DB::table('indcategory')
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/ScrollSmoother.min.js"></script>@include('layouts.product-enquiry-modal', [
-    'pma' => rand(1,9),
-    'pmb' => rand(1,9)
-])
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/ScrollSmoother.min.js"></script>
 
 
 <!-- slack slider  -->

@@ -7,14 +7,14 @@
             <div>
                 <p class="title_24"><a href="{{ url('/') }}" class="text-585">Home /</a> <a
                         href="{{ route('spareparts') }}" class="text-585">Spare Parts</a> </p>
-                <h2 class="title_60">Spare Parts</h2>
+                <h1 class="title_60">Spare Parts</h1>
                 <p class="mb-0">High-performance spare parts designed for reliable operation, reduced downtime, and consistent blasting efficiency across industrial applications. Manufactured for durability and precision, these components support smooth machine performance, extended service life, and optimized surface preparation results.</p>
             </div>
 
             <a href="{{ route('contact') }}" class="contact_circle">
 
                 <!-- circular text image -->
-                <img src="{{ asset('public/front/images/innder-header-jump.svg') }}" class="circle_text_img">
+                <img src="{{ asset('public/front/images/innder-header-jump.svg') }}" class="circle_text_img" alt="innder header jump">
 
                 <svg class="arrow_img" width="18" height="23" viewBox="0 0 18 23" fill="none"
                     xmlns="http://www.w3.org/2000/svg">

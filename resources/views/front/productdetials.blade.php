@@ -9,14 +9,14 @@
                         class="text-585">{{ $category->category }}</a>
                     / {{ $product->name }}
                 </p>
-                <h2 class="title_60">{{ $product->title ?? '' }}</h2>
+                <h1 class="title_60">{{ $product->title ?? '' }}</h1>
                 <p class="mb-0">{{ $product->title_brief ?? '' }}</p>
             </div>
 
             <a href="{{ route('contact') }}" class="contact_circle">
 
                 <!-- circular text image -->
-                <img src="{{ asset('public/front/images/innder-header-jump.svg') }}" class="circle_text_img">
+                <img src="{{ asset('public/front/images/innder-header-jump.svg') }}" class="circle_text_img" alt="innder header jump">
 
                 <svg class="arrow_img" width="18" height="23" viewBox="0 0 18 23" fill="none"
                     xmlns="http://www.w3.org/2000/svg">

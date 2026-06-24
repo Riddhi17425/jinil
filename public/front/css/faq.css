@@ -134,3 +134,9 @@
 .faq_item.active .faq_icon {
   transform: rotate(45deg);
 }
+
+/* According to SEO changes I have to Add this css  */
+.faq_title {
+  font-size: 16px;
+  font-weight: 600;
+}

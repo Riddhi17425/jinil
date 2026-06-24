@@ -7,7 +7,7 @@
             <div>
                 <p class="title_24"><a href="{{ url('/') }}" class="text-585">Home</a> / <a href="javascript::void(o)"
                         class="text-585">Services</a> / Installation & Commissioning</p>
-                <h2 class="title_60">Installation & Commissioning Services</h2>
+                <h1 class="title_60">Installation & Commissioning Services</h1>
                 <p class="mb-0">Jinil provides expert installation and commissioning services for shot blasting machines and industrial surface preparation systems, ensuring every system is configured for optimal performance, safety compliance, and long-term operational reliability.
                 </p>
                 <p class="mb-0">Our structured, engineering-led approach minimizes production downtime while delivering stable, production-ready performance from day one.
@@ -17,7 +17,7 @@
             <a href="{{ route('contact') }}" class="contact_circle">
 
                 <!-- circular text image -->
-                <img src="{{ asset('public/front/images/innder-header-jump.svg') }}" class="circle_text_img">
+                <img src="{{ asset('public/front/images/innder-header-jump.svg') }}" class="circle_text_img" alt="innder header jump">
 
                 <svg class="arrow_img" width="18" height="23" viewBox="0 0 18 23" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
@@ -41,7 +41,7 @@
         <div class="row">
             
              <div class="col-lg-5 pe-lg-5 mb-4 mb-lg-0">
-                <img class=" img-fluid" src="{{ asset('public/front/images/installation.png') }}" alt="images">
+                <img class=" img-fluid" src="{{ asset('public/front/images/installation.png') }}" alt="installation">
             </div>
             
             <div class="col-lg-7">
@@ -55,22 +55,22 @@
                 <div class="mt_60">
                     <div class="counter ins_counter">
                         <div class="counter_item">
-                            <img src="{{ asset('public/front/images/counter1.png') }}" alt="image">
+                            <img src="{{ asset('public/front/images/counter1.png') }}" alt="counter1">
                             <h2 class="title_42"><span class="count" data-target="500">500</span>+</h2>
                             <p class="mb-0">Machines Installed & Commissioned</p>
                         </div>
                         <div class="counter_item">
-                            <img src="{{ asset('public/front/images/counter2.png') }}" alt="image">
+                            <img src="{{ asset('public/front/images/counter2.png') }}" alt="counter2">
                             <h2 class="title_42"><span class="count" data-target="30">30</span>+</h2>
                             <p class="mb-0">Years of Combined Engineering Expertise</p>
                         </div>
                         <div class="counter_item">
-                            <img src="{{ asset('public/front/images/counter3.png') }}" alt="image">
+                            <img src="{{ asset('public/front/images/counter3.png') }}" alt="counter3">
                             <h2 class="title_42"><span class="count" data-target="25">25</span>+</h2>
                             <p class="mb-0">Industries Served</p>
                         </div>
                         <div class="counter_item">
-                            <img src="{{ asset('public/front/images/counter4.png') }}" alt="image">
+                            <img src="{{ asset('public/front/images/counter4.png') }}" alt="counter4">
 
                             <h2 class="title_42"><span class="count" data-target="24">24</span>/7</h2>
                             <p class="mb-0">Technical Support Availability</p>

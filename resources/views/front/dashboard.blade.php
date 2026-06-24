@@ -2529,7 +2529,7 @@
         <div class="sec_hed_top mb_40">
             <p>Engineering Precision. Delivering Industrial Reliability.
             </p>
-            <h2 class="title_60">Why Jinil Blast Shot?</h2>
+            <h1 class="title_60">Why Jinil Blast Shot?</h1>
         </div>
 
         <div class="row justify-content-between">
@@ -2684,7 +2684,7 @@
     <div class="container">
 
         <div class="d-flex justify-content-center mb_40">
-            <img class="img-fluid gif_video" src="{{ asset('public/front/images/India-leading.gif')}}" alt="gif">
+            <img class="img-fluid gif_video" src="{{ asset('public/front/images/India-leading.gif')}}" alt="India leading">
         </div>
         <div class="sec_hed_top mb_40">
             <p>Reliable surface preparation solutions for demanding industrial environments
@@ -2768,22 +2768,22 @@
     <div class="container">
         <div class="counter">
             <div class="counter_item">
-                <img class="img-fluid" src="{{ asset('public/front/images/counter1.png')}}" alt="image">
+                <img class="img-fluid" src="{{ asset('public/front/images/counter1.png')}}" alt="counter1">
                 <h2 class="title_60"><span class="count" data-target="500">0</span>+</h2>
                 <p class="mb-0">Machines Delivered</p>
             </div>
             <div class="counter_item">
-                <img class="img-fluid" src="{{ asset('public/front/images/counter2.png')}}" alt="image">
+                <img class="img-fluid" src="{{ asset('public/front/images/counter2.png')}}" alt="counter2">
                 <h2 class="title_60"><span class="count" data-target="30">0</span>+</h2>
                 <p class="mb-0">Years Combined Expertise</p>
             </div>
             <div class="counter_item">
-                <img class="img-fluid" src="{{ asset('public/front/images/counter3.png')}}" alt="image">
+                <img class="img-fluid" src="{{ asset('public/front/images/counter3.png')}}" alt="counter3">
                 <h2 class="title_60"><span class="count" data-target="25">0</span>+</h2>
                 <p class="mb-0">Industries Served</p>
             </div>
             <div class="counter_item">
-                <img class="img-fluid" src="{{ asset('public/front/images/counter4.png')}}" alt="image">
+                <img class="img-fluid" src="{{ asset('public/front/images/counter4.png')}}" alt="counter4">
                 <h2 class="title_60"><span class="count" data-target="24">0</span>/7</h2>
                 <p class="mb-0">Support Available</p>
             </div>

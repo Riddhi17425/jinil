@@ -4,13 +4,13 @@
       <div class="navi_page_child">
          <div>
             <p class="title_24"><a href="{{ url('/') }}" class="text-585">Home</a> / Privacy Policy</p>
-            <h2 class="title_60">Privacy Policy</h2>
+            <h1 class="title_60">Privacy Policy</h1>
             <!--<p>Effective Date: [Insert Date]</p>-->
             <p>Jinil (“we”, “our”, or “us”) respects your privacy and is committed to protecting the personal information you share with us. This Privacy Policy explains how we collect, use, store, and safeguard your information when you visit our website or interact with our services.</p>
          </div>
          <a href="{{ route('contact') }}"  class="contact_circle">
             <!-- circular text image -->
-            <img src="{{ asset('public/front/images/innder-header-jump.svg') }}" class="circle_text_img">
+            <img src="{{ asset('public/front/images/innder-header-jump.svg') }}" class="circle_text_img" alt="innder header jump">
             <svg class="arrow_img" width="18" height="23" viewBox="0 0 18 23" fill="none"
                xmlns="http://www.w3.org/2000/svg">
                <path

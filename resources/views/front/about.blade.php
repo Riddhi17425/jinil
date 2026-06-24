@@ -6,18 +6,17 @@
         <div class="navi_page_child">
             <div>
                 <p class="title_24"><a href="{{ url('/') }}" class="text-585">Home</a> / About Us</p>
-                <h2 class="title_60">Engineering Advanced Surface Preparation Systems for Modern Industry
-</h2>
-                <p>Precision-driven, performance-focused, and built for demanding production environments, Jinil delivers high-efficiency shot blasting and surface preparation systems engineered for durability and long-term operational excellence.
-</p>
-<p>We design and manufacture industrial-grade surface treatment solutions that power heavy engineering, automotive, fabrication, foundry, and infrastructure sectors. Every system is developed with a deep understanding of production workflows, throughput requirements, and surface finishing precision.
-</p>
+                <h1 class="title_60">Engineering Advanced Surface Preparation Systems for Modern Industry
+</h1>
+                <p>Precision-driven, performance-focused, and built for demanding production environments, Jinil delivers high-efficiency shot blasting and surface preparation systems engineered for durability and long-term operational excellence.</p>
+                <p>We design and manufacture industrial-grade surface treatment solutions that power heavy engineering, automotive, fabrication, foundry, and infrastructure sectors. Every system is developed with a deep understanding of production workflows, throughput requirements, and surface finishing precision.
+                </p>
             </div>
 
             <a href="{{ route('contact') }}"  class="contact_circle">
 
                 <!-- circular text image -->
-                <img src="{{ asset('public/front/images/innder-header-jump.svg') }}" class="circle_text_img">
+                <img src="{{ asset('public/front/images/innder-header-jump.svg') }}" class="circle_text_img" alt="inner header jump">
 
                 <svg class="arrow_img" width="18" height="23" viewBox="0 0 18 23" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
@@ -42,7 +41,7 @@
 
             <div class="col-lg-5 mb-4 mb-lg-0">
                 <img style=" mix-blend-mode: multiply;" class=" img-fluid" src="{{ asset('public/front/images/about-engineered.png') }}"
-                    alt="images">
+                    alt="about engineered">
             </div>
 
             <div class="col-lg-7 ps-lg-5">
@@ -65,23 +64,23 @@
                 <div class="mt_60">
                     <div class="counter ins_counter">
                         <div class="counter_item">
-                            <img src="{{ asset('public/front/images/counter1.png') }}" alt="image">
+                            <img src="{{ asset('public/front/images/counter1.png') }}" alt="counter1">
                             <h2 class="title_42"><span class="count" data-target="500">0</span>+</h2>
                             <p class="mb-0">Machines Delivered</p>
                         </div>
                         <div class="counter_item">
-                            <img src="{{ asset('public/front/images/counter2.png') }}" alt="image">
+                            <img src="{{ asset('public/front/images/counter2.png') }}" alt="counter2">
                             <h2 class="title_42"><span class="count" data-target="30">0</span>+</h2>
                             <p class="mb-0">Years of Engineering Expertise
 </p>
                         </div>
                         <div class="counter_item">
-                            <img src="{{ asset('public/front/images/counter3.png') }}" alt="image">
+                            <img src="{{ asset('public/front/images/counter3.png') }}" alt="counter3">
                             <h2 class="title_42"><span class="count" data-target="25">0</span>+</h2>
                             <p class="mb-0">Industries Served</p>
                         </div>
                         <div class="counter_item">
-                            <img src="{{ asset('public/front/images/counter4.png') }}" alt="image">
+                            <img src="{{ asset('public/front/images/counter4.png') }}" alt="counter4">
                             <h2 class="title_42"><span class="count" data-target="24">0</span>/7</h2>
                             <p class="mb-0">Technical Support</p>
                         </div>
@@ -251,7 +250,7 @@
 <section class="mt_100">
     <div class="container">
         <div class="d-flex justify-content-center">
-            <img class="img-fluid gif_video" src="{{ asset('public/front/images/India-leading.gif') }}" alt="gif">
+            <img class="img-fluid gif_video" src="{{ asset('public/front/images/India-leading.gif') }}" alt="india leading">
         </div>
     </div>
 </section>
@@ -340,7 +339,7 @@
                             <!-- IMAGE -->
 
                             <div class="md_img">
-                                <img src="{{ asset('public/front/images/managing-director.png') }}" alt="">
+                                <img src="{{ asset('public/front/images/managing-director.png') }}" alt="managing director">
                             </div>
 
                             <!-- QUOTE BOX -->

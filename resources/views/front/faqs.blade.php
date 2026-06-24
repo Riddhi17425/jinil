@@ -15,7 +15,7 @@
             <a href="{{ route('contact') }}" class="contact_circle">
 
                 <!-- circular text image -->
-                <img src="{{ asset('public/front/images/innder-header-jump.svg') }}" class="circle_text_img">
+                <img src="{{ asset('public/front/images/innder-header-jump.svg') }}" class="circle_text_img" alt="innder header jump">
 
                 <svg class="arrow_img" width="18" height="23" viewBox="0 0 18 23" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
@@ -64,7 +64,7 @@
         <div class="faq_item">
 
             <div class="faq_question">
-                <span>{{ $item['faq_title'] }}</span>
+                <h4 class="faq_title">{{ $item['faq_title'] }}</h4>
                 <span class="faq_icon">+</span>
             </div>
 

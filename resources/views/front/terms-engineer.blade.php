@@ -4,14 +4,14 @@
       <div class="navi_page_child">
          <div>
             <p class="title_24"><a href="{{ url('/') }}" class="text-585">Home</a> / Terms of Engineering</p>
-            <h2 class="title_60">Terms of Engineering</h2>
+            <h1 class="title_60">Terms of Engineering</h1>
             <!--<p>Effective Date: [Insert Date]</p>-->
             <p>These Terms of Engineering define the scope, responsibilities, and conditions under which Jinil (“we”, “our”, or “us”) provides engineering, design, manufacturing, installation, and support services for shot blasting systems and related solutions.</p>
             <p>By engaging with Jinil for any engineering services, the client (“you” or “customer”) agrees to the terms outlined below.</p>
          </div>
          <a href="{{ route('contact') }}"  class="contact_circle">
             <!-- circular text image -->
-            <img src="{{ asset('public/front/images/innder-header-jump.svg') }}" class="circle_text_img">
+            <img src="{{ asset('public/front/images/innder-header-jump.svg') }}" class="circle_text_img" alt="innder header jump">
             <svg class="arrow_img" width="18" height="23" viewBox="0 0 18 23" fill="none"
                xmlns="http://www.w3.org/2000/svg">
                <path

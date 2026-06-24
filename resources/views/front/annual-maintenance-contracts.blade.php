@@ -7,7 +7,7 @@
             <div>
                 <p class="title_24"><a href="{{ url('/') }}" class="text-585">Home</a> / <a href="javascript::void(o)"
                         class="text-585">Services</a> / Annual Maintenance Contracts</p>
-                <h2 class="title_60">Annual Maintenance Contracts</h2>
+                <h1 class="title_60">Annual Maintenance Contracts</h1>
                 <p class="mb-0">Comprehensive service agreements designed to ensure consistent machine performance, reduce unplanned downtime, and extend equipment lifecycle through structured maintenance and technical support.
                 </p>
                 
@@ -17,7 +17,7 @@
             <a href="{{ route('contact') }}" class="contact_circle">
 
                 <!-- circular text image -->
-                <img src="{{ asset('public/front/images/innder-header-jump.svg') }}" class="circle_text_img">
+                <img src="{{ asset('public/front/images/innder-header-jump.svg') }}" class="circle_text_img" alt="innder header jump">
 
                 <svg class="arrow_img" width="18" height="23" viewBox="0 0 18 23" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
@@ -40,7 +40,7 @@
 
         <div class="row">
              <div class="col-lg-5 pe-lg-5 mb-4 mb-lg-0">
-                <img class=" img-fluid" src="{{ asset('public/front/images/AMC/AMC-Services.png') }}" alt="images" style="mix-blend-mode: multiply;">
+                <img class=" img-fluid" src="{{ asset('public/front/images/AMC/AMC-Services.png') }}" alt="AMC Services" style="mix-blend-mode: multiply;">
             </div>
             <div class="col-lg-7">
                 <div>
@@ -53,24 +53,24 @@
                 <div class="mt_60">
                     <div class="counter ins_counter">
                         <div class="counter_item">
-                            <img src="{{ asset('public/front/images/amc-Services1.png') }}" alt="image">
+                            <img src="{{ asset('public/front/images/amc-Services1.png') }}" alt="AMC Services 1">
                             <h2 class="title_42"><span class="count" data-target="99.7">99.7</span>%</h2>
                             <p class="mb-0"> Average Equipment Uptime</p>
                         </div>
                         <div class="counter_item">
-                            <img src="{{ asset('public/front/images/amc-Services2.png') }}" alt="image">
+                            <img src="{{ asset('public/front/images/amc-Services2.png') }}" alt="AMC Services 2">
                             <h2 class="title_42">
                                 < <span class="count" data-target="4"> 4 </span> hrs
                             </h2>
                             <p class="mb-0">Response Time</p>
                         </div>
                         <div class="counter_item">
-                            <img src="{{ asset('public/front/images/amc-Services3.png') }}" alt="image">
+                            <img src="{{ asset('public/front/images/amc-Services3.png') }}" alt="AMC Services 3">
                             <h2 class="title_42"><span class="count" data-target="100">100</span>%</h2>
                             <p class="mb-0"> OEM Genuine Parts</p>
                         </div>
                         <div class="counter_item">
-                            <img src="{{ asset('public/front/images/amc-Services4.png') }}" alt="image">
+                            <img src="{{ asset('public/front/images/amc-Services4.png') }}" alt="AMC Services 4">
                             <h2 class="title_42"><span class="count" data-target="50">50</span>+</h2>
                             <p class="mb-0">Expert Engineers</p>
                         </div>
@@ -164,7 +164,7 @@
 <section class="mt_100 mb_100">
     <div class="container">
         <div class="d-flex justify-content-center">
-            <img class="img-fluid gif_video" src="{{ asset('public/front/images/India-leading.gif') }}" alt="gif">
+            <img class="img-fluid gif_video" src="{{ asset('public/front/images/India-leading.gif') }}" alt="India leading">
         </div>
     </div>
 </section>
@@ -250,7 +250,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="inve_Pro_card">
-                        <img class="img-fluid" src="{{ asset('public/front/images/AMC/Eliminated-Unplanned-Downtime.png') }}" alt="Minimized Downtime">
+                        <img class="img-fluid" src="{{ asset('public/front/images/AMC/Eliminated-Unplanned-Downtime.png') }}" alt="Eliminated Unplanned Downtime">
                         <h4 class="title_24">Eliminated Unplanned Downtime</h4>
                         <p>  Regular service visits and preventive diagnostics reduce the
                 risk of sudden equipment failures that disrupt production

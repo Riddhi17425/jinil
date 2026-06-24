@@ -6,7 +6,7 @@
         <div class="navi_page_child">
             <div class="col-lg-10">
                 <p class="title_24"><a href="{{ url('/') }}" class="text-585">Home</a> / Downloads</p>
-                <h2 class="title_60">Technical Resources & Downloads</h2>
+                <h1 class="title_60">Technical Resources & Downloads</h1>
                 <p class="mb-0">Access machine brochures, technical specifications, layout drawings, safety
                     documentation, and compliance certificates for Jinil shot blasting solutions.</p>
             </div>
@@ -14,7 +14,7 @@
             <a href="{{ route('contact') }}" class="contact_circle">
 
                 <!-- circular text image -->
-                <img src="{{ asset('public/front/images/innder-header-jump.svg') }}" class="circle_text_img">
+                <img src="{{ asset('public/front/images/innder-header-jump.svg') }}" class="circle_text_img" alt="innder header jump">
 
                 <svg class="arrow_img" width="18" height="23" viewBox="0 0 18 23" fill="none"
                     xmlns="http://www.w3.org/2000/svg">

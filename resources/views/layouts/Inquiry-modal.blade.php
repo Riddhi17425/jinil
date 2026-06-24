@@ -7,22 +7,12 @@ $ma = rand(1,9);
 $mb = rand(1,9);
 @endphp
 
-<style>
-  .modal {
-    background-color: #f5f8fb61;
-    z-index: 9999;
-    backdrop-filter: blur(2px);
-  }
-  .modal-content {
-    background-color: #f5f8fb;
-  }
-</style>
-
+<section class="inquiry-modal">
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title title_24">Enquire Noww</h1>
+                <h4 class="modal-title title_24">Enquire Noww</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
@@ -117,7 +107,7 @@ $mb = rand(1,9);
         </div>
     </div>
 </div>
-
+</section>
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
 
 <script>

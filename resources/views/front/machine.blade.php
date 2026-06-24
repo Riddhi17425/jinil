@@ -7,7 +7,7 @@
             <div>
                 <p class="title_24"><a href="{{ url('/') }}" class="text-585">Home</a> / <a href="./blogs.php"
                         class="text-585">Services</a> / Machine Upgrades</p>
-                <h2 class="title_60">Shot Blasting Machine Upgrades & Modernization Solutions</h2>
+                <h1 class="title_60">Shot Blasting Machine Upgrades & Modernization Solutions</h1>
                 <p class="mb-0">Jinil delivers engineered upgrade and retrofit solutions for industrial shot blasting
                     machines and surface preparation systems, enhancing performance, automation capability, energy
                     efficiency, and production capacity without the capital cost of full equipment replacement.
@@ -17,7 +17,7 @@
             <a href="{{ route('contact') }}" class="contact_circle">
 
                 <!-- circular text image -->
-                <img src="{{ asset('public/front/images/innder-header-jump.svg') }}" class="circle_text_img">
+                <img src="{{ asset('public/front/images/innder-header-jump.svg') }}" class="circle_text_img" alt="innder header jump">
 
                 <svg class="arrow_img" width="18" height="23" viewBox="0 0 18 23" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
@@ -42,7 +42,7 @@
             
             <div class="col-lg-5 pe-lg-5 mb-4 mb-lg-0">
                 <img class=" img-fluid" src="{{ asset('public/front/images/machine-upgrades.png
-') }}" alt="images"  style="mix-blend-mode: multiply;">
+') }}" alt="machine upgrades"  style="mix-blend-mode: multiply;">
             </div>
             
             <div class="col-lg-7">
@@ -62,22 +62,22 @@
                 <div class="mt_60">
                     <div class="counter ins_counter">
                         <div class="counter_item">
-                            <img src="{{ asset('public/front/images/machine-upgrades-icon1.png') }}" alt="image">
+                            <img src="{{ asset('public/front/images/machine-upgrades-icon1.png') }}" alt="machine upgrades icon 1">
                             <h2 class="title_42"><span class="count" data-target="99.7">99.7</span>%</h2>
                             <p>Operational Uptime Across Upgraded Systems</p>
                         </div>
                         <div class="counter_item">
-                            <img src="{{ asset('public/front/images/machine-upgrades-icon2.png') }}" alt="image">
+                            <img src="{{ asset('public/front/images/machine-upgrades-icon2.png') }}" alt="machine upgrades icon2">
                             <h2 class="title_42"><span class="count" data-target="300">300</span>+</h2>
                             <p class="mb-0"> Performance-Validated Retrofit Solutions</p>
                         </div>
                         <div class="counter_item">
-                            <img src="{{ asset('public/front/images/machine-upgrades-icon4.png') }}" alt="image">
+                            <img src="{{ asset('public/front/images/machine-upgrades-icon4.png') }}" alt="machine upgrades icon4">
                             <h2 class="title_42"><span class="count" data-target="100">100</span>%</h2>
                             <p class="mb-0">Industries Served</p>
                         </div>
                         <div class="counter_item">
-                            <img src="{{ asset('public/front/images/machine-upgrades-icon3.png') }}" alt="image">
+                            <img src="{{ asset('public/front/images/machine-upgrades-icon3.png') }}" alt="machine upgrades icon3">
 
                             <h2 class="title_42"><span class="count" data-target="15">15</span>%</h2>
                             <p class="mb-0"> Average Industry Engineering Experience</p>
