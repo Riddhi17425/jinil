@@ -6,7 +6,7 @@
         <div class="navi_page_child">
             <div>
                 <p class="title_24"><a href="{{ url('/')}}" class="text-585">Home</a> / Blog</p>
-                <h1 class="title_60">Insights from the Surface Preparation Industry</h1>
+                <h2 class="title_60">Insights from the Surface Preparation Industry</h2>
                 <p class="mb-0">Expert guidance, technical resources, and industry best practices</p>
             </div>
           

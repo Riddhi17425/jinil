@@ -52,6 +52,7 @@
     from {
         transform: rotate(0deg);
     }
+
     to {
         transform: rotate(360deg);
     }
@@ -185,8 +186,7 @@ ul.custom-list li::before {
     transform: translateY(-50%);
 }
 
-.spec-table-wrapper {
-}
+.spec-table-wrapper {}
 
 .spec-table {
     width: 100%;
@@ -199,7 +199,7 @@ ul.custom-list li::before {
     padding: 15px 30px;
     text-align: left;
     /* border-bottom: 1px solid #c0c8d1; */
-     border-right: 1px solid #ddd;
+    border-right: 1px solid #ddd;
 }
 
 .spec-table td {
