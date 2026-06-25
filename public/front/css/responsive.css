@@ -21,6 +21,10 @@
 ===========================      1601        ===========================
 ===========================                  ===========================*/
 @media (max-width: 1601px) {
+
+    .blog-content h3 {
+    font-size: 20px;
+}
     .mt_100 {
         margin-top: 70px;
     }
@@ -286,7 +290,11 @@ margin-top: 40px;
     
     .blog_det_consu .title_80 {
    
-    font-size: 48px;
+    font-size: 36px;
+}
+
+.blog_det_consu p {
+    font-size: 16px;
 }
 
 }
@@ -297,6 +305,10 @@ margin-top: 40px;
 ===========================                  ===========================*/
 
 @media (max-width: 1441px) {
+
+        .blog-content h3 {
+        font-size: 18px;
+    }
 
     .app_item {
         gap: 26px;
@@ -466,7 +478,7 @@ margin-top: 40px;
     }
 
     .blog_det_consu p {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .inve_Pro_card hr {
@@ -601,10 +613,20 @@ margin-top: 40px;
 
 
     .blog_det_consu .title_80 {
-        font-size: 38px;
+        font-size: 28px;
     }
 
-
+ .blog-guide-section {
+        gap: 40px;
+    }
+    .blog-sidebar {
+        width: 280px;
+        top: 90px;
+    }
+    .blog-content h2 {
+        font-size: 26px;
+        line-height: 36px;
+    }
     
 }
 
@@ -742,7 +764,7 @@ margin-top: 40px;
     }
     
         .blog_det_consu .title_80 {
-        font-size: 32px;
+        font-size: 24px;
     }
 }
 /*=========================                  =========================
@@ -774,6 +796,20 @@ margin-top: 40px;
 
     .mb_100 {
         margin-bottom: 60px;
+    }
+
+        .blog-guide-section {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .blog-sidebar {
+        width: 100%;
+        height: auto;
+        position: static;
+        max-height: 300px;
+    }
+    .blog-content {
+        width: 100%;
     }
 }
 /*=========================                  =========================
@@ -1079,12 +1115,17 @@ margin-top: 40px;
       
     }
     
-        .blogs_detials h4 {
+        /* .blogs_detials h4 {
         font-size: 16px;
-    }
+    } */
     
-        .blog_det_consu .title_80 {
-        font-size: 24px;
+    .blog-sidebar
+    {
+        display: none;
+    }
+
+    .author-box {
+   flex-direction: column;
     }
 
 }
