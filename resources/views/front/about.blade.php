@@ -247,13 +247,13 @@
     </div>
 </section>
 
-<section class="mt_100">
+<!-- <section class="mt_100">
     <div class="container">
         <div class="d-flex justify-content-center">
             <img class="img-fluid gif_video" src="{{ asset('public/front/images/India-leading.gif') }}" alt="india leading">
         </div>
     </div>
-</section>
+</section> -->
 
 <section class="mt_60">
     <div class="container">
