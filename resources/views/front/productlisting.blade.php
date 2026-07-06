@@ -47,22 +47,11 @@
                             d="M8.85653 1.15617L8.85653 20.9552M8.85653 20.9552L16.5562 13.2555M8.85653 20.9552L1.15692 13.2556"
 
                             stroke="#58595B" stroke-width="2.31318" stroke-linecap="round" stroke-linejoin="round" />
-
                     </svg>
-
-
-
                 </a>
-
         </div>
-
-
-
     </div>
-
 </section>
-
-
 
 <section class="mt_80 mb_100">
 
@@ -77,8 +66,6 @@
 
 
         <div class="row gy-5">
-
-      
 
             @foreach($productlist->whereNotNull('front_image') as $product)
 
