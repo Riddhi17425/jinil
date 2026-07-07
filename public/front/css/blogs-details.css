@@ -209,6 +209,11 @@ margin-top: 40px;
     scroll-margin-top: 120px;
 }
 
+.blog-content-section a
+{
+    color:var(--blue);
+}
+
 .blog-content h2 {
     margin-top: 30px;
     margin-bottom: 12px;
@@ -229,8 +234,15 @@ margin-top: 40px;
     color: var(--black-111);
 }
 
-.blog-content ul li {
-    margin-bottom: 5px;
+.blog-content ul li,
+.blog-content ol li{
+    margin-bottom: 10px;
+}
+
+.blog-content ul li::marker,
+.blog-content ol li::marker{
+    color: var(--blue);
+    font-size: 16px;
 }
 
 /* Author Box */

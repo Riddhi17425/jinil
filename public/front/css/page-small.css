@@ -28,24 +28,37 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    background-color: var(--blue);
+    border-radius: 50%;
+
 }
 
 /* rotating text image */
 .circle_text_img {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 85%;
+    height: 85%;
     animation: rotateCircle 10s linear infinite;
 }
 
 /* arrow image */
 .arrow_img {
-    transition: 0.3s;
+    transition: 0.5s;
 }
+
+/*.contact_circle .arrow_img*/
+/*{*/
+/*    animation: rotateCircle 15s linear infinite;*/
+/*}*/
 
 /* hover arrow animation */
 .contact_circle:hover .arrow_img {
     transform: translateY(8px);
+}
+
+.contact_circle svg path {
+    fill: #fff;
+    stroke: #fff;
 }
 
 @keyframes rotateCircle {
