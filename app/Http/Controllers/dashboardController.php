@@ -1,57 +1,24 @@
 <?php
-
-
-
 namespace App\Http\Controllers;
 
-
-
-use Illuminate\Http\Request;
-
-use Illuminate\Support\Facades\Validator;
-
-use Illuminate\Support\Facades\Http;
-
-use Illuminate\Support\Facades\Log;
-
-use DB;
-
-use Illuminate\Support\Facades\Mail;
-
-use App\Models\Contact;
-
-use App\Models\HeaderForm;
-
-use App\Models\ProductEnquiry;
-
-use App\Models\Product;
-
-use App\Models\Category;
-
 use App\Models\Blog;
-
-use App\Models\Faq;
-
-use App\Models\IndCategory;
-
-use App\Models\Industry;
-
-use App\Models\IndustryEnquiry;
-
+use App\Models\Category;
 use App\Models\Certificate;
-
-use App\Models\ServiceRequest;
-
-use App\Mail\SendContactMailToUser;
-
-use App\Mail\SendContactMailToAdmin; 
-
+use App\Models\Contact;
+use App\Models\Faq;
+use App\Models\HeaderForm;
+use App\Models\IndCategory;
+use App\Models\Industry;
+use App\Models\IndustryEnquiry;
+use App\Models\Product;
+use App\Models\ProductEnquiry;
 use App\Models\SpareParts;
 use App\Models\WhatsappInquiry;
-
+use DB;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class dashboardController extends Controller
-
 {
 
     /**
@@ -64,21 +31,22 @@ class dashboardController extends Controller
 
      */
 
-    public function login(){
+    public function login()
+    {
 
         return view('auth.login');
 
     }
 
-    public function admin(){
+    public function admin()
+    {
 
         return view('admin.admin');
 
     }
 
     public function index()
-
-    {  
+    {
 
         $productlist = Product::whereNull('deleted_at')
 
@@ -91,8 +59,7 @@ class dashboardController extends Controller
     }
 
     public function about()
-
-    {   
+    {
 
         $metatitle = "";
 
@@ -102,10 +69,7 @@ class dashboardController extends Controller
 
     }
 
-        
-
     public function spareparts()
-
     {
 
         $metatitle = "";
@@ -122,167 +86,134 @@ class dashboardController extends Controller
 
             ->get();
 
-        
-
-        return view('front.spareparts',compact('metatitle','metadescription','spareparts','categories'));
+        return view('front.spareparts', compact('metatitle', 'metadescription', 'spareparts', 'categories'));
 
     }
 
-    
-  public function whatsaapinquiry(Request $request)
+    public function whatsaapinquiry(Request $request)
     {
         WhatsappInquiry::create([
-           
-            'number'  => $request->number,
-            'message'  => $request->message,
-        ]);
-     // Google Apps Script URL
-    $googleScriptUrl = "https://script.google.com/macros/s/AKfycbyR_q9NAXJ2ChXb39-kaC8E7BXx6h2l8PxcsOP9L25IL2yno2v2VpMTFQYsAYlc3b9gzw/exec";
 
-    // Send data to Google Sheet
-    Http::post($googleScriptUrl, [
-        'form_type' => 'WhatsApp Inquiry',
-        'contact'   => $request->number,
-        'message'   => $request->message,
-        'date'      => now()->format('Y-m-d H:i:s'),
-    ]);
-    
+            'number'  => $request->number,
+            'message' => $request->message,
+        ]);
+        // Google Apps Script URL
+        $googleScriptUrl = "https://script.google.com/macros/s/AKfycbyR_q9NAXJ2ChXb39-kaC8E7BXx6h2l8PxcsOP9L25IL2yno2v2VpMTFQYsAYlc3b9gzw/exec";
+
+        // Send data to Google Sheet
+        Http::post($googleScriptUrl, [
+            'form_type' => 'WhatsApp Inquiry',
+            'contact'   => $request->number,
+            'message'   => $request->message,
+            'date'      => now()->format('Y-m-d H:i:s'),
+        ]);
+
         $number = '9925601108';
         //$number = '918469000194'; // Change if needed
-        $message = 'Inquiry from the website.';
+        $message     = 'Inquiry from the website.';
         $whatsappUrl = "https://api.whatsapp.com/send/?phone={$number}&text=" . urlencode($message);
-    
+
         return redirect()->away($whatsappUrl);
     }
-  
 
     public function contact()
-
-    {   
+    {
 
         $metatitle = "";
 
         $metadescription = "";
 
-        $countries = DB::table('countries')->select('id','name')->get();
+        $countries = DB::table('countries')->select('id', 'name')->get();
 
-        $states = DB::table('states')->select('id','name')->get();
+        $states = DB::table('states')->select('id', 'name')->get();
 
         return view('front.contact', compact('metatitle', 'metadescription', 'countries', 'states'));
 
     }
 
-
-
     public function blogs()
-
     {
-
-        $metatitle = "";
-
+        $metatitle       = "";
         $metadescription = "";
-
-        $blogs = Blog::whereNull('deleted_at')->orderBy('id', 'desc')->get();
-
-        return view('front.blogs',compact('metatitle','metadescription','blogs'));
-
+        $blogs           = Blog::whereNull('deleted_at')
+            ->where('status', 1)
+            ->orderBy('id', 'desc')
+            ->get();
+        return view('front.blogs', compact('metatitle', 'metadescription', 'blogs'));
     }
 
-
-
     public function blogsdetail($url)
-
     {
+        $blogs = Blog::whereNull('deleted_at')
+            ->where('status', 1)
+            ->orderBy('id', 'desc')
+            ->get();
 
-        $blogs = Blog::whereNull('deleted_at')->orderBy('id', 'desc')->get();
+        $blogsdetail = Blog::whereNull('deleted_at')
+            ->where('status', 1)
+            ->where('url', $url)
+            ->firstOrFail();
 
-        $blogsdetail = Blog::whereNull('deleted_at')->where('url', $url)->first();
-
-        $metatitle = $blogsdetail->meta_title;
-
+        $metatitle       = $blogsdetail->meta_title;
         $metadescription = $blogsdetail->meta_description;
 
-        return view('front.blogdetail',compact('metatitle', 'metadescription','blogs','blogsdetail'));
-
+        return view('front.blogdetail', compact('metatitle', 'metadescription', 'blogs', 'blogsdetail'));
     }
 
     public function privacypolicy()
-
     {
 
         $metatitle = "";
 
         $metadescription = "";
 
-       
-
-        return view('front.privacypolicy',compact('metatitle','metadescription'));
+        return view('front.privacypolicy', compact('metatitle', 'metadescription'));
 
     }
 
     public function termsengineer()
-
     {
 
         $metatitle = "";
 
         $metadescription = "";
 
-       
-
-        return view('front.terms-engineer',compact('metatitle','metadescription'));
+        return view('front.terms-engineer', compact('metatitle', 'metadescription'));
 
     }
 
-
-
-     public function productdetials($url = null)
-
+    public function productdetials($url = null)
     {
-
-        $metatitle = "";
-
-        $metadescription = "";
-
-        $product = Product::whereNull('deleted_at')->where('url', $url)->first();
-
-        $category = Category::whereNull('deleted_at')->where('id', $product->category_id)->first();
-
+        $product           = Product::whereNull('deleted_at')->where('url', $url)->firstOrFail();
+        $category          = Category::whereNull('deleted_at')->where('id', $product->category_id)->first();
         $productIndustries = IndCategory::select('id', 'indcategory', 'icon_image', 'url')->whereIn('id', $product->industries)->get();
 
-        
+        $metatitle       = $product->meta_title ?? $product->title;
+        $metadescription = $product->meta_description ?? $product->short_description;
 
-        return view('front.productdetials',compact('metatitle','metadescription','product', 'category','productIndustries'));
-
+        return view('front.productdetials', compact('metatitle', 'metadescription', 'product', 'category', 'productIndustries'));
     }
 
-
-
     public function download()
-
     {
 
         $metatitle = "";
 
         $metadescription = "";
-
-
 
         $certificate = Certificate::whereNull('deleted_at')
 
-                        ->orderBy('id', 'desc')
+            ->orderBy('id', 'desc')
 
-                        ->get();
-
-
+            ->get();
 
         $categories = Certificate::whereNull('deleted_at')
 
-                        ->select('cat_title')
+            ->select('cat_title')
 
-                        ->distinct()
+            ->distinct()
 
-                        ->pluck('cat_title');
+            ->pluck('cat_title');
 
         return view('front.download', compact(
 
@@ -299,7 +230,6 @@ class dashboardController extends Controller
     }
 
     public function faq()
-
     {
 
         $metatitle = "";
@@ -308,63 +238,57 @@ class dashboardController extends Controller
 
         $faqs = Faq::whereNull('deleted_at')->get();
 
-        return view('front.faqs',compact('metatitle', 'metadescription', 'faqs'));
+        return view('front.faqs', compact('metatitle', 'metadescription', 'faqs'));
 
-    } 
+    }
 
     public function installation()
-
     {
 
         $metatitle = "";
 
         $metadescription = "";
 
-         $faqs = Faq::whereNull('deleted_at')->get();
+        $faqs = Faq::whereNull('deleted_at')->get();
 
-        return view('front.installation',compact('metatitle', 'metadescription', 'faqs'));
+        return view('front.installation', compact('metatitle', 'metadescription', 'faqs'));
 
-    } 
+    }
 
     public function machineupgrades()
-
     {
 
         $metatitle = "";
 
         $metadescription = "";
 
-        return view('front.machine',compact('metatitle', 'metadescription'));
+        return view('front.machine', compact('metatitle', 'metadescription'));
 
     }
 
     public function annualmaintenance()
-
     {
 
         $metatitle = "";
 
         $metadescription = "";
 
-        return view('front.annual-maintenance-contracts',compact('metatitle', 'metadescription'));
+        return view('front.annual-maintenance-contracts', compact('metatitle', 'metadescription'));
 
     }
 
-
-
     public function aftersales()
-
     {
 
         $metatitle = "";
 
         $metadescription = "";
 
-         $faqs = Faq::whereNull('deleted_at')->get();
+        $faqs = Faq::whereNull('deleted_at')->get();
 
-        return view('front.after-sales',compact('metatitle', 'metadescription', 'faqs'));
+        return view('front.after-sales', compact('metatitle', 'metadescription', 'faqs'));
 
-    } 
+    }
 
     // public function service($url)
 
@@ -372,13 +296,9 @@ class dashboardController extends Controller
 
     //     $service = Service::where('url', $url)->firstOrFail();
 
-
-
     //     $metatitle       = $service->meta_title       ?? $service->title;
 
     //     $metadescription = $service->meta_description ?? $service->short_description;
-
-
 
     //     return view('front.service-detail', compact(
 
@@ -393,30 +313,23 @@ class dashboardController extends Controller
     // }
 
     public function industry($url)
-
     {
 
         $category = IndCategory::whereNull('deleted_at')
 
-                    ->where('url', $url)
+            ->where('url', $url)
 
-                    ->firstOrFail();
-
-    
+            ->firstOrFail();
 
         $industries = Industry::whereNull('deleted_at')
 
-                        ->where('category_id', $category->id)
+            ->where('category_id', $category->id)
 
-                        ->get();
-
-    
+            ->get();
 
         $metatitle = $category->indcategory;
 
         $metadescription = $category->cat_description;
-
-    
 
         return view('front.industries', compact(
 
@@ -433,30 +346,23 @@ class dashboardController extends Controller
     }
 
     public function product($url)
-
     {
 
         $category = Category::whereNull('deleted_at')
 
-                    ->where('url', $url)
+            ->where('url', $url)
 
-                    ->firstOrFail();
-
-    
+            ->firstOrFail();
 
         $productlist = Product::whereNull('deleted_at')
 
-                        ->where('category_id', $category->id)
+            ->where('category_id', $category->id)
 
-                        ->get();
-
-    
+            ->get();
 
         $metatitle = $category->indcategory;
 
         $metadescription = $category->cat_description;
-
-    
 
         return view('front.productlisting', compact(
 
@@ -473,7 +379,6 @@ class dashboardController extends Controller
     }
 
     public function contactstore(Request $request)
-
     {
 
         $validated = $request->validate([
@@ -518,43 +423,37 @@ class dashboardController extends Controller
 
         ]);
 
-
-
         if ($validated['simple_captcha'] != $validated['captcha_sum']) {
 
             return response()->json([
 
                 'status' => 'error',
 
-                'errors' => ['simple_captcha' => 'The Captcha answer is incorrect.']
+                'errors' => ['simple_captcha' => 'The Captcha answer is incorrect.'],
 
             ]);
 
         }
 
-
-
         // Catches empty input (only dial code like "+91" with no number after)
 
-        if (!preg_match('/^\+\d{1,4}\d{7,}$/', $validated['full_phone'])) {
+        if (! preg_match('/^\+\d{1,4}\d{7,}$/', $validated['full_phone'])) {
 
             return response()->json([
 
                 'status' => 'error',
 
-                'errors' => ['full_phone' => !preg_match('/^\+\d/', $validated['full_phone'])
+                'errors' => ['full_phone' => ! preg_match('/^\+\d/', $validated['full_phone'])
 
-                    ? 'The Phone Number is required.'
+                        ? 'The Phone Number is required.'
 
-                    : 'Please enter a valid Phone Number.'
+                        : 'Please enter a valid Phone Number.',
 
-                ]
+                ],
 
             ]);
 
         }
-
-
 
         try {
 
@@ -575,8 +474,6 @@ class dashboardController extends Controller
                 'message'      => $validated['message'] ?? null,
 
             ]);
-
-
 
             $contactData = [
 
@@ -600,8 +497,6 @@ class dashboardController extends Controller
 
             ];
 
-
-
             // Google Apps Script URL
 
             $sheetUrl = 'https://script.google.com/macros/s/AKfycbzZUy--mLkKq9XvO3GNmxSBmCzmNnMB6IdrOhcIxbCLY7orzN6Ad19Xdh4Lz4ADO3x7kA/exec';
@@ -612,23 +507,17 @@ class dashboardController extends Controller
 
                 ->post($sheetUrl, $contactData);
 
-
-
             // Mail::to($validated['email'])->send(new SendContactMailToUser($contactData));
 
             // Mail::to('webdeveloper10.intelliworkz@gmail.com')->send(new SendContactMailToAdmin($contactData));
-
-
 
             return response()->json([
 
                 'status'   => 'success',
 
-                'redirect' => route('thankyou')
+                'redirect' => route('thankyou'),
 
             ]);
-
-
 
         } catch (\Exception $e) {
 
@@ -638,7 +527,7 @@ class dashboardController extends Controller
 
                 'status'  => 'error',
 
-                'message' => 'Something went wrong. Please try again later.'
+                'message' => 'Something went wrong. Please try again later.',
 
             ]);
 
@@ -646,10 +535,7 @@ class dashboardController extends Controller
 
     }
 
-
-
     public function headerstore(Request $request)
-
     {
 
         $validated = $request->validate([
@@ -694,170 +580,151 @@ class dashboardController extends Controller
 
         ]);
 
-
-
         if ($validated['simple_captcha'] != $validated['captcha_sum']) {
 
             return response()->json([
 
                 'status' => 'error',
 
-                'errors' => ['simple_captcha' => 'The Captcha answer is incorrect.']
+                'errors' => ['simple_captcha' => 'The Captcha answer is incorrect.'],
 
             ]);
 
         }
 
-
-
         // Catches empty input (only dial code like "+91" with no number after)
 
-        if (!preg_match('/^\+\d{1,4}\d{7,}$/', $validated['full_phone'])) {
+        if (! preg_match('/^\+\d{1,4}\d{7,}$/', $validated['full_phone'])) {
 
             return response()->json([
 
                 'status' => 'error',
 
-                'errors' => ['full_phone' => !preg_match('/^\+\d/', $validated['full_phone'])
+                'errors' => ['full_phone' => ! preg_match('/^\+\d/', $validated['full_phone'])
 
-                    ? 'The Phone Number is required.'
+                        ? 'The Phone Number is required.'
 
-                    : 'Please enter a valid Phone Number.'
+                        : 'Please enter a valid Phone Number.',
 
-                ]
+                ],
 
             ]);
 
         }
 
-
-
         try {
 
-    $contact = HeaderForm::create([
+            $contact = HeaderForm::create([
 
-        'name'         => $validated['name'],
+                'name'         => $validated['name'],
 
-        'company_name' => $validated['company_name'],
+                'company_name' => $validated['company_name'],
 
-        'contact'      => $validated['full_phone'],
+                'contact'      => $validated['full_phone'],
 
-        'email'        => $validated['email'],
+                'email'        => $validated['email'],
 
-        'state'        => $validated['state'],
+                'state'        => $validated['state'],
 
-        'city'         => $validated['city'],
+                'city'         => $validated['city'],
 
-        'message'      => $validated['message'] ?? null,
+                'message'      => $validated['message'] ?? null,
 
-    ]);
+            ]);
 
+            $contactData = [
 
+                'form_type'    => 'Header Form',
 
-    $contactData = [
+                'name'         => $validated['name'],
 
-        'form_type'    => 'Header Form',
+                'company_name' => $validated['company_name'],
 
-        'name'         => $validated['name'],
+                'contact'      => $validated['full_phone'],
 
-        'company_name' => $validated['company_name'],
+                'email'        => $validated['email'],
 
-        'contact'      => $validated['full_phone'],
+                'state'        => $validated['state'],
 
-        'email'        => $validated['email'],
+                'city'         => $validated['city'],
 
-        'state'        => $validated['state'],
+                'message'      => $validated['message'] ?? '',
 
-        'city'         => $validated['city'],
+                'date'         => now()->format('Y-m-d H:i:s'),
 
-        'message'      => $validated['message'] ?? '',
+            ];
 
-        'date'         => now()->format('Y-m-d H:i:s'),
+            $sheetUrl = 'https://script.google.com/macros/s/AKfycbzZUy--mLkKq9XvO3GNmxSBmCzmNnMB6IdrOhcIxbCLY7orzN6Ad19Xdh4Lz4ADO3x7kA/exec';
 
-    ];
+            // ✅ Google Sheet — skip if URL is empty
 
+            if (! empty($sheetUrl)) {
 
+                try {
 
-    $sheetUrl = 'https://script.google.com/macros/s/AKfycbzZUy--mLkKq9XvO3GNmxSBmCzmNnMB6IdrOhcIxbCLY7orzN6Ad19Xdh4Lz4ADO3x7kA/exec';
+                    Http::timeout(30)
 
-    // ✅ Google Sheet — skip if URL is empty
+                        ->withHeaders(['Content-Type' => 'application/json'])
 
-    if (!empty($sheetUrl)) {
+                        ->post($sheetUrl, $contactData);
 
-        try {
+                } catch (\Exception $e) {
 
-            Http::timeout(30)
+                    \Log::warning('Google Sheet push failed: ' . $e->getMessage());
 
-                ->withHeaders(['Content-Type' => 'application/json'])
+                    // Non-fatal — continue
 
-                ->post($sheetUrl, $contactData);
+                }
+
+            }
+
+            // ✅ Mail — isolated so one failure doesn't block the other
+
+            // try {
+
+            //     Mail::to($validated['email'])->send(new SendContactMailToUser($contactData));
+
+            // } catch (\Exception $e) {
+
+            //     \Log::warning('User mail failed: ' . $e->getMessage());
+
+            // }
+
+            // try {
+
+            //     Mail::to('webdeveloper10.intelliworkz@gmail.com')->send(new SendContactMailToAdmin($contactData));
+
+            // } catch (\Exception $e) {
+
+            //     \Log::warning('Admin mail failed: ' . $e->getMessage());
+
+            // }
+
+            return response()->json([
+
+                'status'   => 'success',
+
+                'redirect' => route('thankyou'),
+
+            ]);
 
         } catch (\Exception $e) {
 
-            \Log::warning('Google Sheet push failed: ' . $e->getMessage());
+            \Log::error('Header form error: ' . $e->getMessage());
 
-            // Non-fatal — continue
+            return response()->json([
+
+                'status'  => 'error',
+
+                'message' => 'Something went wrong. Please try again later.',
+
+            ]);
 
         }
 
     }
 
-
-
-    // ✅ Mail — isolated so one failure doesn't block the other
-
-    // try {
-
-    //     Mail::to($validated['email'])->send(new SendContactMailToUser($contactData));
-
-    // } catch (\Exception $e) {
-
-    //     \Log::warning('User mail failed: ' . $e->getMessage());
-
-    // }
-
-
-
-    // try {
-
-    //     Mail::to('webdeveloper10.intelliworkz@gmail.com')->send(new SendContactMailToAdmin($contactData));
-
-    // } catch (\Exception $e) {
-
-    //     \Log::warning('Admin mail failed: ' . $e->getMessage());
-
-    // }
-
-
-
-    return response()->json([
-
-        'status'   => 'success',
-
-        'redirect' => route('thankyou')
-
-    ]);
-
-
-
-} catch (\Exception $e) {
-
-    \Log::error('Header form error: ' . $e->getMessage());
-
-    return response()->json([
-
-        'status'  => 'error',
-
-        'message' => 'Something went wrong. Please try again later.'
-
-    ]);
-
-}
-
-    }
-
     public function installationstore(Request $request)
-
     {
 
         $validator = \Validator::make($request->all(), [
@@ -874,7 +741,7 @@ class dashboardController extends Controller
 
             'city'           => 'required|string',
 
-            'message'        => 'nullable|string', 
+            'message'        => 'nullable|string',
 
             'simple_captcha' => 'required|integer',
 
@@ -882,25 +749,19 @@ class dashboardController extends Controller
 
         ]);
 
-
-
         if ($validator->fails()) {
 
             return response()->json([
 
                 'status' => 'error',
 
-                'errors' => $validator->errors()
+                'errors' => $validator->errors(),
 
             ], 422);
 
         }
 
-
-
         $validated = $validator->validated();
-
-
 
         if ($validated['simple_captcha'] != $validated['captcha_sum']) {
 
@@ -908,149 +769,131 @@ class dashboardController extends Controller
 
                 'status' => 'error',
 
-                'errors' => ['simple_captcha' => ['Captcha answer is incorrect.']]
+                'errors' => ['simple_captcha' => ['Captcha answer is incorrect.']],
 
             ], 422);
 
         }
 
-
-
-        if (!preg_match('/^\+\d{7,15}$/', $validated['full_phone'])) {
+        if (! preg_match('/^\+\d{7,15}$/', $validated['full_phone'])) {
 
             return response()->json([
 
                 'status' => 'error',
 
-                'errors' => ['full_phone' => ['Please enter a valid phone number.']]
+                'errors' => ['full_phone' => ['Please enter a valid phone number.']],
 
             ], 422);
 
         }
-
-
 
         try {
 
             \App\Models\ServiceRequest::create([
 
-                'name' => $validated['name'],
+                'name'         => $validated['name'],
 
                 'company_name' => $validated['company_name'],
 
-                'contact' => $validated['full_phone'],
+                'contact'      => $validated['full_phone'],
 
-                'email' => $validated['email'],
+                'email'        => $validated['email'],
 
-                'state' => $validated['state'],
+                'state'        => $validated['state'],
 
-                'city' => $validated['city'],
+                'city'         => $validated['city'],
 
-                'message' => $validated['message'] ?? null,
+                'message'      => $validated['message'] ?? null,
 
             ]);
-
-            
-
-            
 
             $contactData = [
 
-            'form_type'    => 'Installation Form',
+                'form_type'    => 'Installation Form',
 
-            'name'         => $validated['name'],
+                'name'         => $validated['name'],
 
-            'company_name' => $validated['company_name'],
+                'company_name' => $validated['company_name'],
 
-            'contact'      => $validated['full_phone'],
+                'contact'      => $validated['full_phone'],
 
-            'email'        => $validated['email'],
+                'email'        => $validated['email'],
 
-            'state'        => $validated['state'],
+                'state'        => $validated['state'],
 
-            'city'         => $validated['city'],
+                'city'         => $validated['city'],
 
-            'message'      => $validated['message'] ?? '',
+                'message'      => $validated['message'] ?? '',
 
-            'date'         => now()->format('Y-m-d H:i:s'),
+                'date'         => now()->format('Y-m-d H:i:s'),
 
-        ];
+            ];
 
-        
+            $sheetUrl = 'https://script.google.com/macros/s/AKfycbzZUy--mLkKq9XvO3GNmxSBmCzmNnMB6IdrOhcIxbCLY7orzN6Ad19Xdh4Lz4ADO3x7kA/exec'; // Replace with your sheet URL
 
-         $sheetUrl = 'https://script.google.com/macros/s/AKfycbzZUy--mLkKq9XvO3GNmxSBmCzmNnMB6IdrOhcIxbCLY7orzN6Ad19Xdh4Lz4ADO3x7kA/exec'; // Replace with your sheet URL
+            if (! empty($sheetUrl)) {
 
+                try {
 
+                    Http::timeout(30)
 
-        if (!empty($sheetUrl)) {
+                        ->withHeaders(['Content-Type' => 'application/json'])
 
-            try {
+                        ->post($sheetUrl, $contactData);
 
-                Http::timeout(30)
+                } catch (\Exception $e) {
 
-                    ->withHeaders(['Content-Type' => 'application/json'])
+                    \Log::warning('Google Sheet push failed: ' . $e->getMessage());
 
-                    ->post($sheetUrl, $contactData);
-
-            } catch (\Exception $e) {
-
-                \Log::warning('Google Sheet push failed: ' . $e->getMessage());
+                }
 
             }
 
-        }
+            // SEND MAIL TO USER
 
-        
+            //  try {
 
-         // SEND MAIL TO USER
+            //     Mail::to($validated['email'])
 
-        //  try {
+            //         ->send(new SendContactMailToUser($contactData));
 
-        //     Mail::to($validated['email'])
+            // } catch (\Exception $e) {
 
-        //         ->send(new SendContactMailToUser($contactData));
+            //     \Log::warning('User mail failed: ' . $e->getMessage());
 
-        // } catch (\Exception $e) {
+            // }
 
-        //     \Log::warning('User mail failed: ' . $e->getMessage());
+            // SEND MAIL TO ADMIN
 
-        // }
+            //  try {
 
-        // SEND MAIL TO ADMIN
+            //     Mail::to('webdeveloper10.intelliworkz@gmail.com')
 
-        //  try {
+            //         ->send(new SendContactMailToAdmin($contactData));
 
-        //     Mail::to('webdeveloper10.intelliworkz@gmail.com')
+            // } catch (\Exception $e) {
 
-        //         ->send(new SendContactMailToAdmin($contactData));
+            //     \Log::warning('Admin mail failed: ' . $e->getMessage());
 
-        // } catch (\Exception $e) {
-
-        //     \Log::warning('Admin mail failed: ' . $e->getMessage());
-
-        // }
-
-
+            // }
 
             return response()->json([
 
-                'status' => 'success',
+                'status'   => 'success',
 
-                'redirect' => route('thankyou')
+                'redirect' => route('thankyou'),
 
             ]);
 
-
-
         } catch (\Exception $e) {
 
-            \Log::error('Service form error: '.$e->getMessage());
+            \Log::error('Service form error: ' . $e->getMessage());
 
             return response()->json([
 
-                'status' => 'error',
+                'status'  => 'error',
 
-                'message' => 'Something went wrong. Please try again later.'
+                'message' => 'Something went wrong. Please try again later.',
 
             ]);
 
@@ -1059,7 +902,6 @@ class dashboardController extends Controller
     }
 
     public function productEnquiryStore(Request $request)
-
     {
 
         $validated = $request->validate([
@@ -1086,41 +928,35 @@ class dashboardController extends Controller
 
         ]);
 
-    
-
         if ($validated['simple_captcha'] != $validated['captcha_sum']) {
 
             return response()->json([
 
                 'status' => 'error',
 
-                'errors' => ['simple_captcha' => 'The Captcha answer is incorrect.']
+                'errors' => ['simple_captcha' => 'The Captcha answer is incorrect.'],
 
             ]);
 
         }
 
-    
-
-        if (!preg_match('/^\+\d{1,4}\d{7,}$/', $validated['full_phone'])) {
+        if (! preg_match('/^\+\d{1,4}\d{7,}$/', $validated['full_phone'])) {
 
             return response()->json([
 
                 'status' => 'error',
 
-                'errors' => ['full_phone' => !preg_match('/^\+\d/', $validated['full_phone'])
+                'errors' => ['full_phone' => ! preg_match('/^\+\d/', $validated['full_phone'])
 
-                    ? 'The Phone Number is required.'
+                        ? 'The Phone Number is required.'
 
-                    : 'Please enter a valid Phone Number.'
+                        : 'Please enter a valid Phone Number.',
 
-                ]
+                ],
 
             ]);
 
         }
-
-    
 
         try {
 
@@ -1148,8 +984,6 @@ class dashboardController extends Controller
 
             ];
 
-    
-
             ProductEnquiry::create([
 
                 'product_name' => $validated['product_name'],
@@ -1170,11 +1004,9 @@ class dashboardController extends Controller
 
             ]);
 
-    
-
             $sheetUrl = 'https://script.google.com/macros/s/AKfycbzZUy--mLkKq9XvO3GNmxSBmCzmNnMB6IdrOhcIxbCLY7orzN6Ad19Xdh4Lz4ADO3x7kA/exec';
 
-            if (!empty($sheetUrl)) {
+            if (! empty($sheetUrl)) {
 
                 try {
 
@@ -1192,8 +1024,6 @@ class dashboardController extends Controller
 
             }
 
-    
-
             // try {
 
             //     Mail::to($validated['email'])->send(new SendContactMailToUser($contactData));
@@ -1203,8 +1033,6 @@ class dashboardController extends Controller
             //     \Log::warning('User mail failed: ' . $e->getMessage());
 
             // }
-
-    
 
             // try {
 
@@ -1216,17 +1044,13 @@ class dashboardController extends Controller
 
             // }
 
-    
-
             return response()->json([
 
                 'status'   => 'success',
 
-                'redirect' => route('thankyou')
+                'redirect' => route('thankyou'),
 
             ]);
-
-    
 
         } catch (\Exception $e) {
 
@@ -1236,7 +1060,7 @@ class dashboardController extends Controller
 
                 'status'  => 'error',
 
-                'message' => 'Something went wrong. Please try again later.'
+                'message' => 'Something went wrong. Please try again later.',
 
             ]);
 
@@ -1244,277 +1068,238 @@ class dashboardController extends Controller
 
     }
 
-public function industryEnquiryStore(Request $request)
+    public function industryEnquiryStore(Request $request)
+    {
 
-{
+        $validated = $request->validate([
 
-    $validated = $request->validate([
+            'industry_name'  => 'required|string|max:255',
 
-        'industry_name'  => 'required|string|max:255',
+            'name'           => 'required|string|max:255',
 
-        'name'           => 'required|string|max:255',
+            'company_name'   => 'required|string|max:255',
 
-        'company_name'   => 'required|string|max:255',
+            'full_phone'     => 'required|string',
 
-        'full_phone'     => 'required|string',
+            'email'          => 'required|email',
 
-        'email'          => 'required|email',
+            'state'          => 'required|string',
 
-        'state'          => 'required|string',
+            'city'           => 'required|string',
 
-        'city'           => 'required|string',
+            'message'        => 'nullable|string',
 
-        'message'        => 'nullable|string',
+            'simple_captcha' => 'required|integer',
 
-        'simple_captcha' => 'required|integer',
+            'captcha_sum'    => 'required|integer',
 
-        'captcha_sum'    => 'required|integer',
+        ], [
 
-    ],[
+            'industry_name.required'  => 'The Industry Name is required.',
 
-        'industry_name.required' => 'The Industry Name is required.',
+            'name.required'           => 'The Name is required.',
 
-        'name.required'          => 'The Name is required.',
+            'company_name.required'   => 'The Company Name is required.',
 
-        'company_name.required'  => 'The Company Name is required.',
+            'full_phone.required'     => 'The Phone Number is required.',
 
-        'full_phone.required'    => 'The Phone Number is required.',
+            'email.required'          => 'The Email Address is required.',
 
-        'email.required'         => 'The Email Address is required.',
+            'email.email'             => 'Please enter a valid Email Address.',
 
-        'email.email'            => 'Please enter a valid Email Address.',
+            'state.required'          => 'The State is required.',
 
-        'state.required'         => 'The State is required.',
+            'city.required'           => 'The City is required.',
 
-        'city.required'          => 'The City is required.',
-
-        'simple_captcha.required'=> 'The Captcha is required.'
-
-    ]);
-
-
-
-    // Captcha Validation
-
-    if ($validated['simple_captcha'] != $validated['captcha_sum']) {
-
-        return response()->json([
-
-            'status' => 'error',
-
-            'errors' => ['simple_captcha' => 'The Captcha answer is incorrect.']
+            'simple_captcha.required' => 'The Captcha is required.',
 
         ]);
 
-    }
+        // Captcha Validation
 
+        if ($validated['simple_captcha'] != $validated['captcha_sum']) {
 
+            return response()->json([
 
-    // Phone Validation
+                'status' => 'error',
 
-    if (!preg_match('/^\+\d{1,4}\d{7,}$/', $validated['full_phone'])) {
+                'errors' => ['simple_captcha' => 'The Captcha answer is incorrect.'],
 
-        return response()->json([
+            ]);
 
-            'status' => 'error',
+        }
 
-            'errors' => [
+        // Phone Validation
 
-                'full_phone' => !preg_match('/^\+\d/', $validated['full_phone'])
+        if (! preg_match('/^\+\d{1,4}\d{7,}$/', $validated['full_phone'])) {
 
-                ? 'The Phone Number is required.'
+            return response()->json([
 
-                : 'Please enter a valid Phone Number.'
+                'status' => 'error',
 
-            ]
+                'errors' => [
 
-        ]);
+                    'full_phone' => ! preg_match('/^\+\d/', $validated['full_phone'])
 
-    }
+                        ? 'The Phone Number is required.'
 
+                        : 'Please enter a valid Phone Number.',
 
+                ],
 
-    try {
+            ]);
 
+        }
 
+        try {
 
-        /* -------------------------------
+            /* -------------------------------
 
            STORE DATA IN DATABASE
 
         --------------------------------*/
 
-        IndustryEnquiry::create([
+            IndustryEnquiry::create([
 
-            'industry_name' => $validated['industry_name'],
+                'industry_name' => $validated['industry_name'],
 
-            'name'          => $validated['name'],
+                'name'          => $validated['name'],
 
-            'company_name'  => $validated['company_name'],
+                'company_name'  => $validated['company_name'],
 
-            'contact'       => $validated['full_phone'],
+                'contact'       => $validated['full_phone'],
 
-            'email'         => $validated['email'],
+                'email'         => $validated['email'],
 
-            'state'         => $validated['state'],
+                'state'         => $validated['state'],
 
-            'city'          => $validated['city'],
+                'city'          => $validated['city'],
 
-            'message'       => $validated['message'] ?? null,
+                'message'       => $validated['message'] ?? null,
 
-        ]);
+            ]);
 
-
-
-
-
-        /* -------------------------------
+            /* -------------------------------
 
            PREPARE DATA FOR EMAIL / SHEET
 
         --------------------------------*/
 
-        $contactData = [
+            $contactData = [
 
-            'form_type'     => 'Industry Enquiry',
+                'form_type'     => 'Industry Enquiry',
 
-            'industry_name' => $validated['industry_name'],
+                'industry_name' => $validated['industry_name'],
 
-            'name'          => $validated['name'],
+                'name'          => $validated['name'],
 
-            'company_name'  => $validated['company_name'],
+                'company_name'  => $validated['company_name'],
 
-            'contact'       => $validated['full_phone'],
+                'contact'       => $validated['full_phone'],
 
-            'email'         => $validated['email'],
+                'email'         => $validated['email'],
 
-            'state'         => $validated['state'],
+                'state'         => $validated['state'],
 
-            'city'          => $validated['city'],
+                'city'          => $validated['city'],
 
-            'message'       => $validated['message'] ?? '',
+                'message'       => $validated['message'] ?? '',
 
-            'date'          => now()->format('Y-m-d H:i:s'),
+                'date'          => now()->format('Y-m-d H:i:s'),
 
-        ];
+            ];
 
-
-
-
-
-        /* -------------------------------
+            /* -------------------------------
 
            GOOGLE SHEET API
 
         --------------------------------*/
 
-        $sheetUrl = 'https://script.google.com/macros/s/AKfycbzZUy--mLkKq9XvO3GNmxSBmCzmNnMB6IdrOhcIxbCLY7orzN6Ad19Xdh4Lz4ADO3x7kA/exec'; // Add your Google Script URL here
+            $sheetUrl = 'https://script.google.com/macros/s/AKfycbzZUy--mLkKq9XvO3GNmxSBmCzmNnMB6IdrOhcIxbCLY7orzN6Ad19Xdh4Lz4ADO3x7kA/exec'; // Add your Google Script URL here
 
+            if (! empty($sheetUrl)) {
 
+                try {
 
-        if (!empty($sheetUrl)) {
+                    Http::timeout(30)
 
-            try {
+                        ->withHeaders(['Content-Type' => 'application/json'])
 
-                Http::timeout(30)
+                        ->post($sheetUrl, $contactData);
 
-                    ->withHeaders(['Content-Type' => 'application/json'])
+                } catch (\Exception $e) {
 
-                    ->post($sheetUrl, $contactData);
+                    \Log::warning('Sheet push failed: ' . $e->getMessage());
 
-            } catch (\Exception $e) {
-
-                \Log::warning('Sheet push failed: ' . $e->getMessage());
+                }
 
             }
 
-        }
-
-
-
-
-
-        /* -------------------------------
+            /* -------------------------------
 
            SEND MAIL TO USER
 
         --------------------------------*/
 
-        // try {
+            // try {
 
-        //     Mail::to($validated['email'])
+            //     Mail::to($validated['email'])
 
-        //         ->send(new SendContactMailToUser($contactData));
+            //         ->send(new SendContactMailToUser($contactData));
 
-        // } catch (\Exception $e) {
+            // } catch (\Exception $e) {
 
-        //     \Log::warning('User mail failed: ' . $e->getMessage());
+            //     \Log::warning('User mail failed: ' . $e->getMessage());
 
-        // }
+            // }
 
+            // /* -------------------------------
 
+            //   SEND MAIL TO ADMIN
 
+            // --------------------------------*/
 
+            // try {
 
-        // /* -------------------------------
+            //     Mail::to('webdeveloper10.intelliworkz@gmail.com')
 
-        //   SEND MAIL TO ADMIN
+            //         ->send(new SendContactMailToAdmin($contactData));
 
-        // --------------------------------*/
+            // } catch (\Exception $e) {
 
-        // try {
+            //     \Log::warning('Admin mail failed: ' . $e->getMessage());
 
-        //     Mail::to('webdeveloper10.intelliworkz@gmail.com')
+            // }
 
-        //         ->send(new SendContactMailToAdmin($contactData));
-
-        // } catch (\Exception $e) {
-
-        //     \Log::warning('Admin mail failed: ' . $e->getMessage());
-
-        // }
-
-
-
-
-
-        /* -------------------------------
+            /* -------------------------------
 
            SUCCESS RESPONSE
 
         --------------------------------*/
 
-        return response()->json([
+            return response()->json([
 
-            'status'   => 'success',
+                'status'   => 'success',
 
-            'redirect' => route('thankyou')
+                'redirect' => route('thankyou'),
 
-        ]);
+            ]);
 
+        } catch (\Exception $e) {
 
+            \Log::error('Industry enquiry error: ' . $e->getMessage());
 
-    } catch (\Exception $e) {
+            return response()->json([
 
+                'status'  => 'error',
 
+                'message' => 'Something went wrong. Please try again later.',
 
-        \Log::error('Industry enquiry error: ' . $e->getMessage());
+            ]);
 
-
-
-        return response()->json([
-
-            'status'  => 'error',
-
-            'message' => 'Something went wrong. Please try again later.'
-
-        ]);
+        }
 
     }
-
-}
-
-   
 
     /**
 
@@ -1527,14 +1312,11 @@ public function industryEnquiryStore(Request $request)
      */
 
     public function create()
-
     {
 
         //
 
     }
-
-
 
     /**
 
@@ -1549,14 +1331,11 @@ public function industryEnquiryStore(Request $request)
      */
 
     public function store(Request $request)
-
     {
 
         //
 
     }
-
-
 
     /**
 
@@ -1571,14 +1350,11 @@ public function industryEnquiryStore(Request $request)
      */
 
     public function show($id)
-
     {
 
         //
 
     }
-
-
 
     /**
 
@@ -1593,14 +1369,11 @@ public function industryEnquiryStore(Request $request)
      */
 
     public function edit($id)
-
     {
 
         //
 
     }
-
-
 
     /**
 
@@ -1617,14 +1390,11 @@ public function industryEnquiryStore(Request $request)
      */
 
     public function update(Request $request, $id)
-
     {
 
         //
 
     }
-
-
 
     /**
 
@@ -1639,13 +1409,10 @@ public function industryEnquiryStore(Request $request)
      */
 
     public function destroy($id)
-
     {
 
         //
 
     }
-
- 
 
 }
