@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -8,13 +7,23 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Category extends Model
 {
+
     use HasFactory, SoftDeletes;
 
     protected $table = "category";
 
     protected $fillable = [
+
         'category',
+
         'cat_description',
-        'url'
+
+        'url',
+
+        'meta_title',
+
+        'meta_description',
+
     ];
+
 }
