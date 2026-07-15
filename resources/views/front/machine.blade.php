@@ -12,9 +12,7 @@
 
             <div>
 
-                <p class="title_24"><a href="{{ url('/') }}" class="text-585">Home</a> / <a href="./blogs.php"
-
-                        class="text-585">Services</a> / Machine Upgrades</p>
+                <p class="title_24"><a href="{{ url('/') }}" class="text-585">Home</a> / <span class="text-585">Services</span> / Machine Upgrades</p>
 
                 <h1 class="title_60">Shot Blasting Machine Upgrades & Modernization Solutions</h1>
 
@@ -80,7 +78,7 @@
 
         <div class="row">
 
-            
+
 
             <div class="col-lg-5 pe-lg-5 mb-4 mb-lg-0">
 
@@ -90,7 +88,7 @@
 
             </div>
 
-            
+
 
             <div class="col-lg-7">
 
@@ -204,7 +202,7 @@
 
             <div class="col-lg-3">
 
-              
+
 
                 <p class="title_24">Jinil’s upgrade methodology focuses on performance validation, documentation integrity, and
 
@@ -272,9 +270,9 @@
 
                         <div class="blast">
 
-                           
 
-                            
+
+
 
                             <svg class="process_item_icon mb_30" width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
 
@@ -348,7 +346,7 @@
 
                         <div class="blast">
 
-                           
+
 
                             <svg class="process_item_icon mb_30" width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
 
