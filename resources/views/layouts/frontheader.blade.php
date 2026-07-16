@@ -413,6 +413,8 @@ $category = DB::table('category')
 
                             <ul class="dropdown-menu resources_menu">
 
+                                 <li><a href="{{ route('blogs') }}">Blogs</a></li>
+
                                 <li><a href="{{ route('downloads') }}">Downloads</a></li>
 
                                 <li><a href="{{ route('faqs') }}">FAQs</a></li>

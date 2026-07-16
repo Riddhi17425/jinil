@@ -87,6 +87,8 @@ $indusries = DB::table('indcategory')
 
                         <li><a href="{{ route('faqs') }}">FAQs</a></li>
 
+                        <li><a href="{{ route('blogs') }}">Blogs</a></li>
+
                         <li><a href="{{ route('contact') }}">Contact Us</a></li>
 
                         <!--<li><a href="{{ route('spareparts') }}">Spare Parts</a></li>-->
@@ -395,9 +397,9 @@ $indusries = DB::table('indcategory')
                       <div class="mb-3">
                           <label class="form-label">Contact No. <span class="text-danger">*</span></label>
 
-                          <input type="tel" id="wa_phone" class="form-control popup-input" 
+                          <input type="tel" id="wa_phone" class="form-control popup-input"
                               oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,15);" required>
-                            
+
                             <small class="text-danger d-none" id="wa_error">
                                 Contact number must be required
                             </small>
@@ -426,7 +428,7 @@ $indusries = DB::table('indcategory')
         <img src="{{ asset('public/front/images/whatsapp.png')}}" alt="whatsapp">
     </a>
 </div>
-    
+
 </footer>
 
 
@@ -559,7 +561,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const countryData = iti.getSelectedCountryData();
         fullPhone.value = "+" + countryData.dialCode + input.value;
         countryName.value = countryData.name;
-        
+
         sessionStorage.setItem("whatsapp_used", "yes");
     });
 
