@@ -47,16 +47,16 @@
                 </h2>
                 {!! $product->short_description ?? '' !!}
 
-                <!-- <button 
-                    class="com_btn mt-2 product-enquire-btn" 
+                <!-- <button
+                    class="com_btn mt-2 product-enquire-btn"
                     data-product="{{ $product->name }}"
-                    data-bs-toggle="modal" 
+                    data-bs-toggle="modal"
                     data-bs-target="#productEnquiryModal">
                     Enquire Now
                 </button> -->
 
                 <button class="com_btn product-enquire-btn" data-product="{{ $product->name }}"
-                    data-bs-toggle="modal" 
+                    data-bs-toggle="modal"
                     data-bs-target="#productEnquiryModal">
                     Enquire Now
                 </button>
@@ -310,7 +310,7 @@
          <div class="col-lg-12">
             <div class="spec-table-wrapper">
                <!--<table class="spec-table">-->
-                 
+
                <!--   <tbody>-->
                <!--     <tr>-->
                <!--             <th>Motor HP</th>-->
@@ -324,7 +324,7 @@
                <!--             <td data-label="Motor HP">40 HP</td>-->
                <!--             <td data-label="Motor HP">50 HP</td>-->
                <!--         </tr>-->
-                        
+
                <!--         <tr>-->
                <!--             <th>Shot Flow (kg/min)</th>-->
                <!--             <td data-label="Shot Flow">30–60</td>-->
@@ -337,7 +337,7 @@
                <!--             <td data-label="Shot Flow">450–700</td>-->
                <!--             <td data-label="Shot Flow">700–1000+</td>-->
                <!--         </tr>-->
-                        
+
                <!--         <tr>-->
                <!--             <th>Typical Application</th>-->
                <!--             <td data-label="Application">Small cabinet</td>-->
@@ -350,7 +350,7 @@
                <!--             <td data-label="Application">Plate blasting</td>-->
                <!--             <td data-label="Application">High production</td>-->
                <!--         </tr>-->
-                    
+
                <!--   </tbody>-->
                <!--</table>-->
                <table class="spec-table">
@@ -445,7 +445,7 @@
       </div>
    </div>
 </section>
-@endif 
+@endif
 
 @if(isset($product->configuration_title) && $product->configuration_title != '' && isset($product->configuration_description) && $product->configuration_description != '')
 <section class="mt_100">
@@ -699,7 +699,7 @@
         <div class="service_Scope_card">
             <div class="row">
             @if (isset($product->advantages) && is_countable($product->advantages) && count($product->advantages) > 0)
-                <div class="<?= $colClass ?>">
+                <div class="<?php echo $colClass ?>">
                     <div class="service_Scope py-4">
                         <div class="sec_hed_top mb-3 text-start">
                             <p>Operational Performance Benefits</p>
@@ -718,7 +718,7 @@
                 </div>
             @endif
             @if (isset($product->design_features) && is_countable($product->design_features) && count($product->design_features) > 0)
-                <div class="<?= $colClass ?>">
+                <div class="<?php echo $colClass ?>">
                     <div class="service_Scope py-4">
                         <div class="sec_hed_top mb-3 text-start">
                             <p>Advanced Engineering Highlights</p>
@@ -737,7 +737,7 @@
                 </div>
             @endif
             @if (isset($product->selection_guidelines) && is_countable($product->selection_guidelines) && count($product->selection_guidelines) > 0)
-                <div class="<?= $colClass ?>">
+                <div class="<?php echo $colClass ?>">
                     <div class="service_Scope py-4">
                         <div class="sec_hed_top mb-3 text-start">
                             <p>Decision Making Factors</p>
@@ -757,7 +757,7 @@
                 </div>
             @endif
             @if (isset($product->optional_features) && is_countable($product->optional_features) && count($product->optional_features) > 0)
-                <div class="<?= $colClass ?>">
+                <div class="<?php echo $colClass ?>">
                     <div class="service_Scope py-4">
                         <div class="sec_hed_top mb-3 text-start">
                             <p>Additional System Enhancements</p>
@@ -876,96 +876,68 @@
 @endif
 
 @if(isset($product->faqs) && is_countable($product->faqs) && count($product->faqs) > 0)
-<section class="mb_100 mt_100">
-    <div class="container">
-        <div class="sec_hed_top mb_40">
-            <h2 class="title_60">Frequently Asked Questions</h2>
-            <span class="text-585 d-block">Clear answers to common questions about Jinil's shot blasting machines, surface preparation solutions, and engineering support—helping you make informed decisions with confidence.</span>
+    @php
+        $faqItems = [];
 
+        $decodedFaqItems = $product->faqs;
+
+        if (is_array($decodedFaqItems)) {
+            foreach ($decodedFaqItems as $item) {
+                $question = trim(strip_tags($item['question'] ?? ''));
+                $answer   = trim(strip_tags($item['answer'] ?? ''));
+
+                if ($question && $answer) {
+                    $faqItems[] = [
+                        'question' => $question,
+                        'answer'   => $answer,
+                    ];
+                }
+            }
+        }
+
+        $faqSchema = [
+            '@context'  => 'https://schema.org',
+            '@type'     => 'FAQPage',
+            'mainEntity' => array_map(function ($item) {
+                return [
+                    '@type' => 'Question',
+                    'name'  => $item['question'],
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text'  => $item['answer'],
+                    ],
+                ];
+            }, $faqItems),
+        ];
+    @endphp
+
+    <section class="mb_100 mt_100">
+        <div class="container">
+            <div class="sec_hed_top mb_40">
+                <h2 class="title_60">Frequently Asked Questions</h2>
+                <span class="text-585 d-block">Clear answers to common questions about Jinil's shot blasting machines, surface preparation solutions, and engineering support—helping you make informed decisions with confidence.</span>
+            </div>
+            <div class="faq_group active">
+                @foreach($product->faqs as $k => $v)
+                <div class="faq_item">
+                    <div class="faq_question">
+                        <span>{{$v['question'] ?? ''}}</span>
+                        <span class="faq_icon">+</span>
+                    </div>
+                    <div class="faq_answer">
+                        <p>{{$v['answer'] ?? ''}}</p>
+                    </div>
+                </div>
+                @endforeach
+            </div>
         </div>
-        <div class="faq_group active">
-            @foreach($product->faqs as $k => $v)
-            <div class="faq_item">
-                <div class="faq_question">
-                    <span>{{$v['question'] ?? ''}}</span>
-                    <span class="faq_icon">+</span>
-                </div>
-                <div class="faq_answer">
-                <p>{{$v['answer'] ?? ''}}</p>
-                </div>
-            </div>
-            @endforeach
-            <!-- <div class="faq_item">
-                <div class="faq_question">
-                    <span>What is the use of a suction-type shot blasting machine?</span>
-                    <span class="faq_icon">+</span>
-                </div>
-                <div class="faq_answer">
-                    <p>A suction-type shot blasting machine is used for rust removal, paint stripping, surface
-                        preparation, deburring, and decorative finishing of small to medium-sized industrial components.
-                    </p>
-                </div>
-            </div>
+    </section>
 
-            <div class="faq_item">
-                <div class="faq_question">
-                    <span>Which industries use cabinet-type sandblasting machines?</span>
-                    <span class="faq_icon">+</span>
-                </div>
-                <div class="faq_answer">
-                    <p>Industries like automotive, construction, aerospace, and manufacturing widely use these machines.
-                    </p>
-                </div>
-            </div>
-
-            <div class="faq_item">
-                <div class="faq_question">
-                    <span>What abrasives can be used in this machine?</span>
-                    <span class="faq_icon">+</span>
-                </div>
-                <div class="faq_answer">
-                    <p>Industries like automotive, construction, aerospace, and manufacturing widely use these machines.
-                    </p>
-                </div>
-            </div>
-
-            <div class="faq_item">
-                <div class="faq_question">
-                    <span>Does Jinil provide installation and commissioning support?</span>
-                    <span class="faq_icon">+</span>
-                </div>
-                <div class="faq_answer">
-                    <p>Industries like automotive, construction, aerospace, and manufacturing widely use these machines.
-                    </p>
-                </div>
-            </div>
-
-            <div class="faq_item">
-                <div class="faq_question">
-                    <span>What kind of after-sales service does Jinil offer? </span>
-                    <span class="faq_icon">+</span>
-                </div>
-                <div class="faq_answer">
-                    <p>Industries like automotive, construction, aerospace, and manufacturing widely use these machines.
-                    </p>
-                </div>
-            </div>
-
-            <div class="faq_item">
-                <div class="faq_question">
-                    <span>Are Jinil machines compliant with international quality standards? </span>
-                    <span class="faq_icon">+</span>
-                </div>
-                <div class="faq_answer">
-                    <p>Industries like automotive, construction, aerospace, and manufacturing widely use these machines.
-                    </p>
-                </div>
-            </div> -->
-
-        </div>
-
-    </div>
-</section>
+    @if(!empty($faqItems))
+    <script type="application/ld+json">
+        {!! json_encode($faqSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
+    </script>
+    @endif
 @endif
 
 <script>

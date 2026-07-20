@@ -4,14 +4,11 @@
 
     <div class="container-fluid">
 
-
-
         <div class="navi_page_child">
 
             <div>
 
                 <p class="title_24"><a href="{{ url('/') }}" class="text-585">Home</a> / <a href="{{ route('blogs') }}"
-
                         class="text-585">Blogs</a> / {{ $blogsdetail->title }}</p>
 
                 <h1 class="title_60">{{ $blogsdetail->title }}</h1>
@@ -24,24 +21,18 @@
 
                 <!-- circular text image -->
 
-                <img src="{{ asset('public/front/images/innder-header-jump.svg') }}" class="circle_text_img" alt="innder header jump">
-
-
+                <img src="{{ asset('public/front/images/innder-header-jump.svg') }}" class="circle_text_img"
+                    alt="innder header jump">
 
                 <svg class="arrow_img" width="18" height="23" viewBox="0 0 18 23" fill="none"
-
                     xmlns="http://www.w3.org/2000/svg">
 
                     <path
-
                         d="M8.85653 1.15617L8.85653 20.9552L8.85653 1.15617ZM8.85653 20.9552L16.5562 13.2555L8.85653 20.9552ZM8.85653 20.9552L1.15692 13.2556L8.85653 20.9552Z"
-
                         fill="#58595B" />
 
                     <path
-
                         d="M8.85653 1.15617L8.85653 20.9552M8.85653 20.9552L16.5562 13.2555M8.85653 20.9552L1.15692 13.2556"
-
                         stroke="#58595B" stroke-width="2.31318" stroke-linecap="round" stroke-linejoin="round" />
 
                 </svg>
@@ -54,317 +45,312 @@
 
 </section>
 
+@if ($blogsdetail)
 
+    <section class="mb_100 blogs_detials">
 
-@if($blogsdetail)
+        <div class="container-fluid">
 
-<section class="mb_100 blogs_detials">
+            <div class="mb_40">
 
-    <div class="container-fluid">
+                <img class="img-fluid" src="{{ asset('public/Blogs/detail_image/' . $blogsdetail->detail_image) }}"
+                    alt="images">
 
-        <div class="mb_40">
+            </div>
 
-            <img class="img-fluid" src="{{ asset('public/Blogs/detail_image/' . $blogsdetail->detail_image) }}" alt="images">
+            <div class="blog-guide-section">
 
-        </div>
+                <!-- Sidebar -->
 
+                <aside class="blog-sidebar">
 
+                    <p class="title_24">CONTENTS</p>
 
-        <div class="blog-guide-section">
+                    <ul id="dynamic-sidebar">
 
-            <!-- Sidebar -->
+                        <!-- Links will be generated here dynamically via JS -->
 
-            <aside class="blog-sidebar">
+                    </ul>
 
-                <p class="title_24">CONTENTS</p>
+                </aside>
 
-                <ul id="dynamic-sidebar">
+                <!-- Main Content -->
 
-                    <!-- Links will be generated here dynamically via JS -->
+                <div class="blog-content">
 
-                </ul>
+                    <!-- Short Description -->
 
-            </aside>
-
-
-
-            <!-- Main Content -->
-
-            <div class="blog-content">
-
-                <!-- Short Description -->
-
-                <div class="blog-content-section">
-
-                    {!! $blogsdetail->short_description !!}
-
-                </div>
-
-
-
-                <!-- Main Description -->
-
-                <div class="blog-content-section">
-
-                    {!! $blogsdetail->description !!}
-
-                </div>
-
-
-
-                <!-- CTA Box -->
-
-                @php
-                    $ctaTextClean = trim(strip_tags($blogsdetail->cta_text ?? ''));
-                @endphp
-
-                @if($blogsdetail->cta_image)
                     <div class="blog-content-section">
-                        <div class="cta_image_wrap">
-                            <img class="img-fluid"
-                                src="{{ asset('public/Blogs/cta_image/' . $blogsdetail->cta_image) }}"
-                                alt="{{ $blogsdetail->title }}">
-                        </div>
+
+                        {!! $blogsdetail->short_description !!}
+
                     </div>
-                @elseif($ctaTextClean !== '')
+
+                    <!-- Main Description -->
+
                     <div class="blog-content-section">
-                        <div class="blog_det_consu">
-                            <div class="col-lg-10">{!! $blogsdetail->cta_text !!}</div>
-                        </div>
-                    </div>
-                @endif
 
-                <!-- Conclusion -->
-
-                <div class="blog-content-section" id="conclusion">
-
-                    <h2>Conclusion</h2>
-
-                    {!! $blogsdetail->conclusion !!}
-
-                </div>
-
-
-
-                <!-- Author Box -->
-
-                <div class="author-box p-4 rounded" id="author-profile">
-
-                    <!-- Avatar -->
-
-                    <div class="author-avatar position-relative flex-shrink-0">
-
-                        <img class="author-avatar-img"
-
-                            src="{{ asset('public/front/images/author.jpg') }}"
-
-                            onerror="this.src='https://ui-avatars.com/api/?name=Jinil+Desai&size=100&background=e8f0fb&color=105293'"
-
-                            alt="Author">
+                        {!! $blogsdetail->description !!}
 
                     </div>
 
+                    <!-- CTA Box -->
 
+                    @php
+                        $ctaTextClean = trim(strip_tags($blogsdetail->cta_text ?? ''));
+                    @endphp
 
-                    <!-- Info -->
-
-                    <div class="author-info">
-
-                        <h4 class="author-name mb-2 d-flex align-items-center m-0">
-
-                            Jinil Desai
-
-                        </h4>
-
-                        <p class="author-bio m-0 mt-2">
-
-                            Jinil Desai is a surface preparation industry expert with years of experience in providing innovative solutions for industrial surface treatment. Passionate about quality and precision in every project.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-
-
-
-                @if($blogsdetail->title_description && count($blogsdetail->title_description) > 0)
-
-                <div class="blog-content-section" id="faqs">
-
-                    <h2>FAQs</h2>
-
-                    <div class="faq_group active">
-
-                        @foreach($blogsdetail->title_description as $index => $faq)
-
-                            <div class="faq_item {{ $index === 0 ? 'active' : '' }}">
-
-                                <div class="faq_question">
-
-                                    <h5 class="faq_title">{{ $faq['faq_title'] }}</h5>
-
-                                    <span class="faq_icon">+</span>
-
-                                </div>
-
-                                <div class="faq_answer">
-
-                                    {!! $faq['faq_description'] !!}
-
-                                </div>
-
+                    @if ($blogsdetail->cta_image)
+                        <div class="blog-content-section">
+                            <div class="cta_image_wrap">
+                                <img class="img-fluid"
+                                    src="{{ asset('public/Blogs/cta_image/' . $blogsdetail->cta_image) }}"
+                                    alt="{{ $blogsdetail->title }}">
                             </div>
+                        </div>
+                    @elseif($ctaTextClean !== '')
+                        <div class="blog-content-section">
+                            <div class="blog_det_consu">
+                                <div class="col-lg-10">{!! $blogsdetail->cta_text !!}</div>
+                            </div>
+                        </div>
+                    @endif
 
-                        @endforeach
+                    <!-- Conclusion -->
+
+                    <div class="blog-content-section" id="conclusion">
+
+                        <h2>Conclusion</h2>
+
+                        {!! $blogsdetail->conclusion !!}
 
                     </div>
 
-                </div>
+                    <!-- Author Box -->
 
+                    <div class="author-box rounded p-4" id="author-profile">
+
+                        <!-- Avatar -->
+
+                        <div class="author-avatar position-relative flex-shrink-0">
+
+                            <img class="author-avatar-img" src="{{ asset('public/front/images/author.jpg') }}"
+                                onerror="this.src='https://ui-avatars.com/api/?name=Jinil+Desai&size=100&background=e8f0fb&color=105293'"
+                                alt="Author">
+
+                        </div>
+
+                        <!-- Info -->
+
+                        <div class="author-info">
+
+                            <h4 class="author-name d-flex align-items-center m-0 mb-2">
+
+                                Jinil Desai
+
+                            </h4>
+
+                            <p class="author-bio m-0 mt-2">
+
+                                Jinil Desai is a surface preparation industry expert with years of experience in
+                                providing innovative solutions for industrial surface treatment. Passionate about
+                                quality and precision in every project.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    @if ($blogsdetail->title_description && count($blogsdetail->title_description) > 0)
+                        @php
+                            $faqItems = [];
+
+                            $decodedFaqItems = $blogsdetail->title_description;
+
+                            if (is_array($decodedFaqItems)) {
+                                foreach ($decodedFaqItems as $item) {
+                                    $question = trim(strip_tags($item['faq_title'] ?? ''));
+                                    $answer = trim(strip_tags($item['faq_description'] ?? ''));
+
+                                    if ($question && $answer) {
+                                        $faqItems[] = [
+                                            'question' => $question,
+                                            'answer' => $answer,
+                                        ];
+                                    }
+                                }
+                            }
+
+                            $faqSchema = [
+                                '@context' => 'https://schema.org',
+                                '@type' => 'FAQPage',
+                                'mainEntity' => array_map(function ($item) {
+                                    return [
+                                        '@type' => 'Question',
+                                        'name' => $item['question'],
+                                        'acceptedAnswer' => [
+                                            '@type' => 'Answer',
+                                            'text' => $item['answer'],
+                                        ],
+                                    ];
+                                }, $faqItems),
+                            ];
+                        @endphp
+
+                        <div class="blog-content-section" id="faqs">
+                            <h2>FAQs</h2>
+                            <div class="faq_group active">
+                                @foreach ($blogsdetail->title_description as $index => $faq)
+                                    <div class="faq_item {{ $index === 0 ? 'active' : '' }}">
+                                        <div class="faq_question">
+                                            <h5 class="faq_title">{{ $faq['faq_title'] }}</h5>
+                                            <span class="faq_icon">+</span>
+                                        </div>
+                                        <div class="faq_answer">
+                                            {!! $faq['faq_description'] !!}
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
+
+                    @if(!empty($faqItems))
+                    <script type="application/ld+json">
+                        {!! json_encode($faqSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
+                    </script>
                 @endif
 
+                    <!--faqs -->
 
+                    <!--          <div class="blog-content-section" id="faqs">-->
 
-                  <!--faqs -->
+                    <!--              <h2>FAQs</h2>-->
 
-      <!--          <div class="blog-content-section" id="faqs">-->
+                    <!--               <div class="faq_group active">-->
 
-      <!--              <h2>FAQs</h2>-->
+                    <!--   <div class="faq_item active">-->
 
-      <!--               <div class="faq_group active">-->
+                    <!--      <div class="faq_question">-->
 
-      <!--   <div class="faq_item active">-->
+                    <!--         <h5 class="faq_title">What services do you provide?</h5>-->
 
-      <!--      <div class="faq_question">-->
+                    <!--         <span class="faq_icon">+</span>-->
 
-      <!--         <h5 class="faq_title">What services do you provide?</h5>-->
+                    <!--      </div>-->
 
-      <!--         <span class="faq_icon">+</span>-->
+                    <!--      <div class="faq_answer">-->
 
-      <!--      </div>-->
+                    <!--         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, voluptatum. We provide high-quality industrial solutions and engineering services.</p>-->
 
-      <!--      <div class="faq_answer">-->
+                    <!--      </div>-->
 
-      <!--         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, voluptatum. We provide high-quality industrial solutions and engineering services.</p>-->
+                    <!--   </div>-->
 
-      <!--      </div>-->
+                    <!--   <div class="faq_item">-->
 
-      <!--   </div>-->
+                    <!--      <div class="faq_question">-->
 
-      <!--   <div class="faq_item">-->
+                    <!--         <h5 class="faq_title">How can I request a quotation?</h5>-->
 
-      <!--      <div class="faq_question">-->
+                    <!--         <span class="faq_icon">+</span>-->
 
-      <!--         <h5 class="faq_title">How can I request a quotation?</h5>-->
+                    <!--      </div>-->
 
-      <!--         <span class="faq_icon">+</span>-->
+                    <!--      <div class="faq_answer">-->
 
-      <!--      </div>-->
+                    <!--         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Simply contact our sales team through the enquiry form or call us directly.</p>-->
 
-      <!--      <div class="faq_answer">-->
+                    <!--      </div>-->
 
-      <!--         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Simply contact our sales team through the enquiry form or call us directly.</p>-->
+                    <!--   </div>-->
 
-      <!--      </div>-->
+                    <!--   <div class="faq_item">-->
 
-      <!--   </div>-->
+                    <!--      <div class="faq_question">-->
 
-      <!--   <div class="faq_item">-->
+                    <!--         <h5 class="faq_title">Do you offer customized solutions?</h5>-->
 
-      <!--      <div class="faq_question">-->
+                    <!--         <span class="faq_icon">+</span>-->
 
-      <!--         <h5 class="faq_title">Do you offer customized solutions?</h5>-->
+                    <!--      </div>-->
 
-      <!--         <span class="faq_icon">+</span>-->
+                    <!--      <div class="faq_answer">-->
 
-      <!--      </div>-->
+                    <!--         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. We design customized solutions according to customer requirements.</p>-->
 
-      <!--      <div class="faq_answer">-->
+                    <!--      </div>-->
 
-      <!--         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. We design customized solutions according to customer requirements.</p>-->
+                    <!--   </div>-->
 
-      <!--      </div>-->
+                    <!--   <div class="faq_item">-->
 
-      <!--   </div>-->
+                    <!--      <div class="faq_question">-->
 
-      <!--   <div class="faq_item">-->
+                    <!--         <h5 class="faq_title">What industries do you serve?</h5>-->
 
-      <!--      <div class="faq_question">-->
+                    <!--         <span class="faq_icon">+</span>-->
 
-      <!--         <h5 class="faq_title">What industries do you serve?</h5>-->
+                    <!--      </div>-->
 
-      <!--         <span class="faq_icon">+</span>-->
+                    <!--      <div class="faq_answer">-->
 
-      <!--      </div>-->
+                    <!--         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. We serve automotive, engineering, fabrication, foundry, and infrastructure industries.</p>-->
 
-      <!--      <div class="faq_answer">-->
+                    <!--      </div>-->
 
-      <!--         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. We serve automotive, engineering, fabrication, foundry, and infrastructure industries.</p>-->
+                    <!--   </div>-->
 
-      <!--      </div>-->
+                    <!--   <div class="faq_item">-->
 
-      <!--   </div>-->
+                    <!--      <div class="faq_question">-->
 
-      <!--   <div class="faq_item">-->
+                    <!--         <h5 class="faq_title">Do you provide installation support?</h5>-->
 
-      <!--      <div class="faq_question">-->
+                    <!--         <span class="faq_icon">+</span>-->
 
-      <!--         <h5 class="faq_title">Do you provide installation support?</h5>-->
+                    <!--      </div>-->
 
-      <!--         <span class="faq_icon">+</span>-->
+                    <!--      <div class="faq_answer">-->
 
-      <!--      </div>-->
+                    <!--         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Yes, our team provides installation, commissioning, and operator training.</p>-->
 
-      <!--      <div class="faq_answer">-->
+                    <!--      </div>-->
 
-      <!--         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Yes, our team provides installation, commissioning, and operator training.</p>-->
+                    <!--   </div>-->
 
-      <!--      </div>-->
+                    <!--   <div class="faq_item">-->
 
-      <!--   </div>-->
+                    <!--      <div class="faq_question">-->
 
-      <!--   <div class="faq_item">-->
+                    <!--         <h5 class="faq_title">Is after-sales service available?</h5>-->
 
-      <!--      <div class="faq_question">-->
+                    <!--         <span class="faq_icon">+</span>-->
 
-      <!--         <h5 class="faq_title">Is after-sales service available?</h5>-->
+                    <!--      </div>-->
 
-      <!--         <span class="faq_icon">+</span>-->
+                    <!--      <div class="faq_answer">-->
 
-      <!--      </div>-->
+                    <!--         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. We provide dedicated after-sales support and maintenance services.</p>-->
 
-      <!--      <div class="faq_answer">-->
+                    <!--      </div>-->
 
-      <!--         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. We provide dedicated after-sales support and maintenance services.</p>-->
+                    <!--   </div>-->
 
-      <!--      </div>-->
+                    <!--</div>-->
 
-      <!--   </div>-->
+                    <!--          </div>-->
 
-      <!--</div>-->
-
-      <!--          </div>-->
-
-
+                </div>
 
             </div>
 
         </div>
 
-    </div>
-
-</section>
+    </section>
 
 @endif
-
-
-
-
-
-
 
 <!--<section class="insights_section mt_100 mb_100">-->
 
@@ -378,25 +364,20 @@
 
 <!--            </div>-->
 
-
-
 <!--            <div class="col-md-5 text-lg-end">-->
 
 <!--                <a href="{{ route('blogs') }}" class="com_btn com_btn_2">View all</a>-->
 
 <!--            </div>-->
 
-
-
 <!--        </div>-->
-
-
 
 <!--        <div class="insights_wrapper">-->
 
 <!--            <div class="row">-->
 
-<!--                @foreach($blogs as $blog)-->
+<!--                @foreach ($blogs as $blog)
+-->
 
 <!--                    <div class="col-md-4">-->
 
@@ -412,7 +393,7 @@
 
 <!--                                <hr>-->
 
-<!--                                <p class="mb-2">{{ $blog->date}}</p>-->
+<!--                                <p class="mb-2">{{ $blog->date }}</p>-->
 
 <!--                                <a href="{{ route('blogdetail', ['url' => $blog->url]) }}"><h3 class="title_24">{{ $blog->title }}</h3></a>-->
 
@@ -422,9 +403,8 @@
 
 <!--                    </div>-->
 
-<!--                    @endforeach-->
-
-
+<!--
+@endforeach-->
 
 <!--            </div>-->
 
@@ -433,8 +413,6 @@
 <!--    </div>-->
 
 <!--</section>-->
-
-
 
 <!--<section class="faq_main mb_100 mt_100">-->
 
@@ -558,43 +536,42 @@
 
 <!--</section>-->
 
-
-
 <script>
+    document.addEventListener("DOMContentLoaded", function() {
 
 
 
-document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".faq_question").forEach(question => {
 
 
 
-    document.querySelectorAll(".faq_question").forEach(question => {
+            question.addEventListener("click", function() {
 
 
 
-        question.addEventListener("click", function () {
+                const item = this.parentElement;
+
+                const group = item.closest(".faq_group");
 
 
 
-            const item = this.parentElement;
+                group.querySelectorAll(".faq_item").forEach(faq => {
 
-            const group = item.closest(".faq_group");
+                    if (faq !== item) {
+
+                        faq.classList.remove("active");
+
+                    }
+
+                });
 
 
 
-            group.querySelectorAll(".faq_item").forEach(faq => {
+                item.classList.toggle("active");
 
-                if (faq !== item) {
 
-                    faq.classList.remove("active");
-
-                }
 
             });
-
-
-
-            item.classList.toggle("active");
 
 
 
@@ -603,20 +580,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     });
-
-
-
-});
-
-
-
 </script>
 
-
-
 <script>
-
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function() {
 
         const sidebarList = document.getElementById("dynamic-sidebar");
 
@@ -664,7 +631,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     const flexContainer = document.createElement("div");
 
-                    flexContainer.className = "d-flex align-items-center justify-content-between heading-wrapper";
+                    flexContainer.className =
+                        "d-flex align-items-center justify-content-between heading-wrapper";
 
                     flexContainer.appendChild(a);
 
@@ -672,7 +640,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-                    if (index === 0) { a.classList.add("active"); }
+                    if (index === 0) {
+                        a.classList.add("active");
+                    }
 
 
 
@@ -714,11 +684,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
                         toggleBtn.style.cursor = "pointer";
 
-                        toggleBtn.innerHTML = '<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+                        toggleBtn.innerHTML =
+                            '<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
 
 
-                        allDropdowns.push({ ul: ul, btn: toggleBtn });
+                        allDropdowns.push({
+                            ul: ul,
+                            btn: toggleBtn
+                        });
 
 
 
@@ -734,13 +708,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
                         toggleBtn.onclick = function(e) {
 
-                            e.preventDefault(); e.stopPropagation();
+                            e.preventDefault();
+                            e.stopPropagation();
 
-                            const isCollapsed = ul.style.maxHeight === "0px" || ul.style.maxHeight === "";
+                            const isCollapsed = ul.style.maxHeight === "0px" || ul.style
+                                .maxHeight === "";
 
                             allDropdowns.forEach(item => {
 
-                                if (item.ul !== ul) { item.ul.style.maxHeight = "0px"; item.btn.style.transform = "rotate(0deg)"; }
+                                if (item.ul !== ul) {
+                                    item.ul.style.maxHeight = "0px";
+                                    item.btn.style.transform = "rotate(0deg)";
+                                }
 
                             });
 
@@ -750,7 +729,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
                                 toggleBtn.style.transform = "rotate(180deg)";
 
-                                setTimeout(() => { if (ul.style.maxHeight !== "0px") ul.style.maxHeight = "1000px"; }, 300);
+                                setTimeout(() => {
+                                    if (ul.style.maxHeight !== "0px") ul.style.maxHeight =
+                                        "1000px";
+                                }, 300);
 
                             } else {
 
@@ -766,7 +748,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
                         const flexContainer = currentH2Li.querySelector(".heading-wrapper");
 
-                        if (flexContainer) { flexContainer.appendChild(toggleBtn); }
+                        if (flexContainer) {
+                            flexContainer.appendChild(toggleBtn);
+                        }
 
                         currentH2Li.appendChild(ul);
 
@@ -800,7 +784,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         links.forEach(link => {
 
-            link.addEventListener("click", function (e) {
+            link.addEventListener("click", function(e) {
 
                 e.preventDefault();
 
@@ -824,7 +808,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
-                    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
 
                 }
 
@@ -838,17 +825,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     const linkRect = this.getBoundingClientRect();
 
-                    const relativeTop = linkRect.top - containerRect.top + sidebarContainer.scrollTop;
+                    const relativeTop = linkRect.top - containerRect.top + sidebarContainer
+                        .scrollTop;
 
-                    const centerOffset = relativeTop - (sidebarContainer.clientHeight / 2) + (linkRect.height / 2);
+                    const centerOffset = relativeTop - (sidebarContainer.clientHeight / 2) + (
+                        linkRect.height / 2);
 
-                    sidebarContainer.scrollTo({ top: centerOffset > 0 ? centerOffset : 0, behavior: 'smooth' });
+                    sidebarContainer.scrollTo({
+                        top: centerOffset > 0 ? centerOffset : 0,
+                        behavior: 'smooth'
+                    });
 
                 }
 
 
 
-                setTimeout(() => { isClickScrolling = false; }, 800);
+                setTimeout(() => {
+                    isClickScrolling = false;
+                }, 800);
 
             });
 
@@ -856,7 +850,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-        window.addEventListener("scroll", function () {
+        window.addEventListener("scroll", function() {
 
             let current = "";
 
@@ -868,7 +862,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 const sectionTop = section.getBoundingClientRect().top + window.scrollY;
 
-                if (window.scrollY >= sectionTop - 180) { current = section.getAttribute("id"); }
+                if (window.scrollY >= sectionTop - 180) {
+                    current = section.getAttribute("id");
+                }
 
             });
 
@@ -900,19 +896,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
                         allDropdowns.forEach(item => {
 
-                            if (item.ul !== targetUl) { item.ul.style.maxHeight = "0px"; item.btn.style.transform = "rotate(0deg)"; }
+                            if (item.ul !== targetUl) {
+                                item.ul.style.maxHeight = "0px";
+                                item.btn.style.transform = "rotate(0deg)";
+                            }
 
                         });
 
 
 
-                        if (targetUl && (targetUl.style.maxHeight === '0px' || targetUl.style.maxHeight === '')) {
+                        if (targetUl && (targetUl.style.maxHeight === '0px' || targetUl.style
+                                .maxHeight === '')) {
 
                             targetUl.style.maxHeight = targetUl.scrollHeight + "px";
 
-                            setTimeout(() => { if (targetUl.style.maxHeight !== "0px") targetUl.style.maxHeight = "1000px"; }, 300);
+                            setTimeout(() => {
+                                if (targetUl.style.maxHeight !== "0px") targetUl.style
+                                    .maxHeight = "1000px";
+                            }, 300);
 
-                            const toggleBtn = targetUl.parentElement.querySelector('.dropdown-toggle-btn');
+                            const toggleBtn = targetUl.parentElement.querySelector(
+                                '.dropdown-toggle-btn');
 
                             if (toggleBtn) toggleBtn.style.transform = 'rotate(180deg)';
 
@@ -934,13 +938,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
                         const linkRect = currentLink.getBoundingClientRect();
 
-                        if (linkRect.top < containerRect.top || linkRect.bottom > containerRect.bottom) {
+                        if (linkRect.top < containerRect.top || linkRect.bottom > containerRect
+                            .bottom) {
 
-                            const relativeTop = linkRect.top - containerRect.top + sidebarContainer.scrollTop;
+                            const relativeTop = linkRect.top - containerRect.top + sidebarContainer
+                                .scrollTop;
 
-                            const centerOffset = relativeTop - (sidebarContainer.clientHeight / 2) + (linkRect.height / 2);
+                            const centerOffset = relativeTop - (sidebarContainer.clientHeight / 2) + (
+                                linkRect.height / 2);
 
-                            sidebarContainer.scrollTo({ top: centerOffset > 0 ? centerOffset : 0, behavior: 'smooth' });
+                            sidebarContainer.scrollTo({
+                                top: centerOffset > 0 ? centerOffset : 0,
+                                behavior: 'smooth'
+                            });
 
                         }
 
@@ -960,11 +970,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     if (item.ul !== firstUl) {
 
-                        item.ul.style.maxHeight = "0px"; item.btn.style.transform = "rotate(0deg)";
+                        item.ul.style.maxHeight = "0px";
+                        item.btn.style.transform = "rotate(0deg)";
 
-                    } else if (item.ul.style.maxHeight === '0px' || item.ul.style.maxHeight === '') {
+                    } else if (item.ul.style.maxHeight === '0px' || item.ul.style.maxHeight ===
+                        '') {
 
-                        item.ul.style.maxHeight = "1000px"; item.btn.style.transform = "rotate(180deg)";
+                        item.ul.style.maxHeight = "1000px";
+                        item.btn.style.transform = "rotate(180deg)";
 
                     }
 
@@ -975,9 +988,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
     });
-
 </script>
-
-
 
 @include('layouts.frontfooter')
