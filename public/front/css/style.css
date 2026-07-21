@@ -113,6 +113,7 @@ a {
 .mb_30 {
   margin-bottom: 30px;
 }
+
 /* button hover effect  */
 
 .com_btn {
@@ -131,7 +132,8 @@ a {
 }
 
 .com_btn:hover {
-  color: var(--white); /* changed to pure white for better visibility */
+  color: var(--white);
+  /* changed to pure white for better visibility */
 }
 
 .com_btn:before,
@@ -141,15 +143,14 @@ a {
   content: "";
   width: 20px;
   height: 20px;
-  background: radial-gradient(
-    561.33% 75.38% at 56.26% 52.09%,
-    #1f3566 0%,
-    #243f7a 50%,
-    #1c2f5a 100%
-  );
+  background: radial-gradient(561.33% 75.38% at 56.26% 52.09%,
+      #1f3566 0%,
+      #243f7a 50%,
+      #1c2f5a 100%);
   border: 1px solid var(--blue);
   border-radius: 50%;
-  z-index: -1; /* behind the text */
+  z-index: -1;
+  /* behind the text */
   transition: all 0.7s ease;
 }
 
@@ -170,11 +171,13 @@ a {
     width: 20px;
     height: 20px;
   }
+
   40% {
     left: 50%;
     width: 30px;
     height: 30px;
   }
+
   100% {
     left: 50%;
     width: 500px;
@@ -188,11 +191,13 @@ a {
     width: 20px;
     height: 20px;
   }
+
   40% {
     right: 50%;
     width: 30px;
     height: 30px;
   }
+
   100% {
     right: 50%;
     width: 500px;
@@ -240,26 +245,30 @@ a {
 }
 
 /* Modal css start*/
- .industry-enquiry-modal .modal, .inquiry-modal .modal, .product-enquiry-modal .modal {
-    background-color: #f5f8fb61;
-    z-index: 9999;
-    backdrop-filter: blur(2px);
-  }
-  .industry-enquiry-modal .modal-content, .inquiry-modal .modal-content, .product-enquiry-modal .modal-content {
-    background-color: #f5f8fb;
-  }
-    .iti__selected-dial-code
-  {
-    color:var(--black-111);    
-  }
-  
-  .iti__arrow
-  {
-         border-top: 4px solid var(--black-111) !important; 
-  }
-  
-  .iti__arrow--up
-  {
-      border-bottom:none;
-  }
+.industry-enquiry-modal .modal,
+.inquiry-modal .modal,
+.product-enquiry-modal .modal {
+  background-color: #f5f8fb61;
+  z-index: 9999;
+  backdrop-filter: blur(2px);
+}
+
+.industry-enquiry-modal .modal-content,
+.inquiry-modal .modal-content,
+.product-enquiry-modal .modal-content {
+  background-color: #f5f8fb;
+}
+
+.iti__selected-dial-code {
+  color: var(--black-111);
+}
+
+.iti__arrow {
+  border-top: 4px solid var(--black-111) !important;
+}
+
+.iti__arrow--up {
+  border-bottom: 0px solid #555 !important;
+}
+
 /* Modal css ends*/
