@@ -1,52 +1,25 @@
 <?php
 
-
-
 use App\Http\Controllers\admin\adminController;
-
-use Illuminate\Support\Facades\Route;
-
-
-
-use App\Http\Controllers\usersController;
-
-use App\Http\Controllers\HomeController;
-
-use App\Http\Controllers\dashboardController;
-
-use App\Http\Controllers\RegistationController;
-
-use App\Http\Controllers\superAdminController;
-
-use App\Http\Controllers\admin\IndustryController;
-
-use App\Http\Controllers\admin\CategoryController;
-
-use App\Http\Controllers\admin\IndCategoryController;
-
-use App\Http\Controllers\admin\ProductController;
-
-use App\Http\Controllers\admin\ServiceController;
-
 use App\Http\Controllers\admin\BlogController;
-
-use App\Http\Controllers\admin\ClientelController;
-
 use App\Http\Controllers\admin\CaseStudyController;
-
+use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\CertificateController;
-
+use App\Http\Controllers\admin\ClientelController;
 use App\Http\Controllers\admin\FaqController;
-
+use App\Http\Controllers\admin\IndCategoryController;
+use App\Http\Controllers\admin\IndustryController;
+use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\ServiceCategoryController;
-
-use App\Http\Controllers\CaptchaController;
-
+use App\Http\Controllers\admin\ServiceController;
 use App\Http\Controllers\admin\SparePartController;
-
+use App\Http\Controllers\dashboardController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SitemapController;
+use App\Http\Controllers\superAdminController;
+use App\Http\Controllers\usersController;
 use Illuminate\Support\Facades\DB;
-
-
+use Illuminate\Support\Facades\Route;
 
 /*
 
@@ -68,144 +41,131 @@ use Illuminate\Support\Facades\DB;
 
 */
 
+//Front route
 
+Route::get('/', [dashboardController::class, 'index']);
 
-    //Front route
+Route::get('/about-us', [dashboardController::class, 'about'])->name('about');
 
-    Route::get('/', [dashboardController::class, 'index']);
+Route::get('/contact', [dashboardController::class, 'contact'])->name('contact');
 
+Route::post('contact-us-store', [dashboardController::class, 'contactstore'])->name('contact.store');
 
+Route::post('/installationstore', [dashboardController::class, 'installationstore'])->name('installationstore');
 
-    Route::get('/about-us', [dashboardController::class, 'about'])->name('about');
+Route::post('/headerstore', [dashboardController::class, 'headerstore'])->name('headerstore');
 
-    Route::get('/contact', [dashboardController::class, 'contact'])->name('contact');
+Route::post('/product-enquiry', [dashboardController::class, 'productEnquiryStore'])->name('product.enquiry.store');
 
-    Route::post('contact-us-store', [dashboardController::class, 'contactstore'])->name('contact.store');
+Route::post('/industry-enquiry', [dashboardController::class, 'industryEnquiryStore'])->name('industry.enquiry.store');
 
-    Route::post('/installationstore', [dashboardController::class, 'installationstore'])->name('installationstore');
+Route::get('blogs', [dashboardController::class, 'blogs'])->name('blogs');
 
-    Route::post('/headerstore', [dashboardController::class, 'headerstore'])->name('headerstore');
+Route::get('blogs/{url}', [dashboardController::class, 'blogsdetail'])->name('blogdetail');
 
-    Route::post('/product-enquiry', [dashboardController::class, 'productEnquiryStore'])->name('product.enquiry.store');
+Route::get('products/{url}', [dashboardController::class, 'product'])->name('productlist');
 
-    Route::post('/industry-enquiry', [dashboardController::class, 'industryEnquiryStore'])->name('industry.enquiry.store');
+Route::get('downloads', [dashboardController::class, 'download'])->name('downloads');
 
-    Route::get('blogs', [dashboardController::class,'blogs'])->name('blogs');
+Route::get('/faqs', [dashboardController::class, 'faq'])->name('faqs');
 
-    Route::get('blogs/{url}', [dashboardController::class, 'blogsdetail'])->name('blogdetail');
+Route::get('/installation-and-commissioning', [dashboardController::class, 'installation'])->name('installation');
 
-    Route::get('products/{url}', [dashboardController::class, 'product'])->name('productlist');
+Route::get('/after-sales-support', [dashboardController::class, 'aftersales'])->name('aftersales');
 
-    Route::get('downloads', [dashboardController::class,'download'])->name('downloads');
+Route::get('/annual-maintenance-contracts', [dashboardController::class, 'annualmaintenance'])->name('annualmaintenance');
 
-    Route::get('/faqs', [dashboardController::class, 'faq'])->name('faqs');
+Route::get('/downloads', [dashboardController::class, 'download'])->name('downloads');
 
-    Route::get('/installation-and-commissioning', [dashboardController::class, 'installation'])->name('installation');
+Route::get('/machine-upgrades', [dashboardController::class, 'machineupgrades'])->name('machineupgrades');
 
-    Route::get('/after-sales-support', [dashboardController::class, 'aftersales'])->name('aftersales');
+Route::get('/industries/{url}', [dashboardController::class, 'industry'])->name('industry');
 
-    Route::get('/annual-maintenance-contracts', [dashboardController::class, 'annualmaintenance'])->name('annualmaintenance');
+Route::get('spare-parts', [dashboardController::class, 'spareparts'])->name('spareparts');
+route::get('whatsaapinquiry', [dashboardController::class, 'whatsaapinquiry'])->name('whatsaapinquiry');
 
-    Route::get('/downloads', [dashboardController::class, 'download'])->name('downloads');
+Route::get('/privacy-policy', [dashboardController::class, 'privacypolicy'])->name('privacypolicy');
 
-    Route::get('/machine-upgrades', [dashboardController::class, 'machineupgrades'])->name('machineupgrades');
+Route::get('/terms-engineer', [dashboardController::class, 'termsengineer'])->name('termsengineer');
 
-    Route::get('/industries/{url}', [dashboardController::class, 'industry'])->name('industry');
+Route::get('/product-details/{url?}', [dashboardController::class, 'productdetials'])->name('productdetials');
 
-    Route::get('spare-parts', [dashboardController::class, 'spareparts'])->name('spareparts');
-   route::get('whatsaapinquiry', [dashboardController::class, 'whatsaapinquiry'])->name('whatsaapinquiry');
-    
+Route::get('/sitemap.xml', [SitemapController::class, 'index']);
 
-    Route::get('/privacy-policy',[dashboardController::class,'privacypolicy'])->name('privacypolicy');
+Route::get('/blog-sitemap.xml', [SitemapController::class, 'blogs']);
 
-    Route::get('/terms-engineer',[dashboardController::class,'termsengineer'])->name('termsengineer');
+Route::get('/category-sitemap.xml', [SitemapController::class, 'categories']);
 
+Route::get('/product-sitemap.xml', [SitemapController::class, 'products']);
 
+Route::get('/industry-sitemap.xml', [SitemapController::class, 'industries']);
 
-    Route::get('/product-details/{url?}', [dashboardController::class, 'productdetials'])->name('productdetials');
+Route::get('/page-sitemap.xml', [SitemapController::class, 'pages']);
 
+Route::get('/get-cities/{id}', function ($id) {
 
+    $cities = DB::table('cities')
 
-    Route::get('/get-cities/{id}', function ($id) {
+        ->where('state_id', $id)
 
+        ->select('name')
 
+        ->get();
 
-        $cities = DB::table('cities')
+    return response()->json($cities);
 
-            ->where('state_id', $id)
+});
 
-            ->select('name')
+Route::get('/thank-you', function () {
 
-            ->get();
+    return view('front.thankyou');
 
-
-
-        return response()->json($cities);
-
-
-
-    });
-
-    Route::get('/thank-you', function(){
-
-        return view('front.thankyou');
-
-    })->name('thankyou');
-
-
+})->name('thankyou');
 
 Route::get('login', [dashboardController::class, 'login'])->name('login');
 
 Auth::routes();
 
-
-
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-
 
 Route::group(['middleware' => 'auth'], function () {
 
-Route::get('/user', [usersController::class, 'user'])->name('user');
+    Route::get('/user', [usersController::class, 'user'])->name('user');
 
-Route::get('/admin/dashboard',[dashboardController::class, 'admin'])->name('/admin/dashboard');
+    Route::get('/admin/dashboard', [dashboardController::class, 'admin'])->name('/admin/dashboard');
 
-Route::get('/superAdmin', [superAdminController::class, 'superAdmin'])->name('superAdmin');  
+    Route::get('/superAdmin', [superAdminController::class, 'superAdmin'])->name('superAdmin');
 
+    Route::get('/admin/dashboard', [adminController::class, 'admin'])->name('admin/dashboard');
 
+    Route::resource('industry', IndustryController::class);
 
-Route::get('/admin/dashboard', [adminController::class, 'admin'])->name('admin/dashboard');
+    Route::resource('category', CategoryController::class);
 
-Route::resource('industry', IndustryController::class);
+    Route::resource('indcategory', IndCategoryController::class);
 
-Route::resource('category', CategoryController::class);
+    Route::resource('product', ProductController::class);
 
-Route::resource('indcategory', IndCategoryController::class);
+    Route::resource('blog', BlogController::class);
 
-Route::resource('product', ProductController::class);
+    Route::resource('clientel', ClientelController::class);
 
-Route::resource('blog', BlogController::class);
+    Route::resource('casestudy', CaseStudyController::class);
 
-Route::resource('clientel', ClientelController::class);
+    Route::resource('certificate', CertificateController::class);
 
-Route::resource('casestudy', CaseStudyController::class); 
+    Route::resource('faq', FaqController::class);
 
-Route::resource('certificate', CertificateController::class); 
+    Route::resource('service', ServiceController::class);
 
-Route::resource('faq', FaqController::class); 
+    Route::resource('servicecategory', ServiceCategoryController::class);
 
-Route::resource('service', ServiceController::class);
+    Route::resource('sparepart', SparePartController::class);
 
-Route::resource('servicecategory', ServiceCategoryController::class);
+    Route::prefix('backend')->group(function () {
 
-Route::resource('sparepart', SparePartController::class);
+        // Route::get('home', [adminController::class, 'index'])->name('home');
 
-
-
-Route::prefix('backend')->group(function () {
-
-	// Route::get('home', [adminController::class, 'index'])->name('home');
-
-});
+    });
 
 });
