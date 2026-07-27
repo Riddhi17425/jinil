@@ -60,6 +60,11 @@
                             <input type="text" name="service_note" class="form-control" placeholder="Service Note">
                         </div>
 
+
+                        <div class="col-md-12">
+                            <label class="form-label">Related Industries Description</label>
+                            <textarea id="related_industries_desc" name="related_industries_desc" class="form-control"></textarea>
+                        </div>
                         <div class="col-md-12">
                             <label class="form-label">Industries (Multiple)</label>
                             <select name="industries[]" class="form-control" multiple>
@@ -255,6 +260,10 @@
                     <h6 class="mb-0 fw-bold">Operational Accessories</h6>
                 </div>
                 <div class="card-body">
+                    <div class="col-md-12 mb-3">
+                        <label class="form-label">Optional Accessories Description</label>
+                        <textarea id="optional_accessories_desc" name="optional_accessories_desc" class="form-control"></textarea>
+                    </div>
                     <div id="operational-accessories-wrapper"></div>
                     <button type="button" class="btn btn-sm btn-outline-primary mt-2" onclick="addTitleDescRow('operational-accessories-wrapper', 'operational_accessories')">Add Accessory</button>
                 </div>
@@ -265,6 +274,10 @@
                     <h6 class="mb-0 fw-bold">FAQs</h6>
                 </div>
                 <div class="card-body">
+                    <div class="col-md-12 mb-3">
+                        <label class="form-label">FAQ Description</label>
+                        <textarea id="faqs_desc" name="faqs_desc" class="form-control"></textarea>
+                    </div>
                     <div id="faq-wrapper"></div>
                     <button type="button" class="btn btn-sm btn-outline-primary mt-2" onclick="addFaqRow()">Add FAQ</button>
                 </div>
@@ -309,7 +322,7 @@
 
 <script>
 $(document).ready(function() {
-    $('#meta_description,#short_description,#working_principle_desc,#configuration_description,#why_choose_description').summernote({
+    $('#meta_description,#short_description,#working_principle_desc,#configuration_description,#why_choose_description,#optional_accessories_desc,#faqs_desc,#related_industries_desc').summernote({
         placeholder: 'Enter here...',
         height: 300,
         toolbar: [

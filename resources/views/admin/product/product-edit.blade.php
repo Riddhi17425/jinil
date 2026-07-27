@@ -32,7 +32,7 @@
                                     <select name="category_id" class="form-control">
                                         <option value="">Select Category</option>
                                         @foreach($categories as $cat)
-                                            <option value="{{ $cat->id }}" 
+                                            <option value="{{ $cat->id }}"
                                                 {{ $product->category_id == $cat->id ? 'selected' : '' }}>
                                                 {{ $cat->category }}
                                             </option>
@@ -66,6 +66,11 @@
                                 <div class="col-md-12">
                                     <label class="form-label">Service Note</label>
                                     <input type="text" name="service_note" class="form-control" value="{{ $product->service_note }}" placeholder="Service Note">
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label class="form-label">Related Industries Description</label>
+                                    <textarea id="related_industries_desc" name="related_industries_desc" class="form-control">{!! $product->related_industries_desc !!}</textarea>
                                 </div>
                                 <div class="col-md-12">
                                     <label class="form-label">Industries (Multiple)</label>
@@ -109,8 +114,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     @if($product->front_image)
-                                        <img 
-                                            src="{{ asset('public/Product/front_image/' . $product->front_image) }}" 
+                                        <img
+                                            src="{{ asset('public/Product/front_image/' . $product->front_image) }}"
                                             alt="Product Image"
                                             style="width:120px; height:auto; border:1px solid #ddd; padding:5px;">
                                     @endif
@@ -230,12 +235,20 @@
                                 <hr class="mt-4">
                                 <h5 class="mt-3 fw-bold">Operational Accessories</h5>
                                 <div class="col-md-12">
+                                    <label class="form-label">Optional Accessories Description</label>
+                                    <textarea id="optional_accessories_desc" name="optional_accessories_desc" class="form-control">{!! $product->optional_accessories_desc !!}</textarea>
+                                </div>
+                                <div class="col-md-12">
                                     <div id="operational-accessories-wrapper"></div>
                                     <button type="button" class="btn btn-sm btn-outline-primary mt-2" onclick="addTitleDescRow('operational-accessories-wrapper', 'operational_accessories')">Add Accessory</button>
                                 </div>
 
                                 <hr class="mt-4">
                                 <h5 class="mt-3 fw-bold">FAQs</h5>
+                                <div class="col-md-12">
+                                <label class="form-label">FAQ Description</label>
+                                <textarea id="faqs_desc" name="faqs_desc" class="form-control">{!! $product->faqs_desc !!}</textarea>
+                            </div>
                                 <div class="col-md-12">
                                     <div id="faq-wrapper"></div>
                                     <button type="button" class="btn btn-sm btn-outline-primary mt-2" onclick="addFaqRow()">Add FAQ</button>
@@ -288,25 +301,25 @@
 <script>
     $(document).ready(function () {
     $('#year').datepicker({
-        format: "yyyy",          
-        viewMode: "years",       
-        minViewMode: "years",    
-        autoclose: true,         
-        // startDate: "1900",       
+        format: "yyyy",
+        viewMode: "years",
+        minViewMode: "years",
+        autoclose: true,
+        // startDate: "1900",
         // endDate: new Date().getFullYear().toString(),
         orientation: "bottom",
         container: 'body',
         appendTo: 'body',
     });
 
-    
+
 });
 </script>
 
 
 <script>
 $(document).ready(function() {
-    $('#meta_description,#short_description,#working_principle_desc,#configuration_description,#why_choose_description').summernote({
+    $('#meta_description,#short_description,#working_principle_desc,#configuration_description,#why_choose_description,#optional_accessories_desc,#faqs_desc,#related_industries_desc').summernote({
         placeholder: 'Enter here...',
         height: 300,
         toolbar: [

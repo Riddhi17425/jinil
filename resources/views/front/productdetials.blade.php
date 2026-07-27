@@ -483,12 +483,7 @@
             <div class="row justify-content-between mb_40">
                 <div class="col-lg-10">
                     <h2 class="title_60 text-white">Related Industries You May Like </h2>
-                    <p class="mb-0 text-white">Explore a wide range of industries where shot blasting plays a critical
-                        role in improving surface quality, durability, and production efficiency. From automotive and
-                        foundry to fabrication and heavy engineering, Jinil's solutions are designed to meet diverse
-                        application needs, ensuring reliable surface preparation, consistent finishing, and optimized
-                        performance across demanding industrial environments.</p>
-                </div>
+                 <div class="mb_40 text-white">{!! $product->related_industries_desc ?? "Explore a wide range of industries where shot blasting plays a critical role in improving surface quality, durability, and production efficiency. From automotive and foundry to fabrication and heavy engineering, Jinil's solutions are designed to meet diverse application needs, ensuring reliable surface preparation, consistent finishing, and optimized performance across demanding industrial environments." !!}</div>
                 <div class="slider_arrow mt-4 mt-lg-0 col">
                     <svg class="prev_arrow" width="68" height="68" viewBox="0 0 68 68" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
@@ -784,7 +779,7 @@
     <div class="container">
         <div class="sec_hed_top mb_40">
             <h2 class="title_60">Optional Accessories</h2>
-            <span class="text-585 d-block">The machine can be upgraded with accessories based on production needs and application requirements.</span>
+          <div class="text-585 d-block">{!! $product->optional_accessories_desc ?? 'The machine can be upgraded with accessories based on production needs and application requirements.' !!}</div>
 
         </div>
 
@@ -915,7 +910,7 @@
         <div class="container">
             <div class="sec_hed_top mb_40">
                 <h2 class="title_60">Frequently Asked Questions</h2>
-                <span class="text-585 d-block">Clear answers to common questions about Jinil's shot blasting machines, surface preparation solutions, and engineering support—helping you make informed decisions with confidence.</span>
+                <div class="text-585 d-block">{!! $product->faqs_desc ?? "Clear answers to common questions about Jinil's shot blasting machines, surface preparation solutions, and engineering support—helping you make informed decisions with confidence." !!}</div>
             </div>
             <div class="faq_group active">
                 @foreach($product->faqs as $k => $v)

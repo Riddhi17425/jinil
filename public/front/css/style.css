@@ -1,617 +1,444 @@
 :root {
+    /* color code */
 
-  /* color code */
+    --white: #ffffff;
 
-  --white: #ffffff;
+    --black: #1c1c1a;
 
-  --black: #1c1c1a;
+    --black-111: #111;
 
-  --black-111: #111;
+    --dark-333: #333333;
 
-  --dark-333: #333333;
+    --blue: #105293;
 
-  --blue: #105293;
+    --blue-A2B: #a2b9cf;
 
-  --blue-A2B: #A2B9CF;
+    --secondary-color: #0d5e4c;
 
-  --secondary-color: #0d5e4c;
+    --grey-585: #58595b;
 
-  --grey-585: #58595b;
+    /* font family */
 
+    /* --heading-font: "Playfair Display", serif; */
 
+    --body-font: "Zalando Sans", sans-serif;
 
-  /* font family */
+    --head-semi: "Zalando Sans SemiExpanded", sans-serif;
 
-  /* --heading-font: "Playfair Display", serif; */
-
-  --body-font: "Zalando Sans", sans-serif;
-
-  --head-semi: "Zalando Sans SemiExpanded", sans-serif;
-
-  --allura: "Allura", cursive;
-
+    --allura: "Allura", cursive;
 }
-
-
 
 * {
+    margin: 0;
 
-  margin: 0;
+    padding: 0;
 
-  padding: 0;
-
-  box-sizing: border-box;
-
+    box-sizing: border-box;
 }
-
-
 
 /* Native smooth scrolling fallback for browsers and elements not handled by ScrollSmoother */
 
 html {
-
-  scroll-behavior: smooth;
-
+    scroll-behavior: smooth;
 }
-
-
 
 body {
+    background-color: #f5f8fb;
 
-  background-color: #f5f8fb;
+    color: var(--grey-585);
 
-  color: var(--grey-585);
+    font-family: var(--body-font);
 
-  font-family: var(--body-font);
+    font-size: 16px;
 
-  font-size: 16px;
+    font-weight: 400;
 
-  font-weight: 400;
+    line-height: 24px;
 
-  line-height: 24px;
-
-  overflow-x: hidden;
-
+    overflow-x: hidden;
 }
-
-
 
 a {
+    text-decoration: none;
 
-  text-decoration: none;
-
-  color: inherit;
-
+    color: inherit;
 }
-
-
 
 .title_80 {
+    color: var(--white);
 
-  color: var(--white);
+    font-family: var(--head-semi);
 
-  font-family: var(--head-semi);
+    font-size: 80px;
 
-  font-size: 80px;
+    font-weight: 800;
 
-  font-weight: 800;
-
-  mix-blend-mode: soft-light;
-
+    mix-blend-mode: soft-light;
 }
-
-
 
 .title_60 {
+    color: var(--blue);
 
-  color: var(--blue);
+    font-family: var(--head-semi);
 
-  font-family: var(--head-semi);
+    font-size: 60px;
 
-  font-size: 60px;
-
-  font-weight: 600;
-
+    font-weight: 600;
 }
-
-
 
 .title_42 {
+    color: var(--blue);
 
-  color: var(--blue);
+    font-size: 42px;
 
-  font-size: 42px;
-
-  font-weight: 600;
-
+    font-weight: 600;
 }
-
-
 
 .title_34 {
+    color: var(--black-111);
 
-  color: var(--black-111);
+    font-size: 34px;
 
-  font-size: 34px;
+    font-weight: 500;
 
-  font-weight: 500;
-
-  line-height: 34px;
-
+    line-height: 34px;
 }
-
-
 
 .title_24 {
+    color: var(--black-111);
 
-  color: var(--black-111);
+    font-size: 18px;
 
-  font-size: 18px;
+    font-weight: 500;
 
-  font-weight: 500;
-
-  line-height: 34px;
-
+    line-height: 34px;
 }
-
-
-
-
 
 .mt_100 {
-
-  margin-top: 100px;
-
+    margin-top: 100px;
 }
-
-
 
 .mb_100 {
-
-  margin-bottom: 100px;
-
+    margin-bottom: 100px;
 }
-
-
 
 .mt_80 {
-
-  margin-top: 80px;
-
+    margin-top: 80px;
 }
-
-
 
 .mb_80 {
-
-  margin-bottom: 80px;
-
+    margin-bottom: 80px;
 }
-
-
 
 .mt_60 {
-
-  margin-top: 60px;
-
+    margin-top: 60px;
 }
-
-
 
 .mb_60 {
-
-  margin-bottom: 60px;
-
+    margin-bottom: 60px;
 }
-
-
 
 .mt_40 {
-
-  margin-top: 40px;
-
+    margin-top: 40px;
 }
-
-
 
 .mb_40 {
-
-  margin-bottom: 40px;
-
+    margin-bottom: 40px;
 }
 
-
-
 .mb_30 {
-
-  margin-bottom: 30px;
-
+    margin-bottom: 30px;
 }
 
 /* button hover effect  */
 
-
-
 .com_btn {
+    display: inline-block;
 
-  display: inline-block;
+    padding: 12px 34px;
 
-  padding: 12px 34px;
+    position: relative;
 
-  position: relative;
+    color: var(--grey-585);
 
-  color: var(--grey-585);
+    border: 1px solid var(--grey-585);
 
-  border: 1px solid var(--grey-585);
+    font-size: 18px;
 
-  font-size: 18px;
+    line-height: 18px;
 
-  line-height: 18px;
+    font-weight: 400;
 
-  font-weight: 400;
+    overflow: hidden;
 
-  overflow: hidden;
+    background: transparent;
 
-  background: transparent;
+    transition: color 0.5s;
 
-  transition: color 0.5s;
-
-  z-index: 1;
-
+    z-index: 1;
 }
-
-
 
 .com_btn:hover {
-
-  color: var(--white); /* changed to pure white for better visibility */
-
+    color: var(--white); /* changed to pure white for better visibility */
 }
-
-
 
 .com_btn:before,
-
 .com_btn:after {
+    position: absolute;
 
-  position: absolute;
+    top: 50%;
 
-  top: 50%;
+    content: "";
 
-  content: "";
+    width: 20px;
 
-  width: 20px;
+    height: 20px;
 
-  height: 20px;
+    background: radial-gradient(
+        561.33% 75.38% at 56.26% 52.09%,
 
-  background: radial-gradient(
+        #1f3566 0%,
 
-    561.33% 75.38% at 56.26% 52.09%,
+        #243f7a 50%,
 
-    #1f3566 0%,
+        #1c2f5a 100%
+    );
 
-    #243f7a 50%,
+    border: 1px solid var(--blue);
 
-    #1c2f5a 100%
+    border-radius: 50%;
 
-  );
+    z-index: -1; /* behind the text */
 
-  border: 1px solid var(--blue);
-
-  border-radius: 50%;
-
-  z-index: -1; /* behind the text */
-
-  transition: all 0.7s ease;
-
+    transition: all 0.7s ease;
 }
-
-
 
 .com_btn:before {
+    left: -30px;
 
-  left: -30px;
-
-  transform: translate(-50%, -50%);
-
+    transform: translate(-50%, -50%);
 }
-
-
 
 .com_btn:after {
+    right: -30px;
 
-  right: -30px;
-
-  transform: translate(50%, -50%);
-
+    transform: translate(50%, -50%);
 }
-
-
 
 /* Collision Animation */
 
 @keyframes criss-cross-left {
+    0% {
+        left: -30px;
 
-  0% {
+        width: 20px;
 
-    left: -30px;
+        height: 20px;
+    }
 
-    width: 20px;
+    40% {
+        left: 50%;
 
-    height: 20px;
+        width: 30px;
 
-  }
+        height: 30px;
+    }
 
-  40% {
+    100% {
+        left: 50%;
 
-    left: 50%;
+        width: 500px;
 
-    width: 30px;
-
-    height: 30px;
-
-  }
-
-  100% {
-
-    left: 50%;
-
-    width: 500px;
-
-    height: 500px;
-
-  }
-
+        height: 500px;
+    }
 }
-
-
 
 @keyframes criss-cross-right {
+    0% {
+        right: -30px;
 
-  0% {
+        width: 20px;
 
-    right: -30px;
+        height: 20px;
+    }
 
-    width: 20px;
+    40% {
+        right: 50%;
 
-    height: 20px;
+        width: 30px;
 
-  }
+        height: 30px;
+    }
 
-  40% {
+    100% {
+        right: 50%;
 
-    right: 50%;
+        width: 500px;
 
-    width: 30px;
-
-    height: 30px;
-
-  }
-
-  100% {
-
-    right: 50%;
-
-    width: 500px;
-
-    height: 500px;
-
-  }
-
+        height: 500px;
+    }
 }
-
-
 
 .com_btn:hover:before {
-
-  animation: criss-cross-left 0.9s forwards;
-
+    animation: criss-cross-left 0.9s forwards;
 }
-
-
 
 .com_btn:hover:after {
-
-  animation: criss-cross-right 0.9s forwards;
-
+    animation: criss-cross-right 0.9s forwards;
 }
-
-
 
 /* Make sure text stays above everything */
 
 .com_btn span {
+    position: relative;
 
-  position: relative;
-
-  z-index: 2;
-
+    z-index: 2;
 }
-
-
 
 .com_btn_2 {
+    color: var(--blue);
 
-  color: var(--blue);
+    border: 1px solid var(--blue);
 
-  border: 1px solid var(--blue);
-
-  padding: 12px 54px;
-
+    padding: 12px 54px;
 }
-
-
 
 .com_btn_3 {
+    background: var(--white);
 
-  background: var(--white);
+    border-color: var(--white);
 
-  border-color: var(--white);
-
-  color: var(--blue);
-
+    color: var(--blue);
 }
-
-
 
 .text-111 {
-
-  color: var(--black-111);
-
+    color: var(--black-111);
 }
-
-
 
 .text-585 {
-
-  color: var(--grey-585);
-
+    color: var(--grey-585);
 }
-
-
-
-
 
 .text-105 {
-
-  color: var(--blue);
-
+    color: var(--blue);
 }
-
-
 
 /* Modal css start*/
 
- .industry-enquiry-modal .modal, .inquiry-modal .modal, .product-enquiry-modal .modal {
-
+.industry-enquiry-modal .modal,
+.inquiry-modal .modal,
+.product-enquiry-modal .modal {
     background-color: #f5f8fb61;
 
     z-index: 9999;
 
     backdrop-filter: blur(2px);
+}
 
-  }
-
-  .industry-enquiry-modal .modal-content, .inquiry-modal .modal-content, .product-enquiry-modal .modal-content {
-
+.industry-enquiry-modal .modal-content,
+.inquiry-modal .modal-content,
+.product-enquiry-modal .modal-content {
     background-color: #f5f8fb;
+}
 
-  }
+.iti__selected-dial-code {
+    color: var(--black-111);
+}
 
-    .iti__selected-dial-code
+.iti__arrow {
+    border-top: 4px solid var(--black-111) !important;
+}
 
-  {
-
-    color:var(--black-111);    
-
-  }
-
-  
-
-  .iti__arrow
-
-  {
-
-         border-top: 4px solid var(--black-111) !important; 
-
-  }
-
-  
-
-  .iti__arrow--up
-
-  {
-
-      border-bottom:none;
-
-  }
+.iti__arrow--up {
+    border-bottom: none;
+}
 
 /* Modal css ends*/
 
 /* product listing page css */
-.btn-group{
-  display: flex;
-  justify-content: left;
-  align-items: center;
-  gap:20px;
+.btn-group {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 20px;
 }
 
 /* whatsapp inquiry pop up  css start*/
-      .Whats_mpp_modal .popup-box_whatsapp {
-          border-radius: 16px;
-          /* overflow: hidden;   */
-      }
+.Whats_mpp_modal .popup-box_whatsapp {
+    border-radius: 16px;
+    /* overflow: hidden;   */
+}
 
-      /* Header */
-      .Whats_mpp_modal .popup-header {
-          background: var(--blue);
-          color: #fff;
-          padding: 15px 20px;
-      }
+/* Header */
+.Whats_mpp_modal .popup-header {
+    background: var(--blue);
+    color: #fff;
+    padding: 15px 20px;
+}
 
-      .Whats_mpp_modal .popup-header h5 {
-          margin: 0;
-          font-weight: 600;
-      }
+.Whats_mpp_modal .popup-header h5 {
+    margin: 0;
+    font-weight: 600;
+}
 
-      .Whats_mpp_modal .white-close {
-          filter: invert(1);
-      }
+.Whats_mpp_modal .white-close {
+    filter: invert(1);
+}
 
-      /* Body */
-      .Whats_mpp_modal .popup-box_whatsapp .modal-body {
-          padding: 25px;
-      }
+/* Body */
+.Whats_mpp_modal .popup-box_whatsapp .modal-body {
+    padding: 25px;
+}
 
-      /* Inputs */
-      .Whats_mpp_modal .popup-input {
-          border-radius: 12px;
-          height: 50px;
-          border: 1px solid #ddd;
-          box-shadow: none !important;
-      }
+/* Inputs */
+.Whats_mpp_modal .popup-input {
+    border-radius: 12px;
+    height: 50px;
+    border: 1px solid #ddd;
+    box-shadow: none !important;
+}
 
-      .Whats_mpp_modal .popup-input:focus {
-          border-color: var(--blue);
-      }
+.Whats_mpp_modal .popup-input:focus {
+    border-color: var(--blue);
+}
 
-      /* Textarea */
-      .Whats_mpp_modal textarea.popup-input {
-          height: 90px;
-      }
+/* Textarea */
+.Whats_mpp_modal textarea.popup-input {
+    height: 90px;
+}
 
-      /* Button */
-      .Whats_mpp_modal .popup-btn {
-          background: var(--blue);
-          color: #fff;
-          height: 50px;
-          border-radius: 12px;
-          font-weight: 600;
-          border: none;
-      }
+/* Button */
+.Whats_mpp_modal .popup-btn {
+    background: var(--blue);
+    color: #fff;
+    height: 50px;
+    border-radius: 12px;
+    font-weight: 600;
+    border: none;
+}
 
-      .Whats_mpp_modal .popup-btn:hover {
-          background: var(--blue);
-          color: #fff;
-      }
+.Whats_mpp_modal .popup-btn:hover {
+    background: var(--blue);
+    color: #fff;
+}
 
-      /* intl tel input full width */
-      .Whats_mpp_modal .iti {
-          width: 100%;
-      }
+/* intl tel input full width */
+.Whats_mpp_modal .iti {
+    width: 100%;
+}
 
-      .Whats_mpp_modal .iti__selected-flag {
-          border-radius: 10px 0 0 10px;
-      }
+.Whats_mpp_modal .iti__selected-flag {
+    border-radius: 10px 0 0 10px;
+}
 
-      /* Remove modal scroll */
-      .Whats_mpp_modal .modal-dialog {
-          max-width: 420px;
-      }
+/* Remove modal scroll */
+.Whats_mpp_modal .modal-dialog {
+    max-width: 420px;
+}
 
-      .Whats_mpp_modal .modal-content {
-          /* overflow: hidden; */
-      }
+.Whats_mpp_modal .modal-content {
+    /* overflow: hidden; */
+}
 .WhatsAppButton_mpp {
     background: #14a614;
     position: fixed;
@@ -621,7 +448,7 @@ a {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-  cursor: pointer;
+    cursor: pointer;
     animation: pulse 1.5s infinite;
 }
 
@@ -641,24 +468,24 @@ a {
     width: 100%;
     height: 100%;
 }
-  .whatsapp-popup{
-    position:fixed;
-    right:80px;
-    bottom:70px;
-    width:360px;
-    background:#fff;
-    border-radius:15px;
-    box-shadow:0 10px 30px rgba(0,0,0,.2);
-    transform:translateY(100%);
-    opacity:0;
-    visibility:hidden;
-    transition:.35s ease;
+.whatsapp-popup {
+    position: fixed;
+    right: 80px;
+    bottom: 70px;
+    width: 360px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transform: translateY(100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.35s ease;
 }
 
-.whatsapp-popup.active{
-    transform:translateY(0);
-    opacity:1;
-    visibility:visible;
+.whatsapp-popup.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
 }
 .modal-backdrop.show {
     opacity: 0;
@@ -667,7 +494,16 @@ a {
 
 /* whatsapp inquiry pop up  css eds*/
 
-/* Breadcrumb nav css start*/ 
-.navi_page_child .title_24{
-  font-size: 14px;
+/* Breadcrumb nav css start*/
+.navi_page_child .title_24 {
+    font-size: 14px;
+}
+
+.text-white p {
+    color: inherit;
+    margin-bottom: 0;
+}
+
+.text-585 p {
+    color: var(--grey-585) !important;
 }
