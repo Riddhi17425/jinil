@@ -615,7 +615,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-5 pe-lg-5">
-                <p class="mb-0">Complete Support Portfolio</p>
+                <p class="mb-0">Industrial Solutions</p>
                 <h2 class="title_60 mb_29">Applications</h2>
                 <p class="title_24">{{ $product->application_desc ?? '' }}</p>
             </div>
@@ -697,11 +697,11 @@
                 <div class="<?php echo $colClass ?>">
                     <div class="service_Scope py-4">
                         <div class="sec_hed_top mb-3 text-start">
-                            <p>Operational Performance Benefits</p>
+                            <p>Industrial Solutions</p>
                             <h2 class="title_60">Advantages</h2>
                         </div>
                         <div>
-                            <p>{{ $product->advantages_desc ?? '' }}
+                            <p>{!! $product->advantages_desc ?? '' !!}
                             </p>
                             <ul class="custom-list">
                                 @foreach($product->advantages as $k => $v)
