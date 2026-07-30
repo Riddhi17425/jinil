@@ -286,3 +286,65 @@ margin-top: 40px;
     color: #666666;
     line-height: 1.7;
 }
+
+/* Table Styles inside blog content */
+.blog-content-section table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    background-color: #ffffff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #eef2f8;
+}
+
+.blog-content-section table thead {
+    background-color: var(--blue, #105293);
+    color: #ffffff;
+}
+
+.blog-content-section table th,
+.blog-content-section table td {
+    padding: 14px 20px;
+    text-align: left;
+    border-bottom: 1px solid #eef2f8;
+}
+
+.blog-content-section table th {
+    font-weight: 600;
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.blog-content-section table td {
+    font-size: 15px;
+    color: #444444;
+    vertical-align: top;
+}
+
+.blog-content-section table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.blog-content-section table tbody tr:nth-child(even) {
+    background-color: #f9fbfe;
+}
+
+.blog-content-section table tbody tr:hover {
+    background-color: #f1f5f9;
+}
+
+/* Responsive Table for Mobile */
+@media (max-width: 767px) {
+    .blog-content-section table {
+        margin: 16px 0;
+    }
+    
+    .blog-content-section table th,
+    .blog-content-section table td {
+        padding: 8px 10px;
+        font-size: 13px;
+        word-break: break-word;
+    }
+}
