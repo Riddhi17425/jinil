@@ -5058,7 +5058,7 @@
 
             <h1 class="title_60">Leading Shot Blasting Machine Manufacturer in India</h1>
 
-            <p>Jinil is a trusted shot blasting machine manufacturer and abrasive blasting equipment supplier based in India, engineering high-performance surface preparation equipment for automotive, foundry, forging, fabrication, and heavy engineering industries. Our product range includes airless shot blasting machines, tumble belt machines, roller conveyor shot blasting machines, hanger type shot blasting machines, pipe shot blasting machines, and air-operated shot blasting cabinets — engineered to deliver consistent surface finish, higher throughput, and lower operating cost.</p>
+            <p>Jinil is a trusted shot blasting machine manufacturer and abrasive blasting equipment supplier based in India, engineering high-performance surface preparation equipment for automotive, foundry, forging, fabrication, and heavy engineering industries. Our product range includes airless shot blasting machines, tumble belt machines, roller conveyor shot blasting machines, hanger type shot blasting machines, pipe shot blasting machines, and air-operated shot blasting cabinets - engineered to deliver consistent surface finish, higher throughput, and lower operating cost.</p>
 
         </div>
 
@@ -5622,7 +5622,7 @@
 
 
 
-                <a href="{{ url('industries/forging') }}" class="industry_item_wrapper" title="Shot blasting machine for forging industry">
+                <a href="{{ url('industries/forging') }}" class="industry_item_wrapper">
 
                     <div class="industry_item" style="background-image: url('./public/front/images/industries1.png')">
 
@@ -5636,9 +5636,7 @@
 
 
 
-                <a href="{{ url('industries/foundry') }}" class="industry_item_wrapper" title="Shot blasting machine for foundry industry
-
-">
+                <a href="{{ url('industries/foundry') }}" class="industry_item_wrapper">
 
                     <div class="industry_item" style="background-image: url('./public/front/images/industries2.png')">
 
@@ -5652,9 +5650,7 @@
 
 
 
-                <a href="{{ url('industries/defense') }}" class="industry_item_wrapper" title="Abrasive blasting equipment for defense manufacturing
-
-">
+                <a href="{{ url('industries/defense') }}" class="industry_item_wrapper">
 
                     <div class="industry_item" style="background-image: url('./public/front/images/industries3.png')">
 
@@ -5668,9 +5664,7 @@
 
 
 
-                <a href="{{ url('industries/aerospace') }}" class="industry_item_wrapper" title="Shot peening machine for aerospace components
-
-">
+                <a href="{{ url('industries/aerospace') }}" class="industry_item_wrapper">
 
                     <div class="industry_item" style="background-image: url('./public/front/images/industries4.png')">
 
@@ -5682,9 +5676,7 @@
 
 
 
-                <!--<a href="{{ url('industries/railways') }}" class="industry_item_wrapper" title="Shot blasting machine for railway component manufacturing
-
-">-->
+                <!--<a href="{{ url('industries/railways') }}" class="industry_item_wrapper">-->
 
                 <!--     <div class="industry_item" style="background-image: url('./public/front/images/industries5.png')"> </div>-->
 
@@ -5698,9 +5690,7 @@
 
 
 
-                <a href="{{ url('industries/fabrication') }}" class="industry_item_wrapper" title="Structural steel shot blasting machine for fabrication industry
-
-">
+                <a href="{{ url('industries/fabrication') }}" class="industry_item_wrapper">
 
                     <div class="industry_item" style="background-image: url('./public/front/images/industries6.png')">
 
@@ -5716,9 +5706,7 @@
 
 
 
-                <a href="" class="industry_item_wrapper" title="Wire coil shot blasting machine for wire industry
-
-">
+                <a href="" class="industry_item_wrapper">
 
                     <div class="industry_item" style="background-image: url('./public/front/images/industries7.png')">
 
@@ -5736,9 +5724,7 @@
 
 
 
-                <a href="{{ url('industries/automotive') }}" class="industry_item_wrapper" title="Shot blasting machine for automotive components
-
-">
+                <a href="{{ url('industries/automotive') }}" class="industry_item_wrapper">
 
                     <div class="industry_item" style="background-image: url('./public/front/images/industries8.png')">
 
@@ -5750,9 +5736,7 @@
 
 
 
-                <a href="{{ url('industries/oil-and-gas') }}" class="industry_item_wrapper" title="Pipe shot blasting machine for oil and gas industry
-
-">
+                <a href="{{ url('industries/oil-and-gas') }}" class="industry_item_wrapper">
 
                     <div class="industry_item" style="background-image: url('./public/front/images/industries9.png')">
 
@@ -5764,9 +5748,7 @@
 
 
 
-                <a href="{{ url('industries/steel-plant') }}" class="industry_item_wrapper" title="Shot blasting machine for steel plant surface preparation
-
-">
+                <a href="{{ url('industries/steel-plant') }}" class="industry_item_wrapper">
 
                     <div class="industry_item" style="background-image: url('./public/front/images/industries10.png')">
 
@@ -5778,9 +5760,7 @@
 
 
 
-                <a href="{{ url('industries/peb') }}" class="industry_item_wrapper" title="Structural steel shot blasting machine for pre-engineered buildings
-
-">
+                <a href="{{ url('industries/peb') }}" class="industry_item_wrapper">
 
                     <div class="industry_item" style="background-image: url('./public/front/images/industries11.png')">
 
