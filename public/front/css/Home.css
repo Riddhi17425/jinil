@@ -67,7 +67,7 @@
     text-align: center;
 }
 
-.sec_hed_top p {
+.sec_hed_top p,.sec_hed_top h3 {
     font-size: 18px;
     color: #7a8f9b;
 }

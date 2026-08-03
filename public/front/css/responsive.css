@@ -49,7 +49,7 @@
         padding: 12px 24px;
 
     }
-    .sec_hed_top p {
+    .sec_hed_top p,.sec_hed_top h3 {
 
         margin-bottom: 6px;
     }
@@ -1522,7 +1522,7 @@ margin-top: 40px;
 
 
 
-    .sec_hed_top p {
+    .sec_hed_top p,.sec_hed_top h3 {
 
         font-size: 14px;
 

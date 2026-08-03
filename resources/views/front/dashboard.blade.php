@@ -5074,9 +5074,9 @@
 
         <div class="sec_hed_top mb_40">
 
-            <p>Engineering Precision. Delivering Industrial Reliability.
+            <h3>Engineering Precision. Delivering Industrial Reliability.
 
-            </p>
+</h3>
 
             <h2 class="title_60">Why Jinil Blast Shot?</h2>
 
