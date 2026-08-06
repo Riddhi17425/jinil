@@ -37,7 +37,7 @@ $mb = rand(1,9);
                         {{-- Phone Number (intl-tel-input) --}}
                         <div class="col-lg-6 form-group" style="position:relative;">
                             <div id="modal_phone_wrapper">
-                                <input type="tel" id="modal_phone" name="phone" placeholder=" Phone Number *">
+                                <input type="tel" id="modal_phone" name="phone" placeholder=" Phone Number *" maxlength="15">
                             </div>
                             <input type="hidden" name="country"    id="modal_contact_country">
                             <input type="hidden" name="phonecode"  id="modal_contact_phonecode">
@@ -200,6 +200,25 @@ jQuery(document).ready(function ($) {
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js"
     });
 
+    // ── Restrict phone field: digits only, max 15 digits ──────────
+    $('#modal_phone').on('input', function () {
+        var cleaned = this.value.replace(/[^0-9]/g, '');
+        if (cleaned.length > 15) {
+            cleaned = cleaned.substring(0, 15);
+        }
+        this.value = cleaned;
+    });
+
+    $('#modal_phone').on('keypress', function (e) {
+        var charCode = e.which ? e.which : e.keyCode;
+        if (charCode < 48 || charCode > 57) {
+            e.preventDefault();
+        }
+        if (this.value.replace(/[^0-9]/g, '').length >= 15) {
+            e.preventDefault();
+        }
+    });
+
     // ── Update hidden phone fields + clear error on keyup/change ──
     $('#modal_phone').on('keyup change', function () {
         var countryData = modalIti.getSelectedCountryData();
@@ -253,7 +272,7 @@ jQuery(document).ready(function ($) {
             isValid = false;
         }
 
-        // Phone — empty check + country-wise digit length check
+        // Phone — empty check + min/max digit check + country-wise digit length check
         var phoneVal       = $('#modal_phone').val().trim();
         var countryData    = modalIti.getSelectedCountryData();
         var iso2           = countryData.iso2 || '';
@@ -263,6 +282,12 @@ jQuery(document).ready(function ($) {
 
         if (!phoneVal || phoneVal.length < 1) {
             $('#modal_full_phone-error').text('The Phone Number is required.');
+            isValid = false;
+        } else if (digitsOnly.length < 8) {
+            $('#modal_full_phone-error').text('Phone number must be at least 8 digits.');
+            isValid = false;
+        } else if (digitsOnly.length > 15) {
+            $('#modal_full_phone-error').text('Phone number cannot be more than 15 digits.');
             isValid = false;
         } else if (digitsOnly.length < requiredDigits) {
             $('#modal_full_phone-error').text('Please enter a valid ' + requiredDigits + '-digit phone number.');
