@@ -12,9 +12,6 @@
     <meta name="description" content="{{ strip_tags($metadescription ?? '') }}">
 
 <head>
-
-
-
     <!--SCHEMAS-->
 
     <script type="application/ld+json">

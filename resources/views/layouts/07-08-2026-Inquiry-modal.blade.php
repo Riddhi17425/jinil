@@ -1,61 +1,4 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.css">
-
-<style>
-    /* 1. Phone wrapper & container */
-    #modal_phone_wrapper {
-        position: relative !important;
-        width: 100% !important;
-    }
-
-    #modal_phone_wrapper .iti {
-        width: 100% !important;
-        display: block !important;
-        position: relative !important;
-    }
-
-    /* 2. Flag container layer */
-    #modal_phone_wrapper .iti__flag-container {
-        position: absolute !important;
-        top: 0 !important;
-        bottom: 0 !important;
-        left: 0 !important;
-        z-index: 99 !important;
-        display: flex !important;
-        align-items: center !important;
-    }
-
-    /* 3. Selected flag button */
-    #modal_phone_wrapper .iti__selected-flag {
-        height: 100% !important;
-        padding: 0 6px 0 10px !important;
-        display: flex !important;
-        align-items: center !important;
-        z-index: 100 !important;
-        background: transparent !important;
-        cursor: pointer !important;
-    }
-
-    #modal_phone_wrapper .iti__selected-dial-code {
-        color: #333 !important;
-        font-size: 14px !important;
-        margin-left: 5px !important;
-        font-weight: 500 !important;
-    }
-
-    /* 4. Left padding for input */
-    #headerstore #modal_phone_wrapper input#modal_phone,
-    #modal_phone_wrapper input#modal_phone {
-        padding-left: 95px !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
-    }
-
-    /* 5. Country dropdown menu z-index */
-    .iti--container,
-    .iti__country-list {
-        z-index: 999999 !important;
-    }
-</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/css/intlTelInput.css">
 
 @php
 use Illuminate\Support\Facades\DB;
@@ -69,7 +12,7 @@ $mb = rand(1,9);
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title title_24">Enquire Now</h4>
+                <h4 class="modal-title title_24">Enquire Noww</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
@@ -94,16 +37,7 @@ $mb = rand(1,9);
                         {{-- Phone Number (intl-tel-input) --}}
                         <div class="col-lg-6 form-group" style="position:relative;">
                             <div id="modal_phone_wrapper">
-                                <input
-                                    type="tel"
-                                    id="modal_phone"
-                                    name="phone"
-                                    placeholder="Phone Number *"
-                                    maxlength="15"
-                                    inputmode="numeric"
-                                    pattern="[0-9]*"
-                                    autocomplete="tel"
-                                />
+                                <input type="tel" id="modal_phone" name="phone" placeholder=" Phone Number *" maxlength="15">
                             </div>
                             <input type="hidden" name="country"    id="modal_contact_country">
                             <input type="hidden" name="phonecode"  id="modal_contact_phonecode">
@@ -174,88 +108,46 @@ $mb = rand(1,9);
     </div>
 </div>
 </section>
-
-<!-- JS Scripts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
 
 <script>
 jQuery(document).ready(function ($) {
 
-    // ── Safe Initialization Function ──────────────────────────────
-    window.modalIti = null;
+    // ══════════════════════════════════════════════════════════════
+    // Country-wise required phone digit length
+    // Key = ISO2 country code (lowercase), Value = exact digits required
+    // ══════════════════════════════════════════════════════════════
+    var phoneDigitRules = {
+        'in': 10,  // India
+        'us': 10,  // USA
+        'gb': 10,  // UK
+        'au': 9,   // Australia
+        'ca': 10,  // Canada
+        'ae': 9,   // UAE
+        'sa': 9,   // Saudi Arabia
+        'pk': 10,  // Pakistan
+        'bd': 10,  // Bangladesh
+        'np': 10,  // Nepal
+        'lk': 9,   // Sri Lanka
+        'cn': 11,  // China
+        'jp': 10,  // Japan
+        'de': 10,  // Germany
+        'fr': 9,   // France
+        'it': 10,  // Italy
+        'br': 11,  // Brazil
+        'mx': 10,  // Mexico
+        'za': 9,   // South Africa
+        'ng': 10,  // Nigeria
+        'ke': 9,   // Kenya
+        'default': 7
+    };
 
-    function initPhoneInput() {
-        var modalPhoneEl = document.querySelector('#headerstore #modal_phone');
-        if (!modalPhoneEl) return;
-
-        if (window.modalIti) {
-            try { window.modalIti.destroy(); } catch (e) {}
-        }
-
-        if (typeof window.intlTelInput === 'function') {
-            window.modalIti = window.intlTelInput(modalPhoneEl, {
-                initialCountry: "auto",
-                geoIpLookup: function (callback) {
-                    fetch("https://ipapi.co/json")
-                        .then(function (res) { return res.json(); })
-                        .then(function (data) { callback(data.country_code); })
-                        .catch(function () { callback("in"); });
-                },
-                preferredCountries: [],
-                separateDialCode: true,
-                dropdownContainer: document.body,
-                utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js",
-            });
-
-            syncModalPhoneFields();
-
-            modalPhoneEl.removeEventListener('countrychange', syncModalPhoneFields);
-            modalPhoneEl.addEventListener('countrychange', syncModalPhoneFields);
-        }
+    function getRequiredDigits(iso2) {
+        var code = (iso2 || '').toLowerCase();
+        return phoneDigitRules[code] !== undefined
+            ? phoneDigitRules[code]
+            : phoneDigitRules['default'];
     }
-
-    function syncModalPhoneFields() {
-        if (!window.modalIti) return;
-        var countryData = window.modalIti.getSelectedCountryData();
-        var rawVal = $.trim($('#headerstore #modal_phone').val());
-
-        $('#modal_contact_country').val(countryData.name || '');
-        $('#modal_contact_phonecode').val(countryData.dialCode || '');
-        $('#modal_contact_value').val(rawVal);
-        $('#modal_contact_full_phone').val(rawVal ? '+' + countryData.dialCode + rawVal : '');
-
-        if (rawVal.length > 0) {
-            $('#modal_full_phone-error').text('');
-        }
-    }
-
-    // ── Prevent Non-Numeric Characters ─────────────────────────────
-    $(document).on('keypress', '#headerstore #modal_phone', function (e) {
-        var charCode = e.which ? e.which : e.keyCode;
-        if (charCode < 48 || charCode > 57) {
-            e.preventDefault();
-            return false;
-        }
-    });
-
-    $(document).on('input keyup change paste drop', '#headerstore #modal_phone', function () {
-        var self = this;
-        setTimeout(function () {
-            var cleaned = self.value.replace(/[^0-9]/g, '').substring(0, 15);
-            if (self.value !== cleaned) {
-                self.value = cleaned;
-            }
-            syncModalPhoneFields();
-        }, 0);
-    });
-
-    // Initialize immediately
-    initPhoneInput();
-
-    // Re-initialize when Bootstrap Modal opens
-    $('#staticBackdrop').on('show.bs.modal shown.bs.modal', function () {
-        initPhoneInput();
-    });
 
     // ── State → City ──────────────────────────────────────────────
     $('#modal_state').on('change', function () {
@@ -294,6 +186,51 @@ jQuery(document).ready(function ($) {
         refreshModalCaptcha();
     });
 
+    // ── intl-tel-input ────────────────────────────────────────────
+    var modalPhoneEl = document.getElementById('modal_phone');
+    var modalIti = window.intlTelInput(modalPhoneEl, {
+        initialCountry: "auto",
+        geoIpLookup: function (callback) {
+            fetch("https://ipapi.co/json")
+                .then(function (res) { return res.json(); })
+                .then(function (data) { callback(data.country_code); })
+                .catch(function () { callback("in"); });
+        },
+        separateDialCode: true,
+        utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js"
+    });
+
+    // ── Restrict phone field: digits only, max 15 digits ──────────
+    $('#modal_phone').on('input', function () {
+        var cleaned = this.value.replace(/[^0-9]/g, '');
+        if (cleaned.length > 15) {
+            cleaned = cleaned.substring(0, 15);
+        }
+        this.value = cleaned;
+    });
+
+    $('#modal_phone').on('keypress', function (e) {
+        var charCode = e.which ? e.which : e.keyCode;
+        if (charCode < 48 || charCode > 57) {
+            e.preventDefault();
+        }
+        if (this.value.replace(/[^0-9]/g, '').length >= 15) {
+            e.preventDefault();
+        }
+    });
+
+    // ── Update hidden phone fields + clear error on keyup/change ──
+    $('#modal_phone').on('keyup change', function () {
+        var countryData = modalIti.getSelectedCountryData();
+        var rawVal = $.trim(this.value);
+        $('#modal_contact_country').val(countryData.name);
+        $('#modal_contact_phonecode').val(countryData.dialCode);
+        $('#modal_contact_value').val(rawVal);
+        $('#modal_contact_full_phone').val(rawVal ? '+' + countryData.dialCode + rawVal : '');
+        // Clear phone error as user types
+        if (rawVal.length > 0) $('#modal_full_phone-error').text('');
+    });
+
     // ── Clear errors in real-time as user fills each field ────────
     $('#headerstore input[name="name"]').on('input', function () {
         if ($(this).val().trim() !== '') $('#modal_name-error').text('');
@@ -323,28 +260,44 @@ jQuery(document).ready(function ($) {
     function validateModalForm() {
         var isValid = true;
 
+        // Full Name
         if ($('#headerstore input[name="name"]').val().trim() === '') {
             $('#modal_name-error').text('The Name is required.');
             isValid = false;
         }
 
+        // Company Name
         if ($('#headerstore input[name="company_name"]').val().trim() === '') {
             $('#modal_company_name-error').text('The Company Name is required.');
             isValid = false;
         }
 
-        // Phone validation — empty check + between 8 to 15 digits check
-        var phoneVal   = $.trim($('#headerstore #modal_phone').val());
-        var digitsOnly = phoneVal.replace(/\D/g, '');
+        // Phone — empty check + min/max digit check + country-wise digit length check
+        var phoneVal       = $('#modal_phone').val().trim();
+        var countryData    = modalIti.getSelectedCountryData();
+        var iso2           = countryData.iso2 || '';
+        var digitsOnly     = phoneVal.replace(/\D/g, '');
+        var requiredDigits = getRequiredDigits(iso2);
+        var countryRule    = phoneDigitRules[(iso2 || '').toLowerCase()];
 
         if (!phoneVal || phoneVal.length < 1) {
             $('#modal_full_phone-error').text('The Phone Number is required.');
             isValid = false;
-        } else if (digitsOnly.length < 8 || digitsOnly.length > 15) {
-            $('#modal_full_phone-error').text('Phone number must be between 8 and 15 digits.');
+        } else if (digitsOnly.length < 8) {
+            $('#modal_full_phone-error').text('Phone number must be at least 8 digits.');
+            isValid = false;
+        } else if (digitsOnly.length > 15) {
+            $('#modal_full_phone-error').text('Phone number cannot be more than 15 digits.');
+            isValid = false;
+        } else if (digitsOnly.length < requiredDigits) {
+            $('#modal_full_phone-error').text('Please enter a valid ' + requiredDigits + '-digit phone number.');
+            isValid = false;
+        } else if (countryRule !== undefined && digitsOnly.length !== countryRule) {
+            $('#modal_full_phone-error').text('Please enter a valid ' + countryRule + '-digit phone number.');
             isValid = false;
         }
 
+        // Email
         var emailVal = $('#headerstore input[name="email"]').val().trim();
         if (emailVal === '') {
             $('#modal_email-error').text('The Email Address is required.');
@@ -354,16 +307,19 @@ jQuery(document).ready(function ($) {
             isValid = false;
         }
 
+        // State
         if ($('#modal_state').val() === '') {
             $('#modal_state-error').text('The State is required.');
             isValid = false;
         }
 
+        // City
         if ($('#modal_city').val() === '') {
             $('#modal_city-error').text('The City is required.');
             isValid = false;
         }
 
+        // Captcha
         var captchaInput = $('#modal_simple_captcha').val().trim();
         var captchaSum   = $('#modal_captcha_sum').val();
         if (captchaInput === '') {
@@ -382,14 +338,19 @@ jQuery(document).ready(function ($) {
         e.preventDefault();
         e.stopPropagation();
 
+        // ✅ Cache form reference — 'this' loses scope inside AJAX callbacks
         var $form = $(this);
+
+        // ✅ Clear ALL error divs first
         $form.find('.text-danger').text('');
 
-        var rawPhone  = $.trim($('#headerstore #modal_phone').val());
-        var dialCode  = window.modalIti ? window.modalIti.getSelectedCountryData().dialCode : '';
+        // ✅ Build full phone value
+        var rawPhone  = $.trim($('#modal_phone').val());
+        var dialCode  = modalIti.getSelectedCountryData().dialCode;
         var fullPhone = rawPhone ? '+' + dialCode + rawPhone : '';
         $('#modal_contact_full_phone').val(fullPhone);
 
+        // ✅ Run client-side validation — stop if any field is invalid
         if (!validateModalForm()) {
             return false;
         }
@@ -406,35 +367,37 @@ jQuery(document).ready(function ($) {
             },
             success: function (res) {
                 $form.find('.modal_submit_btn').prop('disabled', false).text('Request a Quote');
-
+            
                 if (res.status === 'success' && res.redirect) {
-                    var redirectUrl = res.redirect;
+            
+                    var redirectUrl = res.redirect; // ✅ Store URL before modal closes
                     var modalEl = document.getElementById('staticBackdrop');
                     var bsModal = bootstrap.Modal.getInstance(modalEl);
-
+            
+                    // ✅ Set a fallback timeout in case the event never fires
                     var redirected = false;
                     var fallbackTimer = setTimeout(function () {
                         if (!redirected) {
                             redirected = true;
                             window.location.href = redirectUrl;
                         }
-                    }, 800);
-
+                    }, 800); // fallback after 800ms
+            
                     if (bsModal) {
                         modalEl.addEventListener('hidden.bs.modal', function () {
-                            clearTimeout(fallbackTimer);
+                            clearTimeout(fallbackTimer); // ✅ Cancel fallback if event fires
                             if (!redirected) {
                                 redirected = true;
                                 window.location.href = redirectUrl;
                             }
                         }, { once: true });
-
+            
                         bsModal.hide();
                     } else {
                         clearTimeout(fallbackTimer);
                         window.location.href = redirectUrl;
                     }
-
+            
                 } else if (res.errors) {
                     $.each(res.errors, function (key, value) {
                         $('#modal_' + key + '-error').text(value[0] || value);
@@ -454,5 +417,6 @@ jQuery(document).ready(function ($) {
             }
         });
     });
+
 });
 </script>

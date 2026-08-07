@@ -61,12 +61,11 @@ class dashboardController extends Controller
     public function about()
     {
 
-        $metatitle = "";
+        $metatitle = "About Jinil Shot Blast";
 
-        $metadescription = "";
+        $metadescription = "Learn about JINIL Shot Blast, a trusted manufacturer of shot blasting machines, delivering reliable surface preparation solutions and engineering expertise";
 
         return view('front.about', compact('metatitle', 'metadescription'));
-
     }
 
     public function spareparts()
@@ -119,9 +118,9 @@ class dashboardController extends Controller
     public function contact()
     {
 
-        $metatitle = "";
+        $metatitle = "Contact JINIL Shot Blast | Get Expert Assistance";
 
-        $metadescription = "";
+        $metadescription = "Need a shot blasting machine or technical support? Contact JINIL for quotations, product information, spare parts, and expert assistance.";
 
         $countries = DB::table('countries')->select('id', 'name')->get();
 
@@ -133,8 +132,8 @@ class dashboardController extends Controller
 
     public function blogs()
     {
-        $metatitle       = "";
-        $metadescription = "";
+        $metatitle       = "Shot Blasting Machine Blog & Industry Insights | JINIL";
+        $metadescription = "Explore JINIL blogs covering shot blasting machines, surface preparation, maintenance tips, industry applications, and abrasive blasting solutions";
         $blogs           = Blog::whereNull('deleted_at')
             ->where('status', 1)
             ->orderBy('id', 'desc')
@@ -163,9 +162,9 @@ class dashboardController extends Controller
     public function privacypolicy()
     {
 
-        $metatitle = "";
+        $metatitle = "Privacy Policy | JINIL";
 
-        $metadescription = "";
+        $metadescription = "Review JINIL's Privacy Policy to understand how we collect, use, and protect your information when you visit our website or contact us";
 
         return view('front.privacypolicy', compact('metatitle', 'metadescription'));
 
@@ -174,9 +173,9 @@ class dashboardController extends Controller
     public function termsengineer()
     {
 
-        $metatitle = "";
+        $metatitle = "Terms & Conditions | JINIL";
 
-        $metadescription = "";
+        $metadescription = "Read JINIL's terms and conditions regarding website usage, inquiries, services, intellectual property, and customer responsibilities";
 
         return view('front.terms-engineer', compact('metatitle', 'metadescription'));
 
@@ -197,9 +196,9 @@ class dashboardController extends Controller
     public function download()
     {
 
-        $metatitle = "";
+        $metatitle = "Download Product Catalogs of JINIL Shot Blasting Machine";
 
-        $metadescription = "";
+        $metadescription = "Download JINIL product catalogs, brochures, technical specifications, and machine details to find the right shot blasting solution for your industry";
 
         $certificate = Certificate::whereNull('deleted_at')
 
@@ -232,9 +231,9 @@ class dashboardController extends Controller
     public function faq()
     {
 
-        $metatitle = "";
+        $metatitle = "FAQs & Support | JINIL";
 
-        $metadescription = "";
+        $metadescription = "Get answers to common questions about shot blasting machines, maintenance, abrasives, applications, and surface preparation processes from JINIL";
 
         $faqs = Faq::whereNull('deleted_at')->get();
 
