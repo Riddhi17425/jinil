@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
@@ -8,110 +9,262 @@ use App\Models\Product;
 
 class SitemapController extends Controller
 {
+    /**
+     * Return XML response
+     */
     protected function xmlResponse(string $xml)
     {
-        return response($xml, 200)->header('Content-Type', 'application/xml');
+        return response($xml, 200)
+            ->header('Content-Type', 'application/xml');
     }
 
+    /**
+     * Complete Dynamic Sitemap
+     */
     public function index()
     {
-        $sitemaps = [
-            url('/blog-sitemap.xml'),
-            url('/category-sitemap.xml'),
-            url('/product-sitemap.xml'),
-            url('/industry-sitemap.xml'),
-            url('/page-sitemap.xml'),
-        ];
+        /*
+         * Static time for homepage and static pages.
+         *
+         * Update this value whenever you want to record
+         * a new update time for static pages.
+         */
+        $todayTime = "2026-08-12T15:30:00+05:30";
 
-        $xml  = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
-        $xml .= '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
-        foreach ($sitemaps as $loc) {
-            $xml .= "<sitemap><loc>{$loc}</loc><lastmod>" . now()->toAtomString() . "</lastmod></sitemap>\n";
-        }
-        $xml .= '</sitemapindex>';
+        $xml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
 
-        return $this->xmlResponse($xml);
-    }
-
-    public function blogs()
-    {
-        $blogs = Blog::where('status', 1)->get();
-
-        $xml  = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
         $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
-        foreach ($blogs as $blog) {
-            $loc      = route('blogdetail', $blog->url);
-            $lastmod  = optional($blog->updated_at)->toAtomString();
-            $xml     .= "<url><loc>{$loc}</loc><lastmod>{$lastmod}</lastmod></url>\n";
+
+
+        // ============================================================
+        // 1. HOMEPAGE
+        // PRIORITY: 1.00
+        // ============================================================
+
+        $xml .= '<url>';
+
+        $xml .= '<loc>'
+            . htmlspecialchars(
+                url('/'),
+                ENT_XML1,
+                'UTF-8'
+            )
+            . '</loc>';
+
+        $xml .= '<lastmod>'
+            . htmlspecialchars($todayTime, ENT_XML1, 'UTF-8')
+            . '</lastmod>';
+
+        $xml .= '<priority>1.00</priority>';
+
+        $xml .= '</url>' . "\n";
+
+
+        // ============================================================
+        // 2. ALL CATEGORIES
+        // PRIORITY: 0.80
+        // ============================================================
+
+        $categories = Category::whereNull('deleted_at')
+            ->get();
+
+        foreach ($categories as $category)
+        {
+            if (empty($category->url))
+            {
+                continue;
+            }
+
+            $loc = route('productlist', [
+                'url' => $category->url
+            ]);
+
+            $lastmod = optional($category->updated_at)->toAtomString();
+
+            $xml .= '<url>';
+
+            $xml .= '<loc>'
+                . htmlspecialchars($loc, ENT_XML1, 'UTF-8')
+                . '</loc>';
+
+            if ($lastmod)
+            {
+                $xml .= '<lastmod>'
+                    . htmlspecialchars($lastmod, ENT_XML1, 'UTF-8')
+                    . '</lastmod>';
+            }
+
+            $xml .= '<priority>0.80</priority>';
+
+            $xml .= '</url>' . "\n";
         }
-        $xml .= '</urlset>';
 
-        return $this->xmlResponse($xml);
-    }
 
-    public function categories()
-    {
-        $categories = Category::all();
+        // ============================================================
+        // 3. ALL PRODUCTS
+        // PRIORITY: 0.80
+        // ============================================================
 
-        $xml  = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
-        $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
-        foreach ($categories as $category) {
-            $loc      = route('productlist', $category->url);
-            $lastmod  = optional($category->updated_at)->toAtomString();
-            $xml     .= "<url><loc>{$loc}</loc><lastmod>{$lastmod}</lastmod></url>\n";
+        $products = Product::whereNull('deleted_at')
+            ->get();
+
+        foreach ($products as $product)
+        {
+            if (empty($product->url))
+            {
+                continue;
+            }
+
+            $loc = route('productdetials', [
+                'url' => $product->url
+            ]);
+
+            $lastmod = optional($product->updated_at)->toAtomString();
+
+            $xml .= '<url>';
+
+            $xml .= '<loc>'
+                . htmlspecialchars($loc, ENT_XML1, 'UTF-8')
+                . '</loc>';
+
+            if ($lastmod)
+            {
+                $xml .= '<lastmod>'
+                    . htmlspecialchars($lastmod, ENT_XML1, 'UTF-8')
+                    . '</lastmod>';
+            }
+
+            $xml .= '<priority>0.80</priority>';
+
+            $xml .= '</url>' . "\n";
         }
-        $xml .= '</urlset>';
 
-        return $this->xmlResponse($xml);
-    }
 
-    public function products()
-    {
-        $products = Product::all();
+        // ============================================================
+        // 4. ALL INDUSTRIES
+        // PRIORITY: 0.60
+        // ============================================================
 
-        $xml  = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
-        $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
-        foreach ($products as $product) {
-            $loc      = route('productdetials', $product->url);
-            $lastmod  = optional($product->updated_at)->toAtomString();
-            $xml     .= "<url><loc>{$loc}</loc><lastmod>{$lastmod}</lastmod></url>\n";
+        $industries = Industry::whereNull('deleted_at')
+            ->get();
+
+        foreach ($industries as $industry)
+        {
+            if (empty($industry->url))
+            {
+                continue;
+            }
+
+            $loc = route('industry', [
+                'url' => $industry->url
+            ]);
+
+            $lastmod = optional($industry->updated_at)->toAtomString();
+
+            $xml .= '<url>';
+
+            $xml .= '<loc>'
+                . htmlspecialchars($loc, ENT_XML1, 'UTF-8')
+                . '</loc>';
+
+            if ($lastmod)
+            {
+                $xml .= '<lastmod>'
+                    . htmlspecialchars($lastmod, ENT_XML1, 'UTF-8')
+                    . '</lastmod>';
+            }
+
+            $xml .= '<priority>0.60</priority>';
+
+            $xml .= '</url>' . "\n";
         }
-        $xml .= '</urlset>';
 
-        return $this->xmlResponse($xml);
-    }
 
-    public function industries()
-    {
-        $industries = Industry::all();
+        // ============================================================
+        // 5. ALL BLOGS
+        // PRIORITY: 0.60
+        // ============================================================
 
-        $xml  = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
-        $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
-        foreach ($industries as $industry) {
-            $loc      = route('industry', $industry->url);
-            $lastmod  = optional($industry->updated_at)->toAtomString();
-            $xml     .= "<url><loc>{$loc}</loc><lastmod>{$lastmod}</lastmod></url>\n";
+        $blogs = Blog::where('status', 1)
+            ->whereNull('deleted_at')
+            ->get();
+
+        foreach ($blogs as $blog)
+        {
+            if (empty($blog->url))
+            {
+                continue;
+            }
+
+            $loc = route('blogdetail', [
+                'url' => $blog->url
+            ]);
+
+            $lastmod = optional($blog->updated_at)->toAtomString();
+
+            $xml .= '<url>';
+
+            $xml .= '<loc>'
+                . htmlspecialchars($loc, ENT_XML1, 'UTF-8')
+                . '</loc>';
+
+            if ($lastmod)
+            {
+                $xml .= '<lastmod>'
+                    . htmlspecialchars($lastmod, ENT_XML1, 'UTF-8')
+                    . '</lastmod>';
+            }
+
+            $xml .= '<priority>0.60</priority>';
+
+            $xml .= '</url>' . "\n";
         }
-        $xml .= '</urlset>';
 
-        return $this->xmlResponse($xml);
-    }
 
-    public function pages()
-    {
+        // ============================================================
+        // 6. STATIC PAGES
+        // PRIORITY: 0.60
+        // ============================================================
+
         $staticRoutes = [
-            'about', 'contact', 'blogs', 'downloads', 'faqs',
-            'installation', 'aftersales', 'annualmaintenance',
-            'machineupgrades', 'spareparts', 'privacypolicy', 'termsengineer',
+            'about',
+            'contact',
+            'blogs',
+            'downloads',
+            'faqs',
+            'installation',
+            'aftersales',
+            'annualmaintenance',
+            'machineupgrades',
+            'spareparts',
+            'privacypolicy',
+            'termsengineer',
         ];
 
-        $xml  = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
-        $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
-        $xml .= '<url><loc>' . url('/') . '</loc></url>' . "\n";
-        foreach ($staticRoutes as $name) {
-            $loc  = route($name);
-            $xml .= "<url><loc>{$loc}</loc></url>\n";
+        foreach ($staticRoutes as $name)
+        {
+            $loc = route($name);
+
+            $xml .= '<url>';
+
+            $xml .= '<loc>'
+                . htmlspecialchars($loc, ENT_XML1, 'UTF-8')
+                . '</loc>';
+
+            $xml .= '<lastmod>'
+                . htmlspecialchars($todayTime, ENT_XML1, 'UTF-8')
+                . '</lastmod>';
+
+            $xml .= '<priority>0.60</priority>';
+
+            $xml .= '</url>' . "\n";
         }
+
+
+        // ============================================================
+        // END SITEMAP
+        // ============================================================
+
         $xml .= '</urlset>';
 
         return $this->xmlResponse($xml);

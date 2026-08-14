@@ -90,17 +90,19 @@ Route::get('/terms-engineer', [dashboardController::class, 'termsengineer'])->na
 
 Route::get('/product-details/{url?}', [dashboardController::class, 'productdetials'])->name('productdetials');
 
+// START - DYNAMIC SITEMAP ROUTE
+/*
 Route::get('/sitemap.xml', [SitemapController::class, 'index']);
-
 Route::get('/blog-sitemap.xml', [SitemapController::class, 'blogs']);
-
 Route::get('/category-sitemap.xml', [SitemapController::class, 'categories']);
-
 Route::get('/product-sitemap.xml', [SitemapController::class, 'products']);
-
 Route::get('/industry-sitemap.xml', [SitemapController::class, 'industries']);
-
 Route::get('/page-sitemap.xml', [SitemapController::class, 'pages']);
+*/
+
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
+
+// END - DYNAMIC SITEMAP ROUTE
 
 Route::get('/get-cities/{id}', function ($id) {
 
