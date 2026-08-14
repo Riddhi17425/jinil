@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\Category;
-use App\Models\Industry;
+use App\Models\IndCategory;
 use App\Models\Product;
 
 class SitemapController extends Controller
@@ -18,23 +18,13 @@ class SitemapController extends Controller
             ->header('Content-Type', 'application/xml');
     }
 
-    /**
-     * Complete Dynamic Sitemap
-     */
     public function index()
     {
-        /*
-         * Static time for homepage and static pages.
-         *
-         * Update this value whenever you want to record
-         * a new update time for static pages.
-         */
-        $todayTime = "2026-08-12T15:30:00+05:30";
+        $todayTime = "2026-08-14T15:30:00+05:30";
 
         $xml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
 
         $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
-
 
         // ============================================================
         // 1. HOMEPAGE
@@ -58,7 +48,6 @@ class SitemapController extends Controller
         $xml .= '<priority>1.00</priority>';
 
         $xml .= '</url>' . "\n";
-
 
         // ============================================================
         // 2. ALL CATEGORIES
@@ -99,7 +88,6 @@ class SitemapController extends Controller
             $xml .= '</url>' . "\n";
         }
 
-
         // ============================================================
         // 3. ALL PRODUCTS
         // PRIORITY: 0.80
@@ -139,27 +127,31 @@ class SitemapController extends Controller
             $xml .= '</url>' . "\n";
         }
 
-
         // ============================================================
-        // 4. ALL INDUSTRIES
-        // PRIORITY: 0.60
+        // 4. ALL INDUSTRY CATEGORIES
+        // PRIORITY: 0.80
+        //
+        // Fetch data from:
+        // indcategory table
+        //
+        // Individual Industry listings are NOT included.
         // ============================================================
 
-        $industries = Industry::whereNull('deleted_at')
+        $indCategories = IndCategory::whereNull('deleted_at')
             ->get();
 
-        foreach ($industries as $industry)
+        foreach ($indCategories as $indCategory)
         {
-            if (empty($industry->url))
+            if (empty($indCategory->url))
             {
                 continue;
             }
 
             $loc = route('industry', [
-                'url' => $industry->url
+                'url' => $indCategory->url
             ]);
 
-            $lastmod = optional($industry->updated_at)->toAtomString();
+            $lastmod = optional($indCategory->updated_at)->toAtomString();
 
             $xml .= '<url>';
 
@@ -174,11 +166,10 @@ class SitemapController extends Controller
                     . '</lastmod>';
             }
 
-            $xml .= '<priority>0.60</priority>';
+            $xml .= '<priority>0.80</priority>';
 
             $xml .= '</url>' . "\n";
         }
-
 
         // ============================================================
         // 5. ALL BLOGS
@@ -220,7 +211,6 @@ class SitemapController extends Controller
             $xml .= '</url>' . "\n";
         }
 
-
         // ============================================================
         // 6. STATIC PAGES
         // PRIORITY: 0.60
@@ -236,9 +226,6 @@ class SitemapController extends Controller
             'aftersales',
             'annualmaintenance',
             'machineupgrades',
-            'spareparts',
-            'privacypolicy',
-            'termsengineer',
         ];
 
         foreach ($staticRoutes as $name)
@@ -259,7 +246,6 @@ class SitemapController extends Controller
 
             $xml .= '</url>' . "\n";
         }
-
 
         // ============================================================
         // END SITEMAP
