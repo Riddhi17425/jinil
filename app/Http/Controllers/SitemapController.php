@@ -226,11 +226,24 @@ class SitemapController extends Controller
             'aftersales',
             'annualmaintenance',
             'machineupgrades',
+            'spareparts',
+        ];
+
+        $highPriorityPages = [
+            'installation',
+            'aftersales',
+            'annualmaintenance',
+            'machineupgrades',
         ];
 
         foreach ($staticRoutes as $name)
         {
             $loc = route($name);
+
+            // Set priority based on page
+            $priority = in_array($name, $highPriorityPages)
+                ? '0.80'
+                : '0.60';
 
             $xml .= '<url>';
 
@@ -242,7 +255,9 @@ class SitemapController extends Controller
                 . htmlspecialchars($todayTime, ENT_XML1, 'UTF-8')
                 . '</lastmod>';
 
-            $xml .= '<priority>0.60</priority>';
+            $xml .= '<priority>'
+                . $priority
+                . '</priority>';
 
             $xml .= '</url>' . "\n";
         }
