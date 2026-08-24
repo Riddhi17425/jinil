@@ -6,7 +6,7 @@
         <div class="navi_page_child">
             <div class="col-lg-10">
                 <p class="title_24"><a href="{{ url('/') }}" class="text-585">Home</a> / FAQs</p>
-                <h2 class="title_60">Frequently Asked Questions</h2>
+                <h1 class="title_60">Frequently Asked Questions</h1>
                 <p class="mb-0">Clear answers to common questions about Jinil’s shot blasting machines, surface
                     preparation solutions, and engineering support—helping you make informed decisions with confidence.
                 </p>

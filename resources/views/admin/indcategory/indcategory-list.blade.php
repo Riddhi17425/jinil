@@ -16,7 +16,7 @@
         </a>
     </div>
 </div>
-<form method="GET" action="{{ route('indcategory.index') }}" class="mb-3">
+<form method="GET" action="{{ route('indcategory-index') }}" class="mb-3">
     <div class="row g-2">
         <div class="col-md-4">
             <input type="text"
@@ -31,7 +31,7 @@
 
         @if($search)
         <div class="col-md-2">
-            <a href="{{ route('indcategory.index') }}" class="btn btn-secondary w-100">
+            <a href="{{ route('indcategory-index') }}" class="btn btn-secondary w-100">
                 Reset
             </a>
         </div>

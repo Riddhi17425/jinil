@@ -1,4 +1,7 @@
-@include('layouts.frontheader')
+@include('layouts.frontheader', [
+'metatitle' => 'After-Sales Support for Shot Blasting Machines',
+'metadescription' => 'Jinil provides reliable after-sales support for shot blasting machines, including AMC, spare parts, preventive maintenance, and technical assistance.',
+])
 
 
 

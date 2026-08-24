@@ -1,4 +1,7 @@
-@include('layouts.frontheader')
+@include('layouts.frontheader', [
+'metatitle' => 'Annual Maintenance Services for Shot Blasting Machines',
+'metadescription' => 'Choose Jinil AMC services for reliable maintenance, timely inspections, repairs, and improved performance of airless and air-operated shot blasting machines.',
+])
 
 
 

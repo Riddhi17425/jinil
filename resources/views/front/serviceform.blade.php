@@ -21,8 +21,8 @@ $b = rand(1,9);
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-4 pe-lg-5 z-1">
-                <h2 class="title_80 fw-medium text-111 text-white" style=" mix-blend-mode: normal; ">Initiate your Project</h2>
-                <p class="text-white">Our experienced engineers can help you select the right shot blasting solution based on your application, material type, and production capacity.</p>
+                <h2 class="title_42 fw-medium text-111 text-white" style=" mix-blend-mode: normal; ">Get a Quote from a Trusted Shot Blasting Machine Manufacturer</h2>
+                <p class="text-white">Talk to our engineers about the right airless shot blasting machine, blast room, or dust collector for your production line.</p>
             </div>
 
             <div class="col-lg-8">
@@ -40,7 +40,7 @@ $b = rand(1,9);
                         </div>
 
                         <div class="col-md-6 form-group">
-                            <input type="tel" name="phone" id="service_phone" placeholder="Phone Number*: ">
+                            <input type="text" id="modal_phone" name="phone" placeholder=" Phone Number *" value="" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 15);" aria-describedby="phone-error" aria-invalid="true" style="padding-left: 81px;">
                             <input type="hidden" name="country" id="service_country">
                             <input type="hidden" name="phonecode" id="service_phonecode">
                             <input type="hidden" name="full_phone" id="service_full_phone">

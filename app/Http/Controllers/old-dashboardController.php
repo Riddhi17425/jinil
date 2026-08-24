@@ -54,18 +54,23 @@ class dashboardController extends Controller
 
             ->get();
 
-        return view('front.dashboard', compact('productlist'));
+        $metatitle = "Shot Blasting Machine Manufacturer | JINIL";
+
+        $metadescription = "Jinil Shot Blast is a trusted shot blasting machine manufacturer in India, providing durable, high-performance blasting machines for diverse industrial needs.";
+
+        return view('front.dashboard', compact('productlist', 'metatitle', 'metadescription'));
 
     }
 
     public function about()
     {
 
-        $metatitle = "About Jinil Shot Blast";
+        $metatitle = "";
 
-        $metadescription = "Learn about JINIL Shot Blast, a trusted manufacturer of shot blasting machines, delivering reliable surface preparation solutions and engineering expertise";
+        $metadescription = "";
 
         return view('front.about', compact('metatitle', 'metadescription'));
+
     }
 
     public function spareparts()
@@ -118,9 +123,9 @@ class dashboardController extends Controller
     public function contact()
     {
 
-        $metatitle = "Contact JINIL Shot Blast | Get Expert Assistance";
+        $metatitle = "";
 
-        $metadescription = "Need a shot blasting machine or technical support? Contact JINIL for quotations, product information, spare parts, and expert assistance.";
+        $metadescription = "";
 
         $countries = DB::table('countries')->select('id', 'name')->get();
 
@@ -132,8 +137,8 @@ class dashboardController extends Controller
 
     public function blogs()
     {
-        $metatitle       = "Shot Blasting Machine Blog & Industry Insights | JINIL";
-        $metadescription = "Explore JINIL blogs covering shot blasting machines, surface preparation, maintenance tips, industry applications, and abrasive blasting solutions";
+        $metatitle       = "";
+        $metadescription = "";
         $blogs           = Blog::whereNull('deleted_at')
             ->where('status', 1)
             ->orderBy('id', 'desc')
@@ -162,9 +167,9 @@ class dashboardController extends Controller
     public function privacypolicy()
     {
 
-        $metatitle = "Privacy Policy | JINIL";
+        $metatitle = "";
 
-        $metadescription = "Review JINIL's Privacy Policy to understand how we collect, use, and protect your information when you visit our website or contact us";
+        $metadescription = "";
 
         return view('front.privacypolicy', compact('metatitle', 'metadescription'));
 
@@ -173,9 +178,9 @@ class dashboardController extends Controller
     public function termsengineer()
     {
 
-        $metatitle = "Terms & Conditions | JINIL";
+        $metatitle = "";
 
-        $metadescription = "Read JINIL's terms and conditions regarding website usage, inquiries, services, intellectual property, and customer responsibilities";
+        $metadescription = "";
 
         return view('front.terms-engineer', compact('metatitle', 'metadescription'));
 
@@ -196,9 +201,9 @@ class dashboardController extends Controller
     public function download()
     {
 
-        $metatitle = "Download Product Catalogs of JINIL Shot Blasting Machine";
+        $metatitle = "";
 
-        $metadescription = "Download JINIL product catalogs, brochures, technical specifications, and machine details to find the right shot blasting solution for your industry";
+        $metadescription = "";
 
         $certificate = Certificate::whereNull('deleted_at')
 
@@ -231,9 +236,9 @@ class dashboardController extends Controller
     public function faq()
     {
 
-        $metatitle = "FAQs & Support | JINIL";
+        $metatitle = "";
 
-        $metadescription = "Get answers to common questions about shot blasting machines, maintenance, abrasives, applications, and surface preparation processes from JINIL";
+        $metadescription = "";
 
         $faqs = Faq::whereNull('deleted_at')->get();
 
@@ -244,9 +249,9 @@ class dashboardController extends Controller
     public function installation()
     {
 
-        $metatitle = "";
+        $metatitle = "Shot Blasting Machine Installation | JINIL";
 
-        $metadescription = "";
+        $metadescription = "Ensure smooth production with JINIL Shot Blasting Machine Installation, commissioning, equipment testing, operator training, and after-installation support.";
 
         $faqs = Faq::whereNull('deleted_at')->get();
 
@@ -257,9 +262,9 @@ class dashboardController extends Controller
     public function machineupgrades()
     {
 
-        $metatitle = "";
+        $metatitle = "Shot Blasting Machine Upgrades & Modernization";
 
-        $metadescription = "";
+        $metadescription = "Upgrade your shot blasting machines with JINIL's machine upgrade services to improve performance, efficiency, automation, reliability, and equipment life.";
 
         return view('front.machine', compact('metatitle', 'metadescription'));
 
@@ -268,9 +273,9 @@ class dashboardController extends Controller
     public function annualmaintenance()
     {
 
-        $metatitle = "";
+        $metatitle = "Annual Maintenance Services for Shot Blasting Machines";
 
-        $metadescription = "";
+        $metadescription = "Choose JINIL AMC services for reliable maintenance, timely inspections, repairs, and improved performance of airless and air-operated shot blasting machines.";
 
         return view('front.annual-maintenance-contracts', compact('metatitle', 'metadescription'));
 
@@ -279,9 +284,9 @@ class dashboardController extends Controller
     public function aftersales()
     {
 
-        $metatitle = "";
+        $metatitle = "After-Sales Support for Shot Blasting Machines";
 
-        $metadescription = "";
+        $metadescription = "JINIL provides reliable after-sales support for shot blasting machines, including AMC, spare parts, preventive maintenance, and technical assistance.";
 
         $faqs = Faq::whereNull('deleted_at')->get();
 
@@ -326,9 +331,8 @@ class dashboardController extends Controller
 
             ->get();
 
-        $metatitle = $category->meta_title;
-
-        $metadescription = $category->meta_description;
+        $metatitle       = $category->meta_title ?? $category->indcategory;
+        $metadescription = $category->meta_description ?? $category->cat_description;
 
         return view('front.industries', compact(
 
@@ -359,9 +363,8 @@ class dashboardController extends Controller
 
             ->get();
 
-        $metatitle = $category->meta_title;
-
-        $metadescription = $category->meta_description;
+        $metatitle       = $category->meta_title ?? $category->category;
+        $metadescription = $category->meta_description ?? $category->cat_description;
 
         return view('front.productlisting', compact(
 

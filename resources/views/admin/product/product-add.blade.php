@@ -191,7 +191,7 @@
                     <div class="row g-3">
                         <div class="col-md-12">
                             <label class="form-label">Advantages Description</label>
-                            <textarea name="advantages_desc" class="form-control" rows="3"></textarea>
+                            <textarea id="advantages_desc" name="advantages_desc" class="form-control" rows="3"></textarea>
                         </div>
                         <div class="col-md-12">
                             <div id="advantages-wrapper"></div>
@@ -322,7 +322,7 @@
 
 <script>
 $(document).ready(function() {
-    $('#meta_description,#short_description,#working_principle_desc,#configuration_description,#why_choose_description,#optional_accessories_desc,#faqs_desc,#related_industries_desc').summernote({
+    $('#meta_description,#short_description,#working_principle_desc,#configuration_description,#why_choose_description,#optional_accessories_desc,#faqs_desc,#related_industries_desc,#advantages_desc').summernote({
         placeholder: 'Enter here...',
         height: 300,
         toolbar: [

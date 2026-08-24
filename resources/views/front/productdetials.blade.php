@@ -304,7 +304,7 @@
 <section class="mt_100">
    <div class="container">
       <div class="sec_hed_top mb_40">
-         <h2 class="title_60">Capacity Chart (HP vs Shot Flow)</h2>
+         <h2 class="title_60">Capacity Chart</h2>
       </div>
       <div class="row gy-4 gy-lg-0 justify-content-center">
          <div class="col-lg-12">
@@ -363,80 +363,36 @@
             <td data-label="Motor HP">10 HP</td>
             <td data-label="Motor HP">15 HP</td>
             <td data-label="Motor HP">20 HP</td>
-            <td data-label="Motor HP">25 HP</td>
             <td data-label="Motor HP">30 HP</td>
             <td data-label="Motor HP">40 HP</td>
             <td data-label="Motor HP">50 HP</td>
         </tr>
 
         <tr>
-            <th>Wheel Dia.</th>
-            <td data-label="Wheel Dia.">250–300 mm</td>
-            <td data-label="Wheel Dia.">300 mm</td>
-            <td data-label="Wheel Dia.">300–350 mm</td>
-            <td data-label="Wheel Dia.">350 mm</td>
-            <td data-label="Wheel Dia.">380–400 mm</td>
-            <td data-label="Wheel Dia.">400–450 mm</td>
-            <td data-label="Wheel Dia.">450 mm</td>
-            <td data-label="Wheel Dia.">450–500 mm</td>
-            <td data-label="Wheel Dia.">500–550 mm</td>
-            <td data-label="Wheel Dia.">550–600 mm</td>
-        </tr>
-
-        <tr>
-            <th>Typical RPM</th>
-            <td data-label="Typical RPM">2800–3000</td>
-            <td data-label="Typical RPM">2800–3000</td>
-            <td data-label="Typical RPM">2800–3000</td>
-            <td data-label="Typical RPM">2800–3000</td>
-            <td data-label="Typical RPM">2800–3000</td>
-            <td data-label="Typical RPM">2800–3000</td>
-            <td data-label="Typical RPM">2800–3000</td>
-            <td data-label="Typical RPM">2800–3000</td>
-            <td data-label="Typical RPM">2200–2800</td>
-            <td data-label="Typical RPM">2200–2500</td>
-        </tr>
-
-        <tr>
             <th>Shot Flow</th>
-            <td data-label="Shot Flow">40–70 kg/min</td>
-            <td data-label="Shot Flow">70–100 kg/min</td>
-            <td data-label="Shot Flow">100–150 kg/min</td>
-            <td data-label="Shot Flow">140–180 kg/min</td>
-            <td data-label="Shot Flow">180–250 kg/min</td>
-            <td data-label="Shot Flow">250–320 kg/min</td>
-            <td data-label="Shot Flow">320–400 kg/min</td>
-            <td data-label="Shot Flow">400–500 kg/min</td>
-            <td data-label="Shot Flow">500–650 kg/min</td>
-            <td data-label="Shot Flow">650–850 kg/min</td>
+            <td data-label="Shot Flow">30 – 60 </td>
+            <td data-label="Shot Flow">60 – 100</td>
+            <td data-label="Shot Flow">80 – 120</td>
+            <td data-label="Shot Flow">120 – 180</td>
+            <td data-label="Shot Flow">150 – 220</td>
+            <td data-label="Shot Flow">200 – 300</td>
+            <td data-label="Shot Flow">300 – 450</td>
+            <td data-label="Shot Flow">450 – 700</td>
+            <td data-label="Shot Flow">700 – 1000+</td>
         </tr>
 
-        <tr>
-            <th>Abrasive Velocity</th>
-            <td data-label="Abrasive Velocity">55–65 m/s</td>
-            <td data-label="Abrasive Velocity">60–70 m/s</td>
-            <td data-label="Abrasive Velocity">65–75 m/s</td>
-            <td data-label="Abrasive Velocity">70–75 m/s</td>
-            <td data-label="Abrasive Velocity">70–80 m/s</td>
-            <td data-label="Abrasive Velocity">75–85 m/s</td>
-            <td data-label="Abrasive Velocity">75–90 m/s</td>
-            <td data-label="Abrasive Velocity">80–95 m/s</td>
-            <td data-label="Abrasive Velocity">85–100 m/s</td>
-            <td data-label="Abrasive Velocity">90–110 m/s</td>
-        </tr>
 
         <tr>
-            <th>Cleaning Capacity Approx</th>
-            <td data-label="Cleaning Capacity">8–15 sqm/hr</td>
-            <td data-label="Cleaning Capacity">15–25 sqm/hr</td>
-            <td data-label="Cleaning Capacity">25–40 sqm/hr</td>
-            <td data-label="Cleaning Capacity">35–55 sqm/hr</td>
-            <td data-label="Cleaning Capacity">50–80 sqm/hr</td>
-            <td data-label="Cleaning Capacity">70–110 sqm/hr</td>
-            <td data-label="Cleaning Capacity">90–140 sqm/hr</td>
-            <td data-label="Cleaning Capacity">120–180 sqm/hr</td>
-            <td data-label="Cleaning Capacity">160–250 sqm/hr</td>
-            <td data-label="Cleaning Capacity">220–350 sqm/hr</td>
+            <th>Typical Application</th>
+            <td data-label="Cleaning Capacity">Small cabinet </td>
+            <td data-label="Cleaning Capacity">Light duty</td>
+            <td data-label="Cleaning Capacity">Tumblast </td>
+            <td data-label="Cleaning Capacity">General use</td>
+            <td data-label="Cleaning Capacity">Hanger / Table</td>
+            <td data-label="Cleaning Capacity">Tunnel </td>
+            <td data-label="Cleaning Capacity">Heavy duty</td>
+            <td data-label="Cleaning Capacity">Plate blasting</td>
+            <td data-label="Cleaning Capacity">High production</td>
         </tr>
     </tbody>
 </table>
@@ -506,7 +462,7 @@
             </div>
 
 
-            <div class="industry_detals_grid">
+            <div class="industry_detals_grid mt-3 mt-lg-0">
                 @foreach($productIndustries as $k => $v)
                 <div class="industry_item_wrapper mx-3">
                     <a href="{{route('industry', $v->url)}}">

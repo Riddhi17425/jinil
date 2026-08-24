@@ -18,7 +18,7 @@
 <section class="mb_100 con_map">
     <div class="container-fluid">
         <div class="row">
-            <div class="mb-4 mb-lg-0 col-md-6 pe-md-5">
+            <div class="mb-4 mb-lg-0 col-md-6 pe-md-5 text-center text-lg-start">
                 <div class="inve_Pro_card">
                     <h4 class="title_24">Head Office</h4>
                     <p><a href="https://maps.app.goo.gl/gQvGLF1yj93x7JhQA" target="_blank">C3-602, anushruti tower, near jain derasar, s.g.road, <br/> thaltej,  ahmedabad 380059 india</a></p>
@@ -87,7 +87,7 @@ $cb = rand(1,9);
 <section class="mt_100 mb_100">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-4 pe-lg-5">
+            <div class="col-lg-4 pe-lg-5  text-center text-lg-start">
                 <h2 class="title_80 fw-medium text-111" style="mix-blend-mode: normal;">Need Technical Assistance?</h2>
                 <p>Our experienced engineers can help you select the right shot blasting solution based on your application,
                     material type, and production capacity.</p>

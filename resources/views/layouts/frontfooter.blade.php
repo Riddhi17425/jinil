@@ -86,7 +86,7 @@ $indusries = DB::table('indcategory')
                         <li><a href="{{ route('downloads') }}">Downloads</a></li>
 
                         <li><a href="{{ route('faqs') }}">FAQs</a></li>
-
+                        
                         <li><a href="{{ route('blogs') }}">Blogs</a></li>
 
                         <li><a href="{{ route('contact') }}">Contact Us</a></li>
@@ -177,6 +177,10 @@ $indusries = DB::table('indcategory')
 
                 @endforeach
 
+
+
+
+
                 <div class="footer_col">
 
 
@@ -212,6 +216,8 @@ $indusries = DB::table('indcategory')
 
                     <h4 class="title_24">Services</h4>
 
+
+
                     <ul>
 
                         <li><a href="{{ route('installation') }}">Installation & Commissioning </a></li>
@@ -224,9 +230,15 @@ $indusries = DB::table('indcategory')
 
                     </ul>
 
+
+
                 </div>
 
+
+
             </div>
+
+
 
             <hr class="footer_divider">
 
@@ -244,7 +256,8 @@ $indusries = DB::table('indcategory')
 
                 <div class="footer_social">
 
-                   <a href="https://www.facebook.com/jinilshotblasting/" target="_blanck">
+
+ <a href="https://www.facebook.com/jinilshotblasting/" target="_blanck">
 
                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 
@@ -332,7 +345,11 @@ $indusries = DB::table('indcategory')
 
                    </a>
 
+
+
                 </div>
+
+
 
                 <p class="footer_policy mb-0">
 
@@ -342,7 +359,11 @@ $indusries = DB::table('indcategory')
 
                 </p>
 
+
+
             </div>
+
+
 
         </div>
 
@@ -373,9 +394,9 @@ $indusries = DB::table('indcategory')
                       <div class="mb-3">
                           <label class="form-label">Contact No. <span class="text-danger">*</span></label>
 
-                          <input type="tel" id="wa_phone" class="form-control popup-input"
+                          <input type="tel" id="wa_phone" class="form-control popup-input" 
                               oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,15);" required>
-
+                            
                             <small class="text-danger d-none" id="wa_error">
                                 Contact number must be required
                             </small>
@@ -397,17 +418,28 @@ $indusries = DB::table('indcategory')
       </div>
   </div>
 
+
+
 <div class="WhatsAppButton_mpp">
     <a id="waFloatingBtn">
         <img src="{{ asset('public/front/images/whatsapp.png')}}" alt="whatsapp">
     </a>
 </div>
-
+    
 </footer>
+
+
+
+
+
+
 
 <!-- jquery js start -->
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
 
 
 <!-- bootstrap js start -->
@@ -417,6 +449,8 @@ $indusries = DB::table('indcategory')
     integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
 
 </script>
+
+
 
 <!-- gsap animation -->
 
@@ -524,7 +558,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const countryData = iti.getSelectedCountryData();
         fullPhone.value = "+" + countryData.dialCode + input.value;
         countryName.value = countryData.name;
-
+        
         sessionStorage.setItem("whatsapp_used", "yes");
     });
 

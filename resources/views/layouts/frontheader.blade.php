@@ -4,14 +4,16 @@
 
 <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="icon" type="image/x-icon" href="{{ asset('public/front/images/favicon.png') }}">
+<link rel="icon" type="image/x-icon" href="{{ asset('public/front/images/favicon.png') }}">
 
-    <title>{{ strip_tags($metatitle ?? 'JINIL') }}</title>
-    <meta name="description" content="{{ strip_tags($metadescription ?? '') }}">
+<title>{{ strip_tags($metatitle ?? 'JINIL') }}</title>
+
+<meta name="description" content="{{ strip_tags($metadescription ?? '') }}">
 
 <head>
+
     <!--SCHEMAS-->
 
     <script type="application/ld+json">
@@ -138,11 +140,8 @@
 
     </script>
 
-
-
-    <meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"/>
-
-
+    <meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large" />
+    <link rel="canonical" href="{{ url()->current() }}" />
 
     <!-- google fonts 1 -->
 
@@ -151,35 +150,23 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Zalando+Sans:ital,wght@0,200..900;1,200..900&display=swap"
-
         rel="stylesheet">
-
-
 
     <!-- google font 2 -->
 
     <link
-
         href="https://fonts.googleapis.com/css2?family=Zalando+Sans+SemiExpanded:ital,wght@0,200..900;1,200..900&family=Zalando+Sans:ital,wght@0,200..900;1,200..900&display=swap"
-
         rel="stylesheet">
-
-
 
     <!-- google fonts 3 -->
 
     <link
-
         href="https://fonts.googleapis.com/css2?family=Allura&family=Zalando+Sans+SemiExpanded:ital,wght@0,200..900;1,200..900&family=Zalando+Sans:ital,wght@0,200..900;1,200..900&display=swap"
-
         rel="stylesheet">
-
-
 
     <!-- bootstrap css start -->
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
     <!-- slick slider  -->
@@ -187,74 +174,74 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css"
-
         integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
-
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!--Aos animation-->
 
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" /> -->
 
-
-
     <!-- style css start -->
 
-    <link rel="stylesheet" href="{{ asset('public/front/css/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/front/css/style.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('public/front/css/header.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/front/css/header.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('public/front/css/blogs-details.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/front/css/blogs-details.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('public/front/css/Home.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/front/css/Home.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('public/front/css/installation.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/front/css/installation.css') }}">
 
-    <!-- <link rel="stylesheet" href="{{ asset('public/front/css/productdetails.css')}}"> -->
+    <!-- <link rel="stylesheet" href="{{ asset('public/front/css/productdetails.css') }}"> -->
 
-    <link rel="stylesheet" href="{{ asset('public/front/css/downloads.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/front/css/downloads.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('public/front/css/page-small.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/front/css/page-small.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('public/front/css/contact.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/front/css/contact.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('public/front/css/faq.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/front/css/faq.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('public/front/css/about.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/front/css/about.css') }}">
 
-
-
-
-
-    <link rel="stylesheet" href="{{ asset('public/front/css/footer.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/front/css/footer.css') }}">
 
     <!-- responsive css start -->
 
-    <link rel="stylesheet" href="{{ asset('public/front/css/responsive.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/front/css/responsive.css') }}">
 
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TJFBFXW6');</script>
+    <!-- End Google Tag Manager -->
+    
 </head>
 
 
 
 <body class="{{ request()->is('/') ? 'home_body' : 'inner_body' }}">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TJFBFXW6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
+    @php
 
+        use Illuminate\Support\Facades\DB;
 
-@php
+        $category = DB::table('category')
 
-use Illuminate\Support\Facades\DB;
-
-
-
-$category = DB::table('category')
-
-            ->select('id','category','url')
+            ->select('id', 'category', 'url')
 
             ->whereNull('deleted_at')
 
             ->get();
 
-@endphp
+    @endphp
 
     <header class="sticky-header">
 
@@ -268,21 +255,16 @@ $category = DB::table('category')
 
                     <a href="{{ url('/') }}">
 
-                        <img class="header_logo" src="{{ asset('public/front/images/logo.svg')}}" alt="Logo">
+                        <img class="header_logo" src="{{ asset('public/front/images/logo.svg') }}" alt="Logo">
 
                     </a>
 
                 </div>
 
                 <button class="navbar-toggler menu-toggle" type="button" data-bs-toggle="collapse"
-
                     data-bs-target="#mainNavbar">
 
-
-
                     <span class="navbar-toggler-icon"></span>
-
-
 
                 </button>
 
@@ -301,11 +283,9 @@ $category = DB::table('category')
                                 <span>
 
                                     <svg width="11" height="7" viewBox="0 0 11 7" fill="none"
-
                                         xmlns="http://www.w3.org/2000/svg">
 
                                         <path d="M10.5 0.5L5.5 5.73809L0.5 0.5" stroke="#58595B" stroke-linecap="round"
-
                                             stroke-linejoin="round" />
 
                                     </svg>
@@ -314,35 +294,23 @@ $category = DB::table('category')
 
                             </a>
 
+                            <ul class="dropdown-menu">
 
+                                @foreach ($category as $val)
+                                    <li>
 
-                             <ul class="dropdown-menu">
+                                        <a href="{{ url('products/' . $val->url) }}">
 
-                                @foreach($category as $val)
+                                            {{ $val->category }}
 
+                                        </a>
 
-
-                                <li>
-
-                                    <a href="{{ url('products/'.$val->url) }}">
-
-                                    {{ $val->category }}
-
-                                    </a>
-
-                                </li>
-
-
-
+                                    </li>
                                 @endforeach
 
-                             </ul>
-
-
+                            </ul>
 
                         </li>
-
-
 
                         <li class="has-dropdown"><a href="#" data-text="Services">
 
@@ -351,20 +319,16 @@ $category = DB::table('category')
                                 <span>
 
                                     <svg width="11" height="7" viewBox="0 0 11 7" fill="none"
-
                                         xmlns="http://www.w3.org/2000/svg">
 
-                                        <path d="M10.5 0.5L5.5 5.73809L0.5 0.5" stroke="#58595B" stroke-linecap="round"
-
-                                            stroke-linejoin="round" />
+                                        <path d="M10.5 0.5L5.5 5.73809L0.5 0.5" stroke="#58595B"
+                                            stroke-linecap="round" stroke-linejoin="round" />
 
                                     </svg>
 
                                 </span>
 
                             </a>
-
-
 
                             <ul class="dropdown-menu">
 
@@ -393,12 +357,10 @@ $category = DB::table('category')
                                 <span>
 
                                     <svg width="11" height="7" viewBox="0 0 11 7" fill="none"
-
                                         xmlns="http://www.w3.org/2000/svg">
 
-                                        <path d="M10.5 0.5L5.5 5.73809L0.5 0.5" stroke="#58595B" stroke-linecap="round"
-
-                                            stroke-linejoin="round" />
+                                        <path d="M10.5 0.5L5.5 5.73809L0.5 0.5" stroke="#58595B"
+                                            stroke-linecap="round" stroke-linejoin="round" />
 
                                     </svg>
 
@@ -406,11 +368,9 @@ $category = DB::table('category')
 
                             </a>
 
-
-
                             <ul class="dropdown-menu resources_menu">
-
-                                 <li><a href="{{ route('blogs') }}">Blogs</a></li>
+                                
+                                <li><a href="{{ route('blogs') }}">Blogs</a></li>
 
                                 <li><a href="{{ route('downloads') }}">Downloads</a></li>
 
@@ -432,15 +392,12 @@ $category = DB::table('category')
 
                         </li>
 
-
-
                     </ul>
-
-
 
                     <div class="navbar_right">
 
-                        <a href="#" class="com_btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Request a Quote</a>
+                        <a href="#" class="com_btn" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop">Request a Quote</a>
 
                     </div>
 

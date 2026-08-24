@@ -89,7 +89,7 @@ class IndCategoryController extends Controller
             'meta_description' => $request->meta_description,
         ]);
 
-        return redirect()->route('indcategory.index')
+        return redirect()->route('indcategory-index')
 
             ->with('success', 'indcategory created successfully');
 
@@ -157,7 +157,7 @@ class IndCategoryController extends Controller
 
         $indcategory->update($data);
 
-        return redirect()->route('indcategory.index')
+        return redirect()->route('indcategory-index')
 
             ->with('success', 'indcategory updated successfully');
 
@@ -170,7 +170,7 @@ class IndCategoryController extends Controller
 
         $indcategory->delete();
 
-        return redirect()->route('indcategory.index')
+        return redirect()->route('indcategory-index')
 
             ->with('success', 'indcategory deleted successfully');
 
