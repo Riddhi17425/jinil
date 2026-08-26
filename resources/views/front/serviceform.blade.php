@@ -40,7 +40,8 @@ $b = rand(1,9);
                         </div>
 
                         <div class="col-md-6 form-group">
-                            <input type="text" id="modal_phone" name="phone" placeholder=" Phone Number *" value="" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 15);" aria-describedby="phone-error" aria-invalid="true" style="padding-left: 81px;">
+                            {{-- <input type="text" id="modal_phone" name="phone" placeholder=" Phone Number *" value="" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 15);" aria-describedby="phone-error" aria-invalid="true" style="padding-left: 81px;"> --}}
+                            <input type="text" id="service_phone_input" name="phone" placeholder=" Phone Number *" value="" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 15);" aria-describedby="phone-error" aria-invalid="true" style="padding-left: 81px;">
                             <input type="hidden" name="country" id="service_country">
                             <input type="hidden" name="phonecode" id="service_phonecode">
                             <input type="hidden" name="full_phone" id="service_full_phone">
@@ -137,7 +138,7 @@ $(function(){
     });
 
     // intl-tel-input
-    let iti = intlTelInput(document.querySelector("#service_phone"), {
+    let iti = intlTelInput(document.querySelector("#service_phone_input"), {
         initialCountry: "auto",
         geoIpLookup: function(callback){
             fetch('https://ipapi.co/json').then(res=>res.json()).then(data=>callback(data.country_code)).catch(()=>callback('IN'));
@@ -146,106 +147,100 @@ $(function(){
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js"
     });
 
-    $("#service_phone").on("keyup change", function(){
+    $("#service_phone_input").on("keyup change", function(){
         let data = iti.getSelectedCountryData();
         $("#service_country").val(data.name);
         $("#service_phonecode").val(data.dialCode);
         $("#service_full_phone").val("+"+data.dialCode+$(this).val());
     });
 
-    // Form submit
+    // Form submit (single, flat handler)
     $('#service_form').on('submit', function(e){
         e.preventDefault();
         $('.text-danger').text('');
-        $("#service_full_phone").val("+"+iti.getSelectedCountryData().dialCode+$('#service_phone').val());
 
-$('#service_form').on('submit', function(e){
-    e.preventDefault();
-    $('.text-danger').text('');
+        let name = $('input[name="name"]').val().trim();
+        let company = $('input[name="company_name"]').val().trim();
+        let phone = $('#modal_phone').val().trim();
+        let email = $('input[name="email"]').val().trim();
+        let state = $('#service_state').val();
+        let city = $('#service_city').val();
+        let captcha = $('#service_simple_captcha').val();
 
-    let name = $('input[name="name"]').val().trim();
-    let company = $('input[name="company_name"]').val().trim();
-    let phone = $('#service_phone').val().trim();
-    let email = $('input[name="email"]').val().trim();
-    let state = $('#service_state').val();
-    let city = $('#service_city').val();
-    let captcha = $('#service_simple_captcha').val();
+        let hasError = false;
 
-    let hasError = false;
-
-    if(name === ''){
-        $('#name-error').text('Full name is required.');
-        hasError = true;
-    }
-
-    if(company === ''){
-        $('#company_name-error').text('Company name is required.');
-        hasError = true;
-    }
-
-    if(phone === ''){
-        $('#full_phone-error').text('Phone number is required.');
-        hasError = true;
-    }
-
-    if(email === ''){
-        $('#email-error').text('Email is required.');
-        hasError = true;
-    }
-
-    if(state === ''){
-        $('#state-error').text('State is required.');
-        hasError = true;
-    }
-
-    if(city === ''){
-        $('#city-error').text('City is required.');
-        hasError = true;
-    }
-
-    if(captcha === ''){
-        $('#simple_captcha-error').text('Captcha is required.');
-        hasError = true;
-    }
-
-    if(hasError) return;
-
-    let data = iti.getSelectedCountryData();
-    $("#service_full_phone").val("+"+data.dialCode+phone);
-
-    $.ajax({
-        url: "{{ route('installationstore') }}",
-        type: "POST",
-        data: $(this).serialize(),
-        dataType: "json",
-        headers: { 'Accept': 'application/json' },
-
-        beforeSend: function(){
-            $('.com_btn').attr('disabled', true).text('Sending...');
-        },
-
-        success: function(res){
-            $('.com_btn').attr('disabled', false).text('Request Consultation');
-
-            if(res.status === 'success'){
-                window.location.href = res.redirect;
-            }
-        },
-
-        error: function(xhr){
-            $('.com_btn').attr('disabled', false).text('Request Consultation');
-
-            if(xhr.status === 422){
-                let errors = xhr.responseJSON.errors;
-
-                $.each(errors, function(key, val){
-                    $('#'+key+'-error').text(val[0]);
-                });
-            }
+        if(name === ''){
+            $('#name-error').text('Full name is required.');
+            hasError = true;
         }
-    });
 
-});
+        if(company === ''){
+            $('#company_name-error').text('Company name is required.');
+            hasError = true;
+        }
+
+        if(phone === ''){
+            $('#full_phone-error').text('Phone number is required.');
+            hasError = true;
+        }
+
+        if(email === ''){
+            $('#email-error').text('Email is required.');
+            hasError = true;
+        }
+
+        if(state === ''){
+            $('#state-error').text('State is required.');
+            hasError = true;
+        }
+
+        if(city === ''){
+            $('#city-error').text('City is required.');
+            hasError = true;
+        }
+
+        if(captcha === ''){
+            $('#simple_captcha-error').text('Captcha is required.');
+            hasError = true;
+        }
+
+        if(hasError) return;
+
+        let data = iti.getSelectedCountryData();
+        $("#service_full_phone").val("+"+data.dialCode+phone);
+
+        $.ajax({
+            url: "{{ route('installationstore') }}",
+            type: "POST",
+            data: $(this).serialize(),
+            dataType: "json",
+            headers: { 'Accept': 'application/json' },
+
+            beforeSend: function(){
+                $('.com_btn').attr('disabled', true).text('Sending...');
+            },
+
+            success: function(res){
+                $('.com_btn').attr('disabled', false).text('Request Consultation');
+
+                if(res.status === 'success'){
+                    window.location.href = res.redirect;
+                }
+            },
+
+            error: function(xhr){
+                $('.com_btn').attr('disabled', false).text('Request Consultation');
+
+                if(xhr.status === 422){
+                    let errors = xhr.responseJSON.errors;
+
+                    $.each(errors, function(key, val){
+                        $('#'+key+'-error').text(val[0]);
+                    });
+                }
+            }
+        });
+
     });
 
 });

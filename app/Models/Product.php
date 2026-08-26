@@ -35,6 +35,9 @@ class Product extends Model
                                // Technical Specifications
         'tech_specifications', // JSON: [{parameter, specifications:[]}]
                                // Applications
+
+        'technical_details',   // NEW - plain text/HTML
+                              
         'application_desc',
         'applications', // JSON: [string]
                         // Advantages

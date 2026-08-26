@@ -177,6 +177,95 @@ document.addEventListener('DOMContentLoaded', function () {
 
 </script>
 
+
+@if(isset($category->faqs) && is_countable($category->faqs) && count($category->faqs) > 0)
+    @php
+        $faqItems = [];
+        $decodedFaqItems = $category->faqs;
+
+        if (is_array($decodedFaqItems)) {
+            foreach ($decodedFaqItems as $item) {
+                $question = trim(strip_tags($item['question'] ?? ''));
+                $answer   = trim(strip_tags($item['answer'] ?? ''));
+
+                if ($question && $answer) {
+                    $faqItems[] = [
+                        'question' => $question,
+                        'answer'   => $answer,
+                    ];
+                }
+            }
+        }
+
+        $faqSchema = [
+            '@context'  => 'https://schema.org',
+            '@type'     => 'FAQPage',
+            'mainEntity' => array_map(function ($item) {
+                return [
+                    '@type' => 'Question',
+                    'name'  => $item['question'],
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text'  => $item['answer'],
+                    ],
+                ];
+            }, $faqItems),
+        ];
+    @endphp
+
+    <section class="mb_100 mt_100">
+        <div class="container">
+            <div class="sec_hed_top mb_40">
+                <h2 class="title_60">Frequently Asked Questions</h2>
+                <div class="text-585 d-block">{!! $category->faqs_desc ?? '' !!}</div>
+            </div>
+            <div class="faq_group active">
+                @foreach($category->faqs as $k => $v)
+                <div class="faq_item">
+                    <div class="faq_question">
+                        <span>{{$v['question'] ?? ''}}</span>
+                        <span class="faq_icon">+</span>
+                    </div>
+                    <div class="faq_answer">
+                        <p>{{$v['answer'] ?? ''}}</p>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
+    @if(!empty($faqItems))
+    <script type="application/ld+json">
+        {!! json_encode($faqSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
+    </script>
+    @endif
+@endif
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+    document.querySelectorAll(".faq_question").forEach(question => {
+
+        question.addEventListener("click", function() {
+
+            const item = question.parentElement;
+
+            document.querySelectorAll(".faq_item").forEach(faq => {
+                if (faq !== item) {
+                    faq.classList.remove("active");
+                }
+            });
+
+            item.classList.toggle("active");
+
+        });
+
+    });
+
+});
+</script>
+
 @include('front.serviceform')
 
 
