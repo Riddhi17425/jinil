@@ -101,19 +101,19 @@
                     @endphp
 
                     @if ($blogsdetail->cta_image)
-                        <div class="blog-content-section">
+                        <a href="{{route('contact')}}"><div class="blog-content-section">
                             <div class="cta_image_wrap">
                                 <img class="img-fluid"
                                     src="{{ asset('public/Blogs/cta_image/' . $blogsdetail->cta_image) }}"
                                     alt="{{ $blogsdetail->title }}">
                             </div>
-                        </div>
+                        </div></a>
                     @elseif($ctaTextClean !== '')
-                        <div class="blog-content-section">
+                        <a href="{{route('contact')}}"><div class="blog-content-section">
                             <div class="blog_det_consu">
                                 <div class="col-lg-10">{!! $blogsdetail->cta_text !!}</div>
                             </div>
-                        </div>
+                        </div></a>
                     @endif
 
                     <!-- Conclusion -->
