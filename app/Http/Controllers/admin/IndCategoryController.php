@@ -82,11 +82,14 @@ class IndCategoryController extends Controller
 
         IndCategory::create([
             'indcategory'      => $request->indcategory,
+            'indcategory_title' => $request->indcategory_title,
+            'status'            => $request->status ?? 'Active',
             'cat_description'  => $request->cat_description,
             'url'              => $request->url,
             'icon_image'       => $iconImage,
             'meta_title'       => $request->meta_title,
             'meta_description' => $request->meta_description,
+            'faqs'             => $this->mapFaqs($request->input('faqs', [])),
         ]);
 
         return redirect()->route('indcategory-index')
@@ -129,10 +132,13 @@ class IndCategoryController extends Controller
 
         $data = [
             'indcategory'      => $request->indcategory,
+            'indcategory_title' => $request->indcategory_title,
+            'status'            => $request->status ?? 'Active',
             'cat_description'  => $request->cat_description,
             'url'              => $request->url,
             'meta_title'       => $request->meta_title,
             'meta_description' => $request->meta_description,
+            'faqs'             => $this->mapFaqs($request->input('faqs', [])),
         ];
 
         if ($request->hasFile('icon_image')) {
@@ -174,6 +180,27 @@ class IndCategoryController extends Controller
 
             ->with('success', 'indcategory deleted successfully');
 
+    }
+
+    private function mapFaqs($items)
+    {
+        return collect($items)
+            ->map(function ($item) {
+                $question = trim((string) ($item['question'] ?? ''));
+                $answer   = trim((string) ($item['answer'] ?? ''));
+
+                if ($question === '' && $answer === '') {
+                    return null;
+                }
+
+                return [
+                    'question' => $question,
+                    'answer'   => $answer,
+                ];
+            })
+            ->filter()
+            ->values()
+            ->all();
     }
 
 }

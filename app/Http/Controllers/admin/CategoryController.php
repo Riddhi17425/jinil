@@ -50,6 +50,7 @@ class CategoryController extends Controller
             'url'              => $request->url,
             'meta_title'       => $request->meta_title,
             'meta_description' => $request->meta_description,
+            'faqs_title'       => $request->faqs_title,
             'faqs_desc'        => $request->faqs_desc,                        
             'faqs'             => $this->mapFaqs($request->input('faqs', [])), 
         ]);
@@ -82,6 +83,7 @@ class CategoryController extends Controller
             'url'              => $request->url,
             'meta_title'       => $request->meta_title,
             'meta_description' => $request->meta_description,
+            'faqs_title'       => $request->faqs_title,
             'faqs_desc'        => $request->faqs_desc,                         
             'faqs'             => $this->mapFaqs($request->input('faqs', [])),
         ]);

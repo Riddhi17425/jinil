@@ -54,7 +54,13 @@ class dashboardController extends Controller
 
             ->get();
 
-        return view('front.dashboard', compact('productlist'));
+        $industriesList = IndCategory::whereNull('deleted_at')
+
+            ->where('status', 'Active')
+
+            ->get();
+
+        return view('front.dashboard', compact('productlist' , 'industriesList'));
 
     }
 
@@ -350,37 +356,20 @@ class dashboardController extends Controller
     // }
 
     public function industry($url)
-    {
+{
+    $category = IndCategory::whereNull('deleted_at')->where('url', $url)->firstOrFail();
+    $industries = Industry::whereNull('deleted_at')->where('category_id', $category->id)->get();
 
-        $category = IndCategory::whereNull('deleted_at')
+    $relatedIndustries = IndCategory::whereNull('deleted_at')
+        ->where('status', 'Active')
+        ->where('id', '!=', $category->id)
+        ->get();
 
-            ->where('url', $url)
+    $metatitle = $category->meta_title;
+    $metadescription = $category->meta_description;
 
-            ->firstOrFail();
-
-        $industries = Industry::whereNull('deleted_at')
-
-            ->where('category_id', $category->id)
-
-            ->get();
-
-        $metatitle = $category->meta_title;
-
-        $metadescription = $category->meta_description;
-
-        return view('front.industries', compact(
-
-            'category',
-
-            'industries',
-
-            'metatitle',
-
-            'metadescription'
-
-        ));
-
-    }
+    return view('front.industries', compact('category', 'industries', 'relatedIndustries', 'metatitle', 'metadescription'));
+}
 
     public function product($url)
     {

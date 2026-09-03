@@ -24,6 +24,8 @@ class Category extends Model
 
         'meta_description',
 
+        'faqs_title',
+
         'faqs_desc', 
 
         'faqs',    

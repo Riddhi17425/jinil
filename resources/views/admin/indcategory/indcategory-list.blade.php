@@ -49,6 +49,7 @@
                         <th>ID</th>
                         <th>indcategory</th>
                         <th>Description</th>
+                         <th>Status</th>
                         <th class="text-end">Action</th>
                     </tr>
                 </thead>
@@ -65,6 +66,14 @@
 
                         <td>
                             {{ Str::limit(strip_tags($item->cat_description), 100) }}
+                        </td>
+
+                         <td>
+                            @if($item->status == 'Active')
+                                <span class="badge bg-success">Active</span>
+                            @else
+                                <span class="badge bg-danger">Inactive</span>
+                            @endif
                         </td>
 
                         <td class="text-end">
@@ -93,7 +102,7 @@
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="4" class="text-center text-muted">
+                        <td colspan="5" class="text-center text-muted">
                             No indcategory found
                         </td>
                     </tr>

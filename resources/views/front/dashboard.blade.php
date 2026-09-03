@@ -5599,7 +5599,7 @@
 
 
 
-            <div class="industry_grid">
+            {{-- <div class="industry_grid">
 
 
 
@@ -5781,6 +5781,15 @@
 
                 <!-- </div>-->
 
+            </div> --}}
+
+            <div class="industry_grid">
+                @foreach($industriesList as $item)
+                <a href="{{ route('industry', $item->url) }}" class="industry_item_wrapper">
+                    <div class="industry_item" style="background-image: url('{{ asset('public/indcategory/icon_image/' . $item->icon_image) }}')"></div>
+                    <h3 class="title_24">{{ $item->indcategory }}</h3>
+                </a>
+                @endforeach
             </div>
 
         </div>

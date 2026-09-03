@@ -16,6 +16,10 @@ class IndCategory extends Model
 
         'indcategory',
 
+        'indcategory_title',
+
+        'status', 
+
         'cat_description',
 
         'url',
@@ -26,6 +30,12 @@ class IndCategory extends Model
 
         'meta_description',
 
+        'faqs',
+
+    ];
+
+    protected $casts = [
+    'faqs' => 'array', 
     ];
 
 }

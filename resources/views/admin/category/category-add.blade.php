@@ -99,20 +99,34 @@
 
                 </div><!-- Row end  -->
 
+
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="col-md-12 mb-3">
+                            <label class="form-label">Title</label>
+                            <input type="text" id="faqs_title" name="faqs_title" class="form-control" placeholder="Title">
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label">Description</label>
+                            <textarea id="faqs_desc" name="faqs_desc" class="form-control"></textarea>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="card mb-4">
                     <div class="card-header py-3 bg-transparent">
                         <h6 class="mb-0 fw-bold">FAQs</h6>
                     </div>
-                    <div class="card-body">
-                        <div class="col-md-12 mb-3">
-                            <label class="form-label">FAQ Description</label>
-                            <textarea id="faqs_desc" name="faqs_desc" class="form-control"></textarea>
+                   <div class="card mb-4">
+                        
+                        <div class="card-header py-3 bg-transparent">
+                            <h6 class="mb-0 fw-bold">FAQs</h6>
                         </div>
-                        <div id="faq-wrapper"></div>
-                        <button type="button" class="btn btn-sm btn-outline-primary mt-2" onclick="addFaqRow()">Add
-                            FAQ</button>
-                    </div>
-                </div>
+                        <div class="card-body">
+                            <div id="faq-wrapper"></div>
+                            <button type="button" class="btn btn-sm btn-outline-primary mt-2" onclick="addFaqRow()">Add FAQ</button>
+                        </div>
+                   </div>
 
                 <button type="submit" class="btn btn-primary py-2 px-5 text-uppercase btn-set-task w-sm-100">Save</button>
 
