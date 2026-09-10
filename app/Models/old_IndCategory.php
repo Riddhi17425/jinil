@@ -15,10 +15,6 @@ class IndCategory extends Model
     protected $fillable = [
 
         'indcategory',
-        
-        'indcategory_title',
-        
-        'status',
 
         'cat_description',
 
@@ -30,12 +26,6 @@ class IndCategory extends Model
 
         'meta_description',
 
-        'faqs',
-
-    ];
-
-    protected $casts = [
-    'faqs' => 'array', 
     ];
 
 }

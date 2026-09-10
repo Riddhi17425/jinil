@@ -77,13 +77,11 @@
 
                         <div class="fea_mac_img">
 
-                        <a href="{{ route('productdetials', $product->url) }}"
- 
-                                    >    <img class="img-fluid" 
+                            <img class="img-fluid" 
 
                                  src="{{ asset('public/Product/front_image/'.$product->front_image) }}" 
 
-                                 alt="{{ $product->name }}"></a>
+                                 alt="{{ $product->name }}">
 
                         </div>
 
@@ -91,9 +89,7 @@
 
                             <div class="fea_mac_content_inner">
 
-                              <a href="{{ route('productdetials', $product->url) }}"
- 
-                                    >  <h3 class="title_24">{{ $product->name }}</h3></a>
+                                <h3 class="title_24">{{ $product->name }}</h3>
 
                                 <!--<button -->
 
@@ -220,12 +216,8 @@ document.addEventListener('DOMContentLoaded', function () {
     <section class="mb_100 mt_100">
         <div class="container">
             <div class="sec_hed_top mb_40">
-                @if(isset($category->faqs_title) && $category->faqs_title != '')
-                <h2 class="title_60 mb-3">{{ $category->faqs_title }}</h2>
-            @endif
-            <div class="text-585 d-block" style="margin-bottom: 60px;">{!! $category->faqs_desc ?? '' !!}</div>
                 <h2 class="title_60">Frequently Asked Questions</h2>
-            
+                <div class="text-585 d-block">{!! $category->faqs_desc ?? '' !!}</div>
             </div>
             <div class="faq_group active">
                 @foreach($category->faqs as $k => $v)

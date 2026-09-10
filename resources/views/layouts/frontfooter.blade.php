@@ -381,7 +381,7 @@ $indusries = DB::table('indcategory')
 
               <!-- BODY -->
               <div class="modal-body">
-                  <form method="GET" action="{{ route('whatsaapinquiry') }}" id="whatsappForm" target="_blank" novalidate>
+                  <form method="GET" action="{{ route('whatsaapinquiry') }}" id="whatsappForm" target="_blank">
                       @csrf
 
                       <!-- Message -->
@@ -395,7 +395,7 @@ $indusries = DB::table('indcategory')
                           <label class="form-label">Contact No. <span class="text-danger">*</span></label>
 
                           <input type="tel" id="wa_phone" class="form-control popup-input" 
-                              oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,15);">
+                              oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,15);" required>
                             
                             <small class="text-danger d-none" id="wa_error">
                                 Contact number must be required
@@ -502,15 +502,14 @@ AOS.init();
 
 ])
 
-
-<script>
-$(document).ready(function () {
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
 
     const input = document.getElementById("wa_phone");
-    const $error = $("#wa_error");
-    const $form = $("#whatsappForm");
-    const $fullPhone = $("#wa_full_phone");
-    const $countryName = $("#wa_country_name");
+    const error = document.getElementById("wa_error");
+    const form = document.getElementById("whatsappForm");
+    const fullPhone = document.getElementById("wa_full_phone");
+    const countryName = document.getElementById("wa_country_name");
 
     const iti = window.intlTelInput(input, {
         initialCountry: "auto",
@@ -526,40 +525,40 @@ $(document).ready(function () {
     });
 
     // numbers only + live hide error
-    $(input).on("input", function () {
+    input.addEventListener("input", function () {
         this.value = this.value.replace(/[^0-9]/g, '');
 
         if (this.value.length >= 10) {
-            $error.addClass("d-none");
+            error.classList.add("d-none");
         }
     });
 
     // submit validation
-    $form.on("submit", function (e) {
+    form.addEventListener("submit", function (e) {
 
-        const phoneVal = $(input).val().trim();
-
-        if (phoneVal === "") {
-            $error.text("Contact number must be required").removeClass("d-none");
+        if (input.value.trim() === "") {
+            error.innerText = "Contact number must be required";
+            error.classList.remove("d-none");
             input.focus();
             e.preventDefault();
-            return false;
+            return;
         }
 
-        if (phoneVal.length < 10 || phoneVal.length > 15) {
-            $error.text("Contact number must be 10 to 15 digits").removeClass("d-none");
+        if (input.value.length < 10 || input.value.length > 15) {
+            error.innerText = "Contact number must be 10 to 15 digits";
+            error.classList.remove("d-none");
             input.focus();
             e.preventDefault();
-            return false;
+            return;
         }
 
-        // valid
-        $error.addClass("d-none");
+        // ✅ valid
+        error.classList.add("d-none");
 
         const countryData = iti.getSelectedCountryData();
-        $fullPhone.val("+" + countryData.dialCode + phoneVal);
-        $countryName.val(countryData.name);
-
+        fullPhone.value = "+" + countryData.dialCode + input.value;
+        countryName.value = countryData.name;
+        
         sessionStorage.setItem("whatsapp_used", "yes");
     });
 

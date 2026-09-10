@@ -64,9 +64,9 @@ class ProductController extends Controller
         $post->related_industries_desc   = $request->input('related_industries_desc');
         $post->optional_accessories_desc = $request->input('optional_accessories_desc');
         $post->faqs_desc                 = $request->input('faqs_desc');
-        $post->technical_details         = $request->input('technical_details');
 
         $post->blast_wheels            = $this->mapTitleDescItems($request->input('blast_wheels', []));
+        $post->technical_details         = $request->input('technical_details');
         $post->main_components         = $this->mapTitleDescItems($request->input('main_components', []));
         $post->tech_specifications     = $this->mapTechSpecifications($request->input('tech_specifications', []));
         $post->applications            = $this->mapSimpleList($request->input('applications', []));
@@ -147,7 +147,6 @@ class ProductController extends Controller
         $post->optional_accessories_desc = $request->input('optional_accessories_desc');
         $post->faqs_desc                 = $request->input('faqs_desc');
         $post->technical_details         = $request->input('technical_details');
-
         $post->blast_wheels            = $this->mapTitleDescItems($request->input('blast_wheels', []));
         $post->main_components         = $this->mapTitleDescItems($request->input('main_components', []));
         $post->tech_specifications     = $this->mapTechSpecifications($request->input('tech_specifications', []));

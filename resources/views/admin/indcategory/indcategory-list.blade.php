@@ -49,7 +49,7 @@
                         <th>ID</th>
                         <th>indcategory</th>
                         <th>Description</th>
-                         <th>Status</th>
+                        <th>Status</th>
                         <th class="text-end">Action</th>
                     </tr>
                 </thead>
@@ -67,8 +67,8 @@
                         <td>
                             {{ Str::limit(strip_tags($item->cat_description), 100) }}
                         </td>
-
-                         <td>
+                        
+                        <td>
                             @if($item->status == 'Active')
                                 <span class="badge bg-success">Active</span>
                             @else

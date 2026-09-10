@@ -26,11 +26,8 @@
         <div class="navi_page_child">
             <div>
                 <p class="title_24"><a href="{{ url('/') }}" class="text-585">Home</a> / <a href="#">Industries</a>
-                    {{ $category->indcategory_title ?: $category->indcategory }}
-                </p>
-                <h1 class="title_60">
-                   {{ $category->indcategory_title ?: $category->indcategory }}
-                </h1>
+                    {{ $category->indcategory_title ?: $category->indcategory }}</p>
+                <h1 class="title_60">{{ $category->indcategory_title ?: $category->indcategory }}</h1>
                 <p class="mb-0">{!! $category->cat_description !!}</p>
             </div>
 
@@ -232,96 +229,96 @@
             </div>
 
             
-             {{-- <div class="industry_detals_grid">
+            <!-- <div class="industry_detals_grid">-->
                 
-                <div class="industry_item_wrapper mx-3">
-                     <a href="https://jinil.in/industries/forging">
-                        <div class="industry_item" style="background-image: url('../public/front/images/industries1.png')"> </div>
-                        <h3 class="title_24">Forging</h3>
-                    </a>
-                </div>
+            <!--    <div class="industry_item_wrapper mx-3">-->
+            <!--         <a href="https://jinil.in/industries/forging">-->
+            <!--            <div class="industry_item" style="background-image: url('../public/front/images/industries1.png')"> </div>-->
+            <!--            <h3 class="title_24">Forging</h3>-->
+            <!--        </a>-->
+            <!--    </div>-->
                 
-                <div class="industry_item_wrapper mx-3">
-                    <a href="https://jinil.in/industries/foundry">
-                        <div class="industry_item" style="background-image: url('../public/front/images/industries2.png')"> </div>
-                        <h3 class="title_24">Foundry</h3>
-                    </a>
-                </div>
+            <!--    <div class="industry_item_wrapper mx-3">-->
+            <!--        <a href="https://jinil.in/industries/foundry">-->
+            <!--            <div class="industry_item" style="background-image: url('../public/front/images/industries2.png')"> </div>-->
+            <!--            <h3 class="title_24">Foundry</h3>-->
+            <!--        </a>-->
+            <!--    </div>-->
 
-                <div class="industry_item_wrapper mx-3">
-                    <a href="https://jinil.in/industries/defense">
-                        <div class="industry_item" style="background-image: url('../public/front/images/industries3.png')"> </div>
-                        <h3 class="title_24">Defense</h3>
-                    </a>
-                </div>
+            <!--    <div class="industry_item_wrapper mx-3">-->
+            <!--        <a href="https://jinil.in/industries/defense">-->
+            <!--            <div class="industry_item" style="background-image: url('../public/front/images/industries3.png')"> </div>-->
+            <!--            <h3 class="title_24">Defense</h3>-->
+            <!--        </a>-->
+            <!--    </div>-->
 
-                <div class="industry_item_wrapper mx-3">
-                    <a href="https://jinil.in/industries/aerospace">
-                        <div class="industry_item" style="background-image: url('../public/front/images/industries4.png')"> </div>
-                        <h3 class="title_24">Aerospace</h3>
-                    </a>
-                </div>
+            <!--    <div class="industry_item_wrapper mx-3">-->
+            <!--        <a href="https://jinil.in/industries/aerospace">-->
+            <!--            <div class="industry_item" style="background-image: url('../public/front/images/industries4.png')"> </div>-->
+            <!--            <h3 class="title_24">Aerospace</h3>-->
+            <!--        </a>-->
+            <!--    </div>-->
 
-                <div class="industry_item_wrapper mx-3">
-                    <a href="https://jinil.in/industries/railways">
-                        <div class="industry_item" style="background-image: url('../public/front/images/industries5.png')"> </div>
-                        <h3 class="title_24">Railways</h3>
-                    </a>
-                </div>
+            <!--    <div class="industry_item_wrapper mx-3">-->
+            <!--        <a href="https://jinil.in/industries/railways">-->
+            <!--            <div class="industry_item" style="background-image: url('../public/front/images/industries5.png')"> </div>-->
+            <!--            <h3 class="title_24">Railways</h3>-->
+            <!--        </a>-->
+            <!--    </div>-->
 
-                <div class="industry_item_wrapper mx-3">
-                    <a href="https://jinil.in/industries/fabrication">
-                        <div class="industry_item" style="background-image: url('../public/front/images/industries6.png')"> </div>
-                        <h3 class="title_24">Fabrication</h3>
-                    </a>
-                </div>
+            <!--    <div class="industry_item_wrapper mx-3">-->
+            <!--        <a href="https://jinil.in/industries/fabrication">-->
+            <!--            <div class="industry_item" style="background-image: url('../public/front/images/industries6.png')"> </div>-->
+            <!--            <h3 class="title_24">Fabrication</h3>-->
+            <!--        </a>-->
+            <!--    </div>-->
 
-                <div class="industry_item_wrapper mx-3">
-                    <a href="https://jinil.in/industries/wire-coil">
-                        <div class="industry_item" style="background-image: url('../public/front/images/industries7.png')"> </div>
-                        <h3 class="title_24">Wire coil</h3>
-                    </a>
-                </div>
+            <!--    <div class="industry_item_wrapper mx-3">-->
+            <!--        <a href="https://jinil.in/industries/wire-coil">-->
+            <!--            <div class="industry_item" style="background-image: url('../public/front/images/industries7.png')"> </div>-->
+            <!--            <h3 class="title_24">Wire coil</h3>-->
+            <!--        </a>-->
+            <!--    </div>-->
 
-                <div class="industry_item_wrapper mx-3">
-                    <a href="https://jinil.in/industries/automotive">
-                        <div class="industry_item" style="background-image: url('../public/front/images/industries8.png')"> </div>
-                        <h3 class="title_24">Automotive</h3>
-                    </a>
-                </div>
+            <!--    <div class="industry_item_wrapper mx-3">-->
+            <!--        <a href="https://jinil.in/industries/automotive">-->
+            <!--            <div class="industry_item" style="background-image: url('../public/front/images/industries8.png')"> </div>-->
+            <!--            <h3 class="title_24">Automotive</h3>-->
+            <!--        </a>-->
+            <!--    </div>-->
                 
-                  <div class="industry_item_wrapper mx-3">
-                    <a href="https://jinil.in/industries/oil-and-gas">  
-                        <div class="industry_item" style="background-image: url('../public/front/images/industries9.png')"> </div>
-                        <h3 class="title_24">Oil & gas</h3>
-                    </a>
-                </div>
+            <!--      <div class="industry_item_wrapper mx-3">-->
+            <!--        <a href="https://jinil.in/industries/oil-and-gas">  -->
+            <!--            <div class="industry_item" style="background-image: url('../public/front/images/industries9.png')"> </div>-->
+            <!--            <h3 class="title_24">Oil & gas</h3>-->
+            <!--        </a>-->
+            <!--    </div>-->
                 
-                  <div class="industry_item_wrapper mx-3">
-                    <a href="https://jinil.in/industries/steel-plant"> 
-                        <div class="industry_item" style="background-image: url('../public/front/images/industries10.png')"> </div>
-                        <h3 class="title_24">Steel plant</h3>
-                    </a>
-                </div>
+            <!--      <div class="industry_item_wrapper mx-3">-->
+            <!--        <a href="https://jinil.in/industries/steel-plant"> -->
+            <!--            <div class="industry_item" style="background-image: url('../public/front/images/industries10.png')"> </div>-->
+            <!--            <h3 class="title_24">Steel plant</h3>-->
+            <!--        </a>-->
+            <!--    </div>-->
                 
-                  <div class="industry_item_wrapper mx-3">
-                    <a href="https://jinil.in/industries/peb">
-                        <div class="industry_item" style="background-image: url('../public/front/images/industries11.png')"> </div>
-                        <h3 class="title_24">PEB</h3>
-                    </a>
-                </div>
+            <!--      <div class="industry_item_wrapper mx-3">-->
+            <!--        <a href="https://jinil.in/industries/peb">-->
+            <!--            <div class="industry_item" style="background-image: url('../public/front/images/industries11.png')"> </div>-->
+            <!--            <h3 class="title_24">PEB</h3>-->
+            <!--        </a>-->
+            <!--    </div>-->
                 
-                   <div class="industry_item_wrapper mx-3">
-                    <a href="https://jinil.in/industries/heavy-machinery">   
-                        <div class="industry_item" style="background-image: url('../public/front/images/industries12.png')"> </div>
-                        <h3 class="title_24">Heavy machinery </h3>
-                    </a>
-                </div>
+            <!--       <div class="industry_item_wrapper mx-3">-->
+            <!--        <a href="https://jinil.in/industries/heavy-machinery">   -->
+            <!--            <div class="industry_item" style="background-image: url('../public/front/images/industries12.png')"> </div>-->
+            <!--            <h3 class="title_24">Heavy machinery </h3>-->
+            <!--        </a>-->
+            <!--    </div>-->
             
 
                
-            </div> --}}
-             
+            <!--</div>-->
+            
             <div class="industry_detals_grid">
                 @foreach($relatedIndustries as $item)
                 <div class="industry_item_wrapper mx-3">
@@ -332,7 +329,7 @@
                 </div>
                 @endforeach
             </div>
-
+            
         </div>
     </div>
 </section>

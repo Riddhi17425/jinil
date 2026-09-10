@@ -5491,9 +5491,11 @@
 
                     <div class="fea_mac_img">
 
-                        <img class="img-fluid" src="{{ asset('public/Product/front_image/'.$product->front_image) }}"
+                       <a href="{{ route('productdetials', $product->url) }}"
 
-                            alt="{{ $product->name }}">
+                                    >    <img class="img-fluid" src="{{ asset('public/Product/front_image/'.$product->front_image) }}"
+
+                            alt="{{ $product->name }}"></a>
 
                     </div>
 
@@ -5501,7 +5503,9 @@
 
                         <div class="fea_mac_content_inner">
 
-                            <h3 class="title_24">{{ $product->name }}</h3>
+                       <a href="{{ route('productdetials', $product->url) }}"
+
+                                    >  <h3 class="title_24">{{ $product->name }}</h3></a>
 
                             <button class="com_btn mt-2 product-enquire-btn" data-product="{{ $product->name }}"
 
@@ -5599,61 +5603,61 @@
 
 
 
-            {{-- <div class="industry_grid">
+            <!--<div class="industry_grid">-->
 
 
 
-                <a href="{{ url('industries/forging') }}" class="industry_item_wrapper">
+            <!--    <a href="{{ url('industries/forging') }}" class="industry_item_wrapper">-->
 
-                    <div class="industry_item" style="background-image: url('./public/front/images/industries1.png')">
+            <!--        <div class="industry_item" style="background-image: url('./public/front/images/industries1.png')">-->
 
-                    </div>
-
-
-
-                    <h3 class="title_24">Forging</h3>
-
-                </a>
+            <!--        </div>-->
 
 
 
-                <a href="{{ url('industries/foundry') }}" class="industry_item_wrapper">
+            <!--        <h3 class="title_24">Forging</h3>-->
 
-                    <div class="industry_item" style="background-image: url('./public/front/images/industries2.png')">
-
-                    </div>
+            <!--    </a>-->
 
 
 
-                    <h3 class="title_24">Foundry</h3>
+            <!--    <a href="{{ url('industries/foundry') }}" class="industry_item_wrapper">-->
 
-                </a>
+            <!--        <div class="industry_item" style="background-image: url('./public/front/images/industries2.png')">-->
 
-
-
-                <a href="{{ url('industries/defense') }}" class="industry_item_wrapper">
-
-                    <div class="industry_item" style="background-image: url('./public/front/images/industries3.png')">
-
-                    </div>
+            <!--        </div>-->
 
 
 
-                    <h3 class="title_24">Defense</h3>
+            <!--        <h3 class="title_24">Foundry</h3>-->
 
-                </a>
+            <!--    </a>-->
 
 
 
-                <a href="{{ url('industries/aerospace') }}" class="industry_item_wrapper">
+            <!--    <a href="{{ url('industries/defense') }}" class="industry_item_wrapper">-->
 
-                    <div class="industry_item" style="background-image: url('./public/front/images/industries4.png')">
+            <!--        <div class="industry_item" style="background-image: url('./public/front/images/industries3.png')">-->
 
-                    </div>
+            <!--        </div>-->
 
-                    <h3 class="title_24">Aerospace</h3>
 
-                </a>
+
+            <!--        <h3 class="title_24">Defense</h3>-->
+
+            <!--    </a>-->
+
+
+
+            <!--    <a href="{{ url('industries/aerospace') }}" class="industry_item_wrapper">-->
+
+            <!--        <div class="industry_item" style="background-image: url('./public/front/images/industries4.png')">-->
+
+            <!--        </div>-->
+
+            <!--        <h3 class="title_24">Aerospace</h3>-->
+
+            <!--    </a>-->
 
 
 
@@ -5671,85 +5675,85 @@
 
 
 
-                <a href="{{ url('industries/fabrication') }}" class="industry_item_wrapper">
+            <!--    <a href="{{ url('industries/fabrication') }}" class="industry_item_wrapper">-->
 
-                    <div class="industry_item" style="background-image: url('./public/front/images/industries6.png')">
+            <!--        <div class="industry_item" style="background-image: url('./public/front/images/industries6.png')">-->
 
-                    </div>
-
-
-
-
-
-                    <h3 class="title_24">Fabrication</h3>
-
-                </a>
-
-
-
-                <a href="" class="industry_item_wrapper">
-
-                    <div class="industry_item" style="background-image: url('./public/front/images/industries7.png')">
-
-                    </div>
+            <!--        </div>-->
 
 
 
 
 
+            <!--        <h3 class="title_24">Fabrication</h3>-->
 
-
-                    <h3 class="title_24">Wire coil</h3>
-
-                </a>
-
-
-
-                <a href="{{ url('industries/automotive') }}" class="industry_item_wrapper">
-
-                    <div class="industry_item" style="background-image: url('./public/front/images/industries8.png')">
-
-                    </div>
-
-                    <h3 class="title_24">Automotive</h3>
-
-                </a>
+            <!--    </a>-->
 
 
 
-                <a href="{{ url('industries/oil-and-gas') }}" class="industry_item_wrapper">
+            <!--    <a href="" class="industry_item_wrapper">-->
 
-                    <div class="industry_item" style="background-image: url('./public/front/images/industries9.png')">
+            <!--        <div class="industry_item" style="background-image: url('./public/front/images/industries7.png')">-->
 
-                    </div>
-
-                    <h3 class="title_24">Oil & gas</h3>
-
-                </a>
+            <!--        </div>-->
 
 
 
-                <a href="{{ url('industries/steel-plant') }}" class="industry_item_wrapper">
-
-                    <div class="industry_item" style="background-image: url('./public/front/images/industries10.png')">
-
-                    </div>
-
-                    <h3 class="title_24">Steel plant</h3>
-
-                </a>
 
 
 
-                <a href="{{ url('industries/peb') }}" class="industry_item_wrapper">
 
-                    <div class="industry_item" style="background-image: url('./public/front/images/industries11.png')">
+            <!--        <h3 class="title_24">Wire coil</h3>-->
 
-                    </div>
+            <!--    </a>-->
 
-                    <h3 class="title_24">PEB </h3>
 
-                </a>
+
+            <!--    <a href="{{ url('industries/automotive') }}" class="industry_item_wrapper">-->
+
+            <!--        <div class="industry_item" style="background-image: url('./public/front/images/industries8.png')">-->
+
+            <!--        </div>-->
+
+            <!--        <h3 class="title_24">Automotive</h3>-->
+
+            <!--    </a>-->
+
+
+
+            <!--    <a href="{{ url('industries/oil-and-gas') }}" class="industry_item_wrapper">-->
+
+            <!--        <div class="industry_item" style="background-image: url('./public/front/images/industries9.png')">-->
+
+            <!--        </div>-->
+
+            <!--        <h3 class="title_24">Oil & gas</h3>-->
+
+            <!--    </a>-->
+
+
+
+            <!--    <a href="{{ url('industries/steel-plant') }}" class="industry_item_wrapper">-->
+
+            <!--        <div class="industry_item" style="background-image: url('./public/front/images/industries10.png')">-->
+
+            <!--        </div>-->
+
+            <!--        <h3 class="title_24">Steel plant</h3>-->
+
+            <!--    </a>-->
+
+
+
+            <!--    <a href="{{ url('industries/peb') }}" class="industry_item_wrapper">-->
+
+            <!--        <div class="industry_item" style="background-image: url('./public/front/images/industries11.png')">-->
+
+            <!--        </div>-->
+
+            <!--        <h3 class="title_24">PEB </h3>-->
+
+            <!--    </a>-->
 
 
 
@@ -5781,8 +5785,8 @@
 
                 <!-- </div>-->
 
-            </div> --}}
-
+            <!--</div>-->
+            
             <div class="industry_grid">
                 @foreach($industriesList as $item)
                 <a href="{{ route('industry', $item->url) }}" class="industry_item_wrapper">

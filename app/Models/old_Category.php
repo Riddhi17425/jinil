@@ -5,37 +5,32 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class IndCategory extends Model
+class Category extends Model
 {
 
     use HasFactory, SoftDeletes;
 
-    protected $table = "indcategory";
+    protected $table = "category";
 
     protected $fillable = [
 
-        'indcategory',
-        
-        'indcategory_title',
-        
-        'status',
+        'category',
 
         'cat_description',
 
         'url',
 
-        'icon_image',
-
         'meta_title',
 
         'meta_description',
+        'faqs_desc', 
 
-        'faqs',
+        'faqs',    
 
     ];
-
+    
     protected $casts = [
-    'faqs' => 'array', 
+        'faqs' => 'array',   // NEW
     ];
 
 }

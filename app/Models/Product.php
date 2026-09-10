@@ -35,9 +35,6 @@ class Product extends Model
                                // Technical Specifications
         'tech_specifications', // JSON: [{parameter, specifications:[]}]
                                // Applications
-
-        'technical_details',   // NEW - plain text/HTML
-                              
         'application_desc',
         'applications', // JSON: [string]
                         // Advantages
@@ -57,6 +54,7 @@ class Product extends Model
                                    // FAQs
         'faqs',                    // JSON: [{question, answer}]
         'optional_accessories_desc', 'faqs_desc', 'related_industries_desc',
+        'technical_details',  
     ];
 
     protected $casts = [

@@ -54,12 +54,13 @@
                             <div class="card-body">
 
                                 <div class="row g-3 align-items-center">
-
+                                    
                                     <div class="col-md-12">
+                                        
                                         <label class="form-label">indcategory Title</label>
-                                        <input type="text" id="indcategory_title" name="indcategory_title"
-                                            class="form-control" value="{{ $indcategory->indcategory_title }}"
-                                            placeholder="indcategory Title">
+                                        
+                                        <input type="text" id="indcategory_title" name="indcategory_title" class="form-control" value="{{ $indcategory->indcategory_title }}" placeholder="indcategory Title">
+                                        
                                     </div>
 
                                     <div class="col-md-6">
@@ -79,15 +80,17 @@
                                             value="{{ $indcategory->url }}" placeholder="indcategory URL">
 
                                     </div>
-
+                                    
                                     <div class="col-md-6">
+                                        
                                         <label class="form-label">Status</label>
                                         <select name="status" class="form-control">
-                                            <option value="Active" {{ $indcategory->status == 'Active' ? 'selected' : '' }}>
-                                                Active</option>
-                                            <option value="Inactive"
-                                                {{ $indcategory->status == 'Inactive' ? 'selected' : '' }}>Inactive</option>
+                                            
+                                            <option value="Active" {{ $indcategory->status == 'Active' ? 'selected' : '' }}>Active</option>
+                                            
+                                            <option value="Inactive" {{ $indcategory->status == 'Inactive' ? 'selected' : '' }}>Inactive</option>
                                         </select>
+                                        
                                     </div>
 
                                     <div class="col-md-12">
