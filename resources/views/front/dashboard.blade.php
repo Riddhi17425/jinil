@@ -1,4 +1,7 @@
-@include('layouts.frontheader')
+@include('layouts.frontheader', [
+'metatitle' => 'Shot Blasting Machine Manufacturer: Made in India',
+'metadescription' => 'Jinil – Industry leader in Shot Blasting Machines & Surface Preparation Technology, offering Conveyor, Turbine, Wire Coil & Tunnel Type Shot Blasting Machines.',
+])
 
 
 
@@ -5048,8 +5051,6 @@
 
 </div>
 
-
-
 <section class="mt_100">
 
     <div class="container">
@@ -5067,7 +5068,6 @@
 </div>
 
 
-
 <section class="mt_100">
 
     <div class="container">
@@ -5076,21 +5076,19 @@
 
             <h3>Engineering Precision. Delivering Industrial Reliability.
 
-</h3>
+            </h3>
 
-            <h2 class="title_60">Why Jinil Blast Shot?</h2>
+            <h2 class="title_60">Why Choose Jinil as Your Shot Blasting Machine Manufacturer?</h2>
 
         </div>
 
 
 
-        <div class="row justify-content-between">
+        <div class="row justify-content-between text-center text-lg-start">
 
             <div class="col-lg-3">
 
-                <p class="title_24">Jinil Blast Shot partners with manufacturers to deliver reliable surface preparation
-
-                    systems built for demanding production environments.
+                <p class="title_24">Jinil Shot Blast is a specialist Shot Blasting Machine Manufacturer and Blast Room Manufacturer serving industries across India. We design and manufacture every system in-house, from airless shot blasting machines to complete blast rooms.
 
                 </p>
 
@@ -5106,7 +5104,7 @@
 
                         <div class="blast">
 
-                            <svg class="process_item_icon mb_30" width="80" height="80" viewBox="0 0 80 80" fill="none"
+                            <svg aria-labelledby="Industrial shot blasting machine design icon" class="process_item_icon mb_30" width="80" height="80" viewBox="0 0 80 80" fill="none"
 
                                 xmlns="http://www.w3.org/2000/svg">
 
@@ -5162,13 +5160,11 @@
 
 
 
-                            <h4 class="title_24">Industrial-Grade Machine Design
+                            <h3 class="title_24">Industrial-Grade Shot Blasting Machine Design
 
-                            </h4>
+                            </h3>
 
-                            <p class="mb-0">Every Jinil machine is built with reinforced structures, wear-resistant
-
-                                liners, and high-efficiency blast wheels.
+                            <p class="mb-0">Every Jinil shot blasting machine is built with reinforced structures, wear-resistant liners, and high-efficiency blast wheels for long service life in continuous production.
 
                             </p>
 
@@ -5182,7 +5178,7 @@
 
                         <div class="blast">
 
-                            <svg class="process_item_icon mb_30" width="80" height="80" viewBox="0 0 80 80" fill="none"
+                            <svg aria-labelledby="Production engineering icon for abrasive blasting equipment" class="process_item_icon mb_30" width="80" height="80" viewBox="0 0 80 80" fill="none"
 
                                 xmlns="http://www.w3.org/2000/svg">
 
@@ -5280,13 +5276,11 @@
 
 
 
-                            <h4 class="title_24">Production-Focused Engineering
+                            <h3 class="title_24">Production-Focused Engineering 
 
-                            </h4>
+                            </h3>
 
-                            <p class="mb-0">Our machines are developed according to component geometry, batch weight,
-
-                                throughput requirements, and abrasive flow dynamics.
+                            <p class="mb-0">Our machines are developed according to component geometry, batch weight, throughput requirements, and abrasive flow dynamics — ensuring the right shot blasting solution for every application.
 
                             </p>
 
@@ -5300,7 +5294,7 @@
 
                         <div class="blast">
 
-                            <svg class="process_item_icon mb_30" width="80" height="80" viewBox="0 0 80 80" fill="none"
+                            <svg aria-labelledby="Lifecycle service support icon for shot blasting machines" class="process_item_icon mb_30" width="80" height="80" viewBox="0 0 80 80" fill="none"
 
                                 xmlns="http://www.w3.org/2000/svg">
 
@@ -5352,15 +5346,11 @@
 
 
 
-                            <h4 class="title_24">Lifecycle Service Support
+                            <h3 class="title_24">Lifecycle Service Support
 
-                            </h4>
+                            </h3>
 
-                            <p class="mb-0">From installation and commissioning to maintenance programs, spare parts
-
-                                supply, and system upgrades, Jinil provides comprehensive support to maintain peak
-
-                                equipment performance.
+                            <p class="mb-0">From installation and commissioning to maintenance programs, spare parts supply, and system upgrades, Jinil provides comprehensive support to maintain peak equipment performance.
 
                             </p>
 
@@ -5398,19 +5388,17 @@
 
             </p>
 
-            <h2 class="title_60">Trusted by India’s Leading Manufacturers</h2>
+            <h2 class="title_60">Trusted Shot Blasting Machine Manufacturer for India's Leading Industries</h2>
 
         </div>
 
 
 
-        <div class="row justify-content-between">
+        <div class="row justify-content-between text-center text-lg-start">
 
             <div class="col-lg-3">
 
-                <p class="title_24">We support manufacturers across automotive, foundry, fabrication, forging, and
-
-                    heavy engineering sectors with high-performance shot blasting systems.
+                <p class="title_24">We support manufacturers across automotive, foundry, fabrication, forging, structural steel, and heavy engineering sectors with high-performance shot blasting machines, blast rooms, and paint spray booths built to certified manufacturing standards.
 
                 </p>
 
@@ -5426,15 +5414,28 @@
 
                         <div class="blast">
 
-                            <h4 class="title_24">Certified Manufacturing Standards
+                            <h3 class="title_24">Certified Manufacturing Standards
 
-                            </h4>
+                            </h3>
 
-                            <p class="mb-0">Every machine is manufactured using strict quality control and
+                            <p class="mb-0">Every shot blasting machine and blast room we manufacture uses strict quality control and industrial-grade parts for consistent performance, operational safety, and long service life.
 
-                                industrial-grade parts for consistent performance, operational safety, and long service
+            
+                            </p>
 
-                                life.
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-4  mb-4 mb-lg-0">
+
+                        <div class="blast">
+
+                            <h3 class="title_24">Nationwide Technical Support
+
+                            </h3>
+
+                            <p class="mb-0">Our service network supports customers across major industrial regions, delivering rapid response, spare parts availability, and technical assistance for all Jinil equipment.
 
                             </p>
 
@@ -5446,29 +5447,9 @@
 
                         <div class="blast">
 
-                            <h4 class="title_24">Nationwide Technical Support
+                            <h3 class="title_24">Tailor-Made Engineering Solutions</h3>
 
-                            </h4>
-
-                            <p class="mb-0">Our service network supports customers across major industrial regions,
-
-                                delivering rapid response, spare parts availability, and technical assistance.
-
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                    <div class="col-lg-4  mb-4 mb-lg-0">
-
-                        <div class="blast">
-
-                            <h4 class="title_24">Tailor-made Engineering Solutions</h4>
-
-                            <p class="mb-0">We follow parameters including component size, batch weight, throughput
-
-                                requirements, and automation integration for optimized blasting performance.
+                            <p class="mb-0">We follow parameters including component size, batch weight, throughput requirements, and automation integration to engineer the optimal structural steel shot blasting machine, pipe shot blasting machine, or hanger type shot blasting machine for your production line.
 
                             </p>
 
@@ -5496,7 +5477,7 @@
 
         <div class="sec_hed_top mb_60">
 
-            <h2 class="title_60">Featured Machines</h2>
+            <h2 class="title_60">Featured Shot Blasting & Surface Preparation Equipment</h2>
 
         </div>
 
@@ -5510,9 +5491,9 @@
 
                     <div class="fea_mac_img">
 
-                     <a href="{{ route('productdetials', $product->url) }}"
- 
-                                    >   <img class="img-fluid" src="{{ asset('public/Product/front_image/'.$product->front_image) }}"
+                       <a href="{{ route('productdetials', $product->url) }}"
+
+                                    >    <img class="img-fluid" src="{{ asset('public/Product/front_image/'.$product->front_image) }}"
 
                             alt="{{ $product->name }}"></a>
 
@@ -5522,9 +5503,9 @@
 
                         <div class="fea_mac_content_inner">
 
-                         <a href="{{ route('productdetials', $product->url) }}"
- 
-                                    >   <h3 class="title_24">{{ $product->name }}</h3></a>
+                       <a href="{{ route('productdetials', $product->url) }}"
+
+                                    >  <h3 class="title_24">{{ $product->name }}</h3></a>
 
                             <button class="com_btn mt-2 product-enquire-btn" data-product="{{ $product->name }}"
 
@@ -5562,7 +5543,7 @@
 
                 <img class="img-fluid" src="{{ asset('public/front/images/counter1.png')}}" alt="counter1">
 
-                <h2 class="title_60"><span class="count" data-target="500">0</span>+</h2>
+                <h4 class="title_60"><span class="count" data-target="500">0</span>+</h4>
 
                 <p class="mb-0">Machines Delivered</p>
 
@@ -5572,7 +5553,7 @@
 
                 <img class="img-fluid" src="{{ asset('public/front/images/counter2.png')}}" alt="counter2">
 
-                <h2 class="title_60"><span class="count" data-target="30">0</span>+</h2>
+                <h4 class="title_60"><span class="count" data-target="30">0</span>+</h4>
 
                 <p class="mb-0">Years Combined Expertise</p>
 
@@ -5582,7 +5563,7 @@
 
                 <img class="img-fluid" src="{{ asset('public/front/images/counter3.png')}}" alt="counter3">
 
-                <h2 class="title_60"><span class="count" data-target="25">0</span>+</h2>
+                <h4 class="title_60"><span class="count" data-target="25">0</span>+</h4>
 
                 <p class="mb-0">Industries Served</p>
 
@@ -5592,7 +5573,7 @@
 
                 <img class="img-fluid" src="{{ asset('public/front/images/counter4.png')}}" alt="counter4">
 
-                <h2 class="title_60"><span class="count" data-target="24">0</span>/7</h2>
+                <h4 class="title_60"><span class="count" data-target="24">0</span>/7</h4>
 
                 <p class="mb-0">Support Available</p>
 
@@ -5616,67 +5597,67 @@
 
                 <p class="mb-0 text-white">Trusted by leading companies across diverse industrial sectors</p>
 
-                <h2 class="title_60 text-white">Industries We Serve</h2>
+                <h2 class="title_60 text-white">Industries We Serve with Our Shot Blasting Machines</h2>
 
             </div>
 
 
 
-            <div class="industry_grid">
+            <!--<div class="industry_grid">-->
 
 
 
-                <a href="{{ url('industries/forging') }}" class="industry_item_wrapper">
+            <!--    <a href="{{ url('industries/forging') }}" class="industry_item_wrapper">-->
 
-                    <div class="industry_item" style="background-image: url('./public/front/images/industries1.png')">
+            <!--        <div class="industry_item" style="background-image: url('./public/front/images/industries1.png')">-->
 
-                    </div>
-
-
-
-                    <h3 class="title_24">Forging</h3>
-
-                </a>
+            <!--        </div>-->
 
 
 
-                <a href="{{ url('industries/foundry') }}" class="industry_item_wrapper">
+            <!--        <h3 class="title_24">Forging</h3>-->
 
-                    <div class="industry_item" style="background-image: url('./public/front/images/industries2.png')">
-
-                    </div>
+            <!--    </a>-->
 
 
 
-                    <h3 class="title_24">Foundry</h3>
+            <!--    <a href="{{ url('industries/foundry') }}" class="industry_item_wrapper">-->
 
-                </a>
+            <!--        <div class="industry_item" style="background-image: url('./public/front/images/industries2.png')">-->
 
-
-
-                <a href="{{ url('industries/defense') }}" class="industry_item_wrapper">
-
-                    <div class="industry_item" style="background-image: url('./public/front/images/industries3.png')">
-
-                    </div>
+            <!--        </div>-->
 
 
 
-                    <h3 class="title_24">Defense</h3>
+            <!--        <h3 class="title_24">Foundry</h3>-->
 
-                </a>
+            <!--    </a>-->
 
 
 
-                <a href="{{ url('industries/aerospace') }}" class="industry_item_wrapper">
+            <!--    <a href="{{ url('industries/defense') }}" class="industry_item_wrapper">-->
 
-                    <div class="industry_item" style="background-image: url('./public/front/images/industries4.png')">
+            <!--        <div class="industry_item" style="background-image: url('./public/front/images/industries3.png')">-->
 
-                    </div>
+            <!--        </div>-->
 
-                    <h3 class="title_24">Aerospace</h3>
 
-                </a>
+
+            <!--        <h3 class="title_24">Defense</h3>-->
+
+            <!--    </a>-->
+
+
+
+            <!--    <a href="{{ url('industries/aerospace') }}" class="industry_item_wrapper">-->
+
+            <!--        <div class="industry_item" style="background-image: url('./public/front/images/industries4.png')">-->
+
+            <!--        </div>-->
+
+            <!--        <h3 class="title_24">Aerospace</h3>-->
+
+            <!--    </a>-->
 
 
 
@@ -5694,85 +5675,85 @@
 
 
 
-                <a href="{{ url('industries/fabrication') }}" class="industry_item_wrapper">
+            <!--    <a href="{{ url('industries/fabrication') }}" class="industry_item_wrapper">-->
 
-                    <div class="industry_item" style="background-image: url('./public/front/images/industries6.png')">
+            <!--        <div class="industry_item" style="background-image: url('./public/front/images/industries6.png')">-->
 
-                    </div>
-
-
-
-
-
-                    <h3 class="title_24">Fabrication</h3>
-
-                </a>
-
-
-
-                <a href="" class="industry_item_wrapper">
-
-                    <div class="industry_item" style="background-image: url('./public/front/images/industries7.png')">
-
-                    </div>
+            <!--        </div>-->
 
 
 
 
 
+            <!--        <h3 class="title_24">Fabrication</h3>-->
 
-
-                    <h3 class="title_24">Wire coil</h3>
-
-                </a>
-
-
-
-                <a href="{{ url('industries/automotive') }}" class="industry_item_wrapper">
-
-                    <div class="industry_item" style="background-image: url('./public/front/images/industries8.png')">
-
-                    </div>
-
-                    <h3 class="title_24">Automotive</h3>
-
-                </a>
+            <!--    </a>-->
 
 
 
-                <a href="{{ url('industries/oil-and-gas') }}" class="industry_item_wrapper">
+            <!--    <a href="" class="industry_item_wrapper">-->
 
-                    <div class="industry_item" style="background-image: url('./public/front/images/industries9.png')">
+            <!--        <div class="industry_item" style="background-image: url('./public/front/images/industries7.png')">-->
 
-                    </div>
-
-                    <h3 class="title_24">Oil & gas</h3>
-
-                </a>
+            <!--        </div>-->
 
 
 
-                <a href="{{ url('industries/steel-plant') }}" class="industry_item_wrapper">
-
-                    <div class="industry_item" style="background-image: url('./public/front/images/industries10.png')">
-
-                    </div>
-
-                    <h3 class="title_24">Steel plant</h3>
-
-                </a>
 
 
 
-                <a href="{{ url('industries/peb') }}" class="industry_item_wrapper">
 
-                    <div class="industry_item" style="background-image: url('./public/front/images/industries11.png')">
+            <!--        <h3 class="title_24">Wire coil</h3>-->
 
-                    </div>
+            <!--    </a>-->
 
-                    <h3 class="title_24">PEB </h3>
 
-                </a>
+
+            <!--    <a href="{{ url('industries/automotive') }}" class="industry_item_wrapper">-->
+
+            <!--        <div class="industry_item" style="background-image: url('./public/front/images/industries8.png')">-->
+
+            <!--        </div>-->
+
+            <!--        <h3 class="title_24">Automotive</h3>-->
+
+            <!--    </a>-->
+
+
+
+            <!--    <a href="{{ url('industries/oil-and-gas') }}" class="industry_item_wrapper">-->
+
+            <!--        <div class="industry_item" style="background-image: url('./public/front/images/industries9.png')">-->
+
+            <!--        </div>-->
+
+            <!--        <h3 class="title_24">Oil & gas</h3>-->
+
+            <!--    </a>-->
+
+
+
+            <!--    <a href="{{ url('industries/steel-plant') }}" class="industry_item_wrapper">-->
+
+            <!--        <div class="industry_item" style="background-image: url('./public/front/images/industries10.png')">-->
+
+            <!--        </div>-->
+
+            <!--        <h3 class="title_24">Steel plant</h3>-->
+
+            <!--    </a>-->
+
+
+
+            <!--    <a href="{{ url('industries/peb') }}" class="industry_item_wrapper">-->
+
+            <!--        <div class="industry_item" style="background-image: url('./public/front/images/industries11.png')">-->
+
+            <!--        </div>-->
+
+            <!--        <h3 class="title_24">PEB </h3>-->
+
+            <!--    </a>-->
 
 
 
@@ -5804,6 +5785,15 @@
 
                 <!-- </div>-->
 
+            <!--</div>-->
+            
+            <div class="industry_grid">
+                @foreach($industriesList as $item)
+                <a href="{{ route('industry', $item->url) }}" class="industry_item_wrapper">
+                    <div class="industry_item" style="background-image: url('{{ asset('public/indcategory/icon_image/' . $item->icon_image) }}')"></div>
+                    <h3 class="title_24">{{ $item->indcategory }}</h3>
+                </a>
+                @endforeach
             </div>
 
         </div>
@@ -5822,7 +5812,7 @@
 
             </p>
 
-            <h2 class="title_60">Our Process in 4 Steps</h2>
+            <h2 class="title_60">Our Shot Blasting Machine Selection & Installation Process</h2>
 
         </div>
 
@@ -6408,10 +6398,87 @@ document.querySelector("#icon").addEventListener("mouseleave", () => {
 
 <!--</section>-->
 
-
+<section class="mb_100 mt_100">
+    <div class="container">
+        <div class="sec_hed_top mb_40">
+            <h2 class="title_60">Frequently Asked Questions About Shot Blasting Machines</h2>
+        <div class="faq_group active">
+            <div class="faq_item">
+                <div class="faq_question">
+                    <span>What is a shot blasting machine used for?</span>
+                    <span class="faq_icon">+</span>
+                </div>
+                <div class="faq_answer">
+                    <span>A shot blasting machine uses high-velocity abrasive media to clean, descale, deburr, or prepare metal surfaces before painting, coating, or further processing.</span>
+                </div>
+            </div>
+            <div class="faq_item">
+                <div class="faq_question">
+                    <span>What types of shot blasting machines does Jinil manufacture?</span>
+                    <span class="faq_icon">+</span>
+                </div>
+                <div class="faq_answer">
+                    <span>Jinil manufactures airless shot blasting machines, air-operated shot blasting cabinets, roller conveyor shot blasting machines, hanger type shot blasting machines, pipe shot blasting machines, and tumble type shot blasting machines, along with blast rooms, dust collectors, and paint spray booths.</span>
+                </div>
+            </div>
+            <div class="faq_item">
+                <div class="faq_question">
+                    <span>What is the difference between airless and air-operated shot blasting machines?</span>
+                    <span class="faq_icon">+</span>
+                </div>
+                <div class="faq_answer">
+                    <span>Airless shot blasting machines use mechanically driven blast wheels for high-volume, continuous surface preparation, while air-operated shot blasting machines use compressed air to project abrasive media — typically suited to smaller batches or spot-cleaning applications.</span>
+                </div>
+            </div>
+            <div class="faq_item">
+                <div class="faq_question">
+                    <span>Can Jinil design a custom shot blasting machine for structural steel or pipes?</span>
+                    <span class="faq_icon">+</span>
+                </div>
+                <div class="faq_answer">
+                    <span>Yes. As a shot blasting machine manufacturer, Jinil engineers structural steel shot blasting machines, internal pipe blasting machines, and hanger type systems tailored to component size, batch weight, and throughput requirements.</span>
+                </div>
+            </div>
+            <div class="faq_item">
+                <div class="faq_question">
+                    <span>Do you provide dust collectors and paint spray booths along with shot blasting machines?</span>
+                    <span class="faq_icon">+</span>
+                </div>
+                <div class="faq_answer">
+                    <span>Yes, Jinil supplies dust collectors for shot blasting machines and paint spray booths as part of a complete surface preparation and finishing line.</span>
+                </div>
+            </div>
+            <div class="faq_item">
+                <div class="faq_question">
+                    <span>What industries use Jinil's shot blasting machines?</span>
+                    <span class="faq_icon">+</span>
+                </div>
+                <div class="faq_answer">
+                    <span>Automotive, foundry, forging, fabrication, aerospace, defense, oil & gas, steel plants, PEB, and railway industries use Jinil's shot blasting machines and abrasive blasting equipment.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 @include('front.serviceform')
 
-
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll(".faq_question").forEach(question => {
+        question.addEventListener("click", function() {
+            const item = question.parentElement;
+            // close others
+            document.querySelectorAll(".faq_item").forEach(faq => {
+                if (faq !== item) {
+                    faq.classList.remove("active");
+                }
+            });
+            // toggle current
+            item.classList.toggle("active");
+        });
+    });
+});
+</script>
 
 @include('layouts.frontfooter')

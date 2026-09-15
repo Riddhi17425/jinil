@@ -101,20 +101,31 @@
                     @endphp
 
                     @if ($blogsdetail->cta_image)
-                        <div class="blog-content-section">
+                        <a href="{{route('contact')}}"><div class="blog-content-section">
                             <div class="cta_image_wrap">
                                 <img class="img-fluid"
                                     src="{{ asset('public/Blogs/cta_image/' . $blogsdetail->cta_image) }}"
                                     alt="{{ $blogsdetail->title }}">
                             </div>
-                        </div>
+                        </div></a>
                     @elseif($ctaTextClean !== '')
-                        <div class="blog-content-section">
+                        <a href="{{route('contact')}}"><div class="blog-content-section">
                             <div class="blog_det_consu">
                                 <div class="col-lg-10">{!! $blogsdetail->cta_text !!}</div>
                             </div>
-                        </div>
+                        </div></a>
                     @endif
+
+                    <!-- Custom Static CTA Design -->
+                    <!-- <div class="blog-content-section">
+                        <div class="custom_blog_cta">
+                            <div class="cta_left_content">
+                                <h3>Looking For A Reliable Shot Blasting Machine Manufacturer In India?</h3>
+                                <p>Get Reliable Shot Blasting Machines And Customized Industrial Solutions Designed For Efficient Surface Preparation And Finishing.</p>
+                                <a href="{{ route('contact') }}" class="com_btn com_btn_3">Request a Quote</a>
+                            </div>
+                        </div>
+                    </div> -->
 
                     <!-- Conclusion -->
 

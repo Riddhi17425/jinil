@@ -507,3 +507,20 @@ a {
 .text-585 p {
     color: var(--grey-585) !important;
 }
+
+/* Blog Author Styles */
+.blog_author_icon {
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+}
+.blog_author_name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--blue);
+}
+.blog_author_date {
+    font-size: 14px;
+    font-weight: 500;
+    color: #6c757d;
+}

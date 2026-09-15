@@ -32,7 +32,7 @@
             <!-- Industry Category -->
             <li>
                 <a class="m-link {{ Request::routeIs('indcategory.*') ? 'active' : '' }}"
-                   href="{{ route('indcategory.index') }}">
+                   href="{{ route('indcategory-index') }}">
                     <i class="icofont-industries fs-5"></i>
                     <span>Industry Category</span>
                 </a>

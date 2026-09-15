@@ -18,7 +18,7 @@
 <section class="mb_100 con_map">
     <div class="container-fluid">
         <div class="row">
-            <div class="mb-4 mb-lg-0 col-md-6 pe-md-5">
+            <div class="mb-4 mb-lg-0 col-md-6 pe-md-5 text-center text-lg-start">
                 <div class="inve_Pro_card">
                     <h4 class="title_24">Head Office</h4>
                     <p><a href="https://maps.app.goo.gl/gQvGLF1yj93x7JhQA" target="_blank">C3-602, anushruti tower, near jain derasar, s.g.road, <br/> thaltej,  ahmedabad 380059 india</a></p>
@@ -34,21 +34,6 @@
                 <div class="inve_Pro_card">
                     <h4 class="title_24">Direct Contact</h4>
                     <div class="con_num">
-                        <!--<div>-->
-                        <!--     <p class="mb-1">Mr Nilesh Todi :</p>-->
-                        <!--    <p class="mb-1">Mr. Ramesh Tripathi :</p>-->
-                        <!--    <p class="mb-1">Email Address:</p>-->
-                        <!--</div>-->
-                        <!--<div>-->
-                        <!--    <p class="mb-1"><a href="tel: +91 9830030030">+91 9830030030</a></p>-->
-                        <!--    <p class="mb-1"><a href="tel: +91 9462419670">+91 9462419670</a></p>-->
-                        <!--    <p class="mb-1"> <a href="mailto:ntodi@jinilspinning.com">ntodi@jinilspinning.com</a><br>-->
-                        <!--      <a href="mailto:ramesh@jinilspinning.com">ramesh@jinilspinning.com</a></p>-->
-                        <!--</div>-->
-                        <!-- <div>
-                             <p class="mb-1">For Whatsapp Queries :</p>
-                            <p class="mb-1">For Website Queries :</p>
-                        </div> -->
                         <div>
                             <p class="mb-1">
                                 <span><svg width="18" height="18" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -87,7 +72,7 @@ $cb = rand(1,9);
 <section class="mt_100 mb_100">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-4 pe-lg-5">
+            <div class="col-lg-4 pe-lg-5  text-center text-lg-start">
                 <h2 class="title_80 fw-medium text-111" style="mix-blend-mode: normal;">Need Technical Assistance?</h2>
                 <p>Our experienced engineers can help you select the right shot blasting solution based on your application,
                     material type, and production capacity.</p>
@@ -115,7 +100,9 @@ $cb = rand(1,9);
                         {{-- Phone Number (intl-tel-input) --}}
                         <div class="col-md-6 form-group" style="position:relative;">
                             <div id="cf_phone_wrapper">
-                                <input type="tel" id="cf_phone" name="phone" placeholder=" Phone Number *">
+                                <input type="tel" id="cf_phone" name="phone" placeholder=" Phone Number *"
+                                       maxlength="10" inputmode="numeric" autocomplete="off"
+                                       oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                             </div>
                             <input type="hidden" name="country"    id="cf_contact_country">
                             <input type="hidden" name="phonecode"  id="cf_contact_phonecode">
@@ -235,126 +222,30 @@ jQuery(document).ready(function ($) {
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js"
     });
 
-    $('#cf_phone').on('keyup change', function () {
-        var countryData = cfIti.getSelectedCountryData();
-        $('#cf_contact_country').val(countryData.name);
-        $('#cf_contact_phonecode').val(countryData.dialCode);
-        $('#cf_contact_value').val(this.value);
-        $('#cf_contact_full_phone').val('+' + countryData.dialCode + this.value);
-    });
-
-    // ── Client-side validation ────────────────────────────────────
-    function validateCfForm() {
-        var isValid = true;
-
-        // Full Name
-        if ($('#contact_form input[name="name"]').val().trim() === '') {
-            $('#cf_name-error').text('The Name is required.');
-            isValid = false;
-        }
-
-        // Company Name
-        // if ($('#contact_form input[name="company_name"]').val().trim() === '') {
-        //     $('#cf_company_name-error').text('The Company Name is required.');
-        //     isValid = false;
-        // }
-
-        // Phone
-        var phoneVal = $('#cf_phone').val().trim();
-        if (!phoneVal || phoneVal.length < 1) {
-            $('#cf_full_phone-error').text('The Phone Number is required.');
-            isValid = false;
-        } else if (phoneVal.replace(/\D/g, '').length < 7) {
-            $('#cf_full_phone-error').text('Please enter a valid Phone Number.');
-            isValid = false;
-        }
-
-        // Email
-        var emailVal = $('#contact_form input[name="email"]').val().trim();
-        // if (emailVal === '') {
-        //     $('#cf_email-error').text('The Email Address is required.');
-        //     isValid = false;
-        // } 
-        // else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
-        if (emailVal != '' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
-            $('#cf_email-error').text('Please enter a valid Email Address.');
-            isValid = false;
-        }
-
-        // State
-        // if ($('#cf_state').val() === '') {
-        //     $('#cf_state-error').text('The State is required.');
-        //     isValid = false;
-        // }
-
-        // City
-        // if ($('#cf_city').val() === '') {
-        //     $('#cf_city-error').text('The City is required.');
-        //     isValid = false;
-        // }
-"captcha_sum" id="cf_captcha_sum" value="{{ $ca + $cb }}">
-                            <span id="cf_simple_captcha-error" class="text-danger"></span>
-                        </div>
-
-                        {{-- Submit --}}
-                        <div class="col-md-6 form-group" style="align-self: anchor-center;">
-                            <button type="submit" class="com_btn cf_submit_btn">Request a Quote</button>
-                        </div>
-
-                    </div>
-                </form>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-jQuery(document).ready(function ($) {
-
-    // ── State → City ──────────────────────────────────────────────
-    $('#cf_state').on('change', function () {
-        var state_id = $(this).find('option:selected').data('id');
-        if (state_id) {
-            $.ajax({
-                url: "{{ url('get-cities') }}/" + state_id,
-                type: "GET",
-                success: function (data) {
-                    $('#cf_city').html('<option value="">Select City</option>');
-                    $.each(data, function (key, value) {
-                        $('#cf_city').append('<option value="' + value.name + '">' + value.name + '</option>');
-                    });
-                }
-            });
+    // ── Phone: numbers-only restriction ────────────────────────────
+    // Blocks any non-digit keypress (letters, symbols, spaces, etc.)
+    $('#cf_phone').on('keypress', function (e) {
+        var charCode = e.which ? e.which : e.keyCode;
+        if (charCode < 48 || charCode > 57) {
+            e.preventDefault();
         }
     });
 
-    // ── CAPTCHA refresh ───────────────────────────────────────────
-    function refreshCfCaptcha() {
-        var a = Math.floor(Math.random() * 9) + 1;
-        var b = Math.floor(Math.random() * 9) + 1;
-        $('#cf_capA').text(a);
-        $('#cf_capB').text(b);
-        $('#cf_captcha_sum').val(a + b);
-        $('#cf_simple_captcha').val('');
-        $('#cf_simple_captcha-error').text('');
-    }
-    $('#cf_refreshCaptcha').on('click', refreshCfCaptcha);
+    // Cleans up pasted content so only digits remain (max 10 digits)
+    $('#cf_phone').on('paste', function (e) {
+        e.preventDefault();
+        var pastedText = (e.originalEvent.clipboardData || window.clipboardData).getData('text');
+        var numbersOnly = pastedText.replace(/[^0-9]/g, '');
+        this.value = (this.value + numbersOnly).slice(0, 10);
+        $(this).trigger('keyup');
+    });
 
-    // ── intl-tel-input ────────────────────────────────────────────
-    var cfPhoneEl = document.getElementById('cf_phone');
-    var cfIti = window.intlTelInput(cfPhoneEl, {
-        initialCountry: "auto",
-        geoIpLookup: function (callback) {
-            fetch("https://ipapi.co/json")
-                .then(function (res) { return res.json(); })
-                .then(function (data) { callback(data.country_code); })
-                .catch(function () { callback("in"); });
-        },
-        separateDialCode: true,
-        utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js"
+    // Extra safety net for any other input method (autofill, drag-drop, etc.)
+    $('#cf_phone').on('input', function () {
+        var cleaned = this.value.replace(/[^0-9]/g, '').slice(0, 10);
+        if (this.value !== cleaned) {
+            this.value = cleaned;
+        }
     });
 
     $('#cf_phone').on('keyup change', function () {

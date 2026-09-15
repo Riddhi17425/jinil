@@ -17,6 +17,7 @@ use App\Models\WhatsappInquiry;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Schema;
 
 class dashboardController extends Controller
 {
@@ -54,7 +55,13 @@ class dashboardController extends Controller
 
             ->get();
 
-        return view('front.dashboard', compact('productlist'));
+        $industriesQuery = IndCategory::whereNull('deleted_at');
+        if (Schema::hasColumn('indcategory', 'status')) {
+            $industriesQuery->where('status', 'Active');
+        }
+        $industriesList = $industriesQuery->get();
+
+        return view('front.dashboard', compact('productlist' , 'industriesList'));
 
     }
 
@@ -89,32 +96,70 @@ class dashboardController extends Controller
 
     }
 
+    // public function whatsaapinquiry(Request $request)
+    // {
+    //     WhatsappInquiry::create([
+
+    //         'number'  => $request->number,
+    //         'message' => $request->message,
+    //     ]);
+    //     // Google Apps Script URL
+    //     $googleScriptUrl = "https://script.google.com/macros/s/AKfycbyR_q9NAXJ2ChXb39-kaC8E7BXx6h2l8PxcsOP9L25IL2yno2v2VpMTFQYsAYlc3b9gzw/exec";
+
+    //     // Send data to Google Sheet
+    //     Http::post($googleScriptUrl, [
+    //         'form_type' => 'WhatsApp Inquiry',
+    //         'contact'   => $request->number,
+    //         'message'   => $request->message,
+    //         'date'      => now()->format('Y-m-d H:i:s'),
+    //     ]);
+
+    //     $number = '9925601108';
+    //     //$number = '918469000194'; // Change if needed
+    //     $message     = 'Inquiry from the website.';
+    //     $whatsappUrl = "https://api.whatsapp.com/send/?phone={$number}&text=" . urlencode($message);
+
+    //     return redirect()->away($whatsappUrl);
+    // }
+
     public function whatsaapinquiry(Request $request)
     {
-        WhatsappInquiry::create([
-
-            'number'  => $request->number,
-            'message' => $request->message,
+        $validated = $request->validate([
+            'number'  => ['required', 'regex:/^\+?[0-9]{10,15}$/'],
+            'message' => ['nullable', 'string', 'max:1000'],
+            'country' => ['nullable', 'string', 'max:100'],
+        ], [
+            'number.required' => 'Contact number is required.',
+            'number.regex'    => 'Contact number must be 10 to 15 digits.',
         ]);
+
+        WhatsappInquiry::create([
+            'number'  => $validated['number'],
+            'message' => $validated['message'] ?? null,
+        ]);
+
         // Google Apps Script URL
         $googleScriptUrl = "https://script.google.com/macros/s/AKfycbyR_q9NAXJ2ChXb39-kaC8E7BXx6h2l8PxcsOP9L25IL2yno2v2VpMTFQYsAYlc3b9gzw/exec";
 
         // Send data to Google Sheet
-        Http::post($googleScriptUrl, [
-            'form_type' => 'WhatsApp Inquiry',
-            'contact'   => $request->number,
-            'message'   => $request->message,
-            'date'      => now()->format('Y-m-d H:i:s'),
-        ]);
+        try {
+            Http::timeout(30)->post($googleScriptUrl, [
+                'form_type' => 'WhatsApp Inquiry',
+                'contact'   => $validated['number'],
+                'message'   => $validated['message'] ?? '',
+                'date'      => now()->format('Y-m-d H:i:s'),
+            ]);
+        } catch (\Exception $e) {
+            \Log::warning('WhatsApp Sheet push failed: ' . $e->getMessage());
+        }
 
         $number = '9925601108';
-        //$number = '918469000194'; // Change if needed
-        $message     = 'Inquiry from the website.';
+        $message = 'Inquiry from the website.';
         $whatsappUrl = "https://api.whatsapp.com/send/?phone={$number}&text=" . urlencode($message);
 
         return redirect()->away($whatsappUrl);
     }
-
+    
     public function contact()
     {
 
@@ -312,37 +357,22 @@ class dashboardController extends Controller
     // }
 
     public function industry($url)
-    {
+{
+    $category = IndCategory::whereNull('deleted_at')->where('url', $url)->firstOrFail();
+    $industries = Industry::whereNull('deleted_at')->where('category_id', $category->id)->get();
 
-        $category = IndCategory::whereNull('deleted_at')
-
-            ->where('url', $url)
-
-            ->firstOrFail();
-
-        $industries = Industry::whereNull('deleted_at')
-
-            ->where('category_id', $category->id)
-
-            ->get();
-
-        $metatitle = $category->indcategory;
-
-        $metadescription = $category->cat_description;
-
-        return view('front.industries', compact(
-
-            'category',
-
-            'industries',
-
-            'metatitle',
-
-            'metadescription'
-
-        ));
-
+    $relatedIndustriesQuery = IndCategory::whereNull('deleted_at')
+        ->where('id', '!=', $category->id);
+    if (Schema::hasColumn('indcategory', 'status')) {
+        $relatedIndustriesQuery->where('status', 'Active');
     }
+    $relatedIndustries = $relatedIndustriesQuery->get();
+
+    $metatitle = $category->meta_title;
+    $metadescription = $category->meta_description;
+
+    return view('front.industries', compact('category', 'industries', 'relatedIndustries', 'metatitle', 'metadescription'));
+}
 
     public function product($url)
     {
@@ -359,9 +389,9 @@ class dashboardController extends Controller
 
             ->get();
 
-        $metatitle = $category->indcategory;
+        $metatitle = $category->meta_title;
 
-        $metadescription = $category->cat_description;
+        $metadescription = $category->meta_description;
 
         return view('front.productlisting', compact(
 

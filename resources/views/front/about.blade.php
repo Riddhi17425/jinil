@@ -104,7 +104,7 @@
 </h2>
         </div>
 
-        <div class="row justify-content-between">
+        <div class="row justify-content-between text-center text-lg-start">
             <div class="col-lg-3 mb-3 mb-lg-0">
                 <p class="title_24"> We deliver high-performance shot blasting systems designed to enhance productivity, consistency, and long-term operational reliability.
 </p>
@@ -264,7 +264,7 @@
 </h2>
         </div>
 
-        <div class="row justify-content-between">
+        <div class="row justify-content-between text-center text-lg-start">
             <div class="col-lg-3  mb-3 mb-lg-0">
                 <p class="title_24 mb-0">We support manufacturers across different industrial sectors with reliable, high-performance shot blasting and surface preparation systems.
 </p>
@@ -304,7 +304,7 @@
 
 <section class="mt_100">
     <div class="container-fluid">
-        <div class="sec_hed_top mb_40 text-start">
+        <div class="sec_hed_top mb_40 text-center text-lg-start">
             <p>For Precision Surface Preparation Leadership
 </p>
             <h2 class="title_60">Leadership Perspective
@@ -318,7 +318,7 @@
 </span>
         </div>
 
-        <div class="row">
+        <div class="row text-center text-lg-start">
             <div class="col-lg-6 pe-lg-5">
                 <h4 class="title_34">Founder. Engineer. Industry Leader.
 </h4>
@@ -456,7 +456,7 @@
     <div class="container-fluid">
 
         <div class="inve_Pro mt_80">
-            <div class="row justify-content-between">
+            <div class="row justify-content-between text-center text-lg-start">
                 <div class="col-lg-5 mb-3 mb-lg-0">
                     <p class="mb-2">For Precision Surface Preparation Leadership
 s</p>

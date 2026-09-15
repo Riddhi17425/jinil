@@ -114,6 +114,14 @@ Route::get('/thank-you', function () {
 
 })->name('thankyou');
 
+Route::get('/author-1', function () {
+    return view('front.author_1');
+})->name('author_1');
+
+Route::get('/author-2', function () {
+    return view('front.author_2');
+})->name('author_2');
+
 Route::get('login', [dashboardController::class, 'login'])->name('login');
 
 Auth::routes();
@@ -134,7 +142,11 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('category', CategoryController::class);
 
-    Route::resource('indcategory', IndCategoryController::class);
+    Route::get('indcategory/list', [IndCategoryController::class, 'index'])
+        ->name('indcategory-index');
+    
+    Route::resource('indcategory', IndCategoryController::class)
+        ->except(['index']);
 
     Route::resource('product', ProductController::class);
 

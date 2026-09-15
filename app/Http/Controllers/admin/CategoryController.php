@@ -50,6 +50,9 @@ class CategoryController extends Controller
             'url'              => $request->url,
             'meta_title'       => $request->meta_title,
             'meta_description' => $request->meta_description,
+            'faqs_title'       => $request->faqs_title,
+            'faqs_desc'        => $request->faqs_desc,                        
+            'faqs'             => $this->mapFaqs($request->input('faqs', [])), 
         ]);
         return redirect()->route('category.index')
             ->with('success', 'Category created successfully');
@@ -80,6 +83,9 @@ class CategoryController extends Controller
             'url'              => $request->url,
             'meta_title'       => $request->meta_title,
             'meta_description' => $request->meta_description,
+            'faqs_title'       => $request->faqs_title,
+            'faqs_desc'        => $request->faqs_desc,                         
+            'faqs'             => $this->mapFaqs($request->input('faqs', [])),
         ]);
         return redirect()->route('category.index')
             ->with('success', 'Category updated successfully');
@@ -96,6 +102,27 @@ class CategoryController extends Controller
 
             ->with('success', 'Category deleted successfully');
 
+    }
+
+    private function mapFaqs($items)
+    {
+        return collect($items)
+            ->map(function ($item) {
+                $question = trim((string) ($item['question'] ?? ''));
+                $answer   = trim((string) ($item['answer'] ?? ''));
+
+                if ($question === '' && $answer === '') {
+                    return null;
+                }
+
+                return [
+                    'question' => $question,
+                    'answer'   => $answer,
+                ];
+            })
+            ->filter()
+            ->values()
+            ->all();
     }
 
 }

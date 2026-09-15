@@ -1,4 +1,7 @@
-@include('layouts.frontheader')
+@include('layouts.frontheader', [
+'metatitle' => 'Shot Blasting Machine Installation - Jinil',
+'metadescription' => 'Ensure smooth production with Jinil Shot Blasting Machine Installation, commissioning, equipment testing, operator training, and after-installation support.',
+])
 
 
 

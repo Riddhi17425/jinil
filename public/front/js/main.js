@@ -16,7 +16,7 @@ document.querySelector(".menu-toggle").addEventListener("click", function () {
 });
 
 // ================= MOBILE DROPDOWN MENU =================
-document.addEventListener("DOMContentLoaded", function() {
+function initHeaderMenus() {
     // Function to close all dropdowns except the specified one
     function closeAllDropdowns(except = null) {
         document.querySelectorAll(".has-dropdown.open").forEach((openDropdown) => {
@@ -26,11 +26,11 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // Handle dropdown clicks
+    // Handle dropdown clicks (Products, Services, Resources)
     document.querySelectorAll(".has-dropdown > a").forEach((toggleLink) => {
         toggleLink.addEventListener("click", function (event) {
             // Only handle on mobile screens
-            if (window.innerWidth > 835) return;
+            if (window.innerWidth > 991) return;
             
             event.preventDefault();
             event.stopPropagation();
@@ -47,13 +47,64 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
+    // Handle sub-dropdown clicks on mobile: link redirects to category page, arrow toggles accordion
+    document.querySelectorAll(".has-submenu").forEach((submenuItem) => {
+        const catLink = submenuItem.querySelector(".category-menu-link");
+        const arrow = submenuItem.querySelector(".submenu-arrow");
+
+        if (arrow) {
+            arrow.addEventListener("click", function (event) {
+                if (window.innerWidth > 991) return;
+
+                event.preventDefault();
+                event.stopPropagation();
+
+                // Close other open sibling submenus
+                const parentDropdown = submenuItem.closest(".dropdown-menu");
+                if (parentDropdown) {
+                    parentDropdown.querySelectorAll(".has-submenu.open").forEach((sibling) => {
+                        if (sibling !== submenuItem) {
+                            sibling.classList.remove("open");
+                        }
+                    });
+                }
+
+                submenuItem.classList.toggle("open");
+            });
+        }
+
+        if (catLink) {
+            catLink.addEventListener("click", function (event) {
+                if (window.innerWidth > 991) return;
+
+                // If the user clicked the rounded arrow, prevent default link navigation
+                if (event.target.closest(".submenu-arrow")) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    return;
+                }
+
+                // If user clicked the category title/link text, let it naturally redirect
+            });
+        }
+    });
+
     // Close dropdowns when clicking outside
     document.addEventListener("click", function (event) {
         if (!event.target.closest(".has-dropdown")) {
             closeAllDropdowns();
+            document.querySelectorAll(".has-submenu.open").forEach((el) => {
+                el.classList.remove("open");
+            });
         }
     });
-});
+}
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initHeaderMenus);
+} else {
+    initHeaderMenus();
+}
 // ================= SLICK SLIDERS =================
 $(document).ready(function () {
     if ($(".desire_slider").length) {
