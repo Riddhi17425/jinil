@@ -114,6 +114,14 @@ Route::get('/thank-you', function () {
 
 })->name('thankyou');
 
+Route::get('/author-1', function () {
+    return view('front.author_1');
+})->name('author_1');
+
+Route::get('/author-2', function () {
+    return view('front.author_2');
+})->name('author_2');
+
 Route::get('login', [dashboardController::class, 'login'])->name('login');
 
 Auth::routes();

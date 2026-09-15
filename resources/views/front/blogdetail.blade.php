@@ -116,6 +116,17 @@
                         </div></a>
                     @endif
 
+                    <!-- Custom Static CTA Design -->
+                    <div class="blog-content-section">
+                        <div class="custom_blog_cta">
+                            <div class="cta_left_content">
+                                <h3>Looking For A Reliable Shot Blasting Machine Manufacturer In India?</h3>
+                                <p>Get Reliable Shot Blasting Machines And Customized Industrial Solutions Designed For Efficient Surface Preparation And Finishing.</p>
+                                <a href="{{ route('contact') }}" class="com_btn com_btn_3">Request a Quote</a>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Conclusion -->
 
                     <div class="blog-content-section" id="conclusion">

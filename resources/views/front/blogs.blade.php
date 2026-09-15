@@ -33,8 +33,7 @@
 
 <section class="mb_100">
     <div class="container-fluid">
-
-        <div class="row gy-4 gy-lg-0">
+        <div class="row gy-4">
             @foreach($blogs as $blog)
             <div class="col-md-4">
                 <div class="insight_item">
@@ -43,15 +42,21 @@
                     </div>
                     <div class="insight_item_content">
                         <hr>
-                        <p class="mb-2">{{ $blog->date}}</p>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div class="d-flex align-items-center gap-2">
+                                <img src="{{ asset('public/front/images/Nilesh-Todi-icon.png') }}" alt="" class="rounded-circle blog_author_icon">
+                                 <span class="blog_author_name">Nilesh Todi</span>
+                            </div>
+                            <div>
+                                <span class="blog_author_date">{{ $blog->date}}</span>
+                            </div>
+                        </div>
                         <a href="{{ route('blogdetail', ['url' => $blog->url]) }}"><h3 class="title_24">{{ $blog->title }}</h3></a>
                     </div>
                 </div>
             </div>
             @endforeach
-           
         </div>
-
     </div>
 </section>
 

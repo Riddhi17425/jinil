@@ -241,6 +241,28 @@
 
             ->get();
 
+        $headerProducts = DB::table('product')
+
+            ->select('id', 'name', 'title', 'url', 'category_id')
+
+            ->whereNull('deleted_at')
+
+            ->orderBy('id', 'asc')
+
+            ->get()
+
+            ->groupBy('category_id');
+
+            $indusries = DB::table('indcategory')
+
+    ->select('indcategory','url')
+
+    ->whereNull('deleted_at')
+
+    ->distinct()
+
+    ->get();
+
     @endphp
 
     <header class="sticky-header">
@@ -294,16 +316,41 @@
 
                             </a>
 
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu products_menu">
 
                                 @foreach ($category as $val)
-                                    <li>
+                                    @php
+                                        $prods = $headerProducts->get($val->id, collect());
+                                    @endphp
+                                    <li class="has-submenu {{ $prods->isNotEmpty() ? 'has-children' : '' }}">
 
-                                        <a href="{{ url('products/' . $val->url) }}">
+                                        <a href="{{ url('products/' . $val->url) }}" class="category-menu-link">
 
-                                            {{ $val->category }}
+                                            <span>{{ $val->category }}</span>
+
+                                            @if ($prods->isNotEmpty())
+                                                <span class="submenu-arrow">
+                                                    <svg width="6" height="10" viewBox="0 0 6 10" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M1 1L5 5L1 9" stroke="#58595B" stroke-width="1.5"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                </span>
+                                            @endif
 
                                         </a>
+
+                                        @if ($prods->isNotEmpty())
+                                            <ul class="sub-dropdown-menu">
+                                                @foreach ($prods as $prod)
+                                                    <li>
+                                                        <a href="{{ route('productdetials', $prod->url) }}">
+                                                            {{ $prod->name ?: $prod->title }}
+                                                        </a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
 
                                     </li>
                                 @endforeach
@@ -347,6 +394,44 @@
                         <!-- <li><a href="#" data-text="Case Studies">
 
                                 <span>Case Studies</span></a></li> -->
+
+                            <li class="has-dropdown"><a href="#" data-text="Industries">
+
+                                <span>Industries</span>
+
+                                <span>
+
+                                    <svg width="11" height="7" viewBox="0 0 11 7" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+
+                                        <path d="M10.5 0.5L5.5 5.73809L0.5 0.5" stroke="#58595B"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+
+                                    </svg>
+
+                                </span>
+
+                            </a>
+
+                            <ul class="dropdown-menu resources_menu">
+
+                                @foreach($indusries as $industry)
+
+                        <li>
+
+                            <a href="{{ url('industries/'.$industry->url) }}">
+
+                                {{ $industry->indcategory }}
+
+                            </a>
+
+                        </li>
+
+                        @endforeach
+
+                            </ul>
+
+                        </li>
 
                         <li class="has-dropdown">
 

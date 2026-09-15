@@ -1797,9 +1797,23 @@ margin-top: 40px;
     header .navbar {
 
         padding: 10px;
+      
 
     }
 
+    .navbar .navbar-collapse {
+    height: calc(100dvh - 56px); /* Adjust 56px to your actual navbar height */
+    overflow-y: auto;
+    
+    /* 1. Hide scrollbar for Chrome, Safari, and Opera */
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    
+    /* 2. Hide scrollbar for IE, Edge, and Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
 
 
     .nav_links li {

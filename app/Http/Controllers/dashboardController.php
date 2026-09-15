@@ -17,6 +17,7 @@ use App\Models\WhatsappInquiry;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Schema;
 
 class dashboardController extends Controller
 {
@@ -54,11 +55,11 @@ class dashboardController extends Controller
 
             ->get();
 
-        $industriesList = IndCategory::whereNull('deleted_at')
-
-            ->where('status', 'Active')
-
-            ->get();
+        $industriesQuery = IndCategory::whereNull('deleted_at');
+        if (Schema::hasColumn('indcategory', 'status')) {
+            $industriesQuery->where('status', 'Active');
+        }
+        $industriesList = $industriesQuery->get();
 
         return view('front.dashboard', compact('productlist' , 'industriesList'));
 
@@ -360,10 +361,12 @@ class dashboardController extends Controller
     $category = IndCategory::whereNull('deleted_at')->where('url', $url)->firstOrFail();
     $industries = Industry::whereNull('deleted_at')->where('category_id', $category->id)->get();
 
-    $relatedIndustries = IndCategory::whereNull('deleted_at')
-        ->where('status', 'Active')
-        ->where('id', '!=', $category->id)
-        ->get();
+    $relatedIndustriesQuery = IndCategory::whereNull('deleted_at')
+        ->where('id', '!=', $category->id);
+    if (Schema::hasColumn('indcategory', 'status')) {
+        $relatedIndustriesQuery->where('status', 'Active');
+    }
+    $relatedIndustries = $relatedIndustriesQuery->get();
 
     $metatitle = $category->meta_title;
     $metadescription = $category->meta_description;
