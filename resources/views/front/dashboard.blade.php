@@ -5510,9 +5510,11 @@
 
                     <div class="fea_mac_img">
 
-                        <img class="img-fluid" src="{{ asset('public/Product/front_image/'.$product->front_image) }}"
+                     <a href="{{ route('productdetials', $product->url) }}"
+ 
+                                    >   <img class="img-fluid" src="{{ asset('public/Product/front_image/'.$product->front_image) }}"
 
-                            alt="{{ $product->name }}">
+                            alt="{{ $product->name }}"></a>
 
                     </div>
 
@@ -5520,7 +5522,9 @@
 
                         <div class="fea_mac_content_inner">
 
-                            <h3 class="title_24">{{ $product->name }}</h3>
+                         <a href="{{ route('productdetials', $product->url) }}"
+ 
+                                    >   <h3 class="title_24">{{ $product->name }}</h3></a>
 
                             <button class="com_btn mt-2 product-enquire-btn" data-product="{{ $product->name }}"
 
@@ -5807,10 +5811,6 @@
     </div>
 
 </section>
-
-
-
-
 
 <section class="mt_100 mb_100">
 
