@@ -4,255 +4,214 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use Illuminate\Http\Request;
+use App\Models\Author;
 
 class BlogController extends Controller
 {
-
     public function index(Request $request)
     {
-
         $search = $request->get('search');
-
-        $data = Blog::whereNull('deleted_at')
-
+        $data = Blog::with('author')
+            ->whereNull('deleted_at')
             ->when($search, function ($query) use ($search) {
-
                 $query->where('title', 'LIKE', "%$search%");
-
             })
-
             ->orderBy('id', 'DESC')
-
             ->paginate(10);
 
         return view('admin.blog.blog-list', compact('data', 'search'));
-
     }
 
     public function create()
     {
+        $authors = Author::where('is_active', 1)
+            ->orderBy('name')
+            ->get();
 
-        return view('admin.blog.blog-add');
+        return view('admin.blog.blog-add', compact('authors'));
 
+        // return view('admin.blog.blog-add');
     }
 
     public function store(Request $request)
     {
-
         $validatedData = $request->validate([
-
-            'title' => 'required',
-
+            'title'    => 'required',
+            'author_id' => 'required|exists:authors,id',
         ], [
-
             'title.required' => 'Please Enter the Blog name.',
-
+            'author_id.required' => 'Please Select an Author.',
+            'author_id.exists' => 'Selected author is invalid.',
         ]);
 
         $faqTitles = $request->faq_title ?? [];
-
         $faqDescriptions = $request->faq_description ?? [];
 
         $title_description = [];
 
         foreach ($faqTitles as $index => $title) {
 
-            if (empty(trim(strip_tags($title))) || empty(trim(strip_tags($faqDescriptions[$index] ?? '')))) {
-
+            if (
+                empty(trim(strip_tags($title))) ||
+                empty(trim(strip_tags($faqDescriptions[$index] ?? '')))
+            ) {
                 continue;
-
             }
 
             $title_description[] = [
-
                 'faq_title'       => $title,
-
                 'faq_description' => $faqDescriptions[$index],
-
             ];
-
         }
 
         $post = new Blog;
 
         $post->title = $request->get('title');
-
+        $post->author_id = $request->get('author_id');
         $post->short_description = $request->get('short_description');
-
         $post->description = $request->get('description');
-
         $post->url = $request->get('url');
-
         $post->conclusion = $request->get('conclusion');
-
         $post->date = date('Y-m-d', strtotime($request->input('date')));
-
         $post->meta_title = $request->get('meta_title');
-
         $post->meta_description = $request->get('meta_description');
-
         $post->cta_text = $request->get('cta_text');
-
         $post->title_description = $title_description;
-
         $post->status = $request->get('status', 1);
 
         if ($request->hasFile('detail_image')) {
 
             $file = $request->file('detail_image');
-
             $filename = $file->getClientOriginalName();
-
             $path = public_path('Blogs/detail_image');
 
             $file->move($path, $filename);
 
             $post->detail_image = $filename;
-
         }
 
         if ($request->hasFile('front_image')) {
 
             $file = $request->file('front_image');
-
             $filename = $file->getClientOriginalName();
-
             $path = public_path('Blogs/front_image');
 
             $file->move($path, $filename);
 
             $post->front_image = $filename;
-
         }
 
         if ($request->hasFile('cta_image')) {
 
             $file = $request->file('cta_image');
-
             $filename = $file->getClientOriginalName();
-
             $path = public_path('Blogs/cta_image');
 
             $file->move($path, $filename);
 
             $post->cta_image = $filename;
-
         }
 
         $post->save();
 
         return redirect()->route('blog.index')
-
             ->with('success', 'Blog created successfully');
-
     }
 
     public function edit($id)
     {
-
         $data = Blog::find($id);
 
-        return view('admin.blog.blog-edit', compact('data'));
+        $authors = Author::where('is_active', 1)
+            ->orderBy('name')
+            ->get();
 
+        return view('admin.blog.blog-edit', compact('data', 'authors'));
     }
 
     public function update(Request $request, $id)
     {
+        $post = Blog::findOrFail($id);
 
-        $post = Blog::find($id);
+        $validatedData = $request->validate([
+            'title'     => 'required',
+            'author_id' => 'required|exists:authors,id',
+        ], [
+            'title.required' => 'Please Enter the Blog name.',
+            'author_id.required' => 'Please Select an Author.',
+            'author_id.exists' => 'Selected author is invalid.',
+        ]);
 
         $faqTitles = $request->faq_title ?? [];
-
         $faqDescriptions = $request->faq_description ?? [];
 
         $title_description = [];
 
         foreach ($faqTitles as $index => $title) {
 
-            if (empty(trim(strip_tags($title))) || empty(trim(strip_tags($faqDescriptions[$index] ?? '')))) {
-
+            if (
+                empty(trim(strip_tags($title))) ||
+                empty(trim(strip_tags($faqDescriptions[$index] ?? '')))
+            ) {
                 continue;
-
             }
 
             $title_description[] = [
-
                 'faq_title'       => $title,
-
                 'faq_description' => $faqDescriptions[$index],
-
             ];
-
         }
 
         $post->title = $request->get('title');
-
+        $post->author_id = $request->get('author_id');
         $post->description = $request->get('description');
-
         $post->short_description = $request->get('short_description');
-
         $post->url = $request->get('url');
-
         $post->conclusion = $request->get('conclusion');
-
         $post->date = date('Y-m-d', strtotime($request->input('date')));
-
         $post->meta_title = $request->get('meta_title');
-
         $post->meta_description = $request->get('meta_description');
-
         $post->cta_text = $request->get('cta_text');
-
         $post->title_description = $title_description;
-
         $post->status = $request->get('status', 1);
 
         if ($request->hasFile('detail_image')) {
 
             $file = $request->file('detail_image');
-
             $filename = $file->getClientOriginalName();
-
             $path = public_path('Blogs/detail_image');
 
             $file->move($path, $filename);
 
             $post->detail_image = $filename;
-
         }
 
         if ($request->hasFile('front_image')) {
 
             $file = $request->file('front_image');
-
             $filename = $file->getClientOriginalName();
-
             $path = public_path('Blogs/front_image');
 
             $file->move($path, $filename);
 
             $post->front_image = $filename;
-
         }
 
         if ($request->hasFile('cta_image')) {
 
             $file = $request->file('cta_image');
-
             $filename = $file->getClientOriginalName();
-
             $path = public_path('Blogs/cta_image');
 
             $file->move($path, $filename);
 
             $post->cta_image = $filename;
-
         }
 
         $post->save();
 
-        return redirect()->route('blog.index')->with('success', 'Blog updated successfully');
-
+        return redirect()->route('blog.index')
+            ->with('success', 'Blog updated successfully');
     }
 
     public function destroy($id)

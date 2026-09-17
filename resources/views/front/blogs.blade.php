@@ -44,8 +44,24 @@
                         <hr>
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <div class="d-flex align-items-center gap-2">
-                                <img src="{{ asset('public/front/images/Nilesh-Todi-icon.png') }}" alt="" class="rounded-circle blog_author_icon">
-                                 <span class="blog_author_name">Nilesh Todi</span>
+                                @if($blog->author && $blog->author->thumbnail_image)
+                                    <img src="{{ asset('public/Authors/thumbnail_image/' . $blog->author->thumbnail_image) }}"
+                                        alt="{{ $blog->author->name }}"
+                                        class="rounded-circle blog_author_icon">
+                                @elseif($blog->author && $blog->author->main_image)
+                                    <img src="{{ asset('public/Authors/main_image/' . $blog->author->main_image) }}"
+                                        alt="{{ $blog->author->name }}"
+                                        class="rounded-circle blog_author_icon">
+                                @endif
+
+                                @if($blog->author)
+                                    <a href="{{ route('author.detail', ['slug' => $blog->author->slug]) }}"
+                                    class="blog_author_name">
+                                        {{ $blog->author->name }}
+                                    </a>
+                                @else
+                                    <span class="blog_author_name">-</span>
+                                @endif
                             </div>
                             <div>
                                 <span class="blog_author_date">{{ $blog->date}}</span>

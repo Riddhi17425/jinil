@@ -14,6 +14,7 @@ use App\Models\Product;
 use App\Models\ProductEnquiry;
 use App\Models\SpareParts;
 use App\Models\WhatsappInquiry;
+use App\Models\Author;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -179,21 +180,26 @@ class dashboardController extends Controller
     {
         $metatitle       = "Shot Blasting Machine Blog & Industry Insights | JINIL";
         $metadescription = "Explore JINIL blogs covering shot blasting machines, surface preparation, maintenance tips, industry applications, and abrasive blasting solutions";
-        $blogs           = Blog::whereNull('deleted_at')
+
+        $blogs = Blog::with('author')
+            ->whereNull('deleted_at')
             ->where('status', 1)
             ->orderBy('id', 'desc')
             ->get();
+
         return view('front.blogs', compact('metatitle', 'metadescription', 'blogs'));
     }
 
     public function blogsdetail($url)
     {
-        $blogs = Blog::whereNull('deleted_at')
+        $blogs = Blog::with('author')
+            ->whereNull('deleted_at')
             ->where('status', 1)
             ->orderBy('id', 'desc')
             ->get();
 
-        $blogsdetail = Blog::whereNull('deleted_at')
+        $blogsdetail = Blog::with('author')
+            ->whereNull('deleted_at')
             ->where('status', 1)
             ->where('url', $url)
             ->firstOrFail();
@@ -201,7 +207,35 @@ class dashboardController extends Controller
         $metatitle       = $blogsdetail->meta_title;
         $metadescription = $blogsdetail->meta_description;
 
-        return view('front.blogdetail', compact('metatitle', 'metadescription', 'blogs', 'blogsdetail'));
+        return view('front.blogdetail', compact(
+            'metatitle',
+            'metadescription',
+            'blogs',
+            'blogsdetail'
+        ));
+    }
+
+    public function author($slug)
+    {
+        $author = Author::where('slug', $slug)
+            ->where('is_active', 1)
+            ->firstOrFail();
+
+        $blogs = Blog::whereNull('deleted_at')
+            ->where('status', 1)
+            ->where('author_id', $author->id)
+            ->orderBy('id', 'desc')
+            ->get();
+
+        $metatitle = $author->name . ' | JINIL';
+        $metadescription = $author->description;
+
+        return view('front.author', compact(
+            'author',
+            'blogs',
+            'metatitle',
+            'metadescription'
+        ));
     }
 
     public function privacypolicy()

@@ -13,6 +13,7 @@ use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\ServiceCategoryController;
 use App\Http\Controllers\admin\ServiceController;
 use App\Http\Controllers\admin\SparePartController;
+use App\Http\Controllers\admin\AuthorController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SitemapController;
@@ -90,6 +91,10 @@ Route::get('/terms-engineer', [dashboardController::class, 'termsengineer'])->na
 
 Route::get('/product-details/{url?}', [dashboardController::class, 'productdetials'])->name('productdetials');
 
+// START - AUTHOR PAGE SLUG
+Route::get('/author/{slug}', [DashboardController::class, 'author'])->name('author.detail');
+// END - AUTHOR PAGE SLUG
+
 // START - DYNAMIC SITEMAP ROUTE
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 // END - DYNAMIC SITEMAP ROUTE
@@ -165,6 +170,28 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('servicecategory', ServiceCategoryController::class);
 
     Route::resource('sparepart', SparePartController::class);
+
+    Route::prefix('authors')->name('author.')->group(function () {
+
+        Route::get('/index', [AuthorController::class, 'index'])
+            ->name('index');
+
+        Route::get('/create', [AuthorController::class, 'create'])
+            ->name('create');
+
+        Route::post('/store', [AuthorController::class, 'store'])
+            ->name('store');
+
+        Route::get('/edit/{id}', [AuthorController::class, 'edit'])
+            ->name('edit');
+
+        Route::post('/update/{id}', [AuthorController::class, 'update'])
+            ->name('update');
+
+        Route::get('/delete/{id}', [AuthorController::class, 'destroy'])
+            ->name('delete');
+    });
+
 
     Route::prefix('backend')->group(function () {
 

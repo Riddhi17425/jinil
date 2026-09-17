@@ -50,6 +50,7 @@
                         <tr>
                             <th>Id</th>
                             <th>Title</th>
+                            <th>Author</th>
                             <th>Image</th>
                             <th>Date</th>
                             <th class="text-end">Action</th>
@@ -62,6 +63,9 @@
                             <td><strong>{{ $item->id }}</strong></td>
                             <td>
                                 <strong>{{ $item->title }}</strong>
+                            </td>
+                            <td>
+                                <strong>{{ $item->author->name ?? '-' }}</strong>
                             </td>
                             <td style="width:80px;">
                                 @if($item->front_image)
@@ -97,7 +101,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="4" class="text-center text-muted">
+                            <td colspan="6" class="text-center text-muted">
                                 No Blogs found
                             </td>
                         </tr>

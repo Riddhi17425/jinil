@@ -64,6 +64,15 @@
                     <span>Blog</span>
                 </a>
             </li>
+
+            <!-- Authors -->
+            <li>
+                <a class="m-link {{ Request::routeIs('author.*') ? 'active' : '' }}"
+                href="{{ route('author.index') }}">
+                    <i class="icofont-user fs-5"></i>
+                    <span>Authors</span>
+                </a>
+            </li>
             
             <!-- Spare Parts -->
             <li>
