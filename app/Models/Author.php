@@ -15,6 +15,8 @@ class Author extends Model
         'social_media_name',
         'social_media',
         'description',
+        'meta_title',
+        'meta_description',
         'main_image',
         'social_media_image',
         'thumbnail_image',

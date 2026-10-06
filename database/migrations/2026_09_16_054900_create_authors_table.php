@@ -27,6 +27,9 @@ class CreateAuthorsTable extends Migration
 
             $table->text('description')->nullable();
 
+            $table->string('meta_title')->nullable();
+            $table->text('meta_description')->nullable();
+
             $table->string('main_image')->nullable();
             $table->string('social_media_image')->nullable();
             $table->string('thumbnail_image')->nullable();

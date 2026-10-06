@@ -39,6 +39,9 @@ class AuthorController extends Controller
             'social_media' => 'nullable|string|max:255',
             'description' => 'nullable|string',
 
+            'meta_title' => 'nullable|string|max:255',
+            'meta_description' => 'nullable|string',
+
             'main_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
             'social_media_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
             'thumbnail_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
@@ -72,6 +75,8 @@ class AuthorController extends Controller
         $author->social_media_name = $request->social_media_name;
         $author->social_media = $request->social_media;
         $author->description = $request->description;
+        $author->meta_title = $request->meta_title;
+        $author->meta_description = $request->meta_description;
         $author->is_active = $request->has('is_active') ? 1 : 0;
 
         /*
@@ -171,6 +176,9 @@ class AuthorController extends Controller
             'social_media' => 'nullable|string|max:255',
             'description' => 'nullable|string',
 
+            'meta_title' => 'nullable|string|max:255',
+            'meta_description' => 'nullable|string',
+
             'main_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
             'social_media_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
             'thumbnail_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
@@ -199,6 +207,8 @@ class AuthorController extends Controller
         $author->social_media_name = $request->social_media_name;
         $author->social_media = $request->social_media;
         $author->description = $request->description;
+        $author->meta_title = $request->meta_title;
+        $author->meta_description = $request->meta_description;
         $author->is_active = $request->has('is_active') ? 1 : 0;
 
         /*

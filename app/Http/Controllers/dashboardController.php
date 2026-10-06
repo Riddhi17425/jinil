@@ -227,8 +227,8 @@ class dashboardController extends Controller
             ->orderBy('id', 'desc')
             ->get();
 
-        $metatitle = $author->name . ' | JINIL';
-        $metadescription = $author->description;
+        $metatitle = $author->meta_title ?: ($author->name . ' | JINIL');
+        $metadescription = $author->meta_description ?: $author->description;
 
         return view('front.author', compact(
             'author',
