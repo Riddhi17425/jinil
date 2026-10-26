@@ -140,7 +140,7 @@ class dashboardController extends Controller
         ]);
 
         // Google Apps Script URL
-        $googleScriptUrl = "https://script.google.com/macros/s/AKfycbyR_q9NAXJ2ChXb39-kaC8E7BXx6h2l8PxcsOP9L25IL2yno2v2VpMTFQYsAYlc3b9gzw/exec";
+        $googleScriptUrl = "https://script.google.com/macros/s/AKfycbyx5-wlM4ZXYayiL197eV8Xh94PXIEdvGIUhLE1kBTfxvHwtSEra-kRvbQB5FCHHyHq/exec";
 
         // Send data to Google Sheet
         try {
@@ -562,7 +562,7 @@ class dashboardController extends Controller
 
             // Google Apps Script URL
 
-            $sheetUrl = 'https://script.google.com/macros/s/AKfycbzZUy--mLkKq9XvO3GNmxSBmCzmNnMB6IdrOhcIxbCLY7orzN6Ad19Xdh4Lz4ADO3x7kA/exec';
+            $sheetUrl = 'https://script.google.com/macros/s/AKfycbwBaZKgFVECo50waF3RExxbg1UiS_ZkVwovDagR6_Q-wpTmd6TczHgmB1i66JCicQ8aew/exec';
 
             Http::timeout(30)
 
@@ -717,7 +717,7 @@ class dashboardController extends Controller
 
             ];
 
-            $sheetUrl = 'https://script.google.com/macros/s/AKfycbzZUy--mLkKq9XvO3GNmxSBmCzmNnMB6IdrOhcIxbCLY7orzN6Ad19Xdh4Lz4ADO3x7kA/exec';
+            $sheetUrl = 'https://script.google.com/macros/s/AKfycbwBaZKgFVECo50waF3RExxbg1UiS_ZkVwovDagR6_Q-wpTmd6TczHgmB1i66JCicQ8aew/exec';
 
             // ✅ Google Sheet — skip if URL is empty
 
@@ -1067,7 +1067,7 @@ class dashboardController extends Controller
 
             ]);
 
-            $sheetUrl = 'https://script.google.com/macros/s/AKfycbzZUy--mLkKq9XvO3GNmxSBmCzmNnMB6IdrOhcIxbCLY7orzN6Ad19Xdh4Lz4ADO3x7kA/exec';
+            $sheetUrl = 'https://script.google.com/macros/s/AKfycbwBaZKgFVECo50waF3RExxbg1UiS_ZkVwovDagR6_Q-wpTmd6TczHgmB1i66JCicQ8aew/exec';
 
             if (! empty($sheetUrl)) {
 
