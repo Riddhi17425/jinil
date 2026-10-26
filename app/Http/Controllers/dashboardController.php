@@ -78,11 +78,8 @@ class dashboardController extends Controller
 
     public function spareparts()
     {
-
-        $metatitle = "";
-
-        $metadescription = "";
-
+        $metatitle = "Shot Blasting Machine Spare Parts | Jinil Shot Blast";
+        $metadescription = "Get shot blasting machine spare parts from Jinil Shot Blast for reliable equipment maintenance, efficient performance, and long-term operational support.";
         $categories = Category::whereNull('deleted_at')->select('id', 'category', 'url')->get();
 
         $spareparts = SpareParts::with('category')
