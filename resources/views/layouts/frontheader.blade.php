@@ -271,15 +271,17 @@
 
             ->groupBy('category_id');
 
-            $indusries = DB::table('indcategory')
+            $industriesQuery = DB::table('indcategory')
+                ->select('indcategory', 'url')
+                ->whereNull('deleted_at');
 
-    ->select('indcategory','url')
+            if (Schema::hasColumn('indcategory', 'status')) {
+                $industriesQuery->where('status', 'Active');
+            }
 
-    ->whereNull('deleted_at')
-
-    ->distinct()
-
-    ->get();
+            $indusries = $industriesQuery
+                ->distinct()
+                ->get();
 
     @endphp
 
