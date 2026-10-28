@@ -14,9 +14,11 @@ use App\Models\Product;
 use App\Models\ProductEnquiry;
 use App\Models\SpareParts;
 use App\Models\WhatsappInquiry;
+use App\Models\Author;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Schema;
 
 class dashboardController extends Controller
 {
@@ -54,11 +56,11 @@ class dashboardController extends Controller
 
             ->get();
 
-        $industriesList = IndCategory::whereNull('deleted_at')
-
-            ->where('status', 'Active')
-
-            ->get();
+        $industriesQuery = IndCategory::whereNull('deleted_at');
+        if (Schema::hasColumn('indcategory', 'status')) {
+            $industriesQuery->where('status', 'Active');
+        }
+        $industriesList = $industriesQuery->get();
 
         return view('front.dashboard', compact('productlist' , 'industriesList'));
 
@@ -76,11 +78,8 @@ class dashboardController extends Controller
 
     public function spareparts()
     {
-
-        $metatitle = "";
-
-        $metadescription = "";
-
+        $metatitle = "Shot Blasting Machine Spare Parts | Jinil Shot Blast";
+        $metadescription = "Get shot blasting machine spare parts from Jinil Shot Blast for reliable equipment maintenance, efficient performance, and long-term operational support.";
         $categories = Category::whereNull('deleted_at')->select('id', 'category', 'url')->get();
 
         $spareparts = SpareParts::with('category')
@@ -138,7 +137,7 @@ class dashboardController extends Controller
         ]);
 
         // Google Apps Script URL
-        $googleScriptUrl = "https://script.google.com/macros/s/AKfycbyR_q9NAXJ2ChXb39-kaC8E7BXx6h2l8PxcsOP9L25IL2yno2v2VpMTFQYsAYlc3b9gzw/exec";
+        $googleScriptUrl = "https://script.google.com/macros/s/AKfycbyx5-wlM4ZXYayiL197eV8Xh94PXIEdvGIUhLE1kBTfxvHwtSEra-kRvbQB5FCHHyHq/exec";
 
         // Send data to Google Sheet
         try {
@@ -178,21 +177,26 @@ class dashboardController extends Controller
     {
         $metatitle       = "Shot Blasting Machine Blog & Industry Insights | JINIL";
         $metadescription = "Explore JINIL blogs covering shot blasting machines, surface preparation, maintenance tips, industry applications, and abrasive blasting solutions";
-        $blogs           = Blog::whereNull('deleted_at')
+
+        $blogs = Blog::with('author')
+            ->whereNull('deleted_at')
             ->where('status', 1)
             ->orderBy('id', 'desc')
             ->get();
+
         return view('front.blogs', compact('metatitle', 'metadescription', 'blogs'));
     }
 
     public function blogsdetail($url)
     {
-        $blogs = Blog::whereNull('deleted_at')
+        $blogs = Blog::with('author')
+            ->whereNull('deleted_at')
             ->where('status', 1)
             ->orderBy('id', 'desc')
             ->get();
 
-        $blogsdetail = Blog::whereNull('deleted_at')
+        $blogsdetail = Blog::with('author')
+            ->whereNull('deleted_at')
             ->where('status', 1)
             ->where('url', $url)
             ->firstOrFail();
@@ -200,7 +204,35 @@ class dashboardController extends Controller
         $metatitle       = $blogsdetail->meta_title;
         $metadescription = $blogsdetail->meta_description;
 
-        return view('front.blogdetail', compact('metatitle', 'metadescription', 'blogs', 'blogsdetail'));
+        return view('front.blogdetail', compact(
+            'metatitle',
+            'metadescription',
+            'blogs',
+            'blogsdetail'
+        ));
+    }
+
+    public function author($slug)
+    {
+        $author = Author::where('slug', $slug)
+            ->where('is_active', 1)
+            ->firstOrFail();
+
+        $blogs = Blog::whereNull('deleted_at')
+            ->where('status', 1)
+            ->where('author_id', $author->id)
+            ->orderBy('id', 'desc')
+            ->get();
+
+        $metatitle = $author->meta_title ?: ($author->name . ' | JINIL');
+        $metadescription = $author->meta_description ?: $author->description;
+
+        return view('front.author', compact(
+            'author',
+            'blogs',
+            'metatitle',
+            'metadescription'
+        ));
     }
 
     public function privacypolicy()
@@ -360,10 +392,12 @@ class dashboardController extends Controller
     $category = IndCategory::whereNull('deleted_at')->where('url', $url)->firstOrFail();
     $industries = Industry::whereNull('deleted_at')->where('category_id', $category->id)->get();
 
-    $relatedIndustries = IndCategory::whereNull('deleted_at')
-        ->where('status', 'Active')
-        ->where('id', '!=', $category->id)
-        ->get();
+    $relatedIndustriesQuery = IndCategory::whereNull('deleted_at')
+        ->where('id', '!=', $category->id);
+    if (Schema::hasColumn('indcategory', 'status')) {
+        $relatedIndustriesQuery->where('status', 'Active');
+    }
+    $relatedIndustries = $relatedIndustriesQuery->get();
 
     $metatitle = $category->meta_title;
     $metadescription = $category->meta_description;
@@ -525,7 +559,7 @@ class dashboardController extends Controller
 
             // Google Apps Script URL
 
-            $sheetUrl = 'https://script.google.com/macros/s/AKfycbzZUy--mLkKq9XvO3GNmxSBmCzmNnMB6IdrOhcIxbCLY7orzN6Ad19Xdh4Lz4ADO3x7kA/exec';
+            $sheetUrl = 'https://script.google.com/macros/s/AKfycbwBaZKgFVECo50waF3RExxbg1UiS_ZkVwovDagR6_Q-wpTmd6TczHgmB1i66JCicQ8aew/exec';
 
             Http::timeout(30)
 
@@ -680,7 +714,7 @@ class dashboardController extends Controller
 
             ];
 
-            $sheetUrl = 'https://script.google.com/macros/s/AKfycbzZUy--mLkKq9XvO3GNmxSBmCzmNnMB6IdrOhcIxbCLY7orzN6Ad19Xdh4Lz4ADO3x7kA/exec';
+            $sheetUrl = 'https://script.google.com/macros/s/AKfycbwBaZKgFVECo50waF3RExxbg1UiS_ZkVwovDagR6_Q-wpTmd6TczHgmB1i66JCicQ8aew/exec';
 
             // ✅ Google Sheet — skip if URL is empty
 
@@ -1030,7 +1064,7 @@ class dashboardController extends Controller
 
             ]);
 
-            $sheetUrl = 'https://script.google.com/macros/s/AKfycbzZUy--mLkKq9XvO3GNmxSBmCzmNnMB6IdrOhcIxbCLY7orzN6Ad19Xdh4Lz4ADO3x7kA/exec';
+            $sheetUrl = 'https://script.google.com/macros/s/AKfycbwBaZKgFVECo50waF3RExxbg1UiS_ZkVwovDagR6_Q-wpTmd6TczHgmB1i66JCicQ8aew/exec';
 
             if (! empty($sheetUrl)) {
 

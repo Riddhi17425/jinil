@@ -41,27 +41,37 @@
 
 
             <div class="col-xl-12 col-lg-8">
-
                 <div class="card mb-3 p-3">
 
                     <div class="card-header py-3 p-0 d-flex justify-content-between bg-transparent border-bottom-0">
-
                         <h6 class="mb-0 fw-bold">Blog Information</h6>
+                    </div>
 
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="author_id">Author <span class="text-danger">*</span></label>
+
+                            <select name="author_id" id="author_id" class="form-control">
+                                <option value="">Select Author</option>
+
+                                @foreach($authors as $author)
+                                    <option value="{{ $author->id }}"
+                                        {{ old('author_id', $data->author_id ?? '') == $author->id ? 'selected' : '' }}>
+                                        {{ $author->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+
+                            @error('author_id')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
                     </div>
 
                     <div class="row g-3 align-items-center">
-
-
-
                         <div class="col-md-6">
-
                             <label class="form-label">Blog Title</label>
-
-                            <input type="text" id="title" name="title" value="{{ $data->title }}" required
-
-                                class="form-control">
-
+                            <input type="text" id="title" name="title" value="{{ $data->title }}" required class="form-control">
                         </div>
 
                         <div class="card-body">

@@ -33,8 +33,7 @@
 
 <section class="mb_100">
     <div class="container-fluid">
-
-        <div class="row gy-4 gy-lg-0">
+        <div class="row gy-4">
             @foreach($blogs as $blog)
             <div class="col-md-4">
                 <div class="insight_item">
@@ -43,15 +42,37 @@
                     </div>
                     <div class="insight_item_content">
                         <hr>
-                        <p class="mb-2">{{ $blog->date}}</p>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div class="d-flex align-items-center gap-2">
+                                @if($blog->author && $blog->author->thumbnail_image)
+                                    <img src="{{ asset('public/Authors/thumbnail_image/' . $blog->author->thumbnail_image) }}"
+                                        alt="{{ $blog->author->name }}"
+                                        class="rounded-circle blog_author_icon">
+                                @elseif($blog->author && $blog->author->main_image)
+                                    <img src="{{ asset('public/Authors/main_image/' . $blog->author->main_image) }}"
+                                        alt="{{ $blog->author->name }}"
+                                        class="rounded-circle blog_author_icon">
+                                @endif
+
+                                @if($blog->author)
+                                    <a href="{{ route('author.detail', ['slug' => $blog->author->slug]) }}"
+                                    class="blog_author_name">
+                                        {{ $blog->author->name }}
+                                    </a>
+                                @else
+                                    <span class="blog_author_name">-</span>
+                                @endif
+                            </div>
+                            <div>
+                                <span class="blog_author_date">{{ $blog->date}}</span>
+                            </div>
+                        </div>
                         <a href="{{ route('blogdetail', ['url' => $blog->url]) }}"><h3 class="title_24">{{ $blog->title }}</h3></a>
                     </div>
                 </div>
             </div>
             @endforeach
-           
         </div>
-
     </div>
 </section>
 
