@@ -65,7 +65,7 @@ $b = rand(1,9);
 
                         <div class="col-md-6 form-group">
                             <select name="city" id="service_city">
-                                <option value="">Select City*</option>
+                                <option value="">Select City</option>
                             </select>
                             <div id="city-error" class="text-danger"></div>
                         </div>
@@ -194,10 +194,10 @@ $(function(){
             hasError = true;
         }
 
-        if(city === ''){
-            $('#city-error').text('City is required.');
-            hasError = true;
-        }
+        // if(city === ''){
+        //     $('#city-error').text('City is required.');
+        //     hasError = true;
+        // }
 
         if(captcha === ''){
             $('#simple_captcha-error').text('Captcha is required.');

@@ -419,7 +419,7 @@ class dashboardController extends Controller
 
             'state'          => 'required|string',
 
-            'city'           => 'required|string',
+            'city' => 'nullable|string',
 
             'message'        => 'nullable|string',
 
@@ -576,7 +576,7 @@ class dashboardController extends Controller
 
             'state'          => 'required|string',
 
-            'city'           => 'required|string',
+            'city' => 'nullable|string',
 
             'message'        => 'nullable|string',
 
@@ -765,7 +765,7 @@ class dashboardController extends Controller
 
             'state'          => 'required|string',
 
-            'city'           => 'required|string',
+            'city' => 'nullable|string',
 
             'message'        => 'nullable|string',
 

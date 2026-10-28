@@ -65,7 +65,7 @@ $mb = rand(1,9);
                             <select name="city" id="modal_city">
                                 <option value="">Select City</option>
                             </select>
-                            <label>City<span class="text-danger">*</span>:</label>
+                            <label>City:</label>
                             <div id="modal_city-error" class="text-danger"></div>
                         </div>
 
@@ -253,10 +253,10 @@ jQuery(document).ready(function ($) {
             $('#modal_state-error').text('The State is required.');
             isValid = false;
         }
-        if ($('#modal_city').val() === '') {
-            $('#modal_city-error').text('The City is required.');
-            isValid = false;
-        }
+        // if ($('#modal_city').val() === '') {
+        //     $('#modal_city-error').text('The City is required.');
+        //     isValid = false;
+        // }
 
         var captchaInput = $('#modal_simple_captcha').val().trim();
         var captchaSum   = $('#modal_captcha_sum').val();

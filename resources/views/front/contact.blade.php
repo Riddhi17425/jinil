@@ -299,10 +299,10 @@ jQuery(document).ready(function ($) {
         }
 
         // City
-        if ($('#cf_city').val() === '') {
-            $('#cf_city-error').text('The City is required.');
-            isValid = false;
-        }
+        // if ($('#cf_city').val() === '') {
+        //     $('#cf_city-error').text('The City is required.');
+        //     isValid = false;
+        // }
 
         // Captcha
         var captchaInput = $('#cf_simple_captcha').val().trim();
