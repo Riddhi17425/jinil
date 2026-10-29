@@ -116,51 +116,7 @@
     }
 
     </script>
-
-
-
-    <script type="application/ld+json">
-
-    {
-
-      "@context": "https://schema.org/",
-
-      "@type": "Product",
-
-      "name": "Jinil Pvt Ltd",
-
-      "image": "https://jinilshotblast.com/public/front/images/Jinil-Banner.webp",
-
-      "description": "Industrial shot blasting machine manufacturer providing surface preparation and blasting solutions across India.",
-
-      "brand": {
-
-        "@type": "Brand",
-
-        "name": "Jinil Pvt Ltd"
-
-      },
-
-      "aggregateRating": {
-
-        "@type": "AggregateRating",
-
-        "ratingValue": "5.0",
-
-        "bestRating": "5",
-
-        "worstRating": "1",
-
-        "ratingCount": "1"
-
-      }
-
-    }
-
-    </script>
-
-    <link rel="canonical" href="{{ url()->current() }}" />
-
+    
     <!-- google fonts 1 -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">

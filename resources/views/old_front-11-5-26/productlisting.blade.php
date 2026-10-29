@@ -90,6 +90,5 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 </script>
-@include('front.serviceform')
 
 @include('layouts.frontfooter')

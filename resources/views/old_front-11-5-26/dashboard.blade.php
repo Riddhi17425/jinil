@@ -3173,6 +3173,5 @@ document.querySelector("#icon").addEventListener("mouseleave", () => {
 <!--    </div>-->
 <!--</section>-->
 
-@include('front.serviceform')
 
 @include('layouts.frontfooter')

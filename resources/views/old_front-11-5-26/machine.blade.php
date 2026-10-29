@@ -331,6 +331,5 @@
 </section>
 
 
-@include('front.serviceform')
 
 @include('layouts.frontfooter')

@@ -665,7 +665,6 @@
 
 
 
-@include('front.serviceform')
 
 
 

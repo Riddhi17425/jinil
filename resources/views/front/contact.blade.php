@@ -15,53 +15,6 @@
     </div>
 </section>
 
-<section class="mb_100 con_map">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="mb-4 mb-lg-0 col-md-6 pe-md-5 text-center text-lg-start">
-                <div class="inve_Pro_card">
-                    <h4 class="title_24">Head Office</h4>
-                    <p><a href="https://maps.app.goo.gl/gQvGLF1yj93x7JhQA" target="_blank">C3-602, anushruti tower, near jain derasar, s.g.road, <br/> thaltej,  ahmedabad 380059 india</a></p>
-                    <hr>
-                </div>
-                <div class="inve_Pro_card">
-                    <h4 class="title_24">Business Hours</h4>
-                     <p>10-6 pm Monday to Friday <br/>
-                     10- 4 Saturday
-</p>
-                    <hr>
-                </div>
-                <div class="inve_Pro_card">
-                    <h4 class="title_24">Direct Contact</h4>
-                    <div class="con_num">
-                        <div>
-                            <p class="mb-1">
-                                <span><svg width="18" height="18" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                             <path d="M19.6315 15.099V17.776C19.6326 18.0246 19.5816 18.2705 19.4821 18.4982C19.3825 18.726 19.2365 18.9304 19.0534 19.0984C18.8702 19.2664 18.654 19.3943 18.4186 19.4739C18.1832 19.5535 17.9337 19.5831 17.6862 19.5607C14.9403 19.2624 12.3027 18.3241 9.98532 16.8212C7.82926 15.4512 6.0013 13.6232 4.63126 11.4672C3.12318 9.13923 2.18467 6.48878 1.89176 3.73055C1.86947 3.48379 1.89879 3.23509 1.97788 3.00028C2.05696 2.76547 2.18407 2.5497 2.35111 2.36671C2.51815 2.18372 2.72147 2.03752 2.94811 1.93741C3.17475 1.8373 3.41976 1.78548 3.66753 1.78524H6.34456C6.77762 1.78098 7.19745 1.93433 7.52581 2.21672C7.85416 2.49911 8.06863 2.89125 8.12924 3.32007C8.24223 4.17678 8.45178 5.01796 8.75388 5.82756C8.87394 6.14695 8.89993 6.49406 8.82876 6.82777C8.75759 7.16147 8.59225 7.46778 8.35233 7.7104L7.21905 8.84368C8.48935 11.0777 10.3391 12.9274 12.5731 14.1977L13.7064 13.0645C13.949 12.8245 14.2553 12.6592 14.589 12.588C14.9227 12.5169 15.2698 12.5428 15.5892 12.6629C16.3988 12.965 17.24 13.1746 18.0967 13.2875C18.5302 13.3487 18.9261 13.567 19.2091 13.901C19.492 14.235 19.6424 14.6614 19.6315 15.099Z" stroke="#3F6CB3" stroke-width="1.78469" stroke-linecap="round" stroke-linejoin="round"></path>
-                         </svg></span>
-                                <a href="tel: +91 9925601108">+91 9925601108</a>
-                            </p>
-
-                            <p class="mb-1"> 
-                                <span><svg width="18" height="18" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                             <path d="M17.8473 3.56836H3.56984C2.58419 3.56836 1.78516 4.36739 1.78516 5.35305V16.0612C1.78516 17.0468 2.58419 17.8458 3.56984 17.8458H17.8473C18.833 17.8458 19.632 17.0468 19.632 16.0612V5.35305C19.632 4.36739 18.833 3.56836 17.8473 3.56836Z" stroke="#3F6CB3" stroke-width="1.78469" stroke-linecap="round" stroke-linejoin="round"></path>
-                             <path d="M19.632 6.24609L11.6277 11.3324C11.3522 11.5051 11.0337 11.5966 10.7086 11.5966C10.3835 11.5966 10.065 11.5051 9.78947 11.3324L1.78516 6.24609" stroke="#3F6CB3" stroke-width="1.78469" stroke-linecap="round" stroke-linejoin="round"></path>
-                         </svg></span>
-                                <a href="mailto:sales@jinilspinning.com">sales@jinilspinning.com</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-               
-                    
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7342.434200690239!2d72.5119774!3d23.052501!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e9b0000e4233d%3A0x7c2da11434e789ba!2sJinil%20Spinning%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1774248205549!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-        </div>
-    </div>
-</section>
-
 @php
 use Illuminate\Support\Facades\DB;
 $states = DB::table('states')->select('id','name')->get();
@@ -69,16 +22,18 @@ $ca = rand(1,9);
 $cb = rand(1,9);
 @endphp
 
-<section class="mt_100 mb_100">
+<section class="mb_100 con_map">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-4 pe-lg-5  text-center text-lg-start">
-                <h2 class="title_80 fw-medium text-111" style="mix-blend-mode: normal;">Need Technical Assistance?</h2>
-                <p>Our experienced engineers can help you select the right shot blasting solution based on your application,
-                    material type, and production capacity.</p>
-            </div>
 
-            <div class="col-lg-8">
+            {{-- LEFT SIDE: FORM --}}
+            <div class="col-lg-6 pe-lg-5 mb-4 mb-lg-0">
+                {{-- <div class="text-center text-lg-start">
+                    <h2 class="title_80 fw-medium text-111" style="mix-blend-mode: normal;">Need Technical Assistance?</h2>
+                    <p>Our experienced engineers can help you select the right shot blasting solution based on your application,
+                        material type, and production capacity.</p>
+                </div> --}}
+
                 <form class="contact_form" id="contact_form" action="#" method="post">
                     @csrf
                     <div class="row">
@@ -147,7 +102,7 @@ $cb = rand(1,9);
                         </div>
 
                         {{-- Captcha --}}
-                        <div class="col-8 col-md-3 form-group">
+                        <div class="col-12 col-md-6 form-group">
                             <div style="display:flex;gap:6px;">
                                 <input type="number" id="cf_simple_captcha" name="simple_captcha"
                                     placeholder="Enter answer" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
@@ -162,7 +117,7 @@ $cb = rand(1,9);
                         </div>
 
                         {{-- Submit --}}
-                        <div class="col-md-6 form-group" style="align-self: anchor-center;">
+                        <div class="col-12 col-md-6 form-group" style="align-self: anchor-center;">
                             <button type="submit" class="com_btn cf_submit_btn">Request a Quote</button>
                         </div>
 
@@ -170,6 +125,51 @@ $cb = rand(1,9);
                 </form>
             </div>
 
+            {{-- RIGHT SIDE: OFFICE DETAILS + MAP --}}
+            <div class="col-lg-6 text-center text-lg-start">
+                <div class="inve_Pro_card">
+                    <h4 class="title_24">Head Office</h4>
+                    <p><a href="https://maps.app.goo.gl/gQvGLF1yj93x7JhQA" target="_blank">C3-602, anushruti tower, near jain derasar, s.g.road, <br/> thaltej,  ahmedabad 380059 india</a></p>
+                    <hr>
+                </div>
+                <div class="inve_Pro_card">
+                    <h4 class="title_24">Direct Contact</h4>
+                    <div class="con_num">
+                        <div>
+                            <p class="mb-1">
+                                <span><svg width="18" height="18" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                             <path d="M19.6315 15.099V17.776C19.6326 18.0246 19.5816 18.2705 19.4821 18.4982C19.3825 18.726 19.2365 18.9304 19.0534 19.0984C18.8702 19.2664 18.654 19.3943 18.4186 19.4739C18.1832 19.5535 17.9337 19.5831 17.6862 19.5607C14.9403 19.2624 12.3027 18.3241 9.98532 16.8212C7.82926 15.4512 6.0013 13.6232 4.63126 11.4672C3.12318 9.13923 2.18467 6.48878 1.89176 3.73055C1.86947 3.48379 1.89879 3.23509 1.97788 3.00028C2.05696 2.76547 2.18407 2.5497 2.35111 2.36671C2.51815 2.18372 2.72147 2.03752 2.94811 1.93741C3.17475 1.8373 3.41976 1.78548 3.66753 1.78524H6.34456C6.77762 1.78098 7.19745 1.93433 7.52581 2.21672C7.85416 2.49911 8.06863 2.89125 8.12924 3.32007C8.24223 4.17678 8.45178 5.01796 8.75388 5.82756C8.87394 6.14695 8.89993 6.49406 8.82876 6.82777C8.75759 7.16147 8.59225 7.46778 8.35233 7.7104L7.21905 8.84368C8.48935 11.0777 10.3391 12.9274 12.5731 14.1977L13.7064 13.0645C13.949 12.8245 14.2553 12.6592 14.589 12.588C14.9227 12.5169 15.2698 12.5428 15.5892 12.6629C16.3988 12.965 17.24 13.1746 18.0967 13.2875C18.5302 13.3487 18.9261 13.567 19.2091 13.901C19.492 14.235 19.6424 14.6614 19.6315 15.099Z" stroke="#3F6CB3" stroke-width="1.78469" stroke-linecap="round" stroke-linejoin="round"></path>
+                         </svg></span>
+                                <a href="tel: +91 9925601108">+91 9925601108</a>
+                            </p>
+
+                            <p class="mb-1"> 
+                                <span><svg width="18" height="18" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                             <path d="M17.8473 3.56836H3.56984C2.58419 3.56836 1.78516 4.36739 1.78516 5.35305V16.0612C1.78516 17.0468 2.58419 17.8458 3.56984 17.8458H17.8473C18.833 17.8458 19.632 17.0468 19.632 16.0612V5.35305C19.632 4.36739 18.833 3.56836 17.8473 3.56836Z" stroke="#3F6CB3" stroke-width="1.78469" stroke-linecap="round" stroke-linejoin="round"></path>
+                             <path d="M19.632 6.24609L11.6277 11.3324C11.3522 11.5051 11.0337 11.5966 10.7086 11.5966C10.3835 11.5966 10.065 11.5051 9.78947 11.3324L1.78516 6.24609" stroke="#3F6CB3" stroke-width="1.78469" stroke-linecap="round" stroke-linejoin="round"></path>
+                         </svg></span>
+                                <a href="mailto:sales@jinilspinning.com">sales@jinilspinning.com</a>
+                            </p>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="inve_Pro_card">
+                    <h4 class="title_24">Business Hours</h4>
+                     <p>10-6 pm Monday to Friday <br/>
+                     10- 4 Saturday
+</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        {{-- FULL WIDTH MAP --}}
+        <div class="row mt-5">
+            <div class="col-12">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7342.434200690239!2d72.5119774!3d23.052501!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e9b0000e4233d%3A0x7c2da11434e789ba!2sJinil%20Spinning%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1774248205549!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
         </div>
     </div>
 </section>

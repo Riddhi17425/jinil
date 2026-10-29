@@ -1,5 +1,7 @@
 
-
+@unless(request()->routeIs('contact','blogs','about'))
+    @include('front.serviceform')
+@endunless
 <footer class="site_footer">
 
 @php
