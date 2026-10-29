@@ -25,8 +25,8 @@
 
         <div class="navi_page_child">
             <div>
-                <p class="title_24"><a href="{{ url('/') }}" class="text-585">Home</a> / <a href="#">Industries</a>
-                    {{ $category->indcategory_title ?: $category->indcategory }}</p>
+                <p class="title_24"><a href="{{ url('/') }}" class="text-585">Home</a> / <a href="#" class="text-585">Industries</a>
+    / {{ $category->indcategory_title ?: $category->indcategory }}</p>
                 <h1 class="title_60">{{ $category->indcategory_title ?: $category->indcategory }}</h1>
                 <p class="mb-0">{!! $category->cat_description !!}</p>
             </div>

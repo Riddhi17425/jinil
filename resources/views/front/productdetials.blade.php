@@ -991,5 +991,31 @@
 </script>
 
 
+@php
+    $productSchema = [
+        '@context' => 'https://schema.org/',
+        '@type' => 'Product',
+        'name' => $product->name ?? '',
+        'image' => asset('public/Product/detail_image/' . $product->detail_image),
+        'description' => strip_tags($metadescription ?? ($product->title_brief ?? '')),
+        'brand' => [
+            '@type' => 'Brand',
+            'name' => 'JInil Shot Blast',
+        ],
+        'aggregateRating' => [
+            '@type' => 'AggregateRating',
+            'ratingValue' => '5',
+            'bestRating' => '5',
+            'worstRating' => '4',
+            'ratingCount' => '2',
+        ],
+    ];
+@endphp
+
+<script type="application/ld+json">
+{!! json_encode($productSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
+</script>
+
+
 
 @include('layouts.frontfooter')

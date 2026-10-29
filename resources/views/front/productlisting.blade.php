@@ -275,6 +275,34 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
 
+@php
+    $firstProduct = $productlist->whereNotNull('front_image')->first();
+
+    $productSchema = [
+        '@context' => 'https://schema.org/',
+        '@type' => 'Product',
+        'name' => $category->category ?? '',
+        'image' => $firstProduct
+            ? asset('public/Product/front_image/' . $firstProduct->front_image)
+            : asset('public/front/images/jinil_og.jpeg'),
+        'description' => strip_tags($metadescription ?? ($category->cat_description ?? '')),
+        'brand' => [
+            '@type' => 'Brand',
+            'name' => 'JInil Shot Blast',
+        ],
+        'aggregateRating' => [
+            '@type' => 'AggregateRating',
+            'ratingValue' => '5',
+            'bestRating' => '5',
+            'worstRating' => '4',
+            'ratingCount' => '2',
+        ],
+    ];
+@endphp
+
+<script type="application/ld+json">
+{!! json_encode($productSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
+</script>
 
 
 @include('layouts.frontfooter')

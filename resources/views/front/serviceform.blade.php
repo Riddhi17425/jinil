@@ -155,16 +155,19 @@ $(function(){
     });
 
     // Form submit (single, flat handler)
+        // Form submit (single, flat handler)
     $('#service_form').on('submit', function(e){
         e.preventDefault();
-        $('.text-danger').text('');
 
-        let name = $('input[name="name"]').val().trim();
-        let company = $('input[name="company_name"]').val().trim();
-        let phone = $('#modal_phone').val().trim();
-        let email = $('input[name="email"]').val().trim();
-        let state = $('#service_state').val();
-        let city = $('#service_city').val();
+        let $f = $('#service_form');
+        $f.find('.text-danger').text('');
+
+        let name    = $f.find('input[name="name"]').val().trim();
+        let company = $f.find('input[name="company_name"]').val().trim();
+        let phone   = $('#service_phone_input').val().trim();
+        let email   = $f.find('input[name="email"]').val().trim();
+        let state   = $('#service_state').val();
+        let city    = $('#service_city').val();
         let captcha = $('#service_simple_captcha').val();
 
         let hasError = false;
@@ -212,16 +215,16 @@ $(function(){
         $.ajax({
             url: "{{ route('installationstore') }}",
             type: "POST",
-            data: $(this).serialize(),
+            data: $f.serialize(),
             dataType: "json",
             headers: { 'Accept': 'application/json' },
 
             beforeSend: function(){
-                $('.com_btn').attr('disabled', true).text('Sending...');
+                $f.find('.com_btn').attr('disabled', true).text('Sending...');
             },
 
             success: function(res){
-                $('.com_btn').attr('disabled', false).text('Request Consultation');
+                $f.find('.com_btn').attr('disabled', false).text('Request Consultation');
 
                 if(res.status === 'success'){
                     window.location.href = res.redirect;
@@ -229,7 +232,7 @@ $(function(){
             },
 
             error: function(xhr){
-                $('.com_btn').attr('disabled', false).text('Request Consultation');
+                $f.find('.com_btn').attr('disabled', false).text('Request Consultation');
 
                 if(xhr.status === 422){
                     let errors = xhr.responseJSON.errors;
