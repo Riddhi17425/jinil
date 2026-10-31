@@ -29,9 +29,9 @@ class Product extends Model
         'category_id',
         // Blast Wheels
         'blast_wheels_image',
-        'blast_wheels',        // JSON: [{title, desc}]
-                               // Main Components
-        'main_components',     // JSON: [{title, desc}]
+        'blast_wheels',        
+                               
+        'main_components',     
                                // Technical Specifications
         'tech_specifications', // JSON: [{parameter, specifications:[]}]
                                // Applications
@@ -55,6 +55,7 @@ class Product extends Model
         'faqs',                    // JSON: [{question, answer}]
         'optional_accessories_desc', 'faqs_desc', 'related_industries_desc',
         'technical_details',  
+        'faq_intro_blocks',
     ];
 
     protected $casts = [
@@ -68,6 +69,7 @@ class Product extends Model
         'optional_features'       => 'array',
         'operational_accessories' => 'array',
         'faqs'                    => 'array',
+        'faq_intro_blocks' => 'array',
         'industries'              => 'array',
     ];
 

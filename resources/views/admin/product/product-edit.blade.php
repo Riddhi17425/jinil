@@ -282,6 +282,13 @@
                                             onclick="addTitleDescRow('operational-accessories-wrapper', 'operational_accessories')">Add
                                             Accessory</button>
                                     </div>
+                                    <hr class="mt-4">
+                                    <h5 class="mt-3 fw-bold">Title & Description</h5>
+                                    <div class="col-md-12">
+                                        <div id="faq-intro-wrapper"></div>
+                                        <button type="button" class="btn btn-sm btn-outline-primary mt-2"
+                                            onclick="addFaqIntroRow()">Add Title & Description</button>
+                                    </div>
 
                                     <hr class="mt-4">
                                     <h5 class="mt-3 fw-bold">FAQs</h5>
@@ -358,105 +365,107 @@
 
     <script>
         $(document).ready(function() {
-                    $('#meta_description,#short_description,#working_principle_desc,#configuration_description,#why_choose_description,#optional_accessories_desc,#faqs_desc,#related_industries_desc,#advantages_desc,#technical_details')
-                        .summernote({
-                                placeholder: 'Enter here...',
-                                height: 300,
-                                toolbar: [
-                                    ['style', ['style']],
-                                    ['font', ['bold', 'italic', 'underline', 'clear']],
-                                    ['fontname', ['fontname']],
-                                    ['color', ['color']],
-                                    ['para', ['ul', 'ol', 'paragraph']],
-                                    ['height', ['height']],
-                                    ['insert', ['link', 'picture', 'hr']],
-                                    ['view', ['fullscreen', 'codeview']],
-                                    ['help', ['help']]
-                                ]
-                            });
+            $('#meta_description,#short_description,#working_principle_desc,#configuration_description,#why_choose_description,#optional_accessories_desc,#faqs_desc,#related_industries_desc,#advantages_desc,#technical_details')
+                .summernote({
+                    placeholder: 'Enter here...',
+                    height: 300,
+                    toolbar: [
+                        ['style', ['style']],
+                        ['font', ['bold', 'italic', 'underline', 'clear']],
+                        ['fontname', ['fontname']],
+                        ['color', ['color']],
+                        ['para', ['ul', 'ol', 'paragraph']],
+                        ['height', ['height']],
+                        ['insert', ['link', 'picture', 'hr']],
+                        ['view', ['fullscreen', 'codeview']],
+                        ['help', ['help']]
+                    ]
+                });
 
-                            const blastWheels = @json($product->blast_wheels ?? []);
-                            const mainComponents = @json($product->main_components ?? []);
-                            const techSpecifications = @json($product->tech_specifications ?? []);
-                            const applications = @json($product->applications ?? []);
-                            const advantages = @json($product->advantages ?? []);
-                            const designFeatures = @json($product->design_features ?? []);
-                            const selectionGuidelines = @json($product->selection_guidelines ?? []);
-                            const optionalFeatures = @json($product->optional_features ?? []);
-                            const operationalAccessories = @json($product->operational_accessories ?? []);
-                            const faqs = @json($product->faqs ?? []);
+            const blastWheels = @json($product->blast_wheels ?? []);
+            const mainComponents = @json($product->main_components ?? []);
+            const techSpecifications = @json($product->tech_specifications ?? []);
+            const applications = @json($product->applications ?? []);
+            const advantages = @json($product->advantages ?? []);
+            const designFeatures = @json($product->design_features ?? []);
+            const selectionGuidelines = @json($product->selection_guidelines ?? []);
+            const optionalFeatures = @json($product->optional_features ?? []);
+            const operationalAccessories = @json($product->operational_accessories ?? []);
+            const faqs = @json($product->faqs ?? []);
+            const faqIntroBlocks = @json($product->faq_intro_blocks ?? []);
 
-                            hydrateTitleDesc('blast-wheels-wrapper', 'blast_wheels', blastWheels);
-                            hydrateTitleDesc('main-components-wrapper', 'main_components', mainComponents);
-                            hydrateTechSpecs(techSpecifications);
-                            hydrateSimpleList('applications-wrapper', 'applications', 'Application', applications);
-                            hydrateSimpleList('advantages-wrapper', 'advantages', 'Advantage', advantages);
-                            hydrateSimpleList('design-features-wrapper', 'design_features', 'Design Feature',
-                                designFeatures);
-                            hydrateSimpleList('selection-guidelines-wrapper', 'selection_guidelines', 'Guideline',
-                                selectionGuidelines);
-                            hydrateSimpleList('optional-features-wrapper', 'optional_features', 'Optional Feature',
-                                optionalFeatures);
-                            hydrateTitleDesc('operational-accessories-wrapper', 'operational_accessories',
-                                operationalAccessories);
-                            hydrateFaqs(faqs);
-                        });
+            hydrateTitleDesc('blast-wheels-wrapper', 'blast_wheels', blastWheels);
+            hydrateTitleDesc('main-components-wrapper', 'main_components', mainComponents);
+            hydrateTechSpecs(techSpecifications);
+            hydrateSimpleList('applications-wrapper', 'applications', 'Application', applications);
+            hydrateSimpleList('advantages-wrapper', 'advantages', 'Advantage', advantages);
+            hydrateSimpleList('design-features-wrapper', 'design_features', 'Design Feature',
+                designFeatures);
+            hydrateSimpleList('selection-guidelines-wrapper', 'selection_guidelines', 'Guideline',
+                selectionGuidelines);
+            hydrateSimpleList('optional-features-wrapper', 'optional_features', 'Optional Feature',
+                optionalFeatures);
+            hydrateTitleDesc('operational-accessories-wrapper', 'operational_accessories',
+                operationalAccessories);
+            hydrateFaqs(faqs);
+            hydrateFaqIntro(faqIntroBlocks);
+        });
 
-                    function hydrateTitleDesc(wrapperId, fieldName, items) {
-                        if (!items.length) {
-                            addTitleDescRow(wrapperId, fieldName);
-                            return;
-                        }
-                        items.forEach(item => addTitleDescRow(wrapperId, fieldName, item));
-                    }
+        function hydrateTitleDesc(wrapperId, fieldName, items) {
+            if (!items.length) {
+                addTitleDescRow(wrapperId, fieldName);
+                return;
+            }
+            items.forEach(item => addTitleDescRow(wrapperId, fieldName, item));
+        }
 
-                    function addTitleDescRow(wrapperId, fieldName, existing = null) {
-                        const wrapper = document.getElementById(wrapperId);
-                        const index = wrapper.querySelectorAll('.dynamic-row').length;
-                        const row = document.createElement('div');
-                        row.className = 'row g-2 mt-2 dynamic-row';
-                        row.innerHTML = `
+        function addTitleDescRow(wrapperId, fieldName, existing = null) {
+            const wrapper = document.getElementById(wrapperId);
+            const index = wrapper.querySelectorAll('.dynamic-row').length;
+            const row = document.createElement('div');
+            row.className = 'row g-2 mt-2 dynamic-row';
+            row.innerHTML = `
         <div class="col-md-5"><input type="text" name="${fieldName}[${index}][title]" value="${existing?.title ?? ''}" class="form-control" placeholder="Title"></div>
         <div class="col-md-6"><textarea name="${fieldName}[${index}][desc]" class="form-control" rows="2" placeholder="Description">${existing?.desc ?? ''}</textarea></div>
         <div class="col-md-1"><button type="button" class="btn btn-danger btn-sm" onclick="this.closest('.dynamic-row').remove()">X</button></div>
     `;
-                        wrapper.appendChild(row);
-                    }
+            wrapper.appendChild(row);
+        }
 
-                    function hydrateSimpleList(wrapperId, fieldName, placeholder, items) {
-                        if (!items.length) {
-                            addSimpleRow(wrapperId, fieldName, placeholder);
-                            return;
-                        }
-                        items.forEach(item => addSimpleRow(wrapperId, fieldName, placeholder, item));
-                    }
+        function hydrateSimpleList(wrapperId, fieldName, placeholder, items) {
+            if (!items.length) {
+                addSimpleRow(wrapperId, fieldName, placeholder);
+                return;
+            }
+            items.forEach(item => addSimpleRow(wrapperId, fieldName, placeholder, item));
+        }
 
-                    function addSimpleRow(wrapperId, fieldName, placeholder, existing = '') {
-                        const wrapper = document.getElementById(wrapperId);
-                        const index = wrapper.querySelectorAll('.dynamic-row').length;
-                        const row = document.createElement('div');
-                        row.className = 'row g-2 mt-2 dynamic-row';
-                        row.innerHTML = `
+        function addSimpleRow(wrapperId, fieldName, placeholder, existing = '') {
+            const wrapper = document.getElementById(wrapperId);
+            const index = wrapper.querySelectorAll('.dynamic-row').length;
+            const row = document.createElement('div');
+            row.className = 'row g-2 mt-2 dynamic-row';
+            row.innerHTML = `
         <div class="col-md-11"><input type="text" name="${fieldName}[${index}]" value="${existing ?? ''}" class="form-control" placeholder="${placeholder}"></div>
         <div class="col-md-1"><button type="button" class="btn btn-danger btn-sm" onclick="this.closest('.dynamic-row').remove()">X</button></div>
     `;
-                        wrapper.appendChild(row);
-                    }
+            wrapper.appendChild(row);
+        }
 
-                    function hydrateTechSpecs(items) {
-                        if (!items.length) {
-                            addTechSpecRow();
-                            return;
-                        }
-                        items.forEach(item => addTechSpecRow(item));
-                    }
+        function hydrateTechSpecs(items) {
+            if (!items.length) {
+                addTechSpecRow();
+                return;
+            }
+            items.forEach(item => addTechSpecRow(item));
+        }
 
-                    function addTechSpecRow(existing = null) {
-                        const wrapper = document.getElementById('tech-spec-wrapper');
-                        const index = wrapper.querySelectorAll('.spec-row').length;
-                        const row = document.createElement('div');
-                        row.className = 'border rounded p-3 mt-2 spec-row';
-                        row.innerHTML = `
+        function addTechSpecRow(existing = null) {
+            const wrapper = document.getElementById('tech-spec-wrapper');
+            const index = wrapper.querySelectorAll('.spec-row').length;
+            const row = document.createElement('div');
+            row.className = 'border rounded p-3 mt-2 spec-row';
+            row.innerHTML = `
         <div class="row g-2">
             <div class="col-md-11"><input type="text" name="tech_specifications[${index}][parameter]" value="${existing?.parameter ?? ''}" class="form-control" placeholder="Parameter"></div>
             <div class="col-md-1"><button type="button" class="btn btn-danger btn-sm" onclick="this.closest('.spec-row').remove()">X</button></div>
@@ -464,43 +473,91 @@
             <div class="col-md-12"><button type="button" class="btn btn-sm btn-outline-secondary" onclick="addSpecPoint(this, ${index})">Add Specification</button></div>
         </div>
     `;
-                        wrapper.appendChild(row);
+            wrapper.appendChild(row);
 
-                        const specs = existing?.specifications?.length ? existing.specifications : [''];
-                        specs.forEach(spec => addSpecPoint(row.querySelector('button.btn-outline-secondary'), index, spec));
-                    }
+            const specs = existing?.specifications?.length ? existing.specifications : [''];
+            specs.forEach(spec => addSpecPoint(row.querySelector('button.btn-outline-secondary'), index, spec));
+        }
 
-                    function addSpecPoint(button, index, existing = '') {
-                        const pointsWrapper = button.closest('.row').querySelector('.spec-points');
-                        const pointIndex = pointsWrapper.querySelectorAll('.spec-point-row').length;
-                        const point = document.createElement('div');
-                        point.className = 'row g-2 mt-1 spec-point-row';
-                        point.innerHTML = `
+        function addSpecPoint(button, index, existing = '') {
+            const pointsWrapper = button.closest('.row').querySelector('.spec-points');
+            const pointIndex = pointsWrapper.querySelectorAll('.spec-point-row').length;
+            const point = document.createElement('div');
+            point.className = 'row g-2 mt-1 spec-point-row';
+            point.innerHTML = `
         <div class="col-md-11"><input type="text" name="tech_specifications[${index}][specifications][${pointIndex}]" value="${existing ?? ''}" class="form-control" placeholder="Specification"></div>
         <div class="col-md-1"><button type="button" class="btn btn-danger btn-sm" onclick="this.closest('.spec-point-row').remove()">X</button></div>
     `;
-                        pointsWrapper.appendChild(point);
-                    }
+            pointsWrapper.appendChild(point);
+        }
 
-                    function hydrateFaqs(items) {
-                        if (!items.length) {
-                            addFaqRow();
-                            return;
-                        }
-                        items.forEach(item => addFaqRow(item));
-                    }
+        function hydrateFaqs(items) {
+            if (!items.length) {
+                addFaqRow();
+                return;
+            }
+            items.forEach(item => addFaqRow(item));
+        }
 
-                    function addFaqRow(existing = null) {
-                        const wrapper = document.getElementById('faq-wrapper');
-                        const index = wrapper.querySelectorAll('.faq-row').length;
-                        const row = document.createElement('div');
-                        row.className = 'row g-2 mt-2 faq-row';
-                        row.innerHTML = `
-        <div class="col-md-5"><input type="text" name="faqs[${index}][question]" value="${existing?.question ?? ''}" class="form-control" placeholder="Question"></div>
-        <div class="col-md-6"><textarea name="faqs[${index}][answer]" class="form-control" rows="2" placeholder="Answer">${existing?.answer ?? ''}</textarea></div>
-        <div class="col-md-1"><button type="button" class="btn btn-danger btn-sm" onclick="this.closest('.faq-row').remove()">X</button></div>
+        function addFaqRow(existing = null) {
+            const wrapper = document.getElementById('faq-wrapper');
+            const index = wrapper.querySelectorAll('.faq-row').length;
+            const row = document.createElement('div');
+            row.className = 'row g-2 mt-2 faq-row';
+            row.innerHTML = `
+                                <div class="col-md-5"><input type="text" name="faqs[${index}][question]" value="${existing?.question ?? ''}" class="form-control" placeholder="Question"></div>
+                                <div class="col-md-6"><textarea name="faqs[${index}][answer]" class="form-control" rows="2" placeholder="Answer">${existing?.answer ?? ''}</textarea></div>
+                                <div class="col-md-1"><button type="button" class="btn btn-danger btn-sm" onclick="this.closest('.faq-row').remove()">X</button></div>
+                            `;
+            wrapper.appendChild(row);
+        }
+
+        function hydrateFaqIntro(items) {
+            if (!items.length) {
+                addFaqIntroRow();
+                return;
+            }
+            items.forEach(item => addFaqIntroRow(item));
+        }
+
+        function addFaqIntroRow(existing = null) {
+            const wrapper = document.getElementById('faq-intro-wrapper');
+            const index = Date.now() + Math.floor(Math.random() * 1000);
+            const row = document.createElement('div');
+            row.className = 'row g-2 mt-2 faq-intro-row';
+            row.innerHTML = `
+        <div class="col-md-11">
+            <input type="text" name="faq_intro_blocks[${index}][title]" class="form-control mb-2" placeholder="Title">
+            <textarea name="faq_intro_blocks[${index}][description]" class="form-control faq-intro-editor" placeholder="Description"></textarea>
+        </div>
+        <div class="col-md-1">
+            <button type="button" class="btn btn-danger btn-sm" onclick="removeFaqIntroRow(this)">X</button>
+        </div>
     `;
-                        wrapper.appendChild(row);
-                    }
+            wrapper.appendChild(row);
+
+            row.querySelector('input').value = existing?.title ?? '';
+            const textarea = row.querySelector('textarea');
+            textarea.value = existing?.description ?? '';
+
+            $(textarea).summernote({
+                placeholder: 'Enter description here...',
+                height: 200,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'italic', 'underline', 'clear']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['insert', ['link', 'hr']],
+                    ['view', ['fullscreen', 'codeview']]
+                ]
+            });
+        }
+
+        function removeFaqIntroRow(btn) {
+            const row = btn.closest('.faq-intro-row');
+            $(row).find('.faq-intro-editor').summernote('destroy');
+            row.remove();
+        }
     </script>
 @endpush

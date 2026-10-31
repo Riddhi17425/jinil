@@ -76,6 +76,7 @@ class ProductController extends Controller
         $post->optional_features       = $this->mapSimpleList($request->input('optional_features', []));
         $post->operational_accessories = $this->mapTitleDescItems($request->input('operational_accessories', []));
         $post->faqs                    = $this->mapFaqs($request->input('faqs', []));
+        $post->faq_intro_blocks        = $this->mapFaqIntroBlocks($request->input('faq_intro_blocks', []));
 
         if ($request->hasFile('front_image')) {
             $file     = $request->file('front_image');
@@ -157,6 +158,7 @@ class ProductController extends Controller
         $post->optional_features       = $this->mapSimpleList($request->input('optional_features', []));
         $post->operational_accessories = $this->mapTitleDescItems($request->input('operational_accessories', []));
         $post->faqs                    = $this->mapFaqs($request->input('faqs', []));
+        $post->faq_intro_blocks        = $this->mapFaqIntroBlocks($request->input('faq_intro_blocks', []));
 
         if ($request->hasFile('front_image')) {
             $file     = $request->file('front_image');
@@ -284,6 +286,29 @@ class ProductController extends Controller
                 return [
                     'question' => $question,
                     'answer'   => $answer,
+                ];
+            })
+            ->filter()
+            ->values()
+            ->all();
+    }
+
+    private function mapFaqIntroBlocks($items)
+    {
+        $clean = fn($v) => trim(html_entity_decode(strip_tags((string) $v)), " \t\n\r\0\x0B\xC2\xA0");
+
+        return collect($items)
+            ->map(function ($item) use ($clean) {
+                $title = trim((string) ($item['title'] ?? ''));
+                $desc  = trim((string) ($item['description'] ?? ''));
+
+                if ($clean($title) === '' && $clean($desc) === '') {
+                    return null;
+                }
+
+                return [
+                    'title'       => $title,
+                    'description' => $clean($desc) === '' ? '' : $desc,
                 ];
             })
             ->filter()
