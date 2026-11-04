@@ -33,6 +33,12 @@
 
 <head>
 
+    @if(app()->environment('local'))
+        <meta name="robots" content="noindex, nofollow"/>
+    @else
+        <meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"/>
+    @endif
+
     <!--SCHEMAS-->
 
     <script type="application/ld+json">
@@ -185,13 +191,7 @@
 
     <link rel="stylesheet" href="{{ asset('public/front/css/responsive.css') }}">
 
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-TJFBFXW6');</script>
-    <!-- End Google Tag Manager -->
+    
     
 </head>
 

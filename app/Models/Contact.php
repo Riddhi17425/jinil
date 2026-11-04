@@ -16,6 +16,7 @@ class Contact extends Model
         'company_name',
         'contact',
         'email',
+        'country', 
         'message',
         'state',
         'city',

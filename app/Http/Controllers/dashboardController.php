@@ -449,7 +449,7 @@ class dashboardController extends Controller
 
             'state'          => 'required|string',
 
-            'city' => 'nullable|string',
+            'country'        => 'nullable|string|max:100',
 
             'message'        => 'nullable|string',
 
@@ -470,8 +470,6 @@ class dashboardController extends Controller
             'email.email'             => 'Please enter a valid Email Address.',
 
             'state.required'          => 'The State is required.',
-
-            'city.required'           => 'The City is required.',
 
             'simple_captcha.required' => 'The Captcha is required.',
 
@@ -525,7 +523,7 @@ class dashboardController extends Controller
 
                 'state'        => $validated['state'],
 
-                'city'         => $validated['city'],
+                'country'      => $validated['country'] ?? null,
 
                 'message'      => $validated['message'] ?? null,
 
@@ -545,7 +543,7 @@ class dashboardController extends Controller
 
                 'state'        => $validated['state'],
 
-                'city'         => $validated['city'],
+                'country'      => $validated['country'] ?? '',
 
                 'message'      => $validated['message'] ?? '',
 
