@@ -266,7 +266,18 @@ class dashboardController extends Controller
         $metatitle       = $product->meta_title ?? $product->title;
         $metadescription = $product->meta_description ?? $product->short_description;
 
-        return view('front.productdetials', compact('metatitle', 'metadescription', 'product', 'category', 'productIndustries'));
+        $og_image = !empty($product->detail_image)
+            ? asset('public/Product/detail_image/' . $product->detail_image)
+            : asset('public/front/images/jinil_og.jpeg');
+
+        return view('front.productdetials', compact(
+            'metatitle',
+            'metadescription',
+            'product',
+            'category',
+            'productIndustries',
+            'og_image'
+        ));
     }
 
     public function download()
@@ -319,92 +330,77 @@ class dashboardController extends Controller
 
     public function installation()
     {
-
         $metatitle = "";
-
         $metadescription = "";
-
+        $og_image = asset('public/front/images/installation.png');
         $faqs = Faq::whereNull('deleted_at')->get();
 
-        return view('front.installation', compact('metatitle', 'metadescription', 'faqs'));
-
+        return view('front.installation', compact('metatitle', 'metadescription', 'faqs', 'og_image'));
     }
 
     public function machineupgrades()
     {
-
         $metatitle = "";
-
         $metadescription = "";
+        $og_image = asset('public/front/images/machine-upgrades.png');
 
-        return view('front.machine', compact('metatitle', 'metadescription'));
-
+        return view('front.machine', compact('metatitle', 'metadescription', 'og_image'));
     }
 
     public function annualmaintenance()
     {
 
         $metatitle = "";
-
         $metadescription = "";
+        $og_image = asset('public/front/images/AMC/AMC-Services.png');
 
-        return view('front.annual-maintenance-contracts', compact('metatitle', 'metadescription'));
+        return view('front.annual-maintenance-contracts', compact('metatitle', 'metadescription', 'og_image'));
 
     }
 
     public function aftersales()
     {
-
         $metatitle = "";
-
         $metadescription = "";
-
+        $og_image = asset('public/front/images/After-Sales-Support.png');
         $faqs = Faq::whereNull('deleted_at')->get();
 
-        return view('front.after-sales', compact('metatitle', 'metadescription', 'faqs'));
-
+        return view('front.after-sales', compact('metatitle', 'metadescription', 'faqs', 'og_image'));
     }
-
-    // public function service($url)
-
-    // {
-
-    //     $service = Service::where('url', $url)->firstOrFail();
-
-    //     $metatitle       = $service->meta_title       ?? $service->title;
-
-    //     $metadescription = $service->meta_description ?? $service->short_description;
-
-    //     return view('front.service-detail', compact(
-
-    //         'service',
-
-    //         'metatitle',
-
-    //         'metadescription'
-
-    //     ));
-
-    // }
-
     public function industry($url)
-{
-    $category = IndCategory::whereNull('deleted_at')->where('url', $url)->firstOrFail();
-    $industries = Industry::whereNull('deleted_at')->where('category_id', $category->id)->get();
+    {
+        $category   = IndCategory::whereNull('deleted_at')->where('url', $url)->firstOrFail();
+        $industries = Industry::whereNull('deleted_at')->where('category_id', $category->id)->get();
 
-    $relatedIndustriesQuery = IndCategory::whereNull('deleted_at')
-        ->where('id', '!=', $category->id);
-    if (Schema::hasColumn('indcategory', 'status')) {
-        $relatedIndustriesQuery->where('status', 'Active');
+        $relatedIndustriesQuery = IndCategory::whereNull('deleted_at')
+            ->where('id', '!=', $category->id);
+        if (Schema::hasColumn('indcategory', 'status')) {
+            $relatedIndustriesQuery->where('status', 'Active');
+        }
+        $relatedIndustries = $relatedIndustriesQuery->get();
+
+        $metatitle       = $category->meta_title;
+        $metadescription = $category->meta_description;
+
+        $firstIndustry = $industries->first();
+
+        if ($firstIndustry && !empty($firstIndustry->image)) {
+            $og_image = asset('public/industryImage/' . $firstIndustry->image);
+        } elseif (!empty($category->icon_image)) {
+            $og_image = asset('public/indcategory/icon_image/' . $category->icon_image);
+        } else {
+            $og_image = asset('public/front/images/jinil_og.jpeg');
+        }
+
+        return view('front.industries', compact(
+            'category',
+            'industries',
+            'relatedIndustries',
+            'metatitle',
+            'metadescription',
+            'og_image'
+        ));
     }
-    $relatedIndustries = $relatedIndustriesQuery->get();
-
-    $metatitle = $category->meta_title;
-    $metadescription = $category->meta_description;
-
-    return view('front.industries', compact('category', 'industries', 'relatedIndustries', 'metatitle', 'metadescription'));
-}
-
     public function product($url)
     {
 
