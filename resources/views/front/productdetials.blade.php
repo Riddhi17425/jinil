@@ -6,7 +6,7 @@
         <div class="navi_page_child">
             <div>
                 <p class="title_24"><a href="{{ url('/') }}" class="text-585">Home</a> / <a href="#"
-                        class="text-585">{{ $category->category }}</a>
+                        class="text-585">{{ $category->category ?? '' }}</a>
                     / {{ $product->name }}
                 </p>
                 <h1 class="title_60">{{ $product->title ?? '' }}</h1>
