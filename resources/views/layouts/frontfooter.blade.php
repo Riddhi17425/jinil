@@ -1,7 +1,5 @@
 
-@unless(request()->routeIs('contact','blogs','about'))
-    @include('front.serviceform')
-@endunless
+
 <footer class="site_footer">
 
 @php
@@ -25,18 +23,28 @@ $products = DB::table('product')
 
     ->groupBy('category_id');
 
+$uncategorizedProducts = DB::table('product')
+
+    ->select('id', 'name', 'title', 'url')
+
+    ->whereNull('deleted_at')
+
+    ->whereNull('category_id')
+
+    ->orderBy('id')
+
+    ->get();
 
 
-$industriesQuery = DB::table('indcategory')
-    ->select('indcategory', 'url')
-    ->whereNull('deleted_at');
 
-if (Schema::hasColumn('indcategory', 'status')) {
-    $industriesQuery->where('status', 'Active');
-}
+$indusries = DB::table('indcategory')
 
-$indusries = $industriesQuery
+    ->select('indcategory','url')
+
+    ->whereNull('deleted_at')
+
     ->distinct()
+
     ->get();
 
 @endphp
@@ -233,6 +241,22 @@ $indusries = $industriesQuery
                         <li><a href="{{ route('annualmaintenance') }}">Annual Maintenance Contracts</a></li>
 
                     </ul>
+
+                    @if($uncategorizedProducts->isNotEmpty())
+                    <hr class="footer_divider" style="margin: 20px 0;">
+
+                    <h4 class="title_24">Products</h4>
+
+                    <ul>
+                        @foreach($uncategorizedProducts as $product)
+                        <li>
+                            <a href="{{ url('product-details/'.$product->url) }}">
+                                {{ $product->name ?: $product->title }}
+                            </a>
+                        </li>
+                        @endforeach
+                    </ul>
+                    @endif
 
 
 
