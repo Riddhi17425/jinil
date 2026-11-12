@@ -590,194 +590,95 @@ class dashboardController extends Controller
     }
 
     public function headerstore(Request $request)
+    
     {
-
         $validated = $request->validate([
-
             'name'           => 'required|string|max:255',
-
             'company_name'   => 'required|string|max:255',
-
             'full_phone'     => 'required|string',
-
             'email'          => 'required|email',
-
+            'country'        => 'nullable|string|max:255',
             'state'          => 'required|string',
-
-            'city' => 'nullable|string',
-
             'message'        => 'nullable|string',
-
             'simple_captcha' => 'required|integer',
-
             'captcha_sum'    => 'required|integer',
-
         ], [
-
             'name.required'           => 'The Name is required.',
-
             'company_name.required'   => 'The Company Name is required.',
-
             'full_phone.required'     => 'The Phone Number is required.',
-
             'email.required'          => 'The Email Address is required.',
-
             'email.email'             => 'Please enter a valid Email Address.',
-
             'state.required'          => 'The State is required.',
-
-            'city.required'           => 'The City is required.',
-
             'simple_captcha.required' => 'The Captcha is required.',
-
             'simple_captcha.integer'  => 'The Captcha must be a number.',
-
         ]);
 
         if ($validated['simple_captcha'] != $validated['captcha_sum']) {
-
             return response()->json([
-
                 'status' => 'error',
-
                 'errors' => ['simple_captcha' => 'The Captcha answer is incorrect.'],
-
             ]);
-
         }
 
-        // Catches empty input (only dial code like "+91" with no number after)
-
         if (! preg_match('/^\+\d{1,4}\d{7,}$/', $validated['full_phone'])) {
-
             return response()->json([
-
                 'status' => 'error',
-
                 'errors' => ['full_phone' => ! preg_match('/^\+\d/', $validated['full_phone'])
-
                         ? 'The Phone Number is required.'
-
                         : 'Please enter a valid Phone Number.',
-
                 ],
-
             ]);
-
         }
 
         try {
-
             $contact = HeaderForm::create([
-
                 'name'         => $validated['name'],
-
                 'company_name' => $validated['company_name'],
-
                 'contact'      => $validated['full_phone'],
-
                 'email'        => $validated['email'],
-
+                'country'      => $validated['country'] ?? null,
                 'state'        => $validated['state'],
-
-                'city'         => $validated['city'],
-
                 'message'      => $validated['message'] ?? null,
-
             ]);
 
             $contactData = [
-
                 'form_type'    => 'Header Form',
-
                 'name'         => $validated['name'],
-
                 'company_name' => $validated['company_name'],
-
                 'contact'      => $validated['full_phone'],
-
                 'email'        => $validated['email'],
-
+                'country'      => $validated['country'] ?? '',
                 'state'        => $validated['state'],
-
-                'city'         => $validated['city'],
-
                 'message'      => $validated['message'] ?? '',
-
                 'date'         => now()->format('Y-m-d H:i:s'),
-
             ];
 
             $sheetUrl = 'https://script.google.com/macros/s/AKfycbwBaZKgFVECo50waF3RExxbg1UiS_ZkVwovDagR6_Q-wpTmd6TczHgmB1i66JCicQ8aew/exec';
 
-            // ✅ Google Sheet — skip if URL is empty
-
             if (! empty($sheetUrl)) {
-
                 try {
-
                     Http::timeout(30)
-
                         ->withHeaders(['Content-Type' => 'application/json'])
-
                         ->post($sheetUrl, $contactData);
-
                 } catch (\Exception $e) {
-
                     \Log::warning('Google Sheet push failed: ' . $e->getMessage());
-
-                    // Non-fatal — continue
-
                 }
-
             }
 
-            // ✅ Mail — isolated so one failure doesn't block the other
-
-            // try {
-
-            //     Mail::to($validated['email'])->send(new SendContactMailToUser($contactData));
-
-            // } catch (\Exception $e) {
-
-            //     \Log::warning('User mail failed: ' . $e->getMessage());
-
-            // }
-
-            // try {
-
-            //     Mail::to('webdeveloper10.intelliworkz@gmail.com')->send(new SendContactMailToAdmin($contactData));
-
-            // } catch (\Exception $e) {
-
-            //     \Log::warning('Admin mail failed: ' . $e->getMessage());
-
-            // }
-
             return response()->json([
-
                 'status'   => 'success',
-
                 'redirect' => route('thankyou'),
-
             ]);
 
         } catch (\Exception $e) {
-
             \Log::error('Header form error: ' . $e->getMessage());
 
             return response()->json([
-
                 'status'  => 'error',
-
                 'message' => 'Something went wrong. Please try again later.',
-
             ]);
-
         }
-
     }
-
     public function installationstore(Request $request)
     {
 

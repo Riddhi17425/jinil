@@ -3,6 +3,7 @@
 @php
 use Illuminate\Support\Facades\DB;
 $states = DB::table('states')->select('id','name')->get();
+$countries = DB::table('countries')->select('id','name')->get();   
 $ma = rand(1,9);
 $mb = rand(1,9);
 @endphp
@@ -37,7 +38,7 @@ $mb = rand(1,9);
                             <div id="modal_phone_wrapper">
                                 <input type="tel" id="modal_phone" name="phone" placeholder=" Phone Number *" maxlength="15">
                             </div>
-                            <input type="hidden" name="country"    id="modal_contact_country">
+                            <input type="hidden" name="phone_country" id="modal_contact_country">
                             <input type="hidden" name="phonecode"  id="modal_contact_phonecode">
                             <input type="hidden" name="contact"    id="modal_contact_value">
                             <input type="hidden" name="full_phone" id="modal_contact_full_phone">
@@ -50,6 +51,19 @@ $mb = rand(1,9);
                             <div id="modal_email-error" class="text-danger"></div>
                         </div>
 
+                        {{-- Country --}}
+                        <div class="col-lg-6 form-group">
+                            <select name="country" id="modal_country">
+                                <option value="">Select Country</option>
+                                @foreach($countries as $country)
+                                    <option value="{{ $country->name }}" {{ $country->name == 'India' ? 'selected' : '' }}>{{ $country->name }}</option>
+                                @endforeach
+                            </select>
+                            <label>Country:</label>
+                            <div id="modal_country-error" class="text-danger"></div>
+                        </div>
+
+                        {{-- State --}}
                         <div class="col-lg-6 form-group">
                             <select name="state" id="modal_state">
                                 <option value="">Select State</option>
@@ -59,14 +73,6 @@ $mb = rand(1,9);
                             </select>
                             <label>State<span class="text-danger">*</span>:</label>
                             <div id="modal_state-error" class="text-danger"></div>
-                        </div>
-
-                        <div class="col-lg-6 form-group">
-                            <select name="city" id="modal_city">
-                                <option value="">Select City</option>
-                            </select>
-                            <label>City:</label>
-                            <div id="modal_city-error" class="text-danger"></div>
                         </div>
 
                         <div class="col-lg-12 form-group">
@@ -118,22 +124,8 @@ jQuery(document).ready(function ($) {
     }
 
     $('#modal_state').on('change', function () {
-        var state_id = $(this).find('option:selected').data('id');
-        if (state_id) {
-            $.ajax({
-                url: "{{ url('get-cities') }}/" + state_id,
-                type: "GET",
-                success: function (data) {
-                    $('#modal_city').html('<option value="">Select City</option>');
-                    $.each(data, function (key, value) {
-                        $('#modal_city').append('<option value="' + value.name + '">' + value.name + '</option>');
-                    });
-                }
-            });
-        }
-        if ($(this).val() !== '') $('#modal_state-error').text('');
+      if ($(this).val() !== '') $('#modal_state-error').text('');
     });
-
     function refreshModalCaptcha() {
         var a = Math.floor(Math.random() * 9) + 1;
         var b = Math.floor(Math.random() * 9) + 1;
@@ -148,11 +140,9 @@ jQuery(document).ready(function ($) {
     $('#staticBackdrop').on('show.bs.modal', function () {
         $('#headerstore .text-danger').text('');
         $('#headerstore')[0].reset();
-        $('#modal_city').html('<option value="">Select City</option>');
         refreshModalCaptcha();
     });
 
-    // ── intl-tel-input: single, simple init ─────────────────────
     var modalPhoneEl = document.getElementById('modal_phone');
     var modalIti = window.intlTelInput(modalPhoneEl, {
         initialCountry: "auto",
@@ -196,9 +186,6 @@ jQuery(document).ready(function ($) {
     });
     $('#headerstore input[name="email"]').on('input', function () {
         if ($(this).val().trim() !== '') $('#modal_email-error').text('');
-    });
-    $('#modal_city').on('change', function () {
-        if ($(this).val() !== '') $('#modal_city-error').text('');
     });
     $('#modal_simple_captcha').on('input', function () {
         if ($(this).val().trim() !== '') $('#modal_simple_captcha-error').text('');
@@ -253,11 +240,6 @@ jQuery(document).ready(function ($) {
             $('#modal_state-error').text('The State is required.');
             isValid = false;
         }
-        // if ($('#modal_city').val() === '') {
-        //     $('#modal_city-error').text('The City is required.');
-        //     isValid = false;
-        // }
-
         var captchaInput = $('#modal_simple_captcha').val().trim();
         var captchaSum   = $('#modal_captcha_sum').val();
         if (captchaInput === '') {
