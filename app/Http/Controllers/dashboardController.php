@@ -204,11 +204,20 @@ class dashboardController extends Controller
         $metatitle       = $blogsdetail->meta_title;
         $metadescription = $blogsdetail->meta_description;
 
+        if (!empty($blogsdetail->detail_image)) {
+            $og_image = asset('public/Blogs/detail_image/' . rawurlencode($blogsdetail->detail_image));
+        } elseif (!empty($blogsdetail->front_image)) {
+            $og_image = asset('public/Blogs/front_image/' . rawurlencode($blogsdetail->front_image));
+        } else {
+            $og_image = asset('public/front/images/jinil_og.jpeg');
+        }
+
         return view('front.blogdetail', compact(
             'metatitle',
             'metadescription',
             'blogs',
-            'blogsdetail'
+            'blogsdetail',
+             'og_image'
         ));
     }
 
@@ -420,6 +429,16 @@ class dashboardController extends Controller
 
         $metadescription = $category->meta_description;
 
+        $categoryOgImages = [
+        'airless-shot-blasting-machines'      => 'air-operated-shot-blasting-cabinet-pressure-type-detail.webp',
+        'air-operation-blasting-machine'     => 'air-operated-shotblasting-cabinet-suction-type-detail.webp',
+        ];
+
+     $og_image = isset($categoryOgImages[$category->url])
+        ? asset('public/Product/detail_image/' . $categoryOgImages[$category->url])
+        : asset('public/front/images/jinil_og.jpeg');
+
+
         return view('front.productlisting', compact(
 
             'category',
@@ -428,7 +447,9 @@ class dashboardController extends Controller
 
             'metatitle',
 
-            'metadescription'
+            'metadescription',
+            
+            'og_image'
 
         ));
 
@@ -488,9 +509,6 @@ class dashboardController extends Controller
             ]);
 
         }
-
-        // Catches empty input (only dial code like "+91" with no number after)
-
         if (! preg_match('/^\+\d{1,4}\d{7,}$/', $validated['full_phone'])) {
 
             return response()->json([
@@ -560,10 +578,6 @@ class dashboardController extends Controller
                 ->withHeaders(['Content-Type' => 'application/json'])
 
                 ->post($sheetUrl, $contactData);
-
-            // Mail::to($validated['email'])->send(new SendContactMailToUser($contactData));
-
-            // Mail::to('webdeveloper10.intelliworkz@gmail.com')->send(new SendContactMailToAdmin($contactData));
 
             return response()->json([
 
@@ -804,34 +818,6 @@ class dashboardController extends Controller
 
             }
 
-            // SEND MAIL TO USER
-
-            //  try {
-
-            //     Mail::to($validated['email'])
-
-            //         ->send(new SendContactMailToUser($contactData));
-
-            // } catch (\Exception $e) {
-
-            //     \Log::warning('User mail failed: ' . $e->getMessage());
-
-            // }
-
-            // SEND MAIL TO ADMIN
-
-            //  try {
-
-            //     Mail::to('webdeveloper10.intelliworkz@gmail.com')
-
-            //         ->send(new SendContactMailToAdmin($contactData));
-
-            // } catch (\Exception $e) {
-
-            //     \Log::warning('Admin mail failed: ' . $e->getMessage());
-
-            // }
-
             return response()->json([
 
                 'status'   => 'success',
@@ -979,26 +965,6 @@ class dashboardController extends Controller
 
             }
 
-            // try {
-
-            //     Mail::to($validated['email'])->send(new SendContactMailToUser($contactData));
-
-            // } catch (\Exception $e) {
-
-            //     \Log::warning('User mail failed: ' . $e->getMessage());
-
-            // }
-
-            // try {
-
-            //     Mail::to('webdeveloper10.intelliworkz@gmail.com')->send(new SendContactMailToAdmin($contactData));
-
-            // } catch (\Exception $e) {
-
-            //     \Log::warning('Admin mail failed: ' . $e->getMessage());
-
-            // }
-
             return response()->json([
 
                 'status'   => 'success',
@@ -1107,13 +1073,6 @@ class dashboardController extends Controller
         }
 
         try {
-
-            /* -------------------------------
-
-           STORE DATA IN DATABASE
-
-        --------------------------------*/
-
             IndustryEnquiry::create([
 
                 'industry_name' => $validated['industry_name'],
@@ -1133,12 +1092,6 @@ class dashboardController extends Controller
                 'message'       => $validated['message'] ?? null,
 
             ]);
-
-            /* -------------------------------
-
-           PREPARE DATA FOR EMAIL / SHEET
-
-        --------------------------------*/
 
             $contactData = [
 
@@ -1164,12 +1117,6 @@ class dashboardController extends Controller
 
             ];
 
-            /* -------------------------------
-
-           GOOGLE SHEET API
-
-        --------------------------------*/
-
             $sheetUrl = 'https://script.google.com/macros/s/AKfycbzZUy--mLkKq9XvO3GNmxSBmCzmNnMB6IdrOhcIxbCLY7orzN6Ad19Xdh4Lz4ADO3x7kA/exec'; // Add your Google Script URL here
 
             if (! empty($sheetUrl)) {
@@ -1189,49 +1136,6 @@ class dashboardController extends Controller
                 }
 
             }
-
-            /* -------------------------------
-
-           SEND MAIL TO USER
-
-        --------------------------------*/
-
-            // try {
-
-            //     Mail::to($validated['email'])
-
-            //         ->send(new SendContactMailToUser($contactData));
-
-            // } catch (\Exception $e) {
-
-            //     \Log::warning('User mail failed: ' . $e->getMessage());
-
-            // }
-
-            // /* -------------------------------
-
-            //   SEND MAIL TO ADMIN
-
-            // --------------------------------*/
-
-            // try {
-
-            //     Mail::to('webdeveloper10.intelliworkz@gmail.com')
-
-            //         ->send(new SendContactMailToAdmin($contactData));
-
-            // } catch (\Exception $e) {
-
-            //     \Log::warning('Admin mail failed: ' . $e->getMessage());
-
-            // }
-
-            /* -------------------------------
-
-           SUCCESS RESPONSE
-
-        --------------------------------*/
-
             return response()->json([
 
                 'status'   => 'success',
@@ -1258,10 +1162,6 @@ class dashboardController extends Controller
 
     /**
 
-     * Show the form for creating a new resource.
-
-     *
-
      * @return \Illuminate\Http\Response
 
      */
@@ -1274,10 +1174,6 @@ class dashboardController extends Controller
     }
 
     /**
-
-     * Store a newly created resource in storage.
-
-     *
 
      * @param  \Illuminate\Http\Request  $request
 
@@ -1294,10 +1190,6 @@ class dashboardController extends Controller
 
     /**
 
-     * Display the specified resource.
-
-     *
-
      * @param  int  $id
 
      * @return \Illuminate\Http\Response
@@ -1313,10 +1205,6 @@ class dashboardController extends Controller
 
     /**
 
-     * Show the form for editing the specified resource.
-
-     *
-
      * @param  int  $id
 
      * @return \Illuminate\Http\Response
@@ -1331,10 +1219,6 @@ class dashboardController extends Controller
     }
 
     /**
-
-     * Update the specified resource in storage.
-
-     *
 
      * @param  \Illuminate\Http\Request  $request
 
@@ -1352,10 +1236,6 @@ class dashboardController extends Controller
     }
 
     /**
-
-     * Remove the specified resource from storage.
-
-     *
 
      * @param  int  $id
 
