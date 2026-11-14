@@ -1,5 +1,21 @@
 @include('layouts.frontheader')
 
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org/",
+    "@type": "Person",
+    "name": "{{ $author->name }}",
+    "url": "{{ url('/author/' . $author->slug) }}",
+    "image": "{{ $author->main_image ? asset('public/Authors/main_image/' . $author->main_image) : asset('public/front/images/jinil_og.jpeg') }}",
+    "sameAs": "{{ $author->social_media ?? '' }}",
+    "jobTitle": "{{ $author->designation ?? '' }}",
+    "worksFor": {
+        "@type": "Organization",
+        "name": "Jinil Shot Blast"
+    }
+}
+</script>
+
 <style>
     .author-banner-card {
       background: radial-gradient(561.33% 75.38% at 56.26% 52.09%, #1F3566 0%, #243F7A 50%, #1C2F5A 100%), #105293;

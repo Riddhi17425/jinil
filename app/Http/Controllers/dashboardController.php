@@ -78,11 +78,8 @@ class dashboardController extends Controller
 
     public function spareparts()
     {
-
-        $metatitle = "";
-
-        $metadescription = "";
-
+        $metatitle = "Shot Blasting Machine Spare Parts | Jinil Shot Blast";
+        $metadescription = "Get shot blasting machine spare parts from Jinil Shot Blast for reliable equipment maintenance, efficient performance, and long-term operational support.";
         $categories = Category::whereNull('deleted_at')->select('id', 'category', 'url')->get();
 
         $spareparts = SpareParts::with('category')
@@ -140,7 +137,7 @@ class dashboardController extends Controller
         ]);
 
         // Google Apps Script URL
-        $googleScriptUrl = "https://script.google.com/macros/s/AKfycbyR_q9NAXJ2ChXb39-kaC8E7BXx6h2l8PxcsOP9L25IL2yno2v2VpMTFQYsAYlc3b9gzw/exec";
+        $googleScriptUrl = "https://script.google.com/macros/s/AKfycbyx5-wlM4ZXYayiL197eV8Xh94PXIEdvGIUhLE1kBTfxvHwtSEra-kRvbQB5FCHHyHq/exec";
 
         // Send data to Google Sheet
         try {
@@ -207,11 +204,20 @@ class dashboardController extends Controller
         $metatitle       = $blogsdetail->meta_title;
         $metadescription = $blogsdetail->meta_description;
 
+        if (!empty($blogsdetail->detail_image)) {
+            $og_image = asset('public/Blogs/detail_image/' . rawurlencode($blogsdetail->detail_image));
+        } elseif (!empty($blogsdetail->front_image)) {
+            $og_image = asset('public/Blogs/front_image/' . rawurlencode($blogsdetail->front_image));
+        } else {
+            $og_image = asset('public/front/images/jinil_og.jpeg');
+        }
+
         return view('front.blogdetail', compact(
             'metatitle',
             'metadescription',
             'blogs',
-            'blogsdetail'
+            'blogsdetail',
+             'og_image'
         ));
     }
 
@@ -227,8 +233,8 @@ class dashboardController extends Controller
             ->orderBy('id', 'desc')
             ->get();
 
-        $metatitle = $author->name . ' | JINIL';
-        $metadescription = $author->description;
+        $metatitle = $author->meta_title ?: ($author->name . ' | JINIL');
+        $metadescription = $author->meta_description ?: $author->description;
 
         return view('front.author', compact(
             'author',
@@ -269,7 +275,18 @@ class dashboardController extends Controller
         $metatitle       = $product->meta_title ?? $product->title;
         $metadescription = $product->meta_description ?? $product->short_description;
 
-        return view('front.productdetials', compact('metatitle', 'metadescription', 'product', 'category', 'productIndustries'));
+        $og_image = !empty($product->detail_image)
+            ? asset('public/Product/detail_image/' . $product->detail_image)
+            : asset('public/front/images/jinil_og.jpeg');
+
+        return view('front.productdetials', compact(
+            'metatitle',
+            'metadescription',
+            'product',
+            'category',
+            'productIndustries',
+            'og_image'
+        ));
     }
 
     public function download()
@@ -322,92 +339,77 @@ class dashboardController extends Controller
 
     public function installation()
     {
-
         $metatitle = "";
-
         $metadescription = "";
-
+        $og_image = asset('public/front/images/installation.png');
         $faqs = Faq::whereNull('deleted_at')->get();
 
-        return view('front.installation', compact('metatitle', 'metadescription', 'faqs'));
-
+        return view('front.installation', compact('metatitle', 'metadescription', 'faqs', 'og_image'));
     }
 
     public function machineupgrades()
     {
-
         $metatitle = "";
-
         $metadescription = "";
+        $og_image = asset('public/front/images/machine-upgrades.png');
 
-        return view('front.machine', compact('metatitle', 'metadescription'));
-
+        return view('front.machine', compact('metatitle', 'metadescription', 'og_image'));
     }
 
     public function annualmaintenance()
     {
 
         $metatitle = "";
-
         $metadescription = "";
+        $og_image = asset('public/front/images/AMC/AMC-Services.png');
 
-        return view('front.annual-maintenance-contracts', compact('metatitle', 'metadescription'));
+        return view('front.annual-maintenance-contracts', compact('metatitle', 'metadescription', 'og_image'));
 
     }
 
     public function aftersales()
     {
-
         $metatitle = "";
-
         $metadescription = "";
-
+        $og_image = asset('public/front/images/After-Sales-Support.png');
         $faqs = Faq::whereNull('deleted_at')->get();
 
-        return view('front.after-sales', compact('metatitle', 'metadescription', 'faqs'));
-
+        return view('front.after-sales', compact('metatitle', 'metadescription', 'faqs', 'og_image'));
     }
-
-    // public function service($url)
-
-    // {
-
-    //     $service = Service::where('url', $url)->firstOrFail();
-
-    //     $metatitle       = $service->meta_title       ?? $service->title;
-
-    //     $metadescription = $service->meta_description ?? $service->short_description;
-
-    //     return view('front.service-detail', compact(
-
-    //         'service',
-
-    //         'metatitle',
-
-    //         'metadescription'
-
-    //     ));
-
-    // }
-
     public function industry($url)
-{
-    $category = IndCategory::whereNull('deleted_at')->where('url', $url)->firstOrFail();
-    $industries = Industry::whereNull('deleted_at')->where('category_id', $category->id)->get();
+    {
+        $category   = IndCategory::whereNull('deleted_at')->where('url', $url)->firstOrFail();
+        $industries = Industry::whereNull('deleted_at')->where('category_id', $category->id)->get();
 
-    $relatedIndustriesQuery = IndCategory::whereNull('deleted_at')
-        ->where('id', '!=', $category->id);
-    if (Schema::hasColumn('indcategory', 'status')) {
-        $relatedIndustriesQuery->where('status', 'Active');
+        $relatedIndustriesQuery = IndCategory::whereNull('deleted_at')
+            ->where('id', '!=', $category->id);
+        if (Schema::hasColumn('indcategory', 'status')) {
+            $relatedIndustriesQuery->where('status', 'Active');
+        }
+        $relatedIndustries = $relatedIndustriesQuery->get();
+
+        $metatitle       = $category->meta_title;
+        $metadescription = $category->meta_description;
+
+        $firstIndustry = $industries->first();
+
+        if ($firstIndustry && !empty($firstIndustry->image)) {
+            $og_image = asset('public/industryImage/' . $firstIndustry->image);
+        } elseif (!empty($category->icon_image)) {
+            $og_image = asset('public/indcategory/icon_image/' . $category->icon_image);
+        } else {
+            $og_image = asset('public/front/images/jinil_og.jpeg');
+        }
+
+        return view('front.industries', compact(
+            'category',
+            'industries',
+            'relatedIndustries',
+            'metatitle',
+            'metadescription',
+            'og_image'
+        ));
     }
-    $relatedIndustries = $relatedIndustriesQuery->get();
-
-    $metatitle = $category->meta_title;
-    $metadescription = $category->meta_description;
-
-    return view('front.industries', compact('category', 'industries', 'relatedIndustries', 'metatitle', 'metadescription'));
-}
-
     public function product($url)
     {
 
@@ -427,6 +429,16 @@ class dashboardController extends Controller
 
         $metadescription = $category->meta_description;
 
+        $categoryOgImages = [
+        'airless-shot-blasting-machines'      => 'air-operated-shot-blasting-cabinet-pressure-type-detail.webp',
+        'air-operation-blasting-machine'     => 'air-operated-shotblasting-cabinet-suction-type-detail.webp',
+        ];
+
+     $og_image = isset($categoryOgImages[$category->url])
+        ? asset('public/Product/detail_image/' . $categoryOgImages[$category->url])
+        : asset('public/front/images/jinil_og.jpeg');
+
+
         return view('front.productlisting', compact(
 
             'category',
@@ -435,7 +447,9 @@ class dashboardController extends Controller
 
             'metatitle',
 
-            'metadescription'
+            'metadescription',
+            
+            'og_image'
 
         ));
 
@@ -456,7 +470,7 @@ class dashboardController extends Controller
 
             'state'          => 'required|string',
 
-            'city'           => 'required|string',
+            'country'        => 'nullable|string|max:100',
 
             'message'        => 'nullable|string',
 
@@ -478,8 +492,6 @@ class dashboardController extends Controller
 
             'state.required'          => 'The State is required.',
 
-            'city.required'           => 'The City is required.',
-
             'simple_captcha.required' => 'The Captcha is required.',
 
             'simple_captcha.integer'  => 'The Captcha must be a number.',
@@ -497,9 +509,6 @@ class dashboardController extends Controller
             ]);
 
         }
-
-        // Catches empty input (only dial code like "+91" with no number after)
-
         if (! preg_match('/^\+\d{1,4}\d{7,}$/', $validated['full_phone'])) {
 
             return response()->json([
@@ -532,7 +541,7 @@ class dashboardController extends Controller
 
                 'state'        => $validated['state'],
 
-                'city'         => $validated['city'],
+                'country'      => $validated['country'] ?? null,
 
                 'message'      => $validated['message'] ?? null,
 
@@ -552,7 +561,7 @@ class dashboardController extends Controller
 
                 'state'        => $validated['state'],
 
-                'city'         => $validated['city'],
+                'country'      => $validated['country'] ?? '',
 
                 'message'      => $validated['message'] ?? '',
 
@@ -562,17 +571,13 @@ class dashboardController extends Controller
 
             // Google Apps Script URL
 
-            $sheetUrl = 'https://script.google.com/macros/s/AKfycbzZUy--mLkKq9XvO3GNmxSBmCzmNnMB6IdrOhcIxbCLY7orzN6Ad19Xdh4Lz4ADO3x7kA/exec';
+            $sheetUrl = 'https://script.google.com/macros/s/AKfycbwBaZKgFVECo50waF3RExxbg1UiS_ZkVwovDagR6_Q-wpTmd6TczHgmB1i66JCicQ8aew/exec';
 
             Http::timeout(30)
 
                 ->withHeaders(['Content-Type' => 'application/json'])
 
                 ->post($sheetUrl, $contactData);
-
-            // Mail::to($validated['email'])->send(new SendContactMailToUser($contactData));
-
-            // Mail::to('webdeveloper10.intelliworkz@gmail.com')->send(new SendContactMailToAdmin($contactData));
 
             return response()->json([
 
@@ -599,194 +604,95 @@ class dashboardController extends Controller
     }
 
     public function headerstore(Request $request)
+    
     {
-
         $validated = $request->validate([
-
             'name'           => 'required|string|max:255',
-
             'company_name'   => 'required|string|max:255',
-
             'full_phone'     => 'required|string',
-
             'email'          => 'required|email',
-
+            'country'        => 'nullable|string|max:255',
             'state'          => 'required|string',
-
-            'city'           => 'required|string',
-
             'message'        => 'nullable|string',
-
             'simple_captcha' => 'required|integer',
-
             'captcha_sum'    => 'required|integer',
-
         ], [
-
             'name.required'           => 'The Name is required.',
-
             'company_name.required'   => 'The Company Name is required.',
-
             'full_phone.required'     => 'The Phone Number is required.',
-
             'email.required'          => 'The Email Address is required.',
-
             'email.email'             => 'Please enter a valid Email Address.',
-
             'state.required'          => 'The State is required.',
-
-            'city.required'           => 'The City is required.',
-
             'simple_captcha.required' => 'The Captcha is required.',
-
             'simple_captcha.integer'  => 'The Captcha must be a number.',
-
         ]);
 
         if ($validated['simple_captcha'] != $validated['captcha_sum']) {
-
             return response()->json([
-
                 'status' => 'error',
-
                 'errors' => ['simple_captcha' => 'The Captcha answer is incorrect.'],
-
             ]);
-
         }
 
-        // Catches empty input (only dial code like "+91" with no number after)
-
         if (! preg_match('/^\+\d{1,4}\d{7,}$/', $validated['full_phone'])) {
-
             return response()->json([
-
                 'status' => 'error',
-
                 'errors' => ['full_phone' => ! preg_match('/^\+\d/', $validated['full_phone'])
-
                         ? 'The Phone Number is required.'
-
                         : 'Please enter a valid Phone Number.',
-
                 ],
-
             ]);
-
         }
 
         try {
-
             $contact = HeaderForm::create([
-
                 'name'         => $validated['name'],
-
                 'company_name' => $validated['company_name'],
-
                 'contact'      => $validated['full_phone'],
-
                 'email'        => $validated['email'],
-
+                'country'      => $validated['country'] ?? null,
                 'state'        => $validated['state'],
-
-                'city'         => $validated['city'],
-
                 'message'      => $validated['message'] ?? null,
-
             ]);
 
             $contactData = [
-
                 'form_type'    => 'Header Form',
-
                 'name'         => $validated['name'],
-
                 'company_name' => $validated['company_name'],
-
                 'contact'      => $validated['full_phone'],
-
                 'email'        => $validated['email'],
-
+                'country'      => $validated['country'] ?? '',
                 'state'        => $validated['state'],
-
-                'city'         => $validated['city'],
-
                 'message'      => $validated['message'] ?? '',
-
                 'date'         => now()->format('Y-m-d H:i:s'),
-
             ];
 
-            $sheetUrl = 'https://script.google.com/macros/s/AKfycbzZUy--mLkKq9XvO3GNmxSBmCzmNnMB6IdrOhcIxbCLY7orzN6Ad19Xdh4Lz4ADO3x7kA/exec';
-
-            // ✅ Google Sheet — skip if URL is empty
+            $sheetUrl = 'https://script.google.com/macros/s/AKfycbwBaZKgFVECo50waF3RExxbg1UiS_ZkVwovDagR6_Q-wpTmd6TczHgmB1i66JCicQ8aew/exec';
 
             if (! empty($sheetUrl)) {
-
                 try {
-
                     Http::timeout(30)
-
                         ->withHeaders(['Content-Type' => 'application/json'])
-
                         ->post($sheetUrl, $contactData);
-
                 } catch (\Exception $e) {
-
                     \Log::warning('Google Sheet push failed: ' . $e->getMessage());
-
-                    // Non-fatal — continue
-
                 }
-
             }
 
-            // ✅ Mail — isolated so one failure doesn't block the other
-
-            // try {
-
-            //     Mail::to($validated['email'])->send(new SendContactMailToUser($contactData));
-
-            // } catch (\Exception $e) {
-
-            //     \Log::warning('User mail failed: ' . $e->getMessage());
-
-            // }
-
-            // try {
-
-            //     Mail::to('webdeveloper10.intelliworkz@gmail.com')->send(new SendContactMailToAdmin($contactData));
-
-            // } catch (\Exception $e) {
-
-            //     \Log::warning('Admin mail failed: ' . $e->getMessage());
-
-            // }
-
             return response()->json([
-
                 'status'   => 'success',
-
                 'redirect' => route('thankyou'),
-
             ]);
 
         } catch (\Exception $e) {
-
             \Log::error('Header form error: ' . $e->getMessage());
 
             return response()->json([
-
                 'status'  => 'error',
-
                 'message' => 'Something went wrong. Please try again later.',
-
             ]);
-
         }
-
     }
-
     public function installationstore(Request $request)
     {
 
@@ -802,7 +708,7 @@ class dashboardController extends Controller
 
             'state'          => 'required|string',
 
-            'city'           => 'required|string',
+            'city' => 'nullable|string',
 
             'message'        => 'nullable|string',
 
@@ -911,34 +817,6 @@ class dashboardController extends Controller
                 }
 
             }
-
-            // SEND MAIL TO USER
-
-            //  try {
-
-            //     Mail::to($validated['email'])
-
-            //         ->send(new SendContactMailToUser($contactData));
-
-            // } catch (\Exception $e) {
-
-            //     \Log::warning('User mail failed: ' . $e->getMessage());
-
-            // }
-
-            // SEND MAIL TO ADMIN
-
-            //  try {
-
-            //     Mail::to('webdeveloper10.intelliworkz@gmail.com')
-
-            //         ->send(new SendContactMailToAdmin($contactData));
-
-            // } catch (\Exception $e) {
-
-            //     \Log::warning('Admin mail failed: ' . $e->getMessage());
-
-            // }
 
             return response()->json([
 
@@ -1067,7 +945,7 @@ class dashboardController extends Controller
 
             ]);
 
-            $sheetUrl = 'https://script.google.com/macros/s/AKfycbzZUy--mLkKq9XvO3GNmxSBmCzmNnMB6IdrOhcIxbCLY7orzN6Ad19Xdh4Lz4ADO3x7kA/exec';
+            $sheetUrl = 'https://script.google.com/macros/s/AKfycbwBaZKgFVECo50waF3RExxbg1UiS_ZkVwovDagR6_Q-wpTmd6TczHgmB1i66JCicQ8aew/exec';
 
             if (! empty($sheetUrl)) {
 
@@ -1086,26 +964,6 @@ class dashboardController extends Controller
                 }
 
             }
-
-            // try {
-
-            //     Mail::to($validated['email'])->send(new SendContactMailToUser($contactData));
-
-            // } catch (\Exception $e) {
-
-            //     \Log::warning('User mail failed: ' . $e->getMessage());
-
-            // }
-
-            // try {
-
-            //     Mail::to('webdeveloper10.intelliworkz@gmail.com')->send(new SendContactMailToAdmin($contactData));
-
-            // } catch (\Exception $e) {
-
-            //     \Log::warning('Admin mail failed: ' . $e->getMessage());
-
-            // }
 
             return response()->json([
 
@@ -1215,13 +1073,6 @@ class dashboardController extends Controller
         }
 
         try {
-
-            /* -------------------------------
-
-           STORE DATA IN DATABASE
-
-        --------------------------------*/
-
             IndustryEnquiry::create([
 
                 'industry_name' => $validated['industry_name'],
@@ -1241,12 +1092,6 @@ class dashboardController extends Controller
                 'message'       => $validated['message'] ?? null,
 
             ]);
-
-            /* -------------------------------
-
-           PREPARE DATA FOR EMAIL / SHEET
-
-        --------------------------------*/
 
             $contactData = [
 
@@ -1272,12 +1117,6 @@ class dashboardController extends Controller
 
             ];
 
-            /* -------------------------------
-
-           GOOGLE SHEET API
-
-        --------------------------------*/
-
             $sheetUrl = 'https://script.google.com/macros/s/AKfycbzZUy--mLkKq9XvO3GNmxSBmCzmNnMB6IdrOhcIxbCLY7orzN6Ad19Xdh4Lz4ADO3x7kA/exec'; // Add your Google Script URL here
 
             if (! empty($sheetUrl)) {
@@ -1297,49 +1136,6 @@ class dashboardController extends Controller
                 }
 
             }
-
-            /* -------------------------------
-
-           SEND MAIL TO USER
-
-        --------------------------------*/
-
-            // try {
-
-            //     Mail::to($validated['email'])
-
-            //         ->send(new SendContactMailToUser($contactData));
-
-            // } catch (\Exception $e) {
-
-            //     \Log::warning('User mail failed: ' . $e->getMessage());
-
-            // }
-
-            // /* -------------------------------
-
-            //   SEND MAIL TO ADMIN
-
-            // --------------------------------*/
-
-            // try {
-
-            //     Mail::to('webdeveloper10.intelliworkz@gmail.com')
-
-            //         ->send(new SendContactMailToAdmin($contactData));
-
-            // } catch (\Exception $e) {
-
-            //     \Log::warning('Admin mail failed: ' . $e->getMessage());
-
-            // }
-
-            /* -------------------------------
-
-           SUCCESS RESPONSE
-
-        --------------------------------*/
-
             return response()->json([
 
                 'status'   => 'success',
@@ -1366,10 +1162,6 @@ class dashboardController extends Controller
 
     /**
 
-     * Show the form for creating a new resource.
-
-     *
-
      * @return \Illuminate\Http\Response
 
      */
@@ -1382,10 +1174,6 @@ class dashboardController extends Controller
     }
 
     /**
-
-     * Store a newly created resource in storage.
-
-     *
 
      * @param  \Illuminate\Http\Request  $request
 
@@ -1402,10 +1190,6 @@ class dashboardController extends Controller
 
     /**
 
-     * Display the specified resource.
-
-     *
-
      * @param  int  $id
 
      * @return \Illuminate\Http\Response
@@ -1421,10 +1205,6 @@ class dashboardController extends Controller
 
     /**
 
-     * Show the form for editing the specified resource.
-
-     *
-
      * @param  int  $id
 
      * @return \Illuminate\Http\Response
@@ -1439,10 +1219,6 @@ class dashboardController extends Controller
     }
 
     /**
-
-     * Update the specified resource in storage.
-
-     *
 
      * @param  \Illuminate\Http\Request  $request
 
@@ -1460,10 +1236,6 @@ class dashboardController extends Controller
     }
 
     /**
-
-     * Remove the specified resource from storage.
-
-     *
 
      * @param  int  $id
 

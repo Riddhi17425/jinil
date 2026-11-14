@@ -141,6 +141,41 @@
                         @enderror
                     </div>
 
+                    <!-- Meta Title -->
+                    <div class="col-md-6 mb-3">
+                        <label for="meta_title" class="form-label">
+                            Meta Title
+                        </label>
+
+                        <input type="text"
+                            name="meta_title"
+                            id="meta_title"
+                            class="form-control @error('meta_title') is-invalid @enderror"
+                            value="{{ old('meta_title') }}"
+                            placeholder="Enter Meta Title">
+
+                        @error('meta_title')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <!-- Meta Description -->
+                    <div class="col-md-6 mb-3">
+                        <label for="meta_description" class="form-label">
+                            Meta Description
+                        </label>
+
+                        <textarea name="meta_description"
+                                id="meta_description"
+                                rows="4"
+                                class="form-control @error('meta_description') is-invalid @enderror"
+                                placeholder="Enter Meta Description">{{ old('meta_description') }}</textarea>
+
+                        @error('meta_description')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+
                     <!-- Main Image -->
                     <div class="col-md-4 mb-3">
                         <label for="main_image" class="form-label">

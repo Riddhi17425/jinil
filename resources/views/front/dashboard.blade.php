@@ -5087,12 +5087,11 @@
         <div class="row justify-content-between text-center text-lg-start">
 
             <div class="col-lg-3">
+    <p class="title_24">Jinil Shot Blast is a specialist Shot Blasting Machine Manufacturer and Blast Room Manufacturer serving industries across India. We design and manufacture every system in-house, from airless shot blasting machines to complete blast rooms.
+    </p>
 
-                <p class="title_24">Jinil Shot Blast is a specialist Shot Blasting Machine Manufacturer and Blast Room Manufacturer serving industries across India. We design and manufacture every system in-house, from airless shot blasting machines to complete blast rooms.
-
-                </p>
-
-            </div>
+    <a href="#" class="com_btn mt-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Request a Quote</a>
+</div>
 
 
 
@@ -6461,7 +6460,6 @@ document.querySelector("#icon").addEventListener("mouseleave", () => {
     </div>
 </section>
 
-@include('front.serviceform')
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {

@@ -6,6 +6,25 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="canonical" href="{{ url()->current() }}" />
+    @php
+        $ogType = request()->is('blogs/*') || request()->is('blogs') ? 'article' : 'website';
+    @endphp
+    <meta property="og:site_name" content="jinilshotblast">
+    <meta property="og:title" content="{{ strip_tags($metatitle ?? 'JINIL') }}" />
+    <meta property="og:description" content="{{ strip_tags($metadescription ?? '') }}" />
+    <meta property="og:image" content="{{$og_image ?? asset('public/front/images/jinil_og.jpeg')}}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:type" content="{{$ogType}}">
+    
+    <!--Twitter X Card Tags-->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ strip_tags($metatitle ?? 'JINIL') }}">
+    <meta name="twitter:description" content="{{ strip_tags($metadescription ?? '') }}">
+    <meta name="twitter:image" content="{{$og_image ?? asset('public/front/images/jinil_og.jpeg')}}">
+
+
+
 <link rel="icon" type="image/x-icon" href="{{ asset('public/front/images/favicon.png') }}">
 
 <title>{{ strip_tags($metatitle ?? 'JINIL') }}</title>
@@ -13,6 +32,12 @@
 <meta name="description" content="{{ strip_tags($metadescription ?? '') }}">
 
 <head>
+
+    @if(app()->environment('local'))
+        <meta name="robots" content="noindex, nofollow"/>
+    @else
+        <meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"/>
+    @endif
 
     <!--SCHEMAS-->
 
@@ -211,13 +236,7 @@
 
     <link rel="stylesheet" href="{{ asset('public/front/css/responsive.css') }}">
 
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-TJFBFXW6');</script>
-    <!-- End Google Tag Manager -->
+    
     
 </head>
 
@@ -253,15 +272,17 @@
 
             ->groupBy('category_id');
 
-            $indusries = DB::table('indcategory')
+            $industriesQuery = DB::table('indcategory')
+                ->select('indcategory', 'url')
+                ->whereNull('deleted_at');
 
-    ->select('indcategory','url')
+            if (Schema::hasColumn('indcategory', 'status')) {
+                $industriesQuery->where('status', 'Active');
+            }
 
-    ->whereNull('deleted_at')
-
-    ->distinct()
-
-    ->get();
+            $indusries = $industriesQuery
+                ->distinct()
+                ->get();
 
     @endphp
 

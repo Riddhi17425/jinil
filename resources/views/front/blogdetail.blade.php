@@ -127,6 +127,22 @@
                                         {{ $blogsdetail->author->name }}
                                     </a>
                                 </h4>
+
+                                @if($blogsdetail->author && $blogsdetail->author->social_media)
+                                    <a href="{{ $blogsdetail->author->social_media }}"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="linkedin-link">
+
+                                        @if($blogsdetail->author->social_media_image)
+                                            <img src="{{ asset('public/Authors/social_media_image/' . $blogsdetail->author->social_media_image) }}"
+                                                alt="{{ $blogsdetail->author->social_media_name ?? 'Social Media' }}"
+                                                style="width:18px;height:18px;object-fit:contain;">
+                                        @endif
+
+                                        <span>{{ $blogsdetail->author->social_media_name ?? 'LinkedIn' }}</span>
+                                    </a>
+                                @endif
                                 
                                 <p class="author-bio m-0 mt-2">
                                     {{ strip_tags($blogsdetail->author->description) }}

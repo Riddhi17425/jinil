@@ -5,9 +5,12 @@
 
         <div class="navi_page_child">
             <div>
-                <p class="title_24"><a href="{{ url('/') }}" class="text-585">Home</a> / <a href="#"
-                        class="text-585">{{ $category->category }}</a>
-                    / {{ $product->name }}
+                <p class="title_24">
+                    <a href="{{ url('/') }}" class="text-585">Home</a> /
+                    @if (!empty($category))
+                        <a href="{{ route('productlist', $category->url) }}" class="text-585">{{ $category->category }}</a> /
+                    @endif
+                    {{ $product->name }}
                 </p>
                 <h1 class="title_60">{{ $product->title ?? '' }}</h1>
                 <p class="mb-0">{{ $product->title_brief ?? '' }}</p>
@@ -898,6 +901,34 @@
     </section>
 @endif
 
+@php
+    $faqIntroBlocks = collect($product->faq_intro_blocks ?? [])->filter(function ($b) {
+        $t = trim(strip_tags($b['title'] ?? ''));
+        $d = trim(html_entity_decode(strip_tags($b['description'] ?? '')), " \t\n\r\0\x0B\xC2\xA0");
+        return $t !== '' || $d !== '';
+    });
+@endphp
+
+@if ($faqIntroBlocks->count() > 0)
+    <section class="mt_100">
+        <div class="container">
+            @foreach ($faqIntroBlocks as $block)
+                @if (trim(strip_tags($block['title'] ?? '')) !== '')
+                    <div class="sec_hed_top mb_40">
+                        <h2 class="title_60">{{ $block['title'] }}</h2>
+                    </div>
+                @endif
+
+                @if (trim(html_entity_decode(strip_tags($block['description'] ?? '')), " \t\n\r\0\x0B\xC2\xA0") !== '')
+                    <div class="text-center mb_40">
+                        {!! $block['description'] !!}
+                    </div>
+                @endif
+            @endforeach
+        </div>
+    </section>
+@endif
+
 @if (isset($product->faqs) && is_countable($product->faqs) && count($product->faqs) > 0)
     @php
         $faqItems = [];
@@ -938,8 +969,9 @@
         <div class="container">
             <div class="sec_hed_top mb_40">
                 <h2 class="title_60">Frequently Asked Questions</h2>
-                <div class="text-585 d-block">{!! $product->faqs_desc ??
-                    "Clear answers to common questions about Jinil's shot blasting machines, surface preparation solutions, and engineering support—helping you make informed decisions with confidence." !!}</div>
+                @if (!empty(trim(html_entity_decode(strip_tags($product->faqs_desc ?? '')), " \t\n\r\0\x0B\xC2\xA0")))
+                  <div class="text-585 d-block">{!! $product->faqs_desc !!}</div>
+                @endif
             </div>
             <div class="faq_group active">
                 @foreach ($product->faqs as $k => $v)
@@ -991,5 +1023,68 @@
 </script>
 
 
+@php
+    $productSchema = [
+        '@context' => 'https://schema.org/',
+        '@type' => 'Product',
+        'name' => $product->name ?? '',
+        'image' => asset('public/Product/detail_image/' . $product->detail_image),
+        'description' => strip_tags($metadescription ?? ($product->title_brief ?? '')),
+        'brand' => [
+            '@type' => 'Brand',
+            'name' => 'JInil Shot Blast',
+        ],
+        'aggregateRating' => [
+            '@type' => 'AggregateRating',
+            'ratingValue' => '5',
+            'bestRating' => '5',
+            'worstRating' => '4',
+            'ratingCount' => '2',
+        ],
+    ];
+@endphp
+
+<script type="application/ld+json">
+{!! json_encode($productSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
+</script>
+
+@php
+    $breadcrumbItems = [
+        [
+            '@type' => 'ListItem',
+            'position' => 1,
+            'name' => 'Home',
+            'item' => url('/'),
+        ],
+    ];
+
+    $position = 2;
+
+    if (!empty($category) && !empty($category->category)) {
+        $breadcrumbItems[] = [
+            '@type' => 'ListItem',
+            'position' => $position++,
+            'name' => $category->category,
+            'item' => route('productlist', $category->url),
+        ];
+    }
+
+    $breadcrumbItems[] = [
+        '@type' => 'ListItem',
+        'position' => $position,
+        'name' => $product->name,
+        'item' => route('productdetials', $product->url),
+    ];
+
+    $breadcrumbSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'BreadcrumbList',
+        'itemListElement' => $breadcrumbItems,
+    ];
+@endphp
+
+<script type="application/ld+json">
+{!! json_encode($breadcrumbSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
+</script>
 
 @include('layouts.frontfooter')

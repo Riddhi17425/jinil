@@ -298,6 +298,16 @@
                             Accessory</button>
                     </div>
                 </div>
+                <div class="card mb-4">
+                    <div class="card-header py-3 bg-transparent">
+                        <h6 class="mb-0 fw-bold">Title & Description</h6>
+                    </div>
+                    <div class="card-body">
+                        <div id="faq-intro-wrapper"></div>
+                        <button type="button" class="btn btn-sm btn-outline-primary mt-2" onclick="addFaqIntroRow()">Add
+                            Title & Description</button>
+                    </div>
+                </div>
 
                 <div class="card mb-4">
                     <div class="card-header py-3 bg-transparent">
@@ -377,6 +387,7 @@
             addSimpleRow('optional-features-wrapper', 'optional_features', 'Optional Feature');
             addTitleDescRow('operational-accessories-wrapper', 'operational_accessories');
             addFaqRow();
+            addFaqIntroRow();
         });
 
         function addTitleDescRow(wrapperId, fieldName) {
@@ -444,6 +455,46 @@
         <div class="col-md-1"><button type="button" class="btn btn-danger btn-sm" onclick="this.closest('.faq-row').remove()">X</button></div>
     `;
             wrapper.appendChild(row);
+        }
+
+        function addFaqIntroRow(existing = null) {
+            const wrapper = document.getElementById('faq-intro-wrapper');
+            const index = Date.now() + Math.floor(Math.random() * 1000);
+            const row = document.createElement('div');
+            row.className = 'row g-2 mt-2 faq-intro-row';
+            row.innerHTML = `
+        <div class="col-md-11">
+            <input type="text" name="faq_intro_blocks[${index}][title]" class="form-control mb-2" placeholder="Title">
+            <textarea name="faq_intro_blocks[${index}][description]" class="form-control faq-intro-editor" placeholder="Description"></textarea>
+        </div>
+        <div class="col-md-1">
+            <button type="button" class="btn btn-danger btn-sm" onclick="removeFaqIntroRow(this)">X</button>
+        </div>
+    `;
+            wrapper.appendChild(row);
+
+            row.querySelector('input').value = existing?.title ?? '';
+            const textarea = row.querySelector('textarea');
+            textarea.value = existing?.description ?? '';
+
+            $(textarea).summernote({
+                placeholder: 'Enter description here...',
+                height: 200,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'italic', 'underline', 'clear']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['insert', ['link', 'hr']],
+                    ['view', ['fullscreen', 'codeview']]
+                ]
+            });
+        }
+
+        function removeFaqIntroRow(btn) {
+            const row = btn.closest('.faq-intro-row');
+            $(row).find('.faq-intro-editor').summernote('destroy');
+            row.remove();
         }
     </script>
 @endpush
