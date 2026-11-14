@@ -5,9 +5,12 @@
 
         <div class="navi_page_child">
             <div>
-                <p class="title_24"><a href="{{ url('/') }}" class="text-585">Home</a> / <a href="#"
-                        class="text-585">{{ $category->category ?? '' }}</a>
-                    / {{ $product->name }}
+                <p class="title_24">
+                    <a href="{{ url('/') }}" class="text-585">Home</a> /
+                    @if (!empty($category))
+                        <a href="{{ route('productlist', $category->url) }}" class="text-585">{{ $category->category }}</a> /
+                    @endif
+                    {{ $product->name }}
                 </p>
                 <h1 class="title_60">{{ $product->title ?? '' }}</h1>
                 <p class="mb-0">{{ $product->title_brief ?? '' }}</p>
@@ -1045,6 +1048,43 @@
 {!! json_encode($productSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
 </script>
 
+@php
+    $breadcrumbItems = [
+        [
+            '@type' => 'ListItem',
+            'position' => 1,
+            'name' => 'Home',
+            'item' => url('/'),
+        ],
+    ];
 
+    $position = 2;
+
+    if (!empty($category) && !empty($category->category)) {
+        $breadcrumbItems[] = [
+            '@type' => 'ListItem',
+            'position' => $position++,
+            'name' => $category->category,
+            'item' => route('productlist', $category->url),
+        ];
+    }
+
+    $breadcrumbItems[] = [
+        '@type' => 'ListItem',
+        'position' => $position,
+        'name' => $product->name,
+        'item' => route('productdetials', $product->url),
+    ];
+
+    $breadcrumbSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'BreadcrumbList',
+        'itemListElement' => $breadcrumbItems,
+    ];
+@endphp
+
+<script type="application/ld+json">
+{!! json_encode($breadcrumbSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
+</script>
 
 @include('layouts.frontfooter')
