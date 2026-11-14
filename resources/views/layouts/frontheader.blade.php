@@ -20,7 +20,7 @@
 
     {
 
-      "@context": "https://schema.org",
+      "@@context": "https://schema.org",
 
       "@type": "LocalBusiness",
 
@@ -104,7 +104,7 @@
 
     {
 
-      "@context": "https://schema.org/",
+      "@@context": "https://schema.org/",
 
       "@type": "Product",
 
