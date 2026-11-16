@@ -121,4 +121,20 @@
     </div>
 </section>
 
+@php
+    $breadcrumbSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'BreadcrumbList',
+        'itemListElement' => [
+            ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => url('/')],
+            ['@type' => 'ListItem', 'position' => 2, 'name' => 'Downloads', 'item' => route('downloads')],
+        ],
+    ];
+@endphp
+
+<script type="application/ld+json">
+{!! json_encode($breadcrumbSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
+</script>
+
+
 @include('layouts.frontfooter')
