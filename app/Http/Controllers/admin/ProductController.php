@@ -104,7 +104,7 @@ class ProductController extends Controller
             $post->blast_wheels_image = $filename;
         }
         $post->save();
-        return redirect()->route('product.index')
+        return redirect()->route('product-index')
             ->with('success', 'Product created successfully');
 
     }
@@ -187,7 +187,7 @@ class ProductController extends Controller
         }
 
         $post->save();
-        return redirect()->route('product.index')->with('success', 'Product updated successfully');
+        return redirect()->route('product-index')->with('success', 'Product updated successfully');
 
     }
 
