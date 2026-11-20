@@ -49,8 +49,8 @@
 
             <!-- Product -->
             <li>
-                <a class="m-link {{ Request::routeIs('product.*') ? 'active' : '' }}"
-                   href="{{ route('product.index') }}">
+                <a class="m-link {{ Request::routeIs('product.*', 'product-index') ? 'active' : '' }}"
+                   href="{{ route('product-index') }}">
                     <i class="icofont-box fs-5"></i>
                     <span>Product</span>
                 </a>

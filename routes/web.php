@@ -153,7 +153,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('indcategory', IndCategoryController::class)
         ->except(['index']);
 
-    Route::resource('product', ProductController::class);
+    Route::get('product-list', [ProductController::class, 'index'])
+        ->name('product-index');
+
+    Route::resource('product', ProductController::class)
+        ->except(['index']);
 
     Route::resource('blog', BlogController::class);
 
