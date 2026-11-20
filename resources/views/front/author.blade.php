@@ -157,7 +157,6 @@
 
 <section class="navi_page">
     <div class="container-fluid">
-
         <div class="navi_page_child">
             <div>
                 <p class="title_24"><a href="{{ url('/') }}" class="text-585">Home</a> / About Us</p>
@@ -165,8 +164,6 @@
             </div>
 
             <a href="{{ route('contact') }}"  class="contact_circle">
-
-                <!-- circular text image -->
                 <img src="{{ asset('public/front/images/innder-header-jump.svg') }}" class="circle_text_img" alt="inner header jump">
 
                 <svg class="arrow_img" width="18" height="23" viewBox="0 0 18 23" fill="none"
@@ -186,7 +183,6 @@
 <section class="author-banner-section mb_100">
     <div class="container-fluid">
         <div class="author-banner-card">
-            <!-- Left Side Image -->
             <div class="author-image-wrapper">
                 @if($author->main_image)
                     <img src="{{ asset('public/Authors/main_image/' . $author->main_image) }}"
@@ -199,7 +195,6 @@
                 @endif
             </div>
 
-            <!-- Right Side Content -->
             <div class="author-content">
                 <h2 class="author-name">{{ $author->name }}</h2>
                 
@@ -235,7 +230,6 @@
                 @endif
             </div>
 
-            <!-- Faint background logo -->
             <img src="{{ asset('public/front/images/blogs-details-fabe.png') }}" class="author-bg-logo" alt="Jinil Logo Background">
         </div>
     </div>

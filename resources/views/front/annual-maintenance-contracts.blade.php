@@ -3,208 +3,97 @@
 'metadescription' => 'Choose Jinil AMC services for reliable maintenance, timely inspections, repairs, and improved performance of airless and air-operated shot blasting machines.',
 ])
 
-
-
 <section class="navi_page">
-
     <div class="container-fluid">
-
-
-
         <div class="navi_page_child">
-
             <div>
-
-                <p class="title_24"><a href="{{ url('/') }}" class="text-585">Home</a> / <a href="javascript::void(o)"
-
-                        class="text-585">Services</a> / Annual Maintenance Contracts</p>
+                <p class="title_24"><a href="{{ url('/') }}" class="text-585">Home</a> / <a href="javascript::void(o)" class="text-585">Services</a> / Annual Maintenance Contracts</p>
 
                 <h1 class="title_60">Annual Maintenance Contracts</h1>
 
-                <p class="mb-0">Comprehensive service agreements designed to ensure consistent machine performance, reduce unplanned downtime, and extend equipment lifecycle through structured maintenance and technical support.
-
-                </p>
-
-                
-
-            
-
+                <p class="mb-0">Comprehensive service agreements designed to ensure consistent machine performance, reduce unplanned downtime, and extend equipment lifecycle through structured maintenance and technical support.</p>
             </div>
 
-
-
             <a href="{{ route('contact') }}" class="contact_circle">
-
-
-
-                <!-- circular text image -->
-
                 <img src="{{ asset('public/front/images/innder-header-jump.svg') }}" class="circle_text_img" alt="innder header jump">
 
+                <svg class="arrow_img" width="18" height="23" viewBox="0 0 18 23" fill="none"xmlns="http://www.w3.org/2000/svg">
 
+                    <path d="M8.85653 1.15617L8.85653 20.9552L8.85653 1.15617ZM8.85653 20.9552L16.5562 13.2555L8.85653 20.9552ZM8.85653 20.9552L1.15692 13.2556L8.85653 20.9552Z" fill="#58595B" />
 
-                <svg class="arrow_img" width="18" height="23" viewBox="0 0 18 23" fill="none"
-
-                    xmlns="http://www.w3.org/2000/svg">
-
-                    <path
-
-                        d="M8.85653 1.15617L8.85653 20.9552L8.85653 1.15617ZM8.85653 20.9552L16.5562 13.2555L8.85653 20.9552ZM8.85653 20.9552L1.15692 13.2556L8.85653 20.9552Z"
-
-                        fill="#58595B" />
-
-                    <path
-
-                        d="M8.85653 1.15617L8.85653 20.9552M8.85653 20.9552L16.5562 13.2555M8.85653 20.9552L1.15692 13.2556"
-
-                        stroke="#58595B" stroke-width="2.31318" stroke-linecap="round" stroke-linejoin="round" />
-
+                    <path d="M8.85653 1.15617L8.85653 20.9552M8.85653 20.9552L16.5562 13.2555M8.85653 20.9552L1.15692 13.2556" stroke="#58595B" stroke-width="2.31318" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
-
-
-
             </a>
-
         </div>
-
-
-
     </div>
-
 </section>
 
-
-
 <section class="mb_100">
-
     <div class="container-fluid">
-
-
-
         <div class="row">
-
              <div class="col-lg-5 pe-lg-5 mb-4 mb-lg-0">
-
                 <img class=" img-fluid" src="{{ asset('public/front/images/AMC/AMC-Services.png') }}" alt="AMC Services" style="mix-blend-mode: multiply;">
-
             </div>
 
             <div class="col-lg-7">
-
                 <div>
-
                     <h4 class="mb-4 title_24">Structured Maintenance Support for Continuous Operation   </h4>
-
                     <p></p>
-
                     <p>Jinil’s Annual Maintenance Contracts (AMC) provide a proactive service framework that includes scheduled inspections, preventive maintenance visits, technical diagnostics, and performance optimization. Our service engineers follow engineering-based maintenance protocols to monitor system health, identify early signs of wear, and ensure machines operate at optimal efficiency throughout the year.</p>
-
                     <p>AMC programs help convert unpredictable repair situations into planned service cycles, improving operational reliability while protecting long-term equipment performance.</p>
-
                 </div>
-
-
 
                 <div class="mt_60">
-
                     <div class="counter ins_counter">
-
                         <div class="counter_item">
-
                             <img src="{{ asset('public/front/images/amc-Services1.png') }}" alt="AMC Services 1">
-
                             <h2 class="title_42"><span class="count" data-target="99.7">99.7</span>%</h2>
-
                             <p class="mb-0"> Average Equipment Uptime</p>
-
                         </div>
 
                         <div class="counter_item">
-
                             <img src="{{ asset('public/front/images/amc-Services2.png') }}" alt="AMC Services 2">
-
                             <h2 class="title_42">
-
                                 < <span class="count" data-target="4"> 4 </span> hrs
-
                             </h2>
-
                             <p class="mb-0">Response Time</p>
-
                         </div>
 
                         <div class="counter_item">
-
                             <img src="{{ asset('public/front/images/amc-Services3.png') }}" alt="AMC Services 3">
-
                             <h2 class="title_42"><span class="count" data-target="100">100</span>%</h2>
-
                             <p class="mb-0"> OEM Genuine Parts</p>
-
                         </div>
 
                         <div class="counter_item">
-
                             <img src="{{ asset('public/front/images/amc-Services4.png') }}" alt="AMC Services 4">
-
                             <h2 class="title_42"><span class="count" data-target="50">50</span>+</h2>
-
                             <p class="mb-0">Expert Engineers</p>
-
                         </div>
-
                     </div>
-
                 </div>
-
-
-
             </div>
-
         </div>
-
     </div>
-
 </section>
 
-
-
-
-
 <section class="mt_100">
-
     <div class="container">
-
         <div class="sec_hed_top mb_40">
-
             <p>The Jinil Installation Advantage</p>
-
             <h2 class="title_60">Why AMC Support Matters</h2>
-
         </div>
 
-
-
         <div class="row justify-content-between">
-
             <div class="col-lg-3">
-
                 <p class="title_24">Jinil’s Annual Maintenance Contract (AMC) programs provide scheduled technical oversight that helps maintain system reliability, prevent unexpected failures, and ensure consistent blasting.</p>
-
             </div>
 
-
-
             <div class="col-lg-8">
-
                 <div class="row">
-
                     <div class="col-lg-4">
-
                         <div class="blast">
-
                             <svg class="process_item_icon mb_30" width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-
                                 <path d="M62.0752 21.3361C61.7061 19.1212 60.8203 16.9831 59.5134 15.1526C59.2445 14.7761 59.2417 14.2711 59.5063 13.8914L61.7334 10.6957L60.4764 9.43652L57.2823 11.6628C56.9027 11.927 56.3986 11.9245 56.022 11.6562C54.1864 10.3487 52.0464 9.46262 49.8333 9.09387C49.3769 9.01777 49.0177 8.66277 48.9363 8.20715L48.2514 4.37402H46.4733L45.7884 8.20715C45.707 8.66277 45.3478 9.01777 44.8914 9.09387C42.6763 9.46309 40.5383 10.3489 38.708 11.6556C38.3311 11.9245 37.8262 11.9273 37.4467 11.6628L34.2519 9.43606L32.9916 10.6964L35.2184 13.8914C35.483 14.2709 35.4802 14.7761 35.2113 15.1526C33.9045 16.9829 33.0188 19.1211 32.6494 21.3361C32.5733 21.7925 32.2181 22.1517 31.7627 22.2331L27.9297 22.9179V24.7004L31.7627 25.3853C32.2181 25.4667 32.5733 25.8259 32.6494 26.2823C33.0186 28.4973 33.9044 30.6354 35.2113 32.4657C35.4802 32.8423 35.483 33.3475 35.2184 33.727L32.9916 36.922L34.2519 38.1823L37.4467 35.9556C37.8269 35.6911 38.3316 35.694 38.708 35.9628C40.5383 37.2695 42.6763 38.1553 44.8914 38.5245C45.3478 38.6006 45.707 38.9556 45.7884 39.4112L46.4733 43.2443H48.2514L48.9363 39.4112C49.0177 38.9556 49.3769 38.6006 49.8333 38.5245C52.0464 38.1556 54.1864 37.2695 56.022 35.9622C56.3988 35.6939 56.903 35.6914 57.2823 35.9556L60.4764 38.1818L61.7334 36.9226L59.5063 33.727C59.2417 33.3473 59.2445 32.8423 59.5134 32.4657C60.8202 30.6354 61.7059 28.4973 62.0752 26.2823C62.1511 25.8259 62.5063 25.4665 62.9619 25.3851L66.795 24.7003V22.9178L62.9619 22.2329C62.5063 22.1515 62.1512 21.7923 62.0752 21.3357V21.3361ZM47.3645 33.6862C41.9159 33.6862 37.4831 29.2554 37.4831 23.8093C37.4831 18.3632 41.9159 13.9325 47.3645 13.9325C52.8131 13.9325 57.2416 18.3632 57.2416 23.8093C57.2416 29.2554 52.8108 33.6862 47.3645 33.6862Z" fill="#D8EBFF"/>
 
                                 <path d="M25.7413 22.7153V22.0021C25.7413 21.4721 26.1213 21.0184 26.643 20.9251L30.6369 20.2115C30.7861 19.5175 30.9823 18.8331 31.2173 18.162H14.7539L19.307 22.7153H25.7413Z" fill="#D8EBFF"/>
@@ -222,29 +111,17 @@
                                 <path d="M27.4632 73.4068H32.4771C33.0813 73.4068 33.5712 72.9169 33.5712 72.3127C33.5712 71.7085 33.0813 71.2186 32.4771 71.2186H27.4632C26.859 71.2186 26.3691 71.7085 26.3691 72.3127C26.3691 72.9169 26.859 73.4068 27.4632 73.4068Z" fill="#105293"/>
 
                                 <path d="M68.0801 20.9251L64.086 20.2115C63.6532 18.1976 62.8493 16.257 61.7302 14.525L64.0504 11.1959C64.3532 10.7614 64.3012 10.1723 63.9271 9.79747L61.376 7.24185C61.0016 6.86638 60.4113 6.81404 59.9763 7.11716L56.6466 9.43779C54.911 8.31826 52.9691 7.51404 50.9562 7.08138L50.2427 3.08748C50.1495 2.56576 49.6957 2.18591 49.1657 2.18591H45.5559C45.0259 2.18591 44.5721 2.56576 44.4788 3.08748L43.7654 7.08138C41.7512 7.51419 39.8109 8.3181 38.0787 9.43732L34.7496 7.11716C34.3152 6.81435 33.7257 6.86623 33.3505 7.24107L30.7949 9.79669C30.4202 10.1714 30.368 10.7609 30.671 11.1958L32.9913 14.5248C32.6887 14.9931 32.4113 15.4778 32.1559 15.9737H12.1116C11.5074 15.9737 11.0176 16.4636 11.0176 17.0676V76.7197C11.0176 77.3239 11.5074 77.8137 12.1116 77.8137H47.8282C48.4324 77.8137 48.9223 77.3239 48.9223 76.7197V45.4322H49.1659C49.6959 45.4322 50.1496 45.0523 50.2429 44.5306L50.9563 40.5367C52.9693 40.104 54.9112 39.2998 56.6468 38.1803L59.9765 40.5009C60.4113 40.804 61.0015 40.7517 61.3762 40.3762L63.9273 37.8206C64.3015 37.4458 64.3535 36.8568 64.0505 36.4222L61.7304 33.0931C62.8495 31.3611 63.6535 29.4204 64.0862 27.4065L68.0802 26.6929C68.602 26.5997 68.9819 26.1459 68.9819 25.6159V22.0017C68.9819 21.4717 68.602 21.0179 68.0802 20.9247L68.0801 20.9251ZM31.216 18.162C30.981 18.8331 30.7848 19.5175 30.6355 20.2115L26.6416 20.9251C26.1199 21.0184 25.7399 21.4722 25.7399 22.0022V22.7153H19.3057L14.7526 18.162H31.2159H31.216ZM46.7341 75.6256H13.2057V68.9998H46.7341V75.6256ZM46.7341 66.8117H13.2057V19.7094L18.079 24.5828C18.2841 24.7879 18.5624 24.9033 18.8526 24.9033H25.7399V25.6164C25.7399 26.1464 26.1199 26.6001 26.6416 26.6934L30.6355 27.407C31.0685 29.4211 31.8723 31.3614 32.9915 33.0936L30.6712 36.4226C30.3682 36.8575 30.4204 37.447 30.7951 37.8217L31.3502 38.3769H25.9393C25.3351 38.3769 24.8452 38.8667 24.8452 39.4708V49.0378H17.8873C17.283 49.0378 16.7932 49.5276 16.7932 50.1317V62.1303C16.7932 62.7345 17.283 63.2243 17.8873 63.2243H42.0526C42.6568 63.2243 43.1466 62.7345 43.1466 62.1303V40.389C43.3523 40.4414 43.5582 40.4923 43.7655 40.5368L44.479 44.5308C44.5723 45.0525 45.026 45.4323 45.556 45.4323H46.7341V66.8119V66.8117ZM32.902 40.5647V61.0362H27.0334V40.5647H32.902ZM24.8454 51.2256V61.0362H18.9815V51.2256H24.8454ZM35.0901 61.0362V40.2642L38.079 38.1811C38.9877 38.7683 39.9548 39.2661 40.9587 39.6715V61.0362H35.0901ZM66.7937 24.7006L62.9605 25.3854C62.5049 25.4668 62.1499 25.8261 62.0738 26.2826C61.7048 28.4975 60.819 30.6356 59.5121 32.4661C59.2432 32.8426 59.2404 33.3476 59.5049 33.7273L61.7321 36.9229L60.4751 38.1822L57.281 35.9559C56.9015 35.6915 56.3974 35.694 56.0207 35.9625C54.1851 37.27 52.0451 38.1561 49.832 38.5248C49.3755 38.6009 49.0163 38.9559 48.9349 39.4115L48.2501 43.2447H46.472L45.7871 39.4115C45.7057 38.9559 45.3465 38.6009 44.8901 38.5248C42.6749 38.1556 40.537 37.2698 38.7066 35.9631C38.3302 35.6944 37.8254 35.6914 37.4454 35.9559L34.2505 38.1826L32.9902 36.9223L35.2171 33.7273C35.4816 33.3478 35.4788 32.8426 35.2099 32.4661C33.9032 30.6358 33.0174 28.4976 32.648 26.2826C32.572 25.8262 32.2168 25.467 31.7613 25.3856L27.9284 24.7008V22.9183L31.7613 22.2334C32.2168 22.152 32.572 21.7928 32.648 21.3364C33.0173 19.1214 33.903 16.9833 35.2099 15.1529C35.4788 14.7764 35.4816 14.2712 35.2171 13.8917L32.9902 10.6967L34.2505 9.43638L37.4454 11.6631C37.8251 11.9276 38.3298 11.9248 38.7066 11.6559C40.537 10.3492 42.6749 9.46341 44.8901 9.09419C45.3465 9.0181 45.7057 8.6631 45.7871 8.20748L46.472 4.37435H48.2501L48.9349 8.20748C49.0163 8.6631 49.3755 9.0181 49.832 9.09419C52.0451 9.4631 54.1851 10.3492 56.0207 11.6565C56.3973 11.9247 56.9015 11.9272 57.281 11.6631L60.4751 9.43685L61.7321 10.6961L59.5049 13.8917C59.2404 14.2714 59.2432 14.7764 59.5121 15.1529C60.8188 16.9833 61.7046 19.1214 62.0738 21.3364C62.1498 21.7928 62.5049 22.1522 62.9605 22.2336L66.7937 22.9184V24.7009V24.7006Z" fill="#105293"/>
-
                             </svg>
-
-
 
                             <h4 class="title_24">Consistent Machine Performance</h4>
 
-                            <p>Scheduled maintenance inspections ensure critical components such as blast wheels, liners, abrasive recovery systems, and dust collectors operate at optimal performance levels.
-
-                            </p>
-
-
-
+                            <p>Scheduled maintenance inspections ensure critical components such as blast wheels, liners, abrasive recovery systems, and dust collectors operate at optimal performance levels.</p>
                         </div>
-
                     </div>
 
                     <div class="col-lg-4">
-
                         <div class="blast">
-
                             <svg  class="process_item_icon mb_30" width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-
                                 <path d="M53.0799 33.6376H47.1582V42.5535V48.4885H53.0799V33.6376Z" fill="#D8EBFF"/>
 
                                 <path d="M60.8807 28.5441H54.959V32.6986V48.4884H60.8807V28.5441Z" fill="#D8EBFF"/>
@@ -268,27 +145,16 @@
                                 <path d="M31.7757 37.6457C33.0505 37.6457 34.0877 36.6085 34.0877 35.3339V21.5992C34.0877 20.3243 33.0505 19.2871 31.7757 19.2871H30.9099C30.4452 15.5012 27.2121 12.5593 23.3027 12.5593C19.3934 12.5593 16.1601 15.5012 15.6954 19.2871H14.8296C13.5548 19.2871 12.5176 20.3243 12.5176 21.5992V35.3339C12.5176 36.6087 13.5548 37.6457 14.8296 37.6457H31.7755H31.7757ZM23.3027 14.4371C26.1749 14.4371 28.5641 16.5403 29.0141 19.2871H17.5912C18.0413 16.5403 20.4305 14.4371 23.3027 14.4371ZM14.3957 35.3339V21.5992C14.3957 21.3639 14.5943 21.1651 14.8296 21.1651H31.7755C32.0109 21.1651 32.2095 21.3639 32.2095 21.5992V35.3339C32.2095 35.5732 32.0148 35.7679 31.7755 35.7679H14.8298C14.5945 35.7679 14.3957 35.5692 14.3957 35.3339Z" fill="#105293"/>
 
                                 <path d="M39.8902 60.0175H46.5427C47.0613 60.0175 47.4818 59.5971 47.4818 59.0786C47.4818 58.56 47.0615 58.1396 46.5427 58.1396H39.8902C39.3716 58.1396 38.9512 58.56 38.9512 59.0786C38.9512 59.5971 39.3715 60.0175 39.8902 60.0175Z" fill="#105293"/>
-
                             </svg>
 
-
-
                             <h4 class="title_24">Reduced Unplanned Downtime</h4>
-
                             <p>Preventive inspections and early fault detection help identify wear or operational issues before they cause unexpected production interruptions.</p>
-
-
-
                         </div>
-
                     </div>
 
                     <div class="col-lg-4">
-
                         <div class="blast">
-
-                                <svg class="process_item_icon mb_30" width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-
+                            <svg class="process_item_icon mb_30" width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M64.8927 14.664C65.068 14.4131 65.0384 14.0868 64.8214 13.8698L62.6998 11.7482C62.4828 11.5312 62.1564 11.502 61.9064 11.6765L57.5473 14.7154C56.485 15.4531 55.1528 15.4756 54.0691 14.7753C51.4233 13.0662 48.5278 11.8664 45.463 11.2093C44.1995 10.9359 43.2747 9.97731 43.047 8.70684L42.1123 3.47996C42.0581 3.17246 41.812 2.96777 41.4994 2.96777H38.5009C38.1883 2.96777 37.9422 3.17246 37.8884 3.47715L36.9534 8.70637C36.7256 9.97715 35.8009 10.9359 34.5398 11.2089C31.4728 11.8664 28.5772 13.0662 25.9312 14.7754C24.8478 15.4757 23.5156 15.4534 22.4548 14.7167L18.0948 11.6771C17.8439 11.5018 17.5177 11.5314 17.3006 11.7482L15.1789 13.87C14.9619 14.087 14.9325 14.4132 15.1072 14.6636L18.1461 19.0225C18.8839 20.085 18.9064 21.4171 18.2058 22.5009C16.4984 25.1397 15.2987 28.0336 14.6398 31.1028C14.3802 32.3439 13.3995 33.2962 12.1431 33.5226L6.91047 34.4575C6.60359 34.5118 6.39844 34.7581 6.39844 35.0704V38.0689C6.39844 38.3748 6.61078 38.6272 6.91484 38.6826L12.1403 39.6118C13.398 39.8384 14.3784 40.7901 14.6409 42.037C15.2987 45.1014 16.4984 47.9953 18.2055 50.6336C18.907 51.7265 18.883 53.0587 18.145 54.114L15.1077 58.4709C14.93 58.7268 14.958 59.0487 15.1789 59.2695L17.3005 61.3911C17.5175 61.6081 17.8436 61.6375 18.0939 61.4628L22.453 58.4239C23.5136 57.6801 24.8494 57.6575 25.9362 58.3673C26.1534 58.5064 26.3737 58.6417 26.595 58.7748C27.2822 57.7193 28.4052 56.9734 29.7072 56.794C29.6878 55.4087 29.0823 54.2498 27.9503 53.4398C22.5119 49.5476 19.2652 43.2403 19.2652 36.5678C19.2652 25.1357 28.5678 15.8351 40.0023 15.8351C51.4369 15.8351 60.735 25.1357 60.735 36.5678C60.735 40.8334 59.4244 44.9636 57.0069 48.4284C58.8006 48.689 60.5144 49.2864 62.0722 50.1942C63.6334 47.6718 64.7383 44.9304 65.3605 42.0325C65.6219 40.7904 66.6023 39.8387 67.8572 39.6126L73.0908 38.682C73.3919 38.6286 73.6019 38.3767 73.6019 38.0692V35.0707C73.6019 34.7584 73.3967 34.5121 73.0914 34.4581L67.8591 33.5232C66.6009 33.2965 65.6203 32.3443 65.3592 31.0968C64.7017 28.034 63.502 25.1401 61.7948 22.5017C61.0941 21.4173 61.1166 20.0853 61.853 19.0247L64.8927 14.6645V14.664Z" fill="#D8EBFF"/>
 
                                 <path d="M59.6025 57.4129L52.8078 64.8968L50.178 62.2146C49.695 61.7219 48.9042 61.7141 48.4117 62.1971C47.9192 62.68 47.9113 63.4708 48.3942 63.9633L51.9508 67.5907C52.1859 67.8305 52.5073 67.9652 52.8427 67.9652C52.8506 67.9652 52.8586 67.9652 52.8666 67.965C53.2103 67.9585 53.5363 67.8104 53.7673 67.5558L61.4519 59.0918C61.9155 58.581 61.8775 57.7911 61.3667 57.3274C60.8561 56.8638 60.0663 56.9019 59.6023 57.4125L59.6025 57.4129Z" fill="#105293"/>
@@ -298,295 +164,134 @@
                                 <path d="M46.2334 36.5673C46.2334 35.8775 45.6741 35.3183 44.9843 35.3183H41.247L41.2505 28.972C41.2509 28.2822 40.6921 27.7226 40.0023 27.7222H40.0015C39.312 27.7222 38.7529 28.2809 38.7524 28.9704L38.748 36.5664C38.7479 36.8978 38.8793 37.2156 39.1137 37.4501C39.3479 37.6845 39.6657 37.8162 39.9971 37.8162H44.9843C45.6741 37.8162 46.2334 37.257 46.2334 36.5672V36.5673Z" fill="#105293"/>
 
                                 <path d="M53.697 36.5673C53.697 29.0134 47.5535 22.8679 40.0021 22.8679C32.4507 22.8679 26.3027 29.0134 26.3027 36.5673C26.3027 44.1212 32.4482 50.2665 40.0021 50.2665C47.556 50.2665 53.697 44.121 53.697 36.5673ZM28.8009 36.5673C28.8009 30.3909 33.8257 25.366 40.0021 25.366C46.1785 25.366 51.199 30.3909 51.199 36.5673C51.199 42.7437 46.1762 47.7685 40.0021 47.7685C33.828 47.7685 28.8009 42.7437 28.8009 36.5673Z" fill="#105293"/>
-
-                                </svg>
-
-                                 
-
-
-
-
+                            </svg>
 
                             <h4 class="title_24">Extended Equipment Lifecycle</h4>
 
                             <p>Routine servicing and timely replacement of wear parts prevent premature damage to major machine assemblies and structural components.</p>
-
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-
     </div>
-
 </section>
 
-
-
-<!-- <section class="mt_100 mb_100">
-
-    <div class="container">
-
-        <div class="d-flex justify-content-center">
-
-            <img class="img-fluid gif_video" src="{{ asset('public/front/images/India-leading.gif') }}" alt="India leading">
-
-        </div>
-
-    </div>
-
-</section> -->
-
-
-
 <section class="mt_100 mb_100">
-
     <div class="container-fluid">
-
         <div class="row">
-
             <div class="col-lg-4 pe-lg-5">
-
                 <p class="mb-0">Annual Maintenance Contracts</p>
-
                 <h2 class="title_60 mb_29">AMC Service Scope</h2>
-
                 <p class="title_24">From scheduled inspections to emergency technical support, our AMC programs ensure complete operational support for your shot blasting equipment.</p>
-
             </div>
-
-
 
             <div class="col-lg-8 service_Scope_card">
-
                 <div class="row">
-
                     <div class="col-md-6 col-lg-4">
-
                         <div class="service_Scope">
-
                             <h3 class="title_42 mb-3">01</h3>
-
                             <p class="title_24 mb-2">Technical Support (On-Site / Remote)</p>
-
                             <p class="mb-0">Factory-trained engineers provide troubleshooting assistance, operational diagnostics, and remote monitoring support to resolve technical issues.</p>
-
                         </div>
-
                     </div>
 
-
-
                     <div class="col-md-6 col-lg-4">
-
                         <div class="service_Scope">
-
                             <h3 class="title_42 mb-3">02</h3>
-
                             <p class="title_24 mb-2">Spare Parts Supply & Replacement</p>
-
                             <p class="mb-0">Access to genuine OEM spare parts with fast logistics support ensures component compatibility, reliable performance.</p>
-
                         </div>
-
                     </div>
 
-
-
                     <div class="col-md-6 col-lg-4">
-
                         <div class="service_Scope">
-
                             <h3 class="title_42 mb-3">03</h3>
-
                             <p class="title_24 mb-2">Scheduled Preventive Maintenance</p>
-
                             <p  class="mb-0">Periodic inspections, calibration, lubrication, and component checks ensure equipment health is maintained according to recommended service intervals.
-
                             </p>
-
                         </div>
-
                     </div>
 
-
-
                     <div class="col-md-6 col-lg-4">
-
                         <div class="service_Scope">
-
                             <h3 class="title_42 mb-3">04</h3>
-
-
-
                             <p class="title_24 mb-2">Operational Troubleshooting</p>
-
                             <p class="mb-0">Process optimization support addressing abrasive flow issues, blast pattern inconsistencies, and performance degradation through engineering analysis.</p>
-
                         </div>
-
                     </div>
 
-
-
                     <div class="col-md-6 col-lg-4">
-
                         <div class="service_Scope">
-
                             <h3 class="title_42 mb-3">05</h3>
-
                             <p class="title_24 mb-2">Emergency Support Services</p>
-
                             <p class="mb-0">Priority response support for urgent production situations with rapid diagnostics and technical intervention to restore operational continuity.</p>
-
                         </div>
-
                     </div>
 
                     <div class="col-md-6 col-lg-4">
-
                         <div class="service_Scope">
-
                             <h3 class="title_42 mb-3">06</h3>
-
-
-
                             <p class="title_24 mb-2">Breakdown Assistance</p>
-
                             <p class="mb-0">In case of unexpected failures, technical teams provide immediate troubleshooting and corrective service to minimize downtime duration.</p>
-
                         </div>
-
                     </div>
-
-
-
                 </div>
-
             </div>
-
         </div>
-
     </div>
-
     </div>
-
 </section>
-
-
-
-
 
 <section class="mt_100 mb_100">
-
     <div class="container">
-
         <div class="sec_hed_top">
-
             <p>Structured Maintenance for Reliable Machine Performance</p>
-
             <h2 class="title_60">The Value of Structured Maintenance</h2>   
-
             <span class="d-block">Jinil’s AMC programs provide support for shot blasting systems through scheduled maintenance, technical inspections, and rapid service assistance.</span> 
-
         </div>
-
-
 
         <div class="inve_Pro mt_80">
-
             <div class="row">
-
                 <div class="col-lg-6">
-
                     <div class="inve_Pro_card">
-
                         <img class="img-fluid" src="{{ asset('public/front/images/AMC/Eliminated-Unplanned-Downtime.png') }}" alt="Eliminated Unplanned Downtime">
-
                         <h4 class="title_24">Eliminated Unplanned Downtime</h4>
-
-                        <p>  Regular service visits and preventive diagnostics reduce the
-
-                risk of sudden equipment failures that disrupt production
-
-                schedules.</p>
-
+                        <p>  Regular service visits and preventive diagnostics reduce the risk of sudden equipment failures that disrupt production schedules.</p>
                         <hr>
-
                     </div>
-
                 </div>
 
-
-
                 <div class="col-lg-6">
-
                     <div class="inve_Pro_card">
-
                         <img class="img-fluid" src="{{ asset('public/front/images/AMC/Lower-Total-Operating-Costs.png') }}" alt="Consistent Surface Preparation Performance">
-
                         <h4 class="title_24">Lower Total Operating Costs</h4>
-
-                        <p> Planned maintenance and timely wear part replacement prevent
-
-                costly secondary damage and emergency repair expenses.</p>
-
+                        <p> Planned maintenance and timely wear part replacement prevent costly secondary damage and emergency repair expenses.</p>
                         <hr>
-
                     </div>
-
                 </div>
 
-
-
                 <div class="col-lg-6">
-
                     <div class="inve_Pro_card">
-
                         <img class="img-fluid" src="{{ asset('public/front/images/AMC/Predictable-Maintenance-Planning.png') }}" alt="Predictable Operating Costs">
-
                         <h4 class="title_24">Predictable Maintenance Planning</h4>
-
-                        <p>Scheduled service intervals allow better coordination of
-
-                manpower, spare parts, and production shutdown windows.</p>
-
+                        <p>Scheduled service intervals allow better coordination of manpower, spare parts, and production shutdown windows.</p>
                         <hr>
-
                     </div>
-
                 </div>
-
-
 
                 <div class="col-lg-6">
-
                     <div class="inve_Pro_card">
-
                         <img class="img-fluid" src="{{ asset('public/front/images/AMC/Long-Term-Equipment-Reliability.png') }}" alt="Extended Equipment Lifecycle">
-
                         <h4 class="title_24">Long-Term Equipment Reliability</h4>
-
                         <p>Continuous monitoring and preventive care maintain machine efficiency, ensuring stable performance throughout the equipment lifecycle.</p>
-
                         <hr>
-
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-
     </div>
-
 </section>
-
 
 @php
     $breadcrumbSchema = [
@@ -602,7 +307,5 @@
 <script type="application/ld+json">
 {!! json_encode($breadcrumbSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
 </script>
-
-
 
 @include('layouts.frontfooter')

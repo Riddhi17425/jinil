@@ -163,7 +163,7 @@ $indusries = DB::table('indcategory')
 
                                 <!--</a>-->
 
-                                <a href="{{ url('product-details/'.$product->url) }}">
+                                <a href="{{ url('product/'.$product->url) }}">
 
                                     {{ $product->name }}
 

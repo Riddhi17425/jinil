@@ -300,7 +300,7 @@
                                     @endphp
                                     <li class="has-submenu {{ $prods->isNotEmpty() ? 'has-children' : '' }}">
 
-                                        <a href="{{ url('products/' . $val->url) }}" class="category-menu-link">
+                                        <a href="{{ url('category/' . $val->url) }}" class="category-menu-link">
 
                                             <span>{{ $val->category }}</span>
 

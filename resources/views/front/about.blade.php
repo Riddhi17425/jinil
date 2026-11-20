@@ -6,39 +6,28 @@
         <div class="navi_page_child">
             <div>
                 <p class="title_24"><a href="{{ url('/') }}" class="text-585">Home</a> / About Us</p>
-                <h1 class="title_60">Engineering Advanced Surface Preparation Systems for Modern Industry
-</h1>
+                <h1 class="title_60">Engineering Advanced Surface Preparation Systems for Modern Industry</h1>
                 <p>Precision-driven, performance-focused, and built for demanding production environments, Jinil delivers high-efficiency shot blasting and surface preparation systems engineered for durability and long-term operational excellence.</p>
                 <p>We design and manufacture industrial-grade surface treatment solutions that power heavy engineering, automotive, fabrication, foundry, and infrastructure sectors. Every system is developed with a deep understanding of production workflows, throughput requirements, and surface finishing precision.
                 </p>
             </div>
 
             <a href="{{ route('contact') }}"  class="contact_circle">
-
-                <!-- circular text image -->
                 <img src="{{ asset('public/front/images/innder-header-jump.svg') }}" class="circle_text_img" alt="inner header jump">
 
                 <svg class="arrow_img" width="18" height="23" viewBox="0 0 18 23" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M8.85653 1.15617L8.85653 20.9552L8.85653 1.15617ZM8.85653 20.9552L16.5562 13.2555L8.85653 20.9552ZM8.85653 20.9552L1.15692 13.2556L8.85653 20.9552Z"
-                        fill="#58595B" />
-                    <path
-                        d="M8.85653 1.15617L8.85653 20.9552M8.85653 20.9552L16.5562 13.2555M8.85653 20.9552L1.15692 13.2556"
-                        stroke="#58595B" stroke-width="2.31318" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M8.85653 1.15617L8.85653 20.9552L8.85653 1.15617ZM8.85653 20.9552L16.5562 13.2555L8.85653 20.9552ZM8.85653 20.9552L1.15692 13.2556L8.85653 20.9552Z" fill="#58595B" />
+                    <path d="M8.85653 1.15617L8.85653 20.9552M8.85653 20.9552L16.5562 13.2555M8.85653 20.9552L1.15692 13.2556" stroke="#58595B" stroke-width="2.31318" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
-
             </a>
         </div>
-
     </div>
 </section>
 
 <section class="mb_100">
     <div class="container-fluid">
-
         <div class="row">
-
             <div class="col-lg-5 mb-4 mb-lg-0">
                 <img style=" mix-blend-mode: multiply;" class=" img-fluid" src="{{ asset('public/front/images/about-engineered.png') }}"
                     alt="about engineered">
@@ -46,19 +35,10 @@
 
             <div class="col-lg-7 ps-lg-5">
                 <div>
-                    <h4 class="mb-3 title_42 text-111">Engineering Surface Integrity for Demanding Industries
-
-                    </h4>
-                    <p>Jinil designs advanced shot blasting machines and industrial surface preparation systems built for high-performance manufacturing environments. Our solutions support industries where precision, durability, and operational reliability are critical.
-                    
-
-                    </p>
-                  
+                    <h4 class="mb-3 title_42 text-111">Engineering Surface Integrity for Demanding Industries </h4>
+                    <p>Jinil designs advanced shot blasting machines and industrial surface preparation systems built for high-performance manufacturing environments. Our solutions support industries where precision, durability, and operational reliability are critical. </p>
                     <p>
-                    Our approach is process-driven. Each solution is configured around the client’s workflow, considering component geometry, throughput requirements, automation integration, and plant layout, ensuring optimized surface preparation and production continuity.
-                    </p>
-                    
-                   
+                    Our approach is process-driven. Each solution is configured around the client’s workflow, considering component geometry, throughput requirements, automation integration, and plant layout, ensuring optimized surface preparation and production continuity. </p>
                 </div>
 
                 <div class="mt_60">
@@ -71,8 +51,7 @@
                         <div class="counter_item">
                             <img src="{{ asset('public/front/images/counter2.png') }}" alt="counter2">
                             <h2 class="title_42"><span class="count" data-target="30">0</span>+</h2>
-                            <p class="mb-0">Years of Engineering Expertise
-</p>
+                            <p class="mb-0">Years of Engineering Expertise</p>
                         </div>
                         <div class="counter_item">
                             <img src="{{ asset('public/front/images/counter3.png') }}" alt="counter3">
@@ -86,28 +65,21 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-
-
         </div>
     </div>
 </section>
 
-
 <section class="mt_100">
     <div class="container">
         <div class="sec_hed_top mb_40">
-            <p>Engineered for Reliability. Built for Industrial Performance.
-</p>
-            <h2 class="title_60">The Jinil Engineering Advantage
-</h2>
+            <p>Engineered for Reliability. Built for Industrial Performance.</p>
+            <h2 class="title_60">The Jinil Engineering Advantage</h2>
         </div>
 
         <div class="row justify-content-between text-center text-lg-start">
             <div class="col-lg-3 mb-3 mb-lg-0">
-                <p class="title_24"> We deliver high-performance shot blasting systems designed to enhance productivity, consistency, and long-term operational reliability.
-</p>
+                <p class="title_24"> We deliver high-performance shot blasting systems designed to enhance productivity, consistency, and long-term operational reliability.</p>
             </div>
 
             <div class="col-lg-8">
@@ -142,11 +114,8 @@
                                     fill="#105293" />
                             </svg>
 
-                            <h4 class="title_24">Built-to-Last Engineering
-</h4>
-                            <p>Heavy-duty construction, sturdy materials, and A-grade parts ensure extended service life and stable performance.
-</p>
-
+                            <h4 class="title_24">Built-to-Last Engineering</h4>
+                            <p>Heavy-duty construction, sturdy materials, and A-grade parts ensure extended service life and stable performance.</p>
                         </div>
                     </div>
                     <div class="col-lg-4 mb-3 mb-lg-0">
@@ -200,11 +169,8 @@
                                     fill="#105293" />
                             </svg>
 
-                            <h4 class="title_24">Process-Driven Solutions
-</h4>
-                            <p>We engineer around your manufacturing workflow according to component geometry, abrasive media, throughput capacity, and automation integration.
-</p>
-
+                            <h4 class="title_24">Process-Driven Solutions</h4>
+                            <p>We engineer around your manufacturing workflow according to component geometry, abrasive media, throughput capacity, and automation integration.</p>
                         </div>
                     </div>
                     <div class="col-lg-4 mb-3 mb-lg-0">
@@ -235,10 +201,8 @@
                             </svg>
 
 
-                            <h4 class="title_24">End-to-End Support
-</h4>
-                            <p>From design and installation to commissioning, training, spare parts, and performance upgrades, we offer complete lifecycle support.
-</p>
+                            <h4 class="title_24">End-to-End Support</h4>
+                            <p>From design and installation to commissioning, training, spare parts, and performance upgrades, we offer complete lifecycle support.</p>
                         </div>
                     </div>
                 </div>
@@ -247,45 +211,30 @@
     </div>
 </section>
 
-<!-- <section class="mt_100">
-    <div class="container">
-        <div class="d-flex justify-content-center">
-            <img class="img-fluid gif_video" src="{{ asset('public/front/images/India-leading.gif') }}" alt="india leading">
-        </div>
-    </div>
-</section> -->
-
 <section class="mt_60">
     <div class="container">
         <div class="sec_hed_top mb_40">
-            <p>For Precision Surface Preparation Across Industries
-</p>
-            <h2 class="title_60">Trusted by Performance-Driven Manufacturers
-</h2>
+            <p>For Precision Surface Preparation Across Industries</p>
+            <h2 class="title_60">Trusted by Performance-Driven Manufacturers</h2>
         </div>
 
         <div class="row justify-content-between text-center text-lg-start">
             <div class="col-lg-3  mb-3 mb-lg-0">
-                <p class="title_24 mb-0">We support manufacturers across different industrial sectors with reliable, high-performance shot blasting and surface preparation systems.
-</p>
+                <p class="title_24 mb-0">We support manufacturers across different industrial sectors with reliable, high-performance shot blasting and surface preparation systems.</p>
             </div>
 
             <div class="col-lg-8">
                 <div class="row">
                     <div class="col-lg-4 mb-3 mb-lg-0">
                         <div class="blast">
-                            <h4 class="title_24">Certified Quality & Manufacturing Standards
-</h4>
-                            <p class="mb-0">All systems are manufactured under strict quality control processes aligned with internationally recognized standards.
-</p>
+                            <h4 class="title_24">Certified Quality & Manufacturing Standards</h4>
+                            <p class="mb-0">All systems are manufactured under strict quality control processes aligned with internationally recognized standards.</p>
                         </div>
                     </div>
                     <div class="col-lg-4 mb-3 mb-lg-0">
                         <div class="blast">
-                            <h4 class="title_24">Pan-India Technical Support Network
-</h4>
-                            <p class="mb-0">Our service team provides responsive support across major industrial regions, minimizing downtime and ensuring stable operation.
-</p>
+                            <h4 class="title_24">Pan-India Technical Support Network</h4>
+                            <p class="mb-0">Our service team provides responsive support across major industrial regions, minimizing downtime and ensuring stable operation.</p>
                         </div>
                     </div>
                     <div class="col-lg-4 mb-3 mb-lg-0">
@@ -305,78 +254,46 @@
 <section class="mt_100">
     <div class="container-fluid">
         <div class="sec_hed_top mb_40 text-center text-lg-start">
-            <p>For Precision Surface Preparation Leadership
-</p>
-            <h2 class="title_60">Leadership Perspective
- </h2>
-            <span class="text-585 mb-2 d-block">At Jinil, our strength lies in a team of experienced engineers, technicians, and industry professionals dedicated to delivering reliable industrial surface preparation systems. With deep expertise in shot blasting technology and material handling integration, we design, manufacture, and support equipment that meets demanding production and quality standards.
-</span>
+            <p>For Precision Surface Preparation Leadership</p>
+            <h2 class="title_60">Leadership Perspective</h2>
+            <span class="text-585 mb-2 d-block">At Jinil, our strength lies in a team of experienced engineers, technicians, and industry professionals dedicated to delivering reliable industrial surface preparation systems. With deep expertise in shot blasting technology and material handling integration, we design, manufacture, and support equipment that meets demanding production and quality standards.</span>
 
-<span class="text-585 mb-4 d-block">
-    Our leadership philosophy is rooted in engineering integrity, process optimization, and long-term manufacturing performance. Every solution reflects a commitment to durability, operational stability, and measurable productivity gains.
-
-</span>
+            <span class="text-585 mb-4 d-block">
+                Our leadership philosophy is rooted in engineering integrity, process optimization, and long-term manufacturing performance. Every solution reflects a commitment to durability, operational stability, and measurable productivity gains.
+            </span>
         </div>
 
         <div class="row text-center text-lg-start">
             <div class="col-lg-6 pe-lg-5">
-                <h4 class="title_34">Founder. Engineer. Industry Leader.
-</h4>
-                <p>With decades of experience in industrial machinery and surface preparation systems, Mr. Nilesh Todi, Executive Director  has played a pivotal role in shaping Jinil into a performance-driven engineering company. His hands-on technical background and focus on process efficiency have strengthened Jinil’s position across fabrication, foundry, automotive, and heavy engineering sectors.
-</p>
-
-                <p>Under his leadership, Jinil continues to advance customer-focused surface preparation solutions built around quality, reliability, and long-term industrial performance. His vision centers on building robust engineering systems that help manufacturers enhance productivity while maintaining stringent safety and operational standards.
-</p>
-
+                <h4 class="title_34">Founder. Engineer. Industry Leader.</h4>
+                <p>With decades of experience in industrial machinery and surface preparation systems, Mr. Nilesh Todi, Executive Director  has played a pivotal role in shaping Jinil into a performance-driven engineering company. His hands-on technical background and focus on process efficiency have strengthened Jinil’s position across fabrication, foundry, automotive, and heavy engineering sectors.</p>
+                <p>Under his leadership, Jinil continues to advance customer-focused surface preparation solutions built around quality, reliability, and long-term industrial performance. His vision centers on building robust engineering systems that help manufacturers enhance productivity while maintaining stringent safety and operational standards.</p>
             </div>
 
             <div class="col-lg-6">
-                <!-- <img class=" img-fluid" src="{{ asset('public/front/images/managing-director.png') }}" alt=""> -->
                 <section class="md_section">
-
                     <div class="container">
                         <div class="md_wrapper">
-                            <!-- IMAGE -->
-
                             <div class="md_img">
                                 <img src="{{ asset('public/front/images/managing-director.png') }}" alt="managing director">
                             </div>
-
-                            <!-- QUOTE BOX -->
-
                             <div class="md_quote">
                                 <span><svg width="50" height="40" viewBox="0 0 57 40" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M52.2936 0L53.1651 2.2798C51.6544 2.97065 50.1437 3.86874 48.633 4.97409C47.1223 6.07945 45.7278 7.25389 44.4495 8.49741C43.1713 9.74093 42.1835 11.0535 41.4862 12.4352L43.4037 14.3005H44.9725C47.4128 14.3005 49.5046 14.9223 51.2477 16.1658C53.107 17.2712 54.5015 18.791 55.4312 20.7254C56.4771 22.6598 57 24.8705 57 27.3575C57 29.8446 56.419 32.0553 55.2569 33.9896C54.211 35.7858 52.7584 37.2366 50.8991 38.342C49.156 39.4473 47.0642 40 44.6239 40C42.2997 40 40.208 39.4473 38.3486 38.342C36.4893 37.0984 35.0367 35.5095 33.9908 33.5751C32.945 31.6408 32.422 29.361 32.422 26.7358C32.422 23.8342 32.8869 21.0708 33.8165 18.4456C34.8624 15.6822 36.2569 13.1952 38 10.9845C39.7431 8.63558 41.8349 6.56304 44.2752 4.76684C46.7156 2.83247 49.3884 1.24352 52.2936 0ZM19.8716 0L20.7431 2.2798C19.2324 2.97065 17.7217 3.86874 16.211 4.97409C14.7003 6.07945 13.3058 7.25389 12.0275 8.49741C10.7492 9.74093 9.76147 11.0535 9.06422 12.4352L10.9816 14.3005H12.5505C14.9908 14.3005 17.0826 14.9223 18.8257 16.1658C20.685 17.2712 22.0795 18.791 23.0092 20.7254C24.055 22.6598 24.578 24.8705 24.578 27.3575C24.578 29.8446 23.9969 32.0553 22.8349 33.9896C21.789 35.7858 20.3364 37.2366 18.4771 38.342C16.7339 39.4473 14.6422 40 12.2018 40C9.87768 40 7.78593 39.4473 5.92661 38.342C4.06728 37.0984 2.61468 35.5095 1.56881 33.5751C0.522936 31.6408 0 29.361 0 26.7358C0 23.8342 0.464832 21.0708 1.3945 18.4456C2.44037 15.6822 3.83486 13.1952 5.57798 10.9845C7.3211 8.63558 9.41284 6.56304 11.8532 4.76684C14.2936 2.83247 16.9664 1.24352 19.8716 0Z"
-                                            fill="white" />
-                                    </svg></span>
-
+                                        <path d="M52.2936 0L53.1651 2.2798C51.6544 2.97065 50.1437 3.86874 48.633 4.97409C47.1223 6.07945 45.7278 7.25389 44.4495 8.49741C43.1713 9.74093 42.1835 11.0535 41.4862 12.4352L43.4037 14.3005H44.9725C47.4128 14.3005 49.5046 14.9223 51.2477 16.1658C53.107 17.2712 54.5015 18.791 55.4312 20.7254C56.4771 22.6598 57 24.8705 57 27.3575C57 29.8446 56.419 32.0553 55.2569 33.9896C54.211 35.7858 52.7584 37.2366 50.8991 38.342C49.156 39.4473 47.0642 40 44.6239 40C42.2997 40 40.208 39.4473 38.3486 38.342C36.4893 37.0984 35.0367 35.5095 33.9908 33.5751C32.945 31.6408 32.422 29.361 32.422 26.7358C32.422 23.8342 32.8869 21.0708 33.8165 18.4456C34.8624 15.6822 36.2569 13.1952 38 10.9845C39.7431 8.63558 41.8349 6.56304 44.2752 4.76684C46.7156 2.83247 49.3884 1.24352 52.2936 0ZM19.8716 0L20.7431 2.2798C19.2324 2.97065 17.7217 3.86874 16.211 4.97409C14.7003 6.07945 13.3058 7.25389 12.0275 8.49741C10.7492 9.74093 9.76147 11.0535 9.06422 12.4352L10.9816 14.3005H12.5505C14.9908 14.3005 17.0826 14.9223 18.8257 16.1658C20.685 17.2712 22.0795 18.791 23.0092 20.7254C24.055 22.6598 24.578 24.8705 24.578 27.3575C24.578 29.8446 23.9969 32.0553 22.8349 33.9896C21.789 35.7858 20.3364 37.2366 18.4771 38.342C16.7339 39.4473 14.6422 40 12.2018 40C9.87768 40 7.78593 39.4473 5.92661 38.342C4.06728 37.0984 2.61468 35.5095 1.56881 33.5751C0.522936 31.6408 0 29.361 0 26.7358C0 23.8342 0.464832 21.0708 1.3945 18.4456C2.44037 15.6822 3.83486 13.1952 5.57798 10.9845C7.3211 8.63558 9.41284 6.56304 11.8532 4.76684C14.2936 2.83247 16.9664 1.24352 19.8716 0Z" fill="white" />
+                                </svg></span>
                                 <p>
                                     “At Jinil Pvt. Ltd. we deliver practical, high-performance surface systems of high value. We help industries achieve consistent quality, operational efficiency, and sustainable growth with strong fundamentals and innovation.”
 
                                 </p>
-
                             </div>
-
                         </div>
-
-
-                        <!-- NAME -->
 
                         <div class="md_info">
-
-                            <h3>Nilesh Todi
-
-</h3>
-
-                            <p>Executive Director -  Jinil Pvt. Ltd.
-</p>
-
+                            <h3>Nilesh Todi</h3>
+                            <p>Executive Director -  Jinil Pvt. Ltd.</p>
                         </div>
-
                     </div>
-
                 </section>
             </div>
         </div>
@@ -387,112 +304,67 @@
     <div class="container-fluid">
         <div class="row justify-content-between">
             <div class="col-lg-6 z-1">
-                <h2 class="text-white title_60" style=" mix-blend-mode: normal;">Engineered for Real-World Industrial Performance
-
-                </h2>
-                <p class="text-white">Jinil designs and manufactures advanced shot blasting machines and industrial surface preparation systems built for consistency, durability, and dependable operation in demanding production environments.
-</p>
-
-<p class="text-white">Every solution is developed using a process-first engineering approach, considering component geometry, abrasive selection, throughput requirements, automation integration, and plant conditions. Our systems deliver uniform surface finish, stable production performance, and seamless integration into real manufacturing workflows.
-
-</p>
-
-<p class="text-white">Beyond machinery, Jinil provides engineered surface preparation solutions that help industries enhance coating adhesion, corrosion resistance, structural reliability, and long-term operational efficiency.
-
-</p>
-
-            </div>
-<!--            <div class="col-lg-5">-->
-<!--                <div class="engineered_right">-->
-<!--                    <img class="img-fluid" src="{{ asset('public/front/images/our_vistion-left.png') }}" alt="images">-->
-<!--                    <div class="engineered_right_child">-->
-<!--                        <div>-->
-<!--                            <h4 class="title_24 text-white">Our Vision</h4>-->
-<!--                            <p class="text-white mb-0">To be a trusted global partner in industrial surface preparation systems, recognized for engineering precision, reliability, and solutions that consistently improve manufacturing performance and asset longevity.-->
-<!--</p>  -->
-<!--                        </div>-->
-
-<!--                        <div>-->
-<!--                            <h4 class="title_24  text-white">Our Mission</h4>-->
-<!--                            <p class=" text-white mb-0">To design and deliver robust shot blasting and surface preparation solutions that perform reliably in demanding industrial environments, supported by process-driven engineering, responsive technical service, and continuous innovation focused on measurable productivity gains.-->
-<!--</p>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-
-<div class="col-lg-5">
-    <div class="engineered_right">
-
-        <!--<img class="img-fluid" src="{{ asset('public/front/images/our_vistion-left.png') }}" alt="images">-->
-
-        <div class="engineered_right_child timeline">
-
-            <div class="timeline_item">
-                <span class="timeline_dot"></span>
-                <h4 class="title_24 text-white">Our Vision</h4>
-                <p class="text-white mb-0">
-                    To be a trusted global partner in industrial surface preparation systems, recognized for engineering precision, reliability, and solutions that consistently improve manufacturing performance and asset longevity.
-                </p>
+                <h2 class="text-white title_60" style=" mix-blend-mode: normal;">Engineered for Real-World Industrial Performance</h2>
+                <p class="text-white">Jinil designs and manufactures advanced shot blasting machines and industrial surface preparation systems built for consistency, durability, and dependable operation in demanding production environments.</p>
+                <p class="text-white">Every solution is developed using a process-first engineering approach, considering component geometry, abrasive selection, throughput requirements, automation integration, and plant conditions. Our systems deliver uniform surface finish, stable production performance, and seamless integration into real manufacturing workflows.</p>
+                <p class="text-white">Beyond machinery, Jinil provides engineered surface preparation solutions that help industries enhance coating adhesion, corrosion resistance, structural reliability, and long-term operational efficiency.</p>
             </div>
 
-            <div class="timeline_item">
-                <span class="timeline_dot"></span>
-                <h4 class="title_24 text-white">Our Mission</h4>
-                <p class="text-white mb-0">
-                    To design and deliver robust shot blasting and surface preparation solutions that perform reliably in demanding industrial environments, supported by process-driven engineering, responsive technical service, and continuous innovation focused on measurable productivity gains.
-                </p>
+            <div class="col-lg-5">
+                <div class="engineered_right">
+                    <div class="engineered_right_child timeline">
+                        <div class="timeline_item">
+                            <span class="timeline_dot"></span>
+                            <h4 class="title_24 text-white">Our Vision</h4>
+                            <p class="text-white mb-0">
+                                To be a trusted global partner in industrial surface preparation systems, recognized for engineering precision, reliability, and solutions that consistently improve manufacturing performance and asset longevity.
+                            </p>
+                        </div>
+
+                        <div class="timeline_item">
+                            <span class="timeline_dot"></span>
+                            <h4 class="title_24 text-white">Our Mission</h4>
+                            <p class="text-white mb-0">
+                                To design and deliver robust shot blasting and surface preparation solutions that perform reliably in demanding industrial environments, supported by process-driven engineering, responsive technical service, and continuous innovation focused on measurable productivity gains.
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-        </div>
-
-    </div>
-</div>
         </div>
     </div>
 </section>
 
 <section class="mt_100 mb_100">
     <div class="container-fluid">
-
         <div class="inve_Pro mt_80">
             <div class="row justify-content-between text-center text-lg-start">
                 <div class="col-lg-5 mb-3 mb-lg-0">
-                    <p class="mb-2">For Precision Surface Preparation Leadership
-s</p>
-                    <h2 class="title_60 mb-4">Our Core Values
-</h2>
-                    <p class="title_24 text-585 ">At Jinil, our values are rooted in engineering discipline, industrial responsibility, and long-term performance thinking. Every shot blasting system and surface preparation solution we develop reflects a commitment to reliability, technical precision, and measurable production impact.
-</p>
-<p class="title_24 text-585 ">We believe that true leadership in industrial surface preparation is built on integrity in design, accountability in execution, and continuous advancement through real-world feedback.
-</p>
+                    <p class="mb-2">For Precision Surface Preparation Leaderships</p>
+                    <h2 class="title_60 mb-4">Our Core Values</h2>
+                    <p class="title_24 text-585 ">At Jinil, our values are rooted in engineering discipline, industrial responsibility, and long-term performance thinking. Every shot blasting system and surface preparation solution we develop reflects a commitment to reliability, technical precision, and measurable production impact.</p>
+                    <p class="title_24 text-585 ">We believe that true leadership in industrial surface preparation is built on integrity in design, accountability in execution, and continuous advancement through real-world feedback.</p>
                 </div>
 
                 <div class="col-lg-6">
                     <div class="inve_Pro_card mb-4 mb-lg-0">
                         <img class="img-fluid" src="{{ asset('public/front/images/our_value_1.png') }}" alt="Minimized Downtime">
-                        <h4 class="title_24">Engineering Integrity
-</h4>
-                        <p>Every decision at Jinil is guided by performance, safety, and long-term operational reliability. We engineer systems to deliver consistent results under real industrial conditions, ensuring structural durability, compliance with quality standards, and optimized lifecycle value.
-</p>
+                        <h4 class="title_24">Engineering Integrity</h4>
+                        <p>Every decision at Jinil is guided by performance, safety, and long-term operational reliability. We engineer systems to deliver consistent results under real industrial conditions, ensuring structural durability, compliance with quality standards, and optimized lifecycle value.</p>
                         <hr>
                     </div>
 
                     <div class="inve_Pro_card mb-4 mb-lg-0">
                         <img class="img-fluid" src="{{ asset('public/front/images/our_value_2.png') }}" alt="Minimized Downtime">
-                        <h4 class="title_24">Customer-Centric Design
-</h4>
-                        <p>Solutions are engineered around actual challenges, not assumptions. By understanding component geometry, production flow, abrasive requirements, and plant environments, we create systems that integrate seamlessly and perform reliably on the shop floor.
-</p>
+                        <h4 class="title_24">Customer-Centric Design</h4>
+                        <p>Solutions are engineered around actual challenges, not assumptions. By understanding component geometry, production flow, abrasive requirements, and plant environments, we create systems that integrate seamlessly and perform reliably on the shop floor.</p>
                         <hr>
                     </div>
 
                     <div class="inve_Pro_card mb-4 mb-lg-0">
                         <img class="img-fluid" src="{{ asset('public/front/images/our_value_3.png') }}" alt="Minimized Downtime">
-                        <h4 class="title_24">Continuous Engineering Advancement
-</h4>
-                        <p>Engineering excellence is evolving. Through field insights, performance evaluation, and technical innovation, we continuously refine our shot blasting and surface preparation systems to enhance efficiency, reliability, and long-term operational performance.
-</p>
+                        <h4 class="title_24">Continuous Engineering Advancement</h4>
+                        <p>Engineering excellence is evolving. Through field insights, performance evaluation, and technical innovation, we continuously refine our shot blasting and surface preparation systems to enhance efficiency, reliability, and long-term operational performance.</p>
                     </div>
                 </div>
             </div>

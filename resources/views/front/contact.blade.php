@@ -10,7 +10,6 @@
                     preparation, or custom machine requirements. We're here to support your project from concept to
                     commissioning.</p>
             </div>
-
         </div>
     </div>
 </section>
@@ -172,9 +171,7 @@
                         10- 4 Saturday
                     </p>
                 </div>
-
             </div>
-
         </div>
 
         <div class="row mt-5">

@@ -30,7 +30,6 @@
 @if($blogsdetail)
 <section class="mb_100 blogs_detials">
     <div class="container-fluid">
-
         <div class="mb_40">
             <img class=" img-fluid" src="{{ asset('public/Blogs/detail_image/' . $blogsdetail->detail_image) }}" alt="images">
         </div>
@@ -47,9 +46,6 @@
         <div class="mb_40">
             <div class="blog_det_consu">
                 <div class="col-lg-10">{!! $blogsdetail->cta_text !!}</div>
-                <!-- <h2 class="title_80">Initiate your Project</h2>
-                <p>Consult with our engineering team. Receive a technical <br> proposal within 24 hours.</p> -->
-                <!-- <a href="#" class="com_btn com_btn_3">Request Consultation</a> -->
             </div>
         </div>
         <div class="mb_40">
@@ -69,7 +65,6 @@
             <div class="col-md-5 text-lg-end">
                 <a href="{{ route('blogs') }}" class="com_btn com_btn_2">View all</a>
             </div>
-
         </div>
 
         <div class="insights_wrapper">
@@ -88,7 +83,6 @@
                         </div>
                     </div>
                     @endforeach
-               
             </div>
         </div>
     </div>

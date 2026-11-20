@@ -19,7 +19,6 @@
             </div>
 
             <a href="{{ route('contact') }}" class="contact_circle">
-                <!-- circular text image -->
                 <img src="{{ asset('public/front/images/innder-header-jump.svg') }}" class="circle_text_img" alt="innder header jump">
                 <svg class="arrow_img" width="18" height="23" viewBox="0 0 18 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8.85653 1.15617L8.85653 20.9552L8.85653 1.15617ZM8.85653 20.9552L16.5562 13.2555L8.85653 20.9552ZM8.85653 20.9552L1.15692 13.2556L8.85653 20.9552Z" fill="#58595B" />
@@ -38,27 +37,21 @@
             </div>
 
             <div class="blog-guide-section">
-                <!-- Sidebar -->
                 <aside class="blog-sidebar">
                     <p class="title_24">CONTENTS</p>
                     <ul id="dynamic-sidebar">
-                        <!-- Links will be generated here dynamically via JS -->
                     </ul>
                 </aside>
 
-                <!-- Main Content -->
                 <div class="blog-content">
-                    <!-- Short Description -->
                     <div class="blog-content-section">
                         {!! $blogsdetail->short_description !!}
                     </div>
 
-                    <!-- Main Description -->
                     <div class="blog-content-section">
                         {!! $blogsdetail->description !!}
                     </div>
 
-                    <!-- CTA Box -->
                     @php
                         $ctaTextClean = trim(strip_tags($blogsdetail->cta_text ?? ''));
                     @endphp
@@ -83,27 +76,12 @@
                         </a>
                     @endif
 
-                    <!-- Custom Static CTA Design -->
-                    <!-- <div class="blog-content-section">
-                        <div class="custom_blog_cta">
-                            <div class="cta_left_content">
-                                <h3>Looking For A Reliable Shot Blasting Machine Manufacturer In India?</h3>
-                                <p>Get Reliable Shot Blasting Machines And Customized Industrial Solutions Designed For Efficient Surface Preparation And Finishing.</p>
-                                <a href="{{ route('contact') }}" class="com_btn com_btn_3">Request a Quote</a>
-                            </div>
-                        </div>
-                    </div> -->
-
-                    <!-- Conclusion -->
                     <div class="blog-content-section" id="conclusion">
                         <h2>Conclusion</h2> {!! $blogsdetail->conclusion !!}
                     </div>
 
-                    <!-- Author Box -->
                     @if($blogsdetail->author)
                         <div class="author-box rounded p-4" id="author-profile">
-
-                            <!-- Avatar -->
                             <div class="author-avatar position-relative flex-shrink-0">
                                 @if($blogsdetail->author->thumbnail_image)
                                     <img class="author-avatar-img"
@@ -120,7 +98,6 @@
                                 @endif
                             </div>
 
-                            <!-- Info -->
                             <div class="author-info">
                                 <h4 class="author-name d-flex align-items-center m-0 mb-2">
                                     <a href="{{ route('author.detail', ['slug' => $blogsdetail->author->slug]) }}">
@@ -154,7 +131,6 @@
                     @if ($blogsdetail->title_description && count($blogsdetail->title_description) > 0)
                         @php
                             $faqItems = [];
-
                             $decodedFaqItems = $blogsdetail->title_description;
 
                             if (is_array($decodedFaqItems))
@@ -209,321 +185,16 @@
                     @endif
 
                     @if(!empty($faqItems))
-                    <script type="application/ld+json">
-                        {!! json_encode($faqSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
-                    </script>
-                @endif
-
-                    <!--faqs -->
-
-                    <!--          <div class="blog-content-section" id="faqs">-->
-
-                    <!--              <h2>FAQs</h2>-->
-
-                    <!--               <div class="faq_group active">-->
-
-                    <!--   <div class="faq_item active">-->
-
-                    <!--      <div class="faq_question">-->
-
-                    <!--         <h5 class="faq_title">What services do you provide?</h5>-->
-
-                    <!--         <span class="faq_icon">+</span>-->
-
-                    <!--      </div>-->
-
-                    <!--      <div class="faq_answer">-->
-
-                    <!--         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, voluptatum. We provide high-quality industrial solutions and engineering services.</p>-->
-
-                    <!--      </div>-->
-
-                    <!--   </div>-->
-
-                    <!--   <div class="faq_item">-->
-
-                    <!--      <div class="faq_question">-->
-
-                    <!--         <h5 class="faq_title">How can I request a quotation?</h5>-->
-
-                    <!--         <span class="faq_icon">+</span>-->
-
-                    <!--      </div>-->
-
-                    <!--      <div class="faq_answer">-->
-
-                    <!--         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Simply contact our sales team through the enquiry form or call us directly.</p>-->
-
-                    <!--      </div>-->
-
-                    <!--   </div>-->
-
-                    <!--   <div class="faq_item">-->
-
-                    <!--      <div class="faq_question">-->
-
-                    <!--         <h5 class="faq_title">Do you offer customized solutions?</h5>-->
-
-                    <!--         <span class="faq_icon">+</span>-->
-
-                    <!--      </div>-->
-
-                    <!--      <div class="faq_answer">-->
-
-                    <!--         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. We design customized solutions according to customer requirements.</p>-->
-
-                    <!--      </div>-->
-
-                    <!--   </div>-->
-
-                    <!--   <div class="faq_item">-->
-
-                    <!--      <div class="faq_question">-->
-
-                    <!--         <h5 class="faq_title">What industries do you serve?</h5>-->
-
-                    <!--         <span class="faq_icon">+</span>-->
-
-                    <!--      </div>-->
-
-                    <!--      <div class="faq_answer">-->
-
-                    <!--         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. We serve automotive, engineering, fabrication, foundry, and infrastructure industries.</p>-->
-
-                    <!--      </div>-->
-
-                    <!--   </div>-->
-
-                    <!--   <div class="faq_item">-->
-
-                    <!--      <div class="faq_question">-->
-
-                    <!--         <h5 class="faq_title">Do you provide installation support?</h5>-->
-
-                    <!--         <span class="faq_icon">+</span>-->
-
-                    <!--      </div>-->
-
-                    <!--      <div class="faq_answer">-->
-
-                    <!--         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Yes, our team provides installation, commissioning, and operator training.</p>-->
-
-                    <!--      </div>-->
-
-                    <!--   </div>-->
-
-                    <!--   <div class="faq_item">-->
-
-                    <!--      <div class="faq_question">-->
-
-                    <!--         <h5 class="faq_title">Is after-sales service available?</h5>-->
-
-                    <!--         <span class="faq_icon">+</span>-->
-
-                    <!--      </div>-->
-
-                    <!--      <div class="faq_answer">-->
-
-                    <!--         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. We provide dedicated after-sales support and maintenance services.</p>-->
-
-                    <!--      </div>-->
-
-                    <!--   </div>-->
-
-                    <!--</div>-->
-
-                    <!--          </div>-->
-
+                        <script type="application/ld+json">
+                            {!! json_encode($faqSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
+                        </script>
+                    @endif
                 </div>
             </div>
         </div>
     </section>
 
 @endif
-
-<!--<section class="insights_section mt_100 mb_100">-->
-
-<!--    <div class="container-fluid">-->
-
-<!--        <div class="row align-items-center mb_40">-->
-
-<!--            <div class="col-md-7">-->
-
-<!--                <h2 class="title_60">Insights from the Surface Preparation Industry</h2>-->
-
-<!--            </div>-->
-
-<!--            <div class="col-md-5 text-lg-end">-->
-
-<!--                <a href="{{ route('blogs') }}" class="com_btn com_btn_2">View all</a>-->
-
-<!--            </div>-->
-
-<!--        </div>-->
-
-<!--        <div class="insights_wrapper">-->
-
-<!--            <div class="row">-->
-
-<!--                @foreach ($blogs as $blog)
--->
-
-<!--                    <div class="col-md-4">-->
-
-<!--                        <div class="insight_item">-->
-
-<!--                            <div class="insight_item_img">-->
-
-<!--                                <img class="w-100" src="{{ asset('public/Blogs/front_image/' . $blog->front_image) }}" alt="{{ $blog->title }}" />-->
-
-<!--                            </div>-->
-
-<!--                            <div class="insight_item_content">-->
-
-<!--                                <hr>-->
-
-<!--                                <p class="mb-2">{{ $blog->date }}</p>-->
-
-<!--                                <a href="{{ route('blogdetail', ['url' => $blog->url]) }}"><h3 class="title_24">{{ $blog->title }}</h3></a>-->
-
-<!--                            </div>-->
-
-<!--                        </div>-->
-
-<!--                    </div>-->
-
-<!--
-@endforeach-->
-
-<!--            </div>-->
-
-<!--        </div>-->
-
-<!--    </div>-->
-
-<!--</section>-->
-
-<!--<section class="faq_main mb_100 mt_100">-->
-
-<!--   <div class="container">-->
-
-<!--      <h2 id="h2-heading-12">Conclusion</h2>-->
-
-<!--      <div class="faq_group">-->
-
-<!--         <div class="faq_item active">-->
-
-<!--            <div class="faq_question">-->
-
-<!--               <h4 class="faq_title">What services do you provide?</h4>-->
-
-<!--               <span class="faq_icon">+</span>-->
-
-<!--            </div>-->
-
-<!--            <div class="faq_answer">-->
-
-<!--               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, voluptatum. We provide high-quality industrial solutions and engineering services.</p>-->
-
-<!--            </div>-->
-
-<!--         </div>-->
-
-<!--         <div class="faq_item">-->
-
-<!--            <div class="faq_question">-->
-
-<!--               <h4 class="faq_title">How can I request a quotation?</h4>-->
-
-<!--               <span class="faq_icon">+</span>-->
-
-<!--            </div>-->
-
-<!--            <div class="faq_answer">-->
-
-<!--               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Simply contact our sales team through the enquiry form or call us directly.</p>-->
-
-<!--            </div>-->
-
-<!--         </div>-->
-
-<!--         <div class="faq_item">-->
-
-<!--            <div class="faq_question">-->
-
-<!--               <h4 class="faq_title">Do you offer customized solutions?</h4>-->
-
-<!--               <span class="faq_icon">+</span>-->
-
-<!--            </div>-->
-
-<!--            <div class="faq_answer">-->
-
-<!--               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. We design customized solutions according to customer requirements.</p>-->
-
-<!--            </div>-->
-
-<!--         </div>-->
-
-<!--         <div class="faq_item">-->
-
-<!--            <div class="faq_question">-->
-
-<!--               <h4 class="faq_title">What industries do you serve?</h4>-->
-
-<!--               <span class="faq_icon">+</span>-->
-
-<!--            </div>-->
-
-<!--            <div class="faq_answer">-->
-
-<!--               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. We serve automotive, engineering, fabrication, foundry, and infrastructure industries.</p>-->
-
-<!--            </div>-->
-
-<!--         </div>-->
-
-<!--         <div class="faq_item">-->
-
-<!--            <div class="faq_question">-->
-
-<!--               <h4 class="faq_title">Do you provide installation support?</h4>-->
-
-<!--               <span class="faq_icon">+</span>-->
-
-<!--            </div>-->
-
-<!--            <div class="faq_answer">-->
-
-<!--               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Yes, our team provides installation, commissioning, and operator training.</p>-->
-
-<!--            </div>-->
-
-<!--         </div>-->
-
-<!--         <div class="faq_item">-->
-
-<!--            <div class="faq_question">-->
-
-<!--               <h4 class="faq_title">Is after-sales service available?</h4>-->
-
-<!--               <span class="faq_icon">+</span>-->
-
-<!--            </div>-->
-
-<!--            <div class="faq_answer">-->
-
-<!--               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. We provide dedicated after-sales support and maintenance services.</p>-->
-
-<!--            </div>-->
-
-<!--         </div>-->
-
-<!--      </div>-->
-
-<!--   </div>-->
-
-<!--</section>-->
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {

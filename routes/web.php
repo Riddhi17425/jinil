@@ -64,7 +64,7 @@ Route::get('blogs', [dashboardController::class, 'blogs'])->name('blogs');
 
 Route::get('blogs/{url}', [dashboardController::class, 'blogsdetail'])->name('blogdetail');
 
-Route::get('products/{url}', [dashboardController::class, 'product'])->name('productlist');
+Route::get('category/{url}', [dashboardController::class, 'product'])->name('productlist');
 
 Route::get('downloads', [dashboardController::class, 'download'])->name('downloads');
 
@@ -89,7 +89,7 @@ Route::get('/privacy-policy', [dashboardController::class, 'privacypolicy'])->na
 
 Route::get('/terms-engineer', [dashboardController::class, 'termsengineer'])->name('termsengineer');
 
-Route::get('/product-details/{url?}', [dashboardController::class, 'productdetials'])->name('productdetials');
+Route::get('/product/{url?}', [dashboardController::class, 'productdetials'])->name('productdetials');
 
 // START - AUTHOR PAGE SLUG
 Route::get('/author/{slug}', [DashboardController::class, 'author'])->name('author.detail');

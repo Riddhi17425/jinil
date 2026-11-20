@@ -2,32 +2,25 @@
 
 <section class="navi_page">
     <div class="container-fluid">
-
         <div class="navi_page_child">
             <div>
                 <p class="title_24"><a href="{{ url('/')}}" class="text-585">Home</a> / Blog</p>
                 <h1 class="title_60">Insights from the Surface Preparation Industry</h1>
                 <p class="mb-0">Expert guidance, technical resources, and industry best practices</p>
             </div>
-          
-                <a href="{{ route('contact') }}"class="contact_circle">
+    
+            <a href="{{ route('contact') }}"class="contact_circle">
+                <img src="{{ asset('public/front/images/innder-header-jump.svg') }}" class="circle_text_img" alt="innder header jump">
 
-                    <!-- circular text image -->
-                    <img src="{{ asset('public/front/images/innder-header-jump.svg') }}" class="circle_text_img" alt="innder header jump">
-
-                    <svg class="arrow_img" width="18" height="23" viewBox="0 0 18 23" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M8.85653 1.15617L8.85653 20.9552L8.85653 1.15617ZM8.85653 20.9552L16.5562 13.2555L8.85653 20.9552ZM8.85653 20.9552L1.15692 13.2556L8.85653 20.9552Z"
-                            fill="#58595B" />
-                        <path
-                            d="M8.85653 1.15617L8.85653 20.9552M8.85653 20.9552L16.5562 13.2555M8.85653 20.9552L1.15692 13.2556"
-                            stroke="#58595B" stroke-width="2.31318" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-
-                </a>
+                <svg class="arrow_img" width="18" height="23" viewBox="0 0 18 23" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.85653 1.15617L8.85653 20.9552L8.85653 1.15617ZM8.85653 20.9552L16.5562 13.2555L8.85653 20.9552ZM8.85653 20.9552L1.15692 13.2556L8.85653 20.9552Z"
+                        fill="#58595B" />
+                    <path d="M8.85653 1.15617L8.85653 20.9552M8.85653 20.9552L16.5562 13.2555M8.85653 20.9552L1.15692 13.2556"
+                        stroke="#58595B" stroke-width="2.31318" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </a>
         </div>
-
     </div>
 </section>
 
