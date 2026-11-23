@@ -250,7 +250,7 @@ $indusries = DB::table('indcategory')
                     <ul>
                         @foreach($uncategorizedProducts as $product)
                         <li>
-                            <a href="{{ url('product-details/'.$product->url) }}">
+                            <a href="{{ url('product/'.$product->url) }}">
                                 {{ $product->name ?: $product->title }}
                             </a>
                         </li>
