@@ -122,10 +122,9 @@ class dashboardController extends Controller
         $metatitle = "Contact JINIL Shot Blast | Get Expert Assistance";
         $metadescription = "Need a shot blasting machine or technical support? Contact JINIL for quotations, product information, spare parts, and expert assistance.";
 
-        $countries = DB::table('countries')->select('id', 'name')->get();
         $states = DB::table('states')->select('id', 'name')->get();
 
-        return view('front.contact', compact('metatitle', 'metadescription', 'countries', 'states'));
+        return view('front.contact', compact('metatitle', 'metadescription', 'states'));
     }
 
     public function blogs()
@@ -381,7 +380,7 @@ class dashboardController extends Controller
             'full_phone'     => 'required|string',
             'email'          => 'required|email',
             'state'          => 'required|string',
-            'country'        => 'nullable|string|max:100',
+            'city'           => 'required|string|max:100',
             'message'        => 'nullable|string',
             'simple_captcha' => 'required|integer',
             'captcha_sum'    => 'required|integer',
@@ -392,6 +391,7 @@ class dashboardController extends Controller
             'email.required'          => 'The Email Address is required.',
             'email.email'             => 'Please enter a valid Email Address.',
             'state.required'          => 'The State is required.',
+            'city.required'           => 'The City is required.',
             'simple_captcha.required' => 'The Captcha is required.',
             'simple_captcha.integer'  => 'The Captcha must be a number.',
         ]);
@@ -420,7 +420,7 @@ class dashboardController extends Controller
                 'contact'      => $validated['full_phone'],
                 'email'        => $validated['email'],
                 'state'        => $validated['state'],
-                'country'      => $validated['country'] ?? null,
+                'city'         => $validated['city'],
                 'message'      => $validated['message'] ?? null,
             ]);
 
@@ -431,7 +431,7 @@ class dashboardController extends Controller
                 'contact'      => $validated['full_phone'],
                 'email'        => $validated['email'],
                 'state'        => $validated['state'],
-                'country'      => $validated['country'] ?? '',
+                'city'         => $validated['city'],
                 'message'      => $validated['message'] ?? '',
                 'date'         => now()->format('Y-m-d H:i:s'),
             ];

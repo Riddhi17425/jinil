@@ -67,19 +67,6 @@
                             <span id="cf_email-error" class="text-danger"></span>
                         </div>
 
-                        {{-- Country --}}
-                        <div class="col-md-6 form-group">
-                            <select name="country" id="cf_country">
-                                <option value="">Select Country</option>
-                                @foreach ($countries as $country)
-                                    <option value="{{ $country->name }}"
-                                        {{ $country->name == 'India' ? 'selected' : '' }}>{{ $country->name }}</option>
-                                @endforeach
-                            </select>
-                            <label>Country:</label>
-                            <span id="cf_country-error" class="text-danger"></span>
-                        </div>
-
                         {{-- State --}}
                         <div class="col-md-6 form-group">
                             <select name="state" id="cf_state">
@@ -91,6 +78,13 @@
                             </select>
                             <label>State:</label>
                             <span id="cf_state-error" class="text-danger"></span>
+                        </div>
+
+                        {{-- City --}}
+                        <div class="col-md-6 form-group">
+                            <input type="text" name="city" placeholder=" ">
+                            <label>City<span class="text-danger">*</span>:</label>
+                            <span id="cf_city-error" class="text-danger"></span>
                         </div>
 
                         {{-- Requirement --}}
@@ -288,6 +282,12 @@
             // State
             if ($('#cf_state').val() === '') {
                 $('#cf_state-error').text('The State is required.');
+                isValid = false;
+            }
+
+            // City
+            if ($('#contact_form input[name="city"]').val().trim() === '') {
+                $('#cf_city-error').text('The City is required.');
                 isValid = false;
             }
 
