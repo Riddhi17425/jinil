@@ -58,6 +58,12 @@
                                 <input type="text" id="url" name="url" class="form-control"
                                     placeholder="Product Url">
                             </div>
+                            
+                            <div class="col-md-12">
+                                <label class="form-label">Menu Name</label>
+                                <input type="text" id="menu_name" name="menu_name" class="form-control"
+                                    placeholder="Menu Name">
+                            </div>
 
                             <div class="col-md-12">
                                 <label class="form-label">Service Note</label>

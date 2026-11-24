@@ -64,6 +64,14 @@
                                         <input type="text" id="name" name="name" class="form-control"
                                             value="{{ $product->name }}" placeholder="Product Name">
                                     </div>
+
+                                    <div class="col-md-12">
+                                        <label class="form-label">Menu Name</label>
+                                        <input type="text" id="menu_name" name="menu_name" class="form-control"
+                                            value="{{ $product->menu_name }}"
+                                            placeholder="Menu Name">
+                                    </div>
+
                                     <div class="col-md-12">
                                         <label class="form-label">Service Note</label>
                                         <input type="text" name="service_note" class="form-control"

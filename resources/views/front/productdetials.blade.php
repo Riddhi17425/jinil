@@ -10,7 +10,7 @@
                     @if (!empty($category))
                         <a href="{{ route('productlist', $category->url) }}" class="text-585">{{ $category->category }}</a> /
                     @endif
-                    {{ $product->name }}
+                   {{ $product->menu_name ?: $product->name }}
                 </p>
                 <h1 class="title_60">{{ $product->title ?? '' }}</h1>
                 <p class="mb-0">{{ $product->title_brief ?? '' }}</p>
@@ -1072,7 +1072,7 @@
     $breadcrumbItems[] = [
         '@type' => 'ListItem',
         'position' => $position,
-        'name' => $product->name,
+        'name' => $product->menu_name ?: $product->name,
         'item' => route('productdetials', $product->url),
     ];
 

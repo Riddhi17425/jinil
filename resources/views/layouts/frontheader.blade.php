@@ -262,7 +262,7 @@
 
         $headerProducts = DB::table('product')
 
-            ->select('id', 'name', 'title', 'url', 'category_id')
+            ->select('id', 'name','menu_name', 'title', 'url', 'category_id')
 
             ->whereNull('deleted_at')
 
@@ -366,7 +366,7 @@
                                                 @foreach ($prods as $prod)
                                                     <li>
                                                         <a href="{{ route('productdetials', $prod->url) }}">
-                                                            {{ $prod->name ?: $prod->title }}
+                                                            {{ $prod->menu_name ?: ($prod->name ?: $prod->title) }}
                                                         </a>
                                                     </li>
                                                 @endforeach

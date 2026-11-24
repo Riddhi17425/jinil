@@ -43,6 +43,7 @@ class ProductController extends Controller
         $post->title                     = $request->get('title');
         $post->title_brief               = $request->get('title_brief');
         $post->name                      = $request->get('name');
+        $post->menu_name   = $request->get('menu_name');
         $post->service_note              = $request->get('service_note');
         $post->working_principle_desc    = $request->get('working_principle_desc');
         $post->configuration_title       = $request->get('configuration_title');
@@ -126,6 +127,7 @@ class ProductController extends Controller
         $post->title                     = $request->get('title');
         $post->title_brief               = $request->get('title_brief');
         $post->name                      = $request->get('name');
+        $post->menu_name   = $request->get('menu_name');
         $post->service_note              = $request->get('service_note');
         $post->working_principle_desc    = $request->get('working_principle_desc');
         $post->configuration_title       = $request->get('configuration_title');

@@ -17,6 +17,7 @@ class Product extends Model
         'title_brief',
         'url',
         'name',
+        'menu_name',
         'service_note',
         'working_principal_desc',
         'configuration_title',

@@ -25,7 +25,7 @@ $products = DB::table('product')
 
 $uncategorizedProducts = DB::table('product')
 
-    ->select('id', 'name', 'title', 'url')
+    ->select('id', 'name','menu_name','title', 'url')
 
     ->whereNull('deleted_at')
 
@@ -165,7 +165,7 @@ $indusries = DB::table('indcategory')
 
                                 <a href="{{ url('product/'.$product->url) }}">
 
-                                    {{ $product->name }}
+                                    {{ $product->menu_name ?: $product->name }}
 
                                 </a>
 
@@ -251,7 +251,7 @@ $indusries = DB::table('indcategory')
                         @foreach($uncategorizedProducts as $product)
                         <li>
                             <a href="{{ url('product/'.$product->url) }}">
-                                {{ $product->name ?: $product->title }}
+                                {{ $product->menu_name ?: ($product->name ?: $product->title) }}
                             </a>
                         </li>
                         @endforeach
