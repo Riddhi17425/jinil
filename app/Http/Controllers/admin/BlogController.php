@@ -68,7 +68,6 @@ class BlogController extends Controller
 
         $post->title = $request->get('title');
         $post->author_id = $request->get('author_id');
-        $post->short_description = $request->get('short_description');
         $post->description = $request->get('description');
         $post->url = $request->get('url');
         $post->conclusion = $request->get('conclusion');
@@ -165,7 +164,6 @@ class BlogController extends Controller
         $post->title = $request->get('title');
         $post->author_id = $request->get('author_id');
         $post->description = $request->get('description');
-        $post->short_description = $request->get('short_description');
         $post->url = $request->get('url');
         $post->conclusion = $request->get('conclusion');
         $post->date = date('Y-m-d', strtotime($request->input('date')));

@@ -48,10 +48,6 @@
                             <input type="text" id="title" name="title" required class="form-control">
                         </div>
 
-                        <div class="col-md-12">
-                            <label for="short_description" class="form-label">Blog Short description</label>
-                            <textarea id="short_description" name="short_description" class="form-control"></textarea>
-                        </div>
 
                         <div class="col-md-12">
                             <label for="description" class="form-label">Blog Description</label>
@@ -234,35 +230,6 @@ $(document).ready(function() {
 
     });
 
-    $('#short_description').summernote({
-
-        placeholder: 'Enter Blog Short Description here...',
-
-        height: 300,
-
-        toolbar: [
-
-            ['style', ['style']],
-
-            ['font', ['bold', 'italic', 'underline', 'clear']],
-
-            ['fontname', ['fontname']],
-
-            ['color', ['color']],
-
-            ['para', ['ul', 'ol', 'paragraph']],
-
-            ['height', ['height']],
-
-            ['insert', ['link', 'picture', 'hr']],
-
-            ['view', ['fullscreen', 'codeview']],
-
-            ['help', ['help']]
-
-        ]
-
-    });
 
     $('#cta_text').summernote({
 

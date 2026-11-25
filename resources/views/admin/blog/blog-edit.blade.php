@@ -78,15 +78,6 @@
 
 
 
-                        <div class="col-md-12">
-
-                            <label for="short_description" class="form-label">Blog Short description</label>
-
-                            <textarea id="short_description" name="short_description"
-
-                                class="form-control">{{ $data->short_description }}</textarea>
-
-                        </div>
 
                         <div class="col-md-12">
 
@@ -168,9 +159,9 @@
 
                                     <div class="col-md-12">
 
-                                        <label class="form-label" for="input-file-front">Detail Image Upload</label>
+                                        <label class="form-label" for="input-file-detail">Detail Image Upload</label>
 
-                                        <input type="file" id="input-file-front" name="detail_image" class="dropify"
+                                        <input type="file" id="input-file-detail" name="detail_image" class="dropify"
 
                                             data-default-file="{{ asset('public/Blogs/detail_image/' . $data->detail_image) }}">
 
@@ -216,11 +207,11 @@
 
                                     <div class="col-md-12">
 
-                                        <label class="form-label" for="input-file-front">Blog CTA Image Upload</label>
+                                        <label class="form-label" for="input-file-cta">Blog CTA Image Upload</label>
 
-                                        <input type="file" id="input-file-front" name="cta_image" class="dropify"
+                                        <input type="file" id="input-file-cta" name="cta_image" class="dropify"
 
-                                           data-default-file="{{ asset('public/Blogs/cta_image/' . $data->cta_image) }}"
+                                           data-default-file="{{ asset('public/Blogs/cta_image/' . $data->cta_image) }}">
 
                                     </div>
 
@@ -458,35 +449,6 @@ $(document).ready(function() {
 
     });
 
-    $('#short_description').summernote({
-
-        placeholder: 'Enter Blog Short Description here...',
-
-        height: 300,
-
-        toolbar: [
-
-            ['style', ['style']],
-
-            ['font', ['bold', 'italic', 'underline', 'clear']],
-
-            ['fontname', ['fontname']],
-
-            ['color', ['color']],
-
-            ['para', ['ul', 'ol', 'paragraph']],
-
-            ['height', ['height']],
-
-            ['insert', ['link', 'picture', 'hr']],
-
-            ['view', ['fullscreen', 'codeview']],
-
-            ['help', ['help']]
-
-        ]
-
-    });
 
     $('#cta_text').summernote({
 

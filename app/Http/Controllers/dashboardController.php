@@ -637,7 +637,7 @@ class dashboardController extends Controller
             'full_phone'     => 'required|string',
             'email'          => 'required|email',
             'state'          => 'required|string',
-            'city'           => 'required|string',
+            'city'           => 'nullable|string|max:100',
             'message'        => 'nullable|string',
             'simple_captcha' => 'required|integer',
             'captcha_sum'    => 'required|integer',
@@ -669,7 +669,7 @@ class dashboardController extends Controller
                 'contact'      => $validated['full_phone'],
                 'email'        => $validated['email'],
                 'state'        => $validated['state'],
-                'city'         => $validated['city'],
+                'city'         => $validated['city'] ?? '',
                 'message'      => $validated['message'] ?? '',
                 'date'         => now()->format('Y-m-d H:i:s'),
             ];
@@ -681,7 +681,7 @@ class dashboardController extends Controller
                 'contact'      => $validated['full_phone'],
                 'email'        => $validated['email'],
                 'state'        => $validated['state'],
-                'city'         => $validated['city'],
+                'city'         => $validated['city'] ?? null,
                 'message'      => $validated['message'] ?? null,
             ]);
 
@@ -777,8 +777,9 @@ class dashboardController extends Controller
                 'message'       => $validated['message'] ?? '',
                 'date'          => now()->format('Y-m-d H:i:s'),
             ];
-
-            $sheetUrl = 'https://script.google.com/macros/s/AKfycbzZUy--mLkKq9XvO3GNmxSBmCzmNnMB6IdrOhcIxbCLY7orzN6Ad19Xdh4Lz4ADO3x7kA/exec'; // Add your Google Script URL here
+             
+            $sheetUrl = 'https://script.google.com/macros/s/AKfycbwBaZKgFVECo50waF3RExxbg1UiS_ZkVwovDagR6_Q-wpTmd6TczHgmB1i66JCicQ8aew/exec';
+            // $sheetUrl = 'https://script.google.com/macros/s/AKfycbzZUy--mLkKq9XvO3GNmxSBmCzmNnMB6IdrOhcIxbCLY7orzN6Ad19Xdh4Lz4ADO3x7kA/exec'; 
             if (! empty($sheetUrl)) {
                 try {
                     Http::timeout(30)

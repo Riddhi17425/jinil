@@ -45,10 +45,6 @@
 
                 <div class="blog-content">
                     <div class="blog-content-section">
-                        {!! $blogsdetail->short_description !!}
-                    </div>
-
-                    <div class="blog-content-section">
                         {!! $blogsdetail->description !!}
                     </div>
 
