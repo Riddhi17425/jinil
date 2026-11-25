@@ -159,9 +159,9 @@ a {
 
     position: relative;
 
-    color: var(--grey-585);
+    color: var(--white);
 
-    border: 1px solid var(--grey-585);
+    border: 1px solid var(--blue);
 
     font-size: 18px;
 
@@ -171,15 +171,25 @@ a {
 
     overflow: hidden;
 
-    background: transparent;
+    background: radial-gradient(
+        561.33% 75.38% at 56.26% 52.09%,
 
-    transition: color 0.5s;
+        #1f3566 0%,
+
+        #243f7a 50%,
+
+        #1c2f5a 100%
+    );
+
+    transition: color 0.5s, border-color 0.5s;
 
     z-index: 1;
 }
 
 .com_btn:hover {
-    color: var(--white); /* changed to pure white for better visibility */
+    color: var(--grey-585);
+
+    border-color: var(--grey-585);
 }
 
 .com_btn:before,
@@ -194,17 +204,9 @@ a {
 
     height: 20px;
 
-    background: radial-gradient(
-        561.33% 75.38% at 56.26% 52.09%,
+    background: var(--white);
 
-        #1f3566 0%,
-
-        #243f7a 50%,
-
-        #1c2f5a 100%
-    );
-
-    border: 1px solid var(--blue);
+    border: 1px solid var(--white);
 
     border-radius: 50%;
 
@@ -296,19 +298,31 @@ a {
 }
 
 .com_btn_2 {
-    color: var(--blue);
+    color: var(--white);
 
     border: 1px solid var(--blue);
 
     padding: 12px 54px;
 }
 
-.com_btn_3 {
-    background: var(--white);
-
-    border-color: var(--white);
-
+.com_btn_2:hover {
     color: var(--blue);
+
+    border-color: var(--blue);
+}
+
+.com_btn_3 {
+    background: var(--blue);
+
+    border-color: var(--blue);
+
+    color: var(--white);
+}
+
+.com_btn_3:hover {
+    color: var(--blue);
+
+    border-color: var(--blue);
 }
 
 .text-111 {
@@ -523,4 +537,9 @@ a {
     font-size: 14px;
     font-weight: 500;
     color: #6c757d;
+}
+/*blog author name css*/
+.author-info a{
+    color:var(--blue);
+    
 }

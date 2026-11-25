@@ -38,21 +38,17 @@
 
 .faq_tabs .com_btn {
   border-color: var(--blue-A2B);
-  color: var(--black-111);
+  color: var(--white);
 }
 
 .faq_tabs .com_btn:hover {
-  color: var(--white);
+  color: var(--black-111);
+  border-color: var(--blue-A2B);
 }
 
 .faq_tabs .com_btn.active {
-  background: radial-gradient(
-    561.33% 75.38% at 56.26% 52.09%,
-    #1f3566 0%,
-    #243f7a 50%,
-    #1c2f5a 100%
-  );
-  color: var(--white);
+  background: var(--white);
+  color: var(--black-111);
 }
 
 /* ---------------- FAQ group animation ---------------- */

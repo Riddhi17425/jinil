@@ -56,8 +56,23 @@ content: "";
 }
 
 .init_pro_contact .form-group .com_btn {
-  background: var(--white);
+  background: var(--blue);
+  color: var(--white);
+}
+
+.init_pro_contact .form-group .com_btn {
+  border-color: var(--white);
+}
+
+.init_pro_contact .form-group .com_btn:hover {
   color: var(--blue);
+  border-color: var(--white);
+}
+
+.init_pro_contact .form-group .com_btn:before,
+.init_pro_contact .form-group .com_btn:after {
+  background: var(--white);
+  border-color: var(--white);
 }
 
 .init_pro_contact .form-group input,

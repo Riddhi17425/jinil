@@ -54,15 +54,6 @@
     color: var(--blue);
 }
 
-.form-group .com_btn {
-    background: var(--black-111);
-    color: var(--white);
-}
-
-.form-group .com_btn:hover {
-    color: var(--white);
-}
-
 .iti--allow-dropdown
 {
     width: 100%;

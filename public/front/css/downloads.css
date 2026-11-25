@@ -65,7 +65,20 @@
 }
 
 
+.download_cards .com_btn {
+  color: var(--white);
+}
+
+.download_cards .com_btn:hover {
+  color: var(--black-111);
+}
+
+.download_cards .com_btn svg path {
+  fill: var(--white);
+  transition: fill 0.5s;
+}
+
 .download_cards .com_btn:hover svg path {
- stroke: var(--white);
- fill: var(--white);
+ stroke: var(--black-111);
+ fill: var(--black-111);
 }
