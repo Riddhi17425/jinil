@@ -83,7 +83,7 @@
                         {{-- City --}}
                         <div class="col-md-6 form-group">
                             <input type="text" name="city" placeholder=" ">
-                            <label>City<span class="text-danger">*</span>:</label>
+                            <label>City:</label>
                             <span id="cf_city-error" class="text-danger"></span>
                         </div>
 
@@ -282,12 +282,6 @@
             // State
             if ($('#cf_state').val() === '') {
                 $('#cf_state-error').text('The State is required.');
-                isValid = false;
-            }
-
-            // City
-            if ($('#contact_form input[name="city"]').val().trim() === '') {
-                $('#cf_city-error').text('The City is required.');
                 isValid = false;
             }
 

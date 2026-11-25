@@ -380,7 +380,7 @@ class dashboardController extends Controller
             'full_phone'     => 'required|string',
             'email'          => 'required|email',
             'state'          => 'required|string',
-            'city'           => 'required|string|max:100',
+            'city'           => 'nullable|string|max:100',
             'message'        => 'nullable|string',
             'simple_captcha' => 'required|integer',
             'captcha_sum'    => 'required|integer',
@@ -391,7 +391,6 @@ class dashboardController extends Controller
             'email.required'          => 'The Email Address is required.',
             'email.email'             => 'Please enter a valid Email Address.',
             'state.required'          => 'The State is required.',
-            'city.required'           => 'The City is required.',
             'simple_captcha.required' => 'The Captcha is required.',
             'simple_captcha.integer'  => 'The Captcha must be a number.',
         ]);
@@ -420,7 +419,7 @@ class dashboardController extends Controller
                 'contact'      => $validated['full_phone'],
                 'email'        => $validated['email'],
                 'state'        => $validated['state'],
-                'city'         => $validated['city'],
+                'city'         => $validated['city'] ?? null,
                 'message'      => $validated['message'] ?? null,
             ]);
 
@@ -431,7 +430,7 @@ class dashboardController extends Controller
                 'contact'      => $validated['full_phone'],
                 'email'        => $validated['email'],
                 'state'        => $validated['state'],
-                'city'         => $validated['city'],
+                'city'         => $validated['city'] ?? '',
                 'message'      => $validated['message'] ?? '',
                 'date'         => now()->format('Y-m-d H:i:s'),
             ];
@@ -463,7 +462,7 @@ class dashboardController extends Controller
             'company_name'   => 'required|string|max:255',
             'full_phone'     => 'required|string',
             'email'          => 'required|email',
-            'country'        => 'nullable|string|max:255',
+            'city'           => 'nullable|string|max:100',
             'state'          => 'required|string',
             'message'        => 'nullable|string',
             'simple_captcha' => 'required|integer',
@@ -502,7 +501,7 @@ class dashboardController extends Controller
                 'company_name' => $validated['company_name'],
                 'contact'      => $validated['full_phone'],
                 'email'        => $validated['email'],
-                'country'      => $validated['country'] ?? null,
+                'city'         => $validated['city'] ?? null,
                 'state'        => $validated['state'],
                 'message'      => $validated['message'] ?? null,
             ]);
@@ -513,7 +512,7 @@ class dashboardController extends Controller
                 'company_name' => $validated['company_name'],
                 'contact'      => $validated['full_phone'],
                 'email'        => $validated['email'],
-                'country'      => $validated['country'] ?? '',
+                'city'         => $validated['city'] ?? '',
                 'state'        => $validated['state'],
                 'message'      => $validated['message'] ?? '',
                 'date'         => now()->format('Y-m-d H:i:s'),
@@ -719,7 +718,7 @@ class dashboardController extends Controller
             'full_phone'     => 'required|string',
             'email'          => 'required|email',
             'state'          => 'required|string',
-            'city'           => 'required|string',
+            'city'           => 'nullable|string|max:100',
             'message'        => 'nullable|string',
             'simple_captcha' => 'required|integer',
             'captcha_sum'    => 'required|integer',
@@ -731,7 +730,6 @@ class dashboardController extends Controller
             'email.required'          => 'The Email Address is required.',
             'email.email'             => 'Please enter a valid Email Address.',
             'state.required'          => 'The State is required.',
-            'city.required'           => 'The City is required.',
             'simple_captcha.required' => 'The Captcha is required.',
         ]);
 
@@ -763,7 +761,7 @@ class dashboardController extends Controller
                 'contact'       => $validated['full_phone'],
                 'email'         => $validated['email'],
                 'state'         => $validated['state'],
-                'city'          => $validated['city'],
+                'city'          => $validated['city'] ?? null,
                 'message'       => $validated['message'] ?? null,
             ]);
 
@@ -775,7 +773,7 @@ class dashboardController extends Controller
                 'contact'       => $validated['full_phone'],
                 'email'         => $validated['email'],
                 'state'         => $validated['state'],
-                'city'          => $validated['city'],
+                'city'          => $validated['city'] ?? '',
                 'message'       => $validated['message'] ?? '',
                 'date'          => now()->format('Y-m-d H:i:s'),
             ];

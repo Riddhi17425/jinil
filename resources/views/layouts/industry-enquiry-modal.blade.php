@@ -72,10 +72,8 @@ $mb = rand(1,9);
 
                         {{-- City --}}
                         <div class="col-lg-6 form-group">
-                            <select name="city" id="ie_city">
-                                <option value="">Select City</option>
-                            </select>
-                            <label>City<span class="text-danger">*</span>:</label>
+                            <input type="text" name="city" id="ie_city" placeholder=" ">
+                            <label>City:</label>
                             <div id="ie_city-error" class="text-danger"></div>
                         </div>
 
@@ -149,7 +147,6 @@ jQuery(document).ready(function ($) {
     $('#industryEnquiryModal').on('show.bs.modal', function () {
         $('#industryEnquiryForm .text-danger').text('');
         $('#industryEnquiryForm')[0].reset();
-        $('#ie_city').html('<option value="">Select City</option>');
         refreshIeCaptcha();
     });
 
@@ -165,29 +162,11 @@ jQuery(document).ready(function ($) {
     }
     $('#ie_refreshCaptcha').on('click', refreshIeCaptcha);
 
-    // ── State → City ──────────────────────────────────────────────
-    $('#ie_state').on('change', function () {
-        var state_id = $(this).find('option:selected').data('id');
-        if (state_id) {
-            $.ajax({
-                url: "{{ url('get-cities') }}/" + state_id,
-                type: "GET",
-                success: function (data) {
-                    $('#ie_city').html('<option value="">Select City</option>');
-                    $.each(data, function (key, value) {
-                        $('#ie_city').append('<option value="' + value.name + '">' + value.name + '</option>');
-                    });
-                }
-            });
-        }
-    });
-
     // ── Real-time error clearing ──────────────────────────────────
     $('#ie_name').on('input',         function () { if ($(this).val().trim()) $('#ie_name-error').text(''); });
     $('#ie_company_name').on('input', function () { if ($(this).val().trim()) $('#ie_company_name-error').text(''); });
     $('#ie_email').on('input',        function () { if ($(this).val().trim()) $('#ie_email-error').text(''); });
     $('#ie_state').on('change',       function () { if ($(this).val())        $('#ie_state-error').text(''); });
-    $('#ie_city').on('change',        function () { if ($(this).val())        $('#ie_city-error').text(''); });
     $('#ie_simple_captcha').on('input', function () { if ($(this).val().trim()) $('#ie_simple_captcha-error').text(''); });
     $('#ie_phone').on('keyup change', function () {
         var countryData = ieIti.getSelectedCountryData();
@@ -234,9 +213,6 @@ jQuery(document).ready(function ($) {
 
         if ($('#ie_state').val() === '') {
             $('#ie_state-error').text('The State is required.'); isValid = false;
-        }
-        if ($('#ie_city').val() === '') {
-            $('#ie_city-error').text('The City is required.'); isValid = false;
         }
 
         var captchaInput = $('#ie_simple_captcha').val().trim();

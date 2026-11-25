@@ -3,7 +3,6 @@
 @php
 use Illuminate\Support\Facades\DB;
 $states = DB::table('states')->select('id','name')->get();
-$countries = DB::table('countries')->select('id','name')->get();   
 $ma = rand(1,9);
 $mb = rand(1,9);
 @endphp
@@ -51,18 +50,6 @@ $mb = rand(1,9);
                             <div id="modal_email-error" class="text-danger"></div>
                         </div>
 
-                        {{-- Country --}}
-                        <div class="col-lg-6 form-group">
-                            <select name="country" id="modal_country">
-                                <option value="">Select Country</option>
-                                @foreach($countries as $country)
-                                    <option value="{{ $country->name }}" {{ $country->name == 'India' ? 'selected' : '' }}>{{ $country->name }}</option>
-                                @endforeach
-                            </select>
-                            <label>Country:</label>
-                            <div id="modal_country-error" class="text-danger"></div>
-                        </div>
-
                         {{-- State --}}
                         <div class="col-lg-6 form-group">
                             <select name="state" id="modal_state">
@@ -73,6 +60,13 @@ $mb = rand(1,9);
                             </select>
                             <label>State<span class="text-danger">*</span>:</label>
                             <div id="modal_state-error" class="text-danger"></div>
+                        </div>
+
+                        {{-- City --}}
+                        <div class="col-lg-6 form-group">
+                            <input type="text" name="city" placeholder=" ">
+                            <label>City:</label>
+                            <div id="modal_city-error" class="text-danger"></div>
                         </div>
 
                         <div class="col-lg-12 form-group">
