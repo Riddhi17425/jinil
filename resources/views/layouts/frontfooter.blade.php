@@ -1,53 +1,46 @@
-
-
 <footer class="site_footer">
 
-@php
+    @php
 
-use Illuminate\Support\Facades\DB;
+        use Illuminate\Support\Facades\DB;
 
+        $categories = DB::table('category')
 
-$categories = DB::table('category')
+            ->whereNull('deleted_at')
 
-    ->whereNull('deleted_at')
+            ->get();
 
-    ->get();
+        $products = DB::table('product')
 
+            ->whereNull('deleted_at')
 
+            ->get()
 
-$products = DB::table('product')
+            ->groupBy('category_id');
 
-    ->whereNull('deleted_at')
+        $uncategorizedProducts = DB::table('product')
 
-    ->get()
+            ->select('id', 'name', 'menu_name', 'title', 'url')
 
-    ->groupBy('category_id');
+            ->whereNull('deleted_at')
 
-$uncategorizedProducts = DB::table('product')
+            ->whereNull('category_id')
 
-    ->select('id', 'name','menu_name','title', 'url')
+            ->orderBy('id')
 
-    ->whereNull('deleted_at')
+            ->get();
 
-    ->whereNull('category_id')
+        $indusries = DB::table('indcategory')
 
-    ->orderBy('id')
+            ->select('indcategory', 'url')
 
-    ->get();
+            ->whereNull('deleted_at')
 
+            ->distinct()
 
+            ->get();
 
-$indusries = DB::table('indcategory')
-
-    ->select('indcategory','url')
-
-    ->whereNull('deleted_at')
-
-    ->distinct()
-
-    ->get();
-
-@endphp
+    @endphp
 
     <div class="container-fluid">
 
@@ -98,7 +91,7 @@ $indusries = DB::table('indcategory')
                         <li><a href="{{ route('downloads') }}">Downloads</a></li>
 
                         <li><a href="{{ route('faqs') }}">FAQs</a></li>
-                        
+
                         <li><a href="{{ route('blogs') }}">Blogs</a></li>
 
                         <li><a href="{{ route('contact') }}">Contact Us</a></li>
@@ -120,106 +113,68 @@ $indusries = DB::table('indcategory')
             <!-- FOOTER GRID -->
             <div class="footer_grid">
 
-                @foreach($categories as $cat)
-                <div class="footer_col">
+                @foreach ($categories as $cat)
+                    <div class="footer_col">
 
-                    <h4 class="title_24">{{ $cat->category }}</h4>
-
-
-
-                    <ul>
+                        <h4 class="title_24">{{ $cat->category }}</h4>
 
 
 
-                        @if(isset($products[$cat->id]))
+                        <ul>
 
 
 
-                            <!--@foreach($products[$cat->id] as $product)-->
+                            @if (isset($products[$cat->id]))
+                                <!--@foreach ($products[$cat->id] as $product)
+-->
 
 
 
-                            <!--<li>-->
+                                <!--<li>-->
 
-                            <!--    <a href="javascript::void(0)">-->
+                                <!--    <a href="javascript::void(0)">-->
 
-                            <!--        {{ $product->name }}-->
+                                <!--        {{ $product->name }}-->
 
-                            <!--    </a>-->
+                                <!--    </a>-->
 
-                            <!--</li>-->
-
-
-
-                            <!--@endforeach-->
-
-                            @foreach($products[$cat->id] as $product)
-
-                            <li>
-
-                                <!--<a href="{{ url('products/'.$cat->url.'#product-'.$product->id) }}">-->
-
-                                <!--    {{ $product->name }}-->
-
-                                <!--</a>-->
-
-                                <a href="{{ url('product/'.$product->url) }}">
-
-                                    {{ $product->menu_name ?: $product->name }}
-
-                                </a>
-
-                            </li>
-
-                            @endforeach
+                                <!--</li>-->
 
 
 
-                        @endif
+                                <!--
+@endforeach-->
+
+                                @foreach ($products[$cat->id] as $product)
+                                    <li>
+
+                                        <!--<a href="{{ url('products/' . $cat->url . '#product-' . $product->id) }}">-->
+
+                                        <!--    {{ $product->name }}-->
+
+                                        <!--</a>-->
+
+                                        <a href="{{ url('product/' . $product->url) }}">
+
+                                            {{ $product->menu_name ?: $product->name }}
+
+                                        </a>
+
+                                    </li>
+                                @endforeach
+                            @endif
 
 
 
-                    </ul>
+                        </ul>
 
 
 
-                </div>
-
-
-
+                    </div>
                 @endforeach
 
 
 
-
-
-                <div class="footer_col">
-
-
-
-                    <h4 class="title_24">Industries</h4>
-
-
-
-                     <ul>
-
-                        @foreach($indusries as $industry)
-
-                        <li>
-
-                            <a href="{{ url('industries/'.$industry->url) }}">
-
-                                {{ $industry->indcategory }}
-
-                            </a>
-
-                        </li>
-
-                        @endforeach
-
-                    </ul>
-
-                </div>
 
 
                 <div class="footer_col">
@@ -242,21 +197,88 @@ $indusries = DB::table('indcategory')
 
                     </ul>
 
-                    @if($uncategorizedProducts->isNotEmpty())
-                    <hr class="footer_divider" style="margin: 20px 0;">
+                    @if ($uncategorizedProducts->isNotEmpty())
+                        <hr class="footer_divider" style="margin: 20px 0;">
 
-                    <h4 class="title_24">Products</h4>
+                        <h4 class="title_24">Products</h4>
 
-                    <ul>
-                        @foreach($uncategorizedProducts as $product)
-                        <li>
-                            <a href="{{ url('product/'.$product->url) }}">
-                                {{ $product->menu_name ?: ($product->name ?: $product->title) }}
-                            </a>
-                        </li>
-                        @endforeach
-                    </ul>
+                        <ul>
+                            @foreach ($uncategorizedProducts as $product)
+                                <li>
+                                    <a href="{{ url('product/' . $product->url) }}">
+                                        {{ $product->menu_name ?: ($product->name ?: $product->title) }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
                     @endif
+
+                </div>
+
+
+                <div class="footer_col">
+
+
+
+                    <h4 class="title_24">Contact</h4>
+
+                    <ul class="footer_contact">
+
+                        <li>
+                            <span class="fc_icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="#3F6CB3"
+                                        stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <circle cx="12" cy="10" r="3" stroke="#3F6CB3" stroke-width="1.8"
+                                        stroke-linecap="round" stroke-linejoin="round"></circle>
+                                </svg>
+                            </span>
+                            <div class="fc_text">
+                                <span class="fc_label">Address</span>
+                                <span>C3-602, Anushruti Tower, Near Jain Derasar, S.G. Road, Thaltej, Ahmedabad 380059,
+                                    India</span>
+                            </div>
+                        </li>
+
+                        <li>
+                            <span class="fc_icon">
+                                <svg width="18" height="18" viewBox="0 0 22 22" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M19.6315 15.099V17.776C19.6326 18.0246 19.5816 18.2705 19.4821 18.4982C19.3825 18.726 19.2365 18.9304 19.0534 19.0984C18.8702 19.2664 18.654 19.3943 18.4186 19.4739C18.1832 19.5535 17.9337 19.5831 17.6862 19.5607C14.9403 19.2624 12.3027 18.3241 9.98532 16.8212C7.82926 15.4512 6.0013 13.6232 4.63126 11.4672C3.12318 9.13923 2.18467 6.48878 1.89176 3.73055C1.86947 3.48379 1.89879 3.23509 1.97788 3.00028C2.05696 2.76547 2.18407 2.5497 2.35111 2.36671C2.51815 2.18372 2.72147 2.03752 2.94811 1.93741C3.17475 1.8373 3.41976 1.78548 3.66753 1.78524H6.34456C6.77762 1.78098 7.19745 1.93433 7.52581 2.21672C7.85416 2.49911 8.06863 2.89125 8.12924 3.32007C8.24223 4.17678 8.45178 5.01796 8.75388 5.82756C8.87394 6.14695 8.89993 6.49406 8.82876 6.82777C8.75759 7.16147 8.59225 7.46778 8.35233 7.7104L7.21905 8.84368C8.48935 11.0777 10.3391 12.9274 12.5731 14.1977L13.7064 13.0645C13.949 12.8245 14.2553 12.6592 14.589 12.588C14.9227 12.5169 15.2698 12.5428 15.5892 12.6629C16.3988 12.965 17.24 13.1746 18.0967 13.2875C18.5302 13.3487 18.9261 13.567 19.2091 13.901C19.492 14.235 19.6424 14.6614 19.6315 15.099Z"
+                                        stroke="#3F6CB3" stroke-width="1.78469" stroke-linecap="round"
+                                        stroke-linejoin="round"></path>
+                                </svg>
+                            </span>
+                            <div class="fc_text">
+                                <span class="fc_label">Phone</span>
+                                <a href="tel:+919925601108">+91 9925601108</a>
+                            </div>
+                        </li>
+
+                        <li>
+                            <span class="fc_icon">
+                                <svg width="18" height="18" viewBox="0 0 22 22" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M17.8473 3.56836H3.56984C2.58419 3.56836 1.78516 4.36739 1.78516 5.35305V16.0612C1.78516 17.0468 2.58419 17.8458 3.56984 17.8458H17.8473C18.833 17.8458 19.632 17.0468 19.632 16.0612V5.35305C19.632 4.36739 18.833 3.56836 17.8473 3.56836Z"
+                                        stroke="#3F6CB3" stroke-width="1.78469" stroke-linecap="round"
+                                        stroke-linejoin="round"></path>
+                                    <path
+                                        d="M19.632 6.24609L11.6277 11.3324C11.3522 11.5051 11.0337 11.5966 10.7086 11.5966C10.3835 11.5966 10.065 11.5051 9.78947 11.3324L1.78516 6.24609"
+                                        stroke="#3F6CB3" stroke-width="1.78469" stroke-linecap="round"
+                                        stroke-linejoin="round"></path>
+                                </svg>
+                            </span>
+                            <div class="fc_text">
+                                <span class="fc_label">Email</span>
+                                <a href="mailto:sales@jinilspinning.com">sales@jinilspinning.com</a>
+                            </div>
+                        </li>
+
+                    </ul>
+
 
 
 
@@ -285,93 +307,86 @@ $indusries = DB::table('indcategory')
                 <div class="footer_social">
 
 
- <a href="https://www.facebook.com/jinilshotblasting/" target="_blanck">
+                    <a href="https://www.facebook.com/jinilshotblasting/" target="_blanck">
 
-                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
 
-                           <g clip-path="url(#clip0_1089_1221)">
+                            <g clip-path="url(#clip0_1089_1221)">
 
-                               <path
+                                <path
+                                    d="M12 0C18.6274 0 24 5.37259 24 12C24 18.1352 19.3955 23.1944 13.4538 23.9121V15.667L16.7001 15.667L17.3734 12H13.4538V10.7031C13.4538 9.73417 13.6439 9.06339 14.0799 8.63483C14.5159 8.20627 15.1979 8.01993 16.1817 8.01993C16.4307 8.01993 16.6599 8.02241 16.8633 8.02736C17.1591 8.03456 17.4002 8.047 17.568 8.06467V4.74048C17.501 4.72184 17.4218 4.70321 17.3331 4.68486C17.1321 4.6433 16.8822 4.60324 16.6136 4.56806C16.0523 4.49453 15.4093 4.4423 14.9594 4.4423C13.1424 4.4423 11.7692 4.83102 10.8107 5.63619C9.65388 6.60791 9.10108 8.18622 9.10108 10.4199V12H6.62659V15.667H9.10108V23.6466C3.87432 22.3498 0 17.6277 0 12C0 5.37259 5.37259 0 12 0Z"
+                                    fill="#105293" />
 
-                                   d="M12 0C18.6274 0 24 5.37259 24 12C24 18.1352 19.3955 23.1944 13.4538 23.9121V15.667L16.7001 15.667L17.3734 12H13.4538V10.7031C13.4538 9.73417 13.6439 9.06339 14.0799 8.63483C14.5159 8.20627 15.1979 8.01993 16.1817 8.01993C16.4307 8.01993 16.6599 8.02241 16.8633 8.02736C17.1591 8.03456 17.4002 8.047 17.568 8.06467V4.74048C17.501 4.72184 17.4218 4.70321 17.3331 4.68486C17.1321 4.6433 16.8822 4.60324 16.6136 4.56806C16.0523 4.49453 15.4093 4.4423 14.9594 4.4423C13.1424 4.4423 11.7692 4.83102 10.8107 5.63619C9.65388 6.60791 9.10108 8.18622 9.10108 10.4199V12H6.62659V15.667H9.10108V23.6466C3.87432 22.3498 0 17.6277 0 12C0 5.37259 5.37259 0 12 0Z"
+                            </g>
 
-                                   fill="#105293" />
+                            <defs>
 
-                           </g>
+                                <clipPath id="clip0_1089_1221">
 
-                           <defs>
+                                    <rect width="24" height="24" fill="white" />
 
-                               <clipPath id="clip0_1089_1221">
+                                </clipPath>
 
-                                   <rect width="24" height="24" fill="white" />
+                            </defs>
 
-                               </clipPath>
-
-                           </defs>
-
-                       </svg>
-
-
-
-                   </a>
-
-                   <a href="https://www.instagram.com/jinilshotblasting/" target="_blanck">
-
-                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-
-                           <path
-
-                               d="M18.3952 7.02212C17.6005 7.02368 16.9543 6.3802 16.9528 5.58548C16.9512 4.79076 17.5947 4.14457 18.3898 4.14302C19.1848 4.14146 19.831 4.78531 19.8326 5.58004C19.8338 6.37476 19.1903 7.02057 18.3952 7.02212Z"
-
-                               fill="#105293" />
-
-                           <path fill-rule="evenodd" clip-rule="evenodd"
-
-                               d="M12.0115 18.161C8.60909 18.1676 5.8451 15.4149 5.8385 12.0117C5.83188 8.60923 8.58536 5.84481 11.9878 5.8382C15.3909 5.83159 18.1553 8.5859 18.1619 11.9879C18.1685 15.3912 15.4143 18.1544 12.0115 18.161ZM11.992 8.00035C9.78365 8.00424 7.99594 9.79858 7.99983 12.0074C8.0041 14.2166 9.79882 16.0039 12.0072 15.9996C14.2164 15.9954 16.0041 14.2014 15.9998 11.9922C15.9955 9.78302 14.2008 7.99608 11.992 8.00035Z"
-
-                               fill="#105293" />
-
-                           <path fill-rule="evenodd" clip-rule="evenodd"
-
-                               d="M4.1192 0.646479C4.88126 0.347876 5.75333 0.143362 7.03015 0.0830982C8.31011 0.0216726 8.71872 0.00767102 11.9769 0.00145262C15.2358 -0.00476578 15.6444 0.00766862 16.9244 0.0644334C18.2016 0.119643 19.0741 0.321049 19.8377 0.616544C20.6277 0.920974 21.298 1.33078 21.966 1.99603C22.6339 2.66205 23.0453 3.33002 23.3536 4.1189C23.6518 4.88174 23.8563 5.75306 23.917 7.03068C23.9776 8.31023 23.9924 8.71847 23.9986 11.9771C24.0048 15.2353 23.9916 15.6443 23.9356 16.925C23.88 18.2014 23.679 19.0743 23.3835 19.8375C23.0783 20.6276 22.6693 21.2979 22.004 21.9659C21.3388 22.6342 20.6701 23.0452 19.8812 23.3539C19.1184 23.6517 18.2471 23.8562 16.9702 23.9173C15.6903 23.9779 15.2817 23.9923 12.0224 23.9985C8.76459 24.0048 8.35598 23.9923 7.07605 23.9359C5.79882 23.88 4.92597 23.6789 4.16275 23.3838C3.37271 23.0782 2.70242 22.6696 2.03446 22.004C1.36611 21.3383 0.954386 20.67 0.646458 19.8811C0.347858 19.1186 0.144107 18.2469 0.0830727 16.9705C0.0220359 15.6901 0.00765506 15.2811 0.00143906 12.0229C-0.00480094 8.76435 0.00803667 8.35611 0.0640167 7.07616C0.1204 5.79855 0.320637 4.92606 0.61613 4.16206C0.921328 3.37239 1.33035 2.70248 1.99637 2.03413C2.6616 1.36616 3.33033 0.954017 4.1192 0.646479ZM4.94154 21.3679C5.36494 21.5308 6.00023 21.7252 7.17014 21.7761C8.43607 21.8309 8.81514 21.843 12.0185 21.8368C15.223 21.8309 15.6021 21.8173 16.8676 21.7579C18.0363 21.7022 18.6716 21.5055 19.0939 21.3407C19.6541 21.1218 20.0531 20.8601 20.4722 20.4406C20.8913 20.0195 21.1506 19.6194 21.3676 19.0591C21.5309 18.6354 21.7249 17.9996 21.7758 16.8297C21.8314 15.5646 21.8431 15.1851 21.8368 11.9809C21.831 8.77757 21.8174 8.3981 21.7572 7.13254C21.7019 5.96339 21.5056 5.32808 21.3404 4.90623C21.1215 4.34519 20.8606 3.94705 20.4399 3.52753C20.0192 3.10801 19.6191 2.84945 19.0581 2.6325C18.6355 2.46881 17.9994 2.27518 16.8303 2.22426C15.5643 2.16865 15.1849 2.15737 11.9808 2.1636C8.77743 2.16982 8.39836 2.18264 7.13281 2.24253C5.9633 2.29812 5.32877 2.49447 4.90575 2.65972C4.34587 2.87861 3.94696 3.13872 3.52746 3.5598C3.10871 3.98087 2.84938 4.38018 2.63244 4.94161C2.46993 5.36464 2.27434 6.00072 2.2242 7.16987C2.16898 8.43581 2.15733 8.81529 2.16355 12.0187C2.16939 15.2228 2.18298 15.6023 2.24248 16.8671C2.29729 18.037 2.49518 18.6715 2.65966 19.0949C2.87855 19.6544 3.13944 20.0533 3.55973 20.4729C3.98081 20.8908 4.38088 21.1509 4.94154 21.3679Z"
-
-                               fill="#105293" />
-
-                       </svg>
+                        </svg>
 
 
 
-                   </a>
+                    </a>
 
-                   <a href="https://www.linkedin.com/company/jinil-surface-preparation-systems/" target="_blanck">
+                    <a href="https://www.instagram.com/jinilshotblasting/" target="_blanck">
 
-                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
 
-                           <g clip-path="url(#clip0_1089_1223)">
+                            <path
+                                d="M18.3952 7.02212C17.6005 7.02368 16.9543 6.3802 16.9528 5.58548C16.9512 4.79076 17.5947 4.14457 18.3898 4.14302C19.1848 4.14146 19.831 4.78531 19.8326 5.58004C19.8338 6.37476 19.1903 7.02057 18.3952 7.02212Z"
+                                fill="#105293" />
 
-                               <path
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M12.0115 18.161C8.60909 18.1676 5.8451 15.4149 5.8385 12.0117C5.83188 8.60923 8.58536 5.84481 11.9878 5.8382C15.3909 5.83159 18.1553 8.5859 18.1619 11.9879C18.1685 15.3912 15.4143 18.1544 12.0115 18.161ZM11.992 8.00035C9.78365 8.00424 7.99594 9.79858 7.99983 12.0074C8.0041 14.2166 9.79882 16.0039 12.0072 15.9996C14.2164 15.9954 16.0041 14.2014 15.9998 11.9922C15.9955 9.78302 14.2008 7.99608 11.992 8.00035Z"
+                                fill="#105293" />
 
-                                   d="M22.2234 0H1.77187C0.792187 0 0 0.773438 0 1.72969V22.2656C0 23.2219 0.792187 24 1.77187 24H22.2234C23.2031 24 24 23.2219 24 22.2703V1.72969C24 0.773438 23.2031 0 22.2234 0ZM7.12031 20.4516H3.55781V8.99531H7.12031V20.4516ZM5.33906 7.43438C4.19531 7.43438 3.27188 6.51094 3.27188 5.37187C3.27188 4.23281 4.19531 3.30937 5.33906 3.30937C6.47813 3.30937 7.40156 4.23281 7.40156 5.37187C7.40156 6.50625 6.47813 7.43438 5.33906 7.43438ZM20.4516 20.4516H16.8937V14.8828C16.8937 13.5562 16.8703 11.8453 15.0422 11.8453C13.1906 11.8453 12.9094 13.2937 12.9094 14.7891V20.4516H9.35625V8.99531H12.7687V10.5609H12.8156C13.2891 9.66094 14.4516 8.70938 16.1813 8.70938C19.7859 8.70938 20.4516 11.0813 20.4516 14.1656V20.4516Z"
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M4.1192 0.646479C4.88126 0.347876 5.75333 0.143362 7.03015 0.0830982C8.31011 0.0216726 8.71872 0.00767102 11.9769 0.00145262C15.2358 -0.00476578 15.6444 0.00766862 16.9244 0.0644334C18.2016 0.119643 19.0741 0.321049 19.8377 0.616544C20.6277 0.920974 21.298 1.33078 21.966 1.99603C22.6339 2.66205 23.0453 3.33002 23.3536 4.1189C23.6518 4.88174 23.8563 5.75306 23.917 7.03068C23.9776 8.31023 23.9924 8.71847 23.9986 11.9771C24.0048 15.2353 23.9916 15.6443 23.9356 16.925C23.88 18.2014 23.679 19.0743 23.3835 19.8375C23.0783 20.6276 22.6693 21.2979 22.004 21.9659C21.3388 22.6342 20.6701 23.0452 19.8812 23.3539C19.1184 23.6517 18.2471 23.8562 16.9702 23.9173C15.6903 23.9779 15.2817 23.9923 12.0224 23.9985C8.76459 24.0048 8.35598 23.9923 7.07605 23.9359C5.79882 23.88 4.92597 23.6789 4.16275 23.3838C3.37271 23.0782 2.70242 22.6696 2.03446 22.004C1.36611 21.3383 0.954386 20.67 0.646458 19.8811C0.347858 19.1186 0.144107 18.2469 0.0830727 16.9705C0.0220359 15.6901 0.00765506 15.2811 0.00143906 12.0229C-0.00480094 8.76435 0.00803667 8.35611 0.0640167 7.07616C0.1204 5.79855 0.320637 4.92606 0.61613 4.16206C0.921328 3.37239 1.33035 2.70248 1.99637 2.03413C2.6616 1.36616 3.33033 0.954017 4.1192 0.646479ZM4.94154 21.3679C5.36494 21.5308 6.00023 21.7252 7.17014 21.7761C8.43607 21.8309 8.81514 21.843 12.0185 21.8368C15.223 21.8309 15.6021 21.8173 16.8676 21.7579C18.0363 21.7022 18.6716 21.5055 19.0939 21.3407C19.6541 21.1218 20.0531 20.8601 20.4722 20.4406C20.8913 20.0195 21.1506 19.6194 21.3676 19.0591C21.5309 18.6354 21.7249 17.9996 21.7758 16.8297C21.8314 15.5646 21.8431 15.1851 21.8368 11.9809C21.831 8.77757 21.8174 8.3981 21.7572 7.13254C21.7019 5.96339 21.5056 5.32808 21.3404 4.90623C21.1215 4.34519 20.8606 3.94705 20.4399 3.52753C20.0192 3.10801 19.6191 2.84945 19.0581 2.6325C18.6355 2.46881 17.9994 2.27518 16.8303 2.22426C15.5643 2.16865 15.1849 2.15737 11.9808 2.1636C8.77743 2.16982 8.39836 2.18264 7.13281 2.24253C5.9633 2.29812 5.32877 2.49447 4.90575 2.65972C4.34587 2.87861 3.94696 3.13872 3.52746 3.5598C3.10871 3.98087 2.84938 4.38018 2.63244 4.94161C2.46993 5.36464 2.27434 6.00072 2.2242 7.16987C2.16898 8.43581 2.15733 8.81529 2.16355 12.0187C2.16939 15.2228 2.18298 15.6023 2.24248 16.8671C2.29729 18.037 2.49518 18.6715 2.65966 19.0949C2.87855 19.6544 3.13944 20.0533 3.55973 20.4729C3.98081 20.8908 4.38088 21.1509 4.94154 21.3679Z"
+                                fill="#105293" />
 
-                                   fill="#105293" />
-
-                           </g>
-
-                           <defs>
-
-                               <clipPath id="clip0_1089_1223">
-
-                                   <rect width="24" height="24" fill="white" />
-
-                               </clipPath>
-
-                           </defs>
-
-                       </svg>
+                        </svg>
 
 
 
-                   </a>
+                    </a>
+
+                    <a href="https://www.linkedin.com/company/jinil-surface-preparation-systems/" target="_blanck">
+
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+
+                            <g clip-path="url(#clip0_1089_1223)">
+
+                                <path
+                                    d="M22.2234 0H1.77187C0.792187 0 0 0.773438 0 1.72969V22.2656C0 23.2219 0.792187 24 1.77187 24H22.2234C23.2031 24 24 23.2219 24 22.2703V1.72969C24 0.773438 23.2031 0 22.2234 0ZM7.12031 20.4516H3.55781V8.99531H7.12031V20.4516ZM5.33906 7.43438C4.19531 7.43438 3.27188 6.51094 3.27188 5.37187C3.27188 4.23281 4.19531 3.30937 5.33906 3.30937C6.47813 3.30937 7.40156 4.23281 7.40156 5.37187C7.40156 6.50625 6.47813 7.43438 5.33906 7.43438ZM20.4516 20.4516H16.8937V14.8828C16.8937 13.5562 16.8703 11.8453 15.0422 11.8453C13.1906 11.8453 12.9094 13.2937 12.9094 14.7891V20.4516H9.35625V8.99531H12.7687V10.5609H12.8156C13.2891 9.66094 14.4516 8.70938 16.1813 8.70938C19.7859 8.70938 20.4516 11.0813 20.4516 14.1656V20.4516Z"
+                                    fill="#105293" />
+
+                            </g>
+
+                            <defs>
+
+                                <clipPath id="clip0_1089_1223">
+
+                                    <rect width="24" height="24" fill="white" />
+
+                                </clipPath>
+
+                            </defs>
+
+                        </svg>
+
+
+
+                    </a>
 
 
 
@@ -397,63 +412,64 @@ $indusries = DB::table('indcategory')
 
     </div>
 
-  <div class="whatsapp-popup Whats_mpp_modal" id="exampleModal-4" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content popup-box popup-box_whatsapp">
+    <div class="whatsapp-popup Whats_mpp_modal" id="exampleModal-4" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content popup-box popup-box_whatsapp">
 
-              <!-- HEADER -->
-              <div class="modal-header popup-header">
-                  <h5>Chat with us on WhatsApp</h5>
-                  <button type="button" class="btn-close white-close" data-bs-dismiss="modal" id="waPopupClose"></button>
-              </div>
+                <!-- HEADER -->
+                <div class="modal-header popup-header">
+                    <h5>Chat with us on WhatsApp</h5>
+                    <button type="button" class="btn-close white-close" data-bs-dismiss="modal"
+                        id="waPopupClose"></button>
+                </div>
 
-              <!-- BODY -->
-              <div class="modal-body">
-                  <form method="GET" action="{{ route('whatsaapinquiry') }}" id="whatsappForm" target="_blank">
-                      @csrf
+                <!-- BODY -->
+                <div class="modal-body">
+                    <form method="GET" action="{{ route('whatsaapinquiry') }}" id="whatsappForm" target="_blank">
+                        @csrf
 
-                      <!-- Message -->
-                      <div class="mb-3">
-                          <label class="form-label">Message</label>
-                          <textarea class="form-control popup-input" name="message" placeholder="Type your message"></textarea>
-                      </div>
+                        <!-- Message -->
+                        <div class="mb-3">
+                            <label class="form-label">Message</label>
+                            <textarea class="form-control popup-input" name="message" placeholder="Type your message"></textarea>
+                        </div>
 
-                      <!-- Phone -->
-                      <div class="mb-3">
-                          <label class="form-label">Contact No. <span class="text-danger">*</span></label>
+                        <!-- Phone -->
+                        <div class="mb-3">
+                            <label class="form-label">Contact No. <span class="text-danger">*</span></label>
 
-                          <input type="tel" id="wa_phone" class="form-control popup-input" 
-                              oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,15);" required>
-                            
+                            <input type="tel" id="wa_phone" class="form-control popup-input"
+                                oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,15);" required>
+
                             <small class="text-danger d-none" id="wa_error">
                                 Contact number must be required
                             </small>
-                          <!-- hidden -->
-                          <input type="hidden" name="number" id="wa_full_phone">
-                          <input type="hidden" name="country" id="wa_country_name">
-                      </div>
+                            <!-- hidden -->
+                            <input type="hidden" name="number" id="wa_full_phone">
+                            <input type="hidden" name="country" id="wa_country_name">
+                        </div>
 
-                      <div class="d-grid">
-                          <button type="submit" class="btn popup-btn">
-                              Start Chat with Us
-                          </button>
-                      </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn popup-btn">
+                                Start Chat with Us
+                            </button>
+                        </div>
 
-                  </form>
-              </div>
+                    </form>
+                </div>
 
-          </div>
-      </div>
-  </div>
+            </div>
+        </div>
+    </div>
 
 
 
-<div class="WhatsAppButton_mpp">
-    <a id="waFloatingBtn">
-        <img src="{{ asset('public/front/images/whatsapp.png')}}" alt="whatsapp">
-    </a>
-</div>
-    
+    <div class="WhatsAppButton_mpp">
+        <a id="waFloatingBtn">
+            <img src="{{ asset('public/front/images/whatsapp.png') }}" alt="whatsapp">
+        </a>
+    </div>
+
 </footer>
 
 
@@ -473,9 +489,7 @@ $indusries = DB::table('indcategory')
 <!-- bootstrap js start -->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-
     integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
-
 </script>
 
 
@@ -505,10 +519,8 @@ $indusries = DB::table('indcategory')
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script> -->
 
 <!-- <script>
-
-AOS.init();
-
- </script> -->
+    AOS.init();
+</script> -->
 
 <!-- main js start -->
 
@@ -523,85 +535,83 @@ AOS.init();
 @include('layouts.Inquiry-modal')
 
 @include('layouts.product-enquiry-modal', [
+    'pma' => rand(1, 9),
 
-    'pma' => rand(1,9),
-
-    'pmb' => rand(1,9)
-
+    'pmb' => rand(1, 9),
 ])
 
-  <script>
-document.addEventListener("DOMContentLoaded", function () {
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
 
-    const input = document.getElementById("wa_phone");
-    const error = document.getElementById("wa_error");
-    const form = document.getElementById("whatsappForm");
-    const fullPhone = document.getElementById("wa_full_phone");
-    const countryName = document.getElementById("wa_country_name");
+        const input = document.getElementById("wa_phone");
+        const error = document.getElementById("wa_error");
+        const form = document.getElementById("whatsappForm");
+        const fullPhone = document.getElementById("wa_full_phone");
+        const countryName = document.getElementById("wa_country_name");
 
-    const iti = window.intlTelInput(input, {
-        initialCountry: "auto",
-        separateDialCode: true,
-        preferredCountries: ["in", "ae", "us", "gb"],
-        geoIpLookup: function (callback) {
-            fetch("https://ipapi.co/json/")
-                .then(res => res.json())
-                .then(data => callback(data.country_code))
-                .catch(() => callback("in"));
-        },
-        utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@25.12.4/build/js/utils.js",
-    });
+        const iti = window.intlTelInput(input, {
+            initialCountry: "auto",
+            separateDialCode: true,
+            preferredCountries: ["in", "ae", "us", "gb"],
+            geoIpLookup: function(callback) {
+                fetch("https://ipapi.co/json/")
+                    .then(res => res.json())
+                    .then(data => callback(data.country_code))
+                    .catch(() => callback("in"));
+            },
+            utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@25.12.4/build/js/utils.js",
+        });
 
-    // numbers only + live hide error
-    input.addEventListener("input", function () {
-        this.value = this.value.replace(/[^0-9]/g, '');
+        // numbers only + live hide error
+        input.addEventListener("input", function() {
+            this.value = this.value.replace(/[^0-9]/g, '');
 
-        if (this.value.length >= 10) {
+            if (this.value.length >= 10) {
+                error.classList.add("d-none");
+            }
+        });
+
+        // submit validation
+        form.addEventListener("submit", function(e) {
+
+            if (input.value.trim() === "") {
+                error.innerText = "Contact number must be required";
+                error.classList.remove("d-none");
+                input.focus();
+                e.preventDefault();
+                return;
+            }
+
+            if (input.value.length < 10 || input.value.length > 15) {
+                error.innerText = "Contact number must be 10 to 15 digits";
+                error.classList.remove("d-none");
+                input.focus();
+                e.preventDefault();
+                return;
+            }
+
+            // ✅ valid
             error.classList.add("d-none");
-        }
+
+            const countryData = iti.getSelectedCountryData();
+            fullPhone.value = "+" + countryData.dialCode + input.value;
+            countryName.value = countryData.name;
+
+            sessionStorage.setItem("whatsapp_used", "yes");
+        });
+
     });
-
-    // submit validation
-    form.addEventListener("submit", function (e) {
-
-        if (input.value.trim() === "") {
-            error.innerText = "Contact number must be required";
-            error.classList.remove("d-none");
-            input.focus();
-            e.preventDefault();
-            return;
-        }
-
-        if (input.value.length < 10 || input.value.length > 15) {
-            error.innerText = "Contact number must be 10 to 15 digits";
-            error.classList.remove("d-none");
-            input.focus();
-            e.preventDefault();
-            return;
-        }
-
-        // ✅ valid
-        error.classList.add("d-none");
-
-        const countryData = iti.getSelectedCountryData();
-        fullPhone.value = "+" + countryData.dialCode + input.value;
-        countryName.value = countryData.name;
-        
-        sessionStorage.setItem("whatsapp_used", "yes");
-    });
-
-});
 </script>
 
 
 <script>
-    $("#waFloatingBtn").click(function(e){
-    e.preventDefault();
-    $(".whatsapp-popup").toggleClass("active");
+    $("#waFloatingBtn").click(function(e) {
+        e.preventDefault();
+        $(".whatsapp-popup").toggleClass("active");
     });
-    $("#waPopupClose").click(function(){
-    $(".whatsapp-popup").removeClass("active");
-});
+    $("#waPopupClose").click(function() {
+        $(".whatsapp-popup").removeClass("active");
+    });
 </script>
 </body>
 

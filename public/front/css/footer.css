@@ -144,3 +144,30 @@
     color:var(--blue);
 }
 
+/* FOOTER CONTACT */
+
+.footer_contact li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.footer_contact .fc_icon {
+  flex: 0 0 18px;
+  margin-top: 3px;
+  line-height: 0;
+}
+
+.footer_contact .fc_text {
+  display: flex;
+  flex-direction: column;
+  word-break: break-word;
+}
+
+.footer_contact .fc_label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--black-111);
+  margin-bottom: 2px;
+}
