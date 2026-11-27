@@ -35,7 +35,7 @@ $mb = rand(1,9);
                         {{-- Phone Number (intl-tel-input) --}}
                         <div class="col-lg-6 form-group" style="position:relative;">
                             <div id="modal_phone_wrapper">
-                                <input type="tel" id="modal_phone" name="phone" placeholder=" Phone Number *" maxlength="15">
+                                <input type="tel" id="modal_phone" name="phone" placeholder=" Phone Number *">
                             </div>
                             <input type="hidden" name="phone_country" id="modal_contact_country">
                             <input type="hidden" name="phonecode"  id="modal_contact_phonecode">
@@ -152,14 +152,12 @@ jQuery(document).ready(function ($) {
 
     $('#modal_phone').on('input', function () {
         var cleaned = this.value.replace(/[^0-9]/g, '');
-        if (cleaned.length > 15) cleaned = cleaned.substring(0, 15);
         this.value = cleaned;
     });
 
     $('#modal_phone').on('keypress', function (e) {
         var charCode = e.which ? e.which : e.keyCode;
         if (charCode < 48 || charCode > 57) e.preventDefault();
-        if (this.value.replace(/[^0-9]/g, '').length >= 15) e.preventDefault();
     });
 
     $('#modal_phone').on('keyup change', function () {
@@ -197,27 +195,10 @@ jQuery(document).ready(function ($) {
             isValid = false;
         }
 
-        var phoneVal       = $('#modal_phone').val().trim();
-        var countryData    = modalIti.getSelectedCountryData();
-        var iso2           = countryData.iso2 || '';
-        var digitsOnly     = phoneVal.replace(/\D/g, '');
-        var requiredDigits = getRequiredDigits(iso2);
-        var countryRule    = phoneDigitRules[(iso2 || '').toLowerCase()];
+        var phoneVal = $('#modal_phone').val().trim();
 
         if (!phoneVal) {
             $('#modal_full_phone-error').text('The Phone Number is required.');
-            isValid = false;
-        } else if (digitsOnly.length < 8) {
-            $('#modal_full_phone-error').text('Phone number must be at least 8 digits.');
-            isValid = false;
-        } else if (digitsOnly.length > 15) {
-            $('#modal_full_phone-error').text('Phone number cannot be more than 15 digits.');
-            isValid = false;
-        } else if (digitsOnly.length < requiredDigits) {
-            $('#modal_full_phone-error').text('Please enter a valid ' + requiredDigits + '-digit phone number.');
-            isValid = false;
-        } else if (countryRule !== undefined && digitsOnly.length !== countryRule) {
-            $('#modal_full_phone-error').text('Please enter a valid ' + countryRule + '-digit phone number.');
             isValid = false;
         }
 
